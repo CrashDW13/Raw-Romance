@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b62806b67cf274643907675083fcb9a9, type: 3}
+  m_Name: Thyme
+  m_EditorClassIdentifier: 
+  ingredientName: Thyme
+  description: 'A testament to the failures of the English language. '
+  fileName: Assets/Scripts/Editors/Ingredients/ScriptableObjects/Thyme.asset
+  sprite: {fileID: 7482667652216324306, guid: 7a3b32751c328404e9171a63157112ca, type: 3}
+  ingredientType: 2

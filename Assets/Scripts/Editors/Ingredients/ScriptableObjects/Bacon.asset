@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b62806b67cf274643907675083fcb9a9, type: 3}
+  m_Name: Bacon
+  m_EditorClassIdentifier: 
+  ingredientName: Bacon
+  description: Part of a balanced breakfast!
+  fileName: Assets/Scripts/Editors/Ingredients/ScriptableObjects/Bacon.asset
+  sprite: {fileID: 21300000, guid: 280b02b21ffbadb4a842ea15ea4d2926, type: 3}
+  ingredientType: 0
