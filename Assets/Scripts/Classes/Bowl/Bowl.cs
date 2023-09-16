@@ -68,14 +68,12 @@ public class Bowl : MonoBehaviour
             //  Loop through all the current preferences. 
             for (var k = 0; k < preferences.Count; k++)
             {
-                Debug.Log("Checking preference at preference index " + k + "...");
                 Preference preference = preferences[k];
 
                 //  If it's the ingredient we're looking for...
 
                 if (ingredientInBowl.ingredientName == preference.ingredient.ingredientName)
                 {
-                    Debug.Log("Ingredient has been found which matches the preference ingredient.");
                     //  First, mark that the bowl does in fact have the ingredient the preference is looking for.
 
                     hasIngredientOfPreference = true;
@@ -105,7 +103,6 @@ public class Bowl : MonoBehaviour
             //  If, for any ingredient, no preferences towards that ingredient are found, then it means that character is neutral towards it. 
             if (!hasIngredientOfPreference)
             {
-                Debug.Log("Character feels neutral towards ingredient " + ingredientInBowl.ingredientName + ", adding 5");
                 checkedIngredients.Add(ingredientInBowl);
                 grade.gradeNumber += 5;
             }
