@@ -12,6 +12,7 @@ public class IngredientInteractable : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
 
+    private bool canDrag = true;
     private bool dragging = false;
     private Vector3 offset;
 
@@ -24,7 +25,10 @@ public class IngredientInteractable : MonoBehaviour
 
     private void Update()
     {
-        UpdatePositionFromDrag();
+        if (canDrag)
+        {
+            UpdatePositionFromDrag();
+        } 
     }
 
     void UpdatePositionFromDrag()
@@ -98,5 +102,10 @@ public class IngredientInteractable : MonoBehaviour
             }
         }
         return highestObject;
+    }
+
+    private void SetActive(bool active)
+    {
+        canDrag = active;
     }
 }

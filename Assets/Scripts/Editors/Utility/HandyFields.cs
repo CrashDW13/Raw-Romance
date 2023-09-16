@@ -6,6 +6,7 @@ using UnityEditor;
 
 public class HandyFields
 {
+    //  This class is used almost exclusively for the editor scripts.
     public static Texture2D TextureField(Texture2D texture, int width = 120, int height = 120)
     {
         Texture2D result;

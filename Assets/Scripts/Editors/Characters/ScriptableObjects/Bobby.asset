@@ -13,8 +13,13 @@ MonoBehaviour:
   m_Name: Bobby
   m_EditorClassIdentifier: 
   characterName: Bobby
-  characterTag: 
-  Preferences: []
+  characterTag: 'bob:'
+  Preferences:
+  - ingredient: {fileID: 11400000, guid: 2adc48c21887a424daf7e9f464dd5e72, type: 2}
+    ingredientIndex: 0
+    styles: 
+    type: 0
+    weight: 1000
   CharacterSprites:
   - sprite: {fileID: 0}
     name: 
