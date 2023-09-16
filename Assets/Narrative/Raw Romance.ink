@@ -1,9 +1,17 @@
-This is test dialogue.
+->Test_Knot
 
-This is another test dialogue line.
+=== Test_Knot ===
+This is test dialogue. #Speaker:bob
 
-Here's a choice for you:
+This is another test dialogue line. #Speaker:bob
 
-+ [One] You chose one!
-+ [Two] You chose two!
-+ [Three] You chose three!
+Here's a choice for you: #Speaker:bob
+
++ [One] You chose one! #Speaker:bob
+    ->DONE
++ [Two] You chose two! #Speaker:bob
+    ->DONE
++ [Three] You chose three! #Speaker:bob
+    ->DONE
+
+->END

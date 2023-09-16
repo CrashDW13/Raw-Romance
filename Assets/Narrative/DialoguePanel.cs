@@ -20,6 +20,8 @@ public class DialoguePanel : MonoBehaviour
     float scrawlSpeed;
     bool pauseDialogue;
     Story inkStory;
+    CharacterDatabase characterDB;
+
     private void Start()
     {
         CharacterName.text = "";
@@ -27,8 +29,15 @@ public class DialoguePanel : MonoBehaviour
         scrawling = false;
         scrawlSpeed = defaultScrawlSpeed;
         pauseDialogue = false;
+        characterDB = GameObject.FindObjectOfType<CharacterDatabase>();
 
         inkStory = new Story(inkAsset.text);
+    }
+
+    public void StartConversation(string knot)
+    {
+        inkStory.ChoosePathString(knot);
+
         ShowLine(inkStory.Continue());
     }
 
@@ -40,43 +49,23 @@ public class DialoguePanel : MonoBehaviour
         {
             if (tag.Contains("Speaker"))
             {
-                //string name = tag.Substring(tag.IndexOf(":") + 1);
+                string name = tag.Substring(tag.IndexOf(":") + 1);
 
-                //// Set the image if necessary
-                //for (int i = 0; i < CharacterArtNames.Count; i++)
-                //{
-                //    if (name == CharacterArtNames[i])
-                //    {
-                //        if (name == "Jonathan")
-                //        {
-                //            CharacterImage.enabled = true;
-                //            CharacterImage.sprite = CharacterArtImages[i];
+                foreach (Character character in characterDB.Characters)
+                {
+                    string[] charTags = character.characterTag.Split(":");
+                    bool isChar = false;
+                    foreach (string s in charTags)
+                        if (s == name)
+                            isChar = true;
 
-                //            CharacterImage.transform.localPosition = new Vector3(-imageOffset, CharacterImage.transform.localPosition.y, CharacterImage.transform.localPosition.z);
+                    if (isChar)
+                    {
+                        CharacterName.text = character.characterName;
 
-                //            DialogueBox.transform.localPosition = new Vector3(-dialogueOffset, DialogueBox.transform.localPosition.y, DialogueBox.transform.localPosition.z);
-                //        }
-                //        else
-                //        {
-                //            CharacterImage.enabled = true;
-                //            CharacterImage.sprite = CharacterArtImages[i];
-
-                //            CharacterImage.transform.localPosition = new Vector3(imageOffset, CharacterImage.transform.localPosition.y, CharacterImage.transform.localPosition.z);
-
-                //            DialogueBox.transform.localPosition = new Vector3(dialogueOffset, DialogueBox.transform.localPosition.y, DialogueBox.transform.localPosition.z);
-                //        }
-                //    }
-                //}
-
-                //// Remove the image if necessary
-                //if (name == "Jonathan's Journal")
-                //{
-                //    CharacterImage.enabled = false;
-
-                //    DialogueBox.transform.localPosition = new Vector3(0f, DialogueBox.transform.localPosition.y, DialogueBox.transform.localPosition.z);
-                //}
-
-                //tmpName.text = name;
+                        //CharacterArt.sprite = character.GetSprite();
+                    }
+                }
             }
         }
 
