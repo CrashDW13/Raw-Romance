@@ -15,6 +15,7 @@ public class IngredientInteractable : MonoBehaviour
     private bool canDrag = true;
     private bool dragging = false;
     private Vector3 offset;
+    private Vector3 initialPosition; 
 
     private void Start()
     {
@@ -28,10 +29,21 @@ public class IngredientInteractable : MonoBehaviour
         if (canDrag)
         {
             UpdatePositionFromDrag();
-        } 
+        }
     }
 
-    void UpdatePositionFromDrag()
+    public bool IsFree()
+    {
+        return !dragging;
+    }
+
+    public void ResetPosition()
+    {
+        transform.position = initialPosition;
+        dragging = false;
+    }
+
+    private void UpdatePositionFromDrag()
     {
 
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -44,6 +56,7 @@ public class IngredientInteractable : MonoBehaviour
                 Collider2D highestCollider = GetHighestObject(results);
                 if (collider == highestCollider)
                 {
+                    initialPosition = transform.position; 
                     dragging = true;
                     //BringSpriteToFront();
                 }
@@ -59,11 +72,6 @@ public class IngredientInteractable : MonoBehaviour
                 dragging = false;
             }
         }
-    }
-
-    public bool IsFree()
-    {
-        return !dragging;
     }
 
     private void BringSpriteToFront()
