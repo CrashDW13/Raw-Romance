@@ -11,6 +11,11 @@ public class Ingredient : ScriptableObject
     public string fileName;
     [HideInInspector]
     public Sprite sprite;
+
+    [HideInInspector]
+    public bool sliced;
+    [HideInInspector]
+    public bool slicedCount; 
     public enum IngredientType
     {
         Meat,
