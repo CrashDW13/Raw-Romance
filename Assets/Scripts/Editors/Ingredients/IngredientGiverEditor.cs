@@ -63,6 +63,15 @@ public class IngredientGiverEditor : Editor
                     ingredientGiver.count = HandyFields.IntField("Count", ingredientGiver.count, 100, 75);
                 }
             }
+
+            if (ingredientGiver != null)
+            {
+                if (ingredientGiver.ingredientToGive.ingredientType == Ingredient.IngredientType.Base)
+                {
+                    ingredientGiver.ingredientInteractablePrefab = HandyFields.UnityField(ingredientGiver.ingredientInteractablePrefab);
+                }
+            }
+
         }
     }
 }

@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider2D))]
-public class PreparationBoard : MonoBehaviour
+public class BaseCooker : MonoBehaviour
 {
-    [SerializeField]
-    private Ingredient.IngredientType type;
-
     private BoxCollider2D boxCollider;
+    public OrderManager orderManager;
     private void Start()
     {
         boxCollider = GetComponent<BoxCollider2D>();
@@ -29,9 +27,14 @@ public class PreparationBoard : MonoBehaviour
                 {
                     if (colliders[i].gameObject.TryGetComponent(out IngredientInteractable ingredientInteractable))
                     {
-                        if (ingredientInteractable.ingredient.ingredientType != type)
+                        var ingredient = ingredientInteractable.ingredient;
+                        if (ingredient.ingredientType == Ingredient.IngredientType.Base)
                         {
-                            ingredientInteractable.ResetPosition();
+                            if (orderManager != null)
+                            {
+                                orderManager.StartCookingBase(transform.position, ingredientInteractable);
+                                Destroy(ingredientInteractable.gameObject);
+                            }
                         }
                     }
                 }

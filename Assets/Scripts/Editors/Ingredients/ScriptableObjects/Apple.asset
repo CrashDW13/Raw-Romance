@@ -16,4 +16,7 @@ MonoBehaviour:
   description: It's an apple.
   fileName: Assets/Scripts/Editors/Ingredients/ScriptableObjects/Apple.asset
   sprite: {fileID: 21300000, guid: a924ad07110c5bf4eb5797fa0eb01fd4, type: 3}
+  sliced: 0
+  slicedCount: 0
   ingredientType: 1
+  cookedLevel: 1
