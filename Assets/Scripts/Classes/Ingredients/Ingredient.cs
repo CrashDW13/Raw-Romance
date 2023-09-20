@@ -20,8 +20,22 @@ public class Ingredient : ScriptableObject
     {
         Meat,
         Produce,
-        Garnish
+        Garnish,
+        Base
     }
 
     public IngredientType ingredientType;
+
+    [HideInInspector]
+    public enum IngredientCookedLevel
+    {
+        Undercooked,
+        Good,
+        Overcooked
+    }
+
+    [HideInInspector]
+    public IngredientCookedLevel cookedLevel = IngredientCookedLevel.Good;
+
+    public float cookingTime;
 }

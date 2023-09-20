@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Dynamic;
 using System.IO;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class IngredientGiver : MonoBehaviour
 {
     public Ingredient ingredientToGive;
+    public GameObject ingredientInteractablePrefab;
     public int ingredientIndex = 0; //  Only used in Editor script. 
     private Collider2D collider;
 
@@ -31,7 +33,16 @@ public class IngredientGiver : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                AddIngredientToInventory();
+                if (ingredientToGive.ingredientType != Ingredient.IngredientType.Base)
+                {
+                    AddIngredientToInventory();
+                }
+
+                else
+                {
+                    SpawnIngredient();
+                }
+
             }
         }
     }  
@@ -47,5 +58,15 @@ public class IngredientGiver : MonoBehaviour
 
         if (isInfinite) return;
         else count--;
+    }
+
+    private void SpawnIngredient()
+    {
+        var itemGameObject = Instantiate(ingredientInteractablePrefab, transform.position, Quaternion.identity);
+        if (itemGameObject.TryGetComponent(out IngredientInteractable interactable))
+        {
+            interactable.ingredient = ingredientToGive;
+            Debug.Log(interactable.ingredient.ingredientName);
+        }
     }
 }
