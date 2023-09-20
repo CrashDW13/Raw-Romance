@@ -32,6 +32,8 @@ public class DialoguePanel : MonoBehaviour
         characterDB = GameObject.FindObjectOfType<CharacterDatabase>();
 
         inkStory = new Story(inkAsset.text);
+
+        inkStory.BindExternalFunction("updateAffinity", (string character, int value) => { UpdateAffinity(character, value); });
     }
 
     public void StartConversation(string knot)
@@ -152,35 +154,9 @@ public class DialoguePanel : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    public void ChangeChoice(float input)
-    {
-        //if (ChoiceParent.activeInHierarchy)
-        //{
-        //    int i = 0;
-        //    foreach (Transform choice in ChoiceParent.transform)
-        //    {
-        //        foreach (Transform comp in choice)
-        //        {
-        //            if (comp.gameObject == Highlight)
-        //            {
-        //                if (input < 0 && i > 0)
-        //                {
-        //                    Highlight.transform.SetParent(ChoiceParent.transform.GetChild(i - 1));
-        //                    Highlight.transform.localPosition = Vector3.zero;
-        //                    Highlight.transform.SetSiblingIndex(0);
-        //                }
-        //                else if (input > 0 && i < inkStory.currentChoices.Count - 1)
-        //                {
-        //                    Highlight.transform.SetParent(ChoiceParent.transform.GetChild(i + 1));
-        //                    Highlight.transform.localPosition = Vector3.zero;
-        //                    Highlight.transform.SetSiblingIndex(0);
-        //                }
 
-        //                i = inkStory.currentChoices.Count;
-        //            }
-        //        }
-        //        i++;
-        //    }
-        //}
+    void UpdateAffinity(string character, int value)
+    {
+        Debug.Log(character + ": " + value);
     }
 }
