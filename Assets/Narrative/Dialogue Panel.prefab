@@ -1078,7 +1078,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d976c3639ad1d2499840fa4ef5710ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inkAsset: {fileID: 4900000, guid: 61ab0b21b5d61ea488236227e141efce, type: 3}
+  inkAsset: {fileID: 4900000, guid: 869dda2962dfd7143889b94122af9fd4, type: 3}
   Background: {fileID: 3164346193883149978}
   CharacterArt: {fileID: 3164346195632978403}
   ChoiceParent: {fileID: 5296868654276201782}
