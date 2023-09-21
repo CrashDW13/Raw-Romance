@@ -45,36 +45,40 @@ public class OrderManager : MonoBehaviour
     //  We need this here so that cooking timer persists between areas. 
     public void StartCookingBase(Vector3 timerSpawnPosition, IngredientInteractable ingredientInteractable)
     {
-        Ingredient ingredient = ingredientInteractable.ingredient;
-        Vector3 newSpawnPosition;
-
-
-        if (ingredient.ingredientType != Ingredient.IngredientType.Base)
+        if (!baseIsCooking)
         {
-            Debug.LogWarning("OrderManager: Tried cooking ingredient that isn't classified as a base.");
-            return;
+            Ingredient ingredient = ingredientInteractable.ingredient;
+            Vector3 newSpawnPosition;
+
+
+            if (ingredient.ingredientType != Ingredient.IngredientType.Base)
+            {
+                Debug.LogWarning("OrderManager: Tried cooking ingredient that isn't classified as a base.");
+                return;
+            }
+
+            baseIsCooking = true;
+
+            // Offset position above object bbox (in world space)
+            float offsetPosY = timerSpawnPosition.y + 1.5f;
+
+            // Final position of marker above GO in world space
+            Vector3 offsetPos = new Vector3(timerSpawnPosition.x, offsetPosY, timerSpawnPosition.z);
+
+            // Calculate *screen* position (note, not a canvas/recttransform position)
+            Vector2 canvasPos;
+            Vector2 screenPoint = Camera.main.WorldToScreenPoint(offsetPos);
+
+            // Convert screen position to Canvas / RectTransform space <- leave camera null if Screen Space Overlay
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(baseCookerTimerPrefab.GetComponent<Image>().rectTransform, screenPoint, null, out canvasPos);
+
+            newSpawnPosition = canvasPos;
+
+            baseCookerTimer = Instantiate(baseCookerTimerPrefab, newSpawnPosition, transform.rotation);
+            canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+            baseCookerTimerImage = baseCookerTimer.GetComponent<Image>();
+            baseCookerTimer.transform.SetParent(canvas.transform);
         }
-
-        baseIsCooking = true;
-
-        // Offset position above object bbox (in world space)
-        float offsetPosY = timerSpawnPosition.y + 1.5f;
-
-        // Final position of marker above GO in world space
-        Vector3 offsetPos = new Vector3(timerSpawnPosition.x, offsetPosY, timerSpawnPosition.z);
-
-        // Calculate *screen* position (note, not a canvas/recttransform position)
-        Vector2 canvasPos;
-        Vector2 screenPoint = Camera.main.WorldToScreenPoint(offsetPos);
-
-        // Convert screen position to Canvas / RectTransform space <- leave camera null if Screen Space Overlay
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(baseCookerTimerPrefab.GetComponent<Image>().rectTransform, screenPoint, null, out canvasPos);
-
-        newSpawnPosition = canvasPos;
-
-        baseCookerTimer = Instantiate(baseCookerTimerPrefab, newSpawnPosition, transform.rotation);
-        baseCookerTimerImage = baseCookerTimer.GetComponent<Image>();
-        baseCookerTimer.transform.SetParent(canvas.transform);
     }
 
     public void StartOrder(Character character)
@@ -116,6 +120,11 @@ public class OrderManager : MonoBehaviour
         {
             Debug.Log("Base is finished!");
         }
+    }
+
+    public bool IsCooking()
+    {
+        return baseIsCooking;
     }
 
     

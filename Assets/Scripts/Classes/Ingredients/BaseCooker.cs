@@ -32,8 +32,11 @@ public class BaseCooker : MonoBehaviour
                         {
                             if (orderManager != null)
                             {
-                                orderManager.StartCookingBase(transform.position, ingredientInteractable);
-                                Destroy(ingredientInteractable.gameObject);
+                                if (!orderManager.IsCooking())
+                                {
+                                    orderManager.StartCookingBase(transform.position, ingredientInteractable);
+                                    Destroy(ingredientInteractable.gameObject);
+                                }
                             }
                         }
                     }
