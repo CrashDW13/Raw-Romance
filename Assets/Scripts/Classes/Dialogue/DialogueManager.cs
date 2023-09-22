@@ -10,8 +10,8 @@ public class DialogueManager : MonoBehaviour
     public void StartConversation(string conversationId)
     {
         Canvas canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
-        Instantiate(dialoguePrefab, canvas.transform);
-        if (dialoguePrefab.TryGetComponent(out DialoguePanel dialoguePanel))
+        GameObject prefab = Instantiate(dialoguePrefab, canvas.transform);
+        if (prefab.TryGetComponent(out DialoguePanel dialoguePanel))
         {
             dialoguePanel.StartConversation(conversationId);
 
@@ -19,8 +19,8 @@ public class DialogueManager : MonoBehaviour
     }
 
     //  DEBUG, PROTOTYPE ONLY
-    private void Start()
+    private void Awake()
     {
-        StartConversation("");
+        StartConversation("demo_start");
     }
 }
