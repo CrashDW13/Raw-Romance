@@ -35,6 +35,7 @@
 
 === repeat_inst ===
 * ["Got it"]
+    "Great! Good luck!" #Speaker:Bo
         ->DONE
     * ["One more time, please."]
         "Ugh. Give me lettuce and fingers over spaghetti. Is that clear enough?" #Speaker:Bo
