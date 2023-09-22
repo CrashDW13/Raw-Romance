@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Dynamic;
 using System.IO;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 public class IngredientGiver : MonoBehaviour
 {

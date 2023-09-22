@@ -13,13 +13,38 @@ MonoBehaviour:
   m_Name: Bobby
   m_EditorClassIdentifier: 
   characterName: Bobby
-  characterTag: 'bob:'
+  characterTag: Bo
   Preferences:
-  - ingredient: {fileID: 11400000, guid: 2adc48c21887a424daf7e9f464dd5e72, type: 2}
+  - ingredient: {fileID: 11400000, guid: 8dd659c43b67fb24a8ef81e32b364815, type: 2}
     ingredientIndex: 0
     styles: 
     type: 0
-    weight: 1000
+    weight: 10
+  - ingredient: {fileID: 11400000, guid: 6a22290a7471a464d9ed33528c0e584a, type: 2}
+    ingredientIndex: 1
+    styles: 
+    type: 0
+    weight: 10
+  - ingredient: {fileID: 11400000, guid: 4b6d103585006384cafee47d43463f3d, type: 2}
+    ingredientIndex: 2
+    styles: 
+    type: 0
+    weight: 5
+  - ingredient: {fileID: 11400000, guid: d4573adaf40688d4c9f167992336696f, type: 2}
+    ingredientIndex: 3
+    styles: 
+    type: 1
+    weight: 5
+  - ingredient: {fileID: 11400000, guid: 1e665a045c439494b9b8216ff173516e, type: 2}
+    ingredientIndex: 4
+    styles: 
+    type: 0
+    weight: 10
+  - ingredient: {fileID: 11400000, guid: 611cad539211b8d418e1f20455d770ed, type: 2}
+    ingredientIndex: 5
+    styles: 
+    type: 1
+    weight: 50
   CharacterSprites:
   - sprite: {fileID: 0}
     name: 

@@ -12,6 +12,7 @@ public class IngredientInteractable : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
 
+    private bool interactedWith = false;
     private bool canDrag = true;
     private bool dragging = false;
     private Vector3 offset;
@@ -52,12 +53,14 @@ public class IngredientInteractable : MonoBehaviour
             offset = transform.position - mousePosition;
             if (collider == Physics2D.OverlapPoint(mousePosition))
             {
+                Debug.Log(ingredient.name);
                 Collider2D[] results = Physics2D.OverlapPointAll(mousePosition);
                 Collider2D highestCollider = GetHighestObject(results);
                 if (collider == highestCollider)
                 {
                     initialPosition = transform.position; 
                     dragging = true;
+                    interactedWith = true;
                     //BringSpriteToFront();
                 }
             }
@@ -112,8 +115,18 @@ public class IngredientInteractable : MonoBehaviour
         return highestObject;
     }
 
-    private void SetActive(bool active)
+    public void SetActive(bool active)
     {
         canDrag = active;
+    }
+
+    public bool GetActive()
+    {
+        return canDrag;
+    }
+
+    public bool InteractedWith()
+    {
+        return interactedWith;
     }
 }

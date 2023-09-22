@@ -20,6 +20,7 @@ public class DialoguePanel : MonoBehaviour
     float scrawlSpeed;
     bool pauseDialogue;
     Story inkStory;
+    private string knot;
     CharacterDatabase characterDB;
 
     private void Start()
@@ -34,13 +35,14 @@ public class DialoguePanel : MonoBehaviour
         inkStory = new Story(inkAsset.text);
 
         inkStory.BindExternalFunction("updateAffinity", (string character, int value) => { UpdateAffinity(character, value); });
-    }
-
-    public void StartConversation(string knot)
-    {
         inkStory.ChoosePathString(knot);
 
         ShowLine(inkStory.Continue());
+    }
+
+    public void StartConversation(string knotToLoad)
+    {
+        knot = knotToLoad;
     }
 
     void ShowLine(string line)
