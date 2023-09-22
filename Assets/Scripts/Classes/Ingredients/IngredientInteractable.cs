@@ -12,6 +12,7 @@ public class IngredientInteractable : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
 
+    private bool interactedWith = false;
     private bool canDrag = true;
     private bool dragging = false;
     private Vector3 offset;
@@ -58,6 +59,7 @@ public class IngredientInteractable : MonoBehaviour
                 {
                     initialPosition = transform.position; 
                     dragging = true;
+                    interactedWith = true;
                     //BringSpriteToFront();
                 }
             }
@@ -112,8 +114,18 @@ public class IngredientInteractable : MonoBehaviour
         return highestObject;
     }
 
-    private void SetActive(bool active)
+    public void SetActive(bool active)
     {
         canDrag = active;
+    }
+
+    public bool GetActive()
+    {
+        return canDrag;
+    }
+
+    public bool InteractedWith()
+    {
+        return interactedWith;
     }
 }

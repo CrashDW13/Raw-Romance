@@ -132,7 +132,8 @@ public class Bowl : MonoBehaviour
                     if (colliders[i].gameObject.TryGetComponent(out IngredientInteractable ingredientInteractable))
                     {
                         ingredients.Add(ingredientInteractable.ingredient);
-                        Destroy(ingredientInteractable.gameObject);
+                        ingredientInteractable.SetActive(false);
+                        ingredientInteractable.transform.SetParent(gameObject.transform);
                     }
                 }
             }

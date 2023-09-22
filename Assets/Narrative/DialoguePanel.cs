@@ -37,14 +37,12 @@ public class DialoguePanel : MonoBehaviour
         inkStory.BindExternalFunction("updateAffinity", (string character, int value) => { UpdateAffinity(character, value); });
         inkStory.ChoosePathString(knot);
 
-        Debug.Log(knot);
         ShowLine(inkStory.Continue());
     }
 
     public void StartConversation(string knotToLoad)
     {
         knot = knotToLoad;
-        Debug.Log(knot);
     }
 
     void ShowLine(string line)

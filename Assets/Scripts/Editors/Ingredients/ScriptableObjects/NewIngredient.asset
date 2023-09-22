@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b62806b67cf274643907675083fcb9a9, type: 3}
-  m_Name: Thyme
+  m_Name: NewIngredient
   m_EditorClassIdentifier: 
-  ingredientName: Thyme
-  description: 'A testament to the failures of the English language. '
-  fileName: Assets/Scripts/Editors/Ingredients/ScriptableObjects/Thyme.asset
-  sprite: {fileID: 7482667652216324306, guid: 7a3b32751c328404e9171a63157112ca, type: 3}
+  ingredientName: New Ingredient
+  description: 
+  fileName: 
+  sprite: {fileID: 0}
   sliced: 0
   slicedCount: 0
-  ingredientType: 2
+  ingredientType: 0
   cookedLevel: 1
+  cookingTime: 0

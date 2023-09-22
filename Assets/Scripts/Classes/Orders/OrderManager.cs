@@ -28,7 +28,14 @@ public class OrderManager : MonoBehaviour
     private Canvas canvas;
     private Image baseCookerTimerImage;
     private GameObject baseCookerTimer;
+    private IngredientInteractable currentCookingIngredient;
 
+    private DialogueManager dialogueManager;
+
+    private void Start()
+    {
+        dialogueManager = FindObjectOfType<DialogueManager>();  
+    }
     private void Update()
     {
         if (orderIsActive)
@@ -47,6 +54,7 @@ public class OrderManager : MonoBehaviour
     {
         if (!baseIsCooking)
         {
+            currentCookingIngredient = ingredientInteractable;
             Ingredient ingredient = ingredientInteractable.ingredient;
             Vector3 newSpawnPosition;
 
@@ -94,6 +102,23 @@ public class OrderManager : MonoBehaviour
         orderIsActive = false;
         Grade grade = bowl.GetGrade(currentCharacter.Preferences);
         Debug.Log("Final grade " + grade.gradeNumber);
+        if (grade.gradeNumber > 30)
+        {
+            Debug.Log("peak");
+            dialogueManager.StartConversation("");
+        }
+
+        else if (grade.gradeNumber < -30)
+        {
+            Debug.Log("ass");
+            dialogueManager.StartConversation("");
+        }
+
+        else
+        {
+            Debug.Log("mid");
+            dialogueManager.StartConversation("");
+        }
 
         //  TO-DO: Adjust grade based on how long the player has waited since the start of the order (currentOrderTime). 
         //  TO-DO: Implement UI that uses grade to show player feedback (ie. which preferences were included + final grade)
@@ -127,5 +152,16 @@ public class OrderManager : MonoBehaviour
         return baseIsCooking;
     }
 
-    
+    public IngredientInteractable GetIngredient()
+    {
+        return currentCookingIngredient;
+    }
+
+    public void FinishCooking()
+    {
+        Destroy(baseCookerTimer);
+
+    }
+
+
 }

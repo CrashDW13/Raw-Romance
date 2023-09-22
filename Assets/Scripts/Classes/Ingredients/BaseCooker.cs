@@ -7,6 +7,9 @@ public class BaseCooker : MonoBehaviour
 {
     private BoxCollider2D boxCollider;
     public OrderManager orderManager;
+    [SerializeField] public GameObject ingredientInteractablePrefab; 
+    private bool isCooking = false;
+    private Vector3 offset;
     private void Start()
     {
         boxCollider = GetComponent<BoxCollider2D>();
@@ -14,6 +17,18 @@ public class BaseCooker : MonoBehaviour
     private void Update()
     {
         CheckForInteractables();
+        if (isCooking)
+        {
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            if (Input.GetMouseButtonDown(0))
+            {
+                offset = transform.position - mousePosition;
+                if (boxCollider == Physics2D.OverlapPoint(mousePosition))
+                {
+                    GiveIngredientInteractable();
+                }
+            }
+        }
     }
 
     private void CheckForInteractables()
@@ -36,6 +51,7 @@ public class BaseCooker : MonoBehaviour
                                 {
                                     orderManager.StartCookingBase(transform.position, ingredientInteractable);
                                     Destroy(ingredientInteractable.gameObject);
+                                    isCooking = true;
                                 }
                             }
                         }
@@ -43,5 +59,17 @@ public class BaseCooker : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void GiveIngredientInteractable()
+    {
+        IngredientInteractable ingredientInteractable = orderManager.GetIngredient();
+        orderManager.FinishCooking();
+        GameObject ingredientPrefab = Instantiate(ingredientInteractablePrefab, transform.position, Quaternion.identity);
+        if (ingredientPrefab.TryGetComponent<IngredientInteractable>(out IngredientInteractable interactable))
+        {
+            interactable.ingredient = ingredientInteractable.ingredient;
+        }
+
     }
 }
