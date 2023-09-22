@@ -31,8 +31,6 @@
     "Um... sure. Spaghetti with a crunchy vegetable and meat with bones still inside. I'm indifferent about garnish." #Speaker:Bo
     ->repeat_inst
 
-
-
 === repeat_inst ===
 * ["Got it"]
     "Great! Good luck!" #Speaker:Bo
@@ -44,6 +42,18 @@
 === yes_end ===
 * ["Yeah."]
 "Great. Good luck!" #Speaker:Bo
+->DONE
+
+=== outcome_good ===
+"Well, look at you! You're a damn natural! Keep this up, and Bobo might keep ya' around an extra couple days."
+->DONE
+
+=== outcome_mid ===
+"Not bad. I appreciate the grub. Take care, ok?"
+->DONE
+
+=== outcome_bad ===
+"...Is this some kinda joke? This is some shit I'd feed to my dog. Get some life skills, man."
 ->DONE
 
 -> END

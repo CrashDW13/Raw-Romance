@@ -53,6 +53,7 @@ public class IngredientInteractable : MonoBehaviour
             offset = transform.position - mousePosition;
             if (collider == Physics2D.OverlapPoint(mousePosition))
             {
+                Debug.Log(ingredient.name);
                 Collider2D[] results = Physics2D.OverlapPointAll(mousePosition);
                 Collider2D highestCollider = GetHighestObject(results);
                 if (collider == highestCollider)

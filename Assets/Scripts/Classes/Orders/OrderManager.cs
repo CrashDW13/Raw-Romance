@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
-using UnityEditor.UI;
 using UnityEngine.UI;
 using static UnityEngine.GraphicsBuffer;
 
@@ -97,27 +96,28 @@ public class OrderManager : MonoBehaviour
         currentOrderTime = 0;
     }
 
-    public void SubmitOrder(Bowl bowl)
+    public void SubmitOrder()
     {
+        Bowl bowl = FindObjectOfType<Bowl>();
         orderIsActive = false;
         Grade grade = bowl.GetGrade(currentCharacter.Preferences);
         Debug.Log("Final grade " + grade.gradeNumber);
         if (grade.gradeNumber > 30)
         {
             Debug.Log("peak");
-            dialogueManager.StartConversation("");
+            dialogueManager.StartConversation("outcome_good");
         }
 
         else if (grade.gradeNumber < -30)
         {
             Debug.Log("ass");
-            dialogueManager.StartConversation("");
+            dialogueManager.StartConversation("outcome_bad");
         }
 
         else
         {
             Debug.Log("mid");
-            dialogueManager.StartConversation("");
+            dialogueManager.StartConversation("outcome_mid");
         }
 
         //  TO-DO: Adjust grade based on how long the player has waited since the start of the order (currentOrderTime). 

@@ -28,6 +28,6 @@ public class DialogueManager : MonoBehaviour
     {
         areaManager = FindObjectOfType<AreaManager>();
         windowArea = areaManager.currentArea;
-        StartConversation("");
+        StartConversation("demo_start");
     }
 }
