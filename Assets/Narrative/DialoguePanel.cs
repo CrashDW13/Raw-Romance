@@ -186,17 +186,17 @@ public class DialoguePanel : MonoBehaviour
         switch(positionPreset)
         {
             case "top-right":
-                position = new Vector3(300, 300, 0);
+                position = new Vector3(725, 300, 0);
                 break;
             case "top-left":
-                position = new Vector3(200, 300, 0);
+                position = new Vector3(150, 300, 0);
                 break;
 
             case "bottom-right":
-                position = new Vector3(300, 200, 0);
+                position = new Vector3(725, 150, 0);
                 break;
             case "bottom-left":
-                position = new Vector3(200, 200, 0);
+                position = new Vector3(150, 150, 0);
                 break;
             default:
                 position = Vector3.zero;
@@ -211,5 +211,10 @@ public class DialoguePanel : MonoBehaviour
         StopCoroutine(textCoroutine);
         inkStory.ChoosePathString(path);
         ShowLine(inkStory.Continue());
+    }
+
+    public void SetScrawlSpeed(float speed)
+    {
+        scrawlSpeed = speed;
     }
 }
