@@ -1,23 +1,17 @@
 
+EXTERNAL spawnChoice(message, knot, time, positionPreset)
+
 === demo_start ===
-
-"Hi! You must be the new 'recruit.'" #Speaker:Bo
-* ["Unfortunately"]
-    "I... wow, I'm sorry you don't like it here." #Speaker:Bo
-    -> start_cook
-
-* ["Is it that obvious?"]
-    "Only because I've never seen you before." #Speaker:Bo
-    -> start_cook
-
-* ["Guilty as charged."]
-    "Ha. Given that you're chained up, people would assume you've done something to end up here." #Speaker:Bo
-    -> start_cook
-
+"This is some test dialogue." #Speaker:Bo
+"The next line of dialogue should spawn some choices." #Speaker:Bo
+~spawnChoice("nah that's a whole demon", "start_cook", 10, "top-left")
+"Test1" #Speaker:Bo
+"A longer test 2 to test for strange behavior regarding the coroutine??" #Speaker:Bo
+"Test3?" #Speaker:Bo
+-> DONE
 
 === start_cook ===
 "Have you cooked anything in the kitchen yet?" #Speaker:Bo
-* ["No, but I'm guessing I'm about to start."]
 "Yeah. You'll find meats in the meat locker and veggies and garnishes in the pantry. The meat locker is the white door and the pantry is the wooden closet." #Speaker:Bo
 "Now that I've laid out the basics, why don't you whip up spaghetti with a green crunch and something on-the-bone. Think you can do that?" #Speaker:Bo
 -> cooking_start

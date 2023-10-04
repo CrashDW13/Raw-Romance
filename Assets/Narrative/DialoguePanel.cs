@@ -4,37 +4,58 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Ink.Runtime;
+using System;
 
 public class DialoguePanel : MonoBehaviour
 {
-    [SerializeField] TextAsset inkAsset;
-    [SerializeField] Image Background;
-    [SerializeField] Image CharacterArt;
-    [SerializeField] GameObject ChoiceParent;
-    [SerializeField] TMP_Text CharacterName;
-    [SerializeField] TMP_Text DialogueBox;
+    [Header("Characters")]
+    [SerializeField] private CharacterDatabase characterDB;
+    [Space(10)]
 
-    [SerializeField] float defaultScrawlSpeed;
-    [SerializeField] float scrawlMultiplier;
-    bool scrawling;
-    float scrawlSpeed;
-    bool pauseDialogue;
-    Story inkStory;
+    [Header("Ink File")]
+    [SerializeField] private TextAsset inkAsset;
+    private Story inkStory;
     private string knot;
-    CharacterDatabase characterDB;
+    [Space(10)]
+
+
+    [Header("Graphics")]
+    [SerializeField] private Image Background;
+    [SerializeField] private Image CharacterArt;
+    [Space(10)]
+
+
+    [Header("Choices")]
+    [SerializeField] private GameObject choicePrefab; 
+    [SerializeField] private TMP_Text CharacterName;
+    [SerializeField] private TMP_Text DialogueBox;
+    [Space(10)]
+
+
+    [Header("Scrawl")]
+    [SerializeField] private float defaultScrawlSpeed;
+    [SerializeField] private float scrawlMultiplier;
+    [SerializeField] private float defaultWaitTimeSeconds;
+
+    private Coroutine textCoroutine;
+
+    private bool scrawling;
+    private float scrawlSpeed;
 
     private void Start()
     {
+        StartConversation("demo_start");
+
         CharacterName.text = "";
         DialogueBox.text = "";
+
         scrawling = false;
         scrawlSpeed = defaultScrawlSpeed;
-        pauseDialogue = false;
-        characterDB = GameObject.FindObjectOfType<CharacterDatabase>();
 
         inkStory = new Story(inkAsset.text);
 
         inkStory.BindExternalFunction("updateAffinity", (string character, int value) => { UpdateAffinity(character, value); });
+        inkStory.BindExternalFunction("spawnChoice", (string message, string knot, float time, string positionPreset) => { SpawnChoice(message, knot, time, positionPreset); });
         inkStory.ChoosePathString(knot);
 
         ShowLine(inkStory.Continue());
@@ -55,7 +76,7 @@ public class DialoguePanel : MonoBehaviour
             {
                 string name = tag.Substring(tag.IndexOf(":") + 1);
 
-                foreach (Character character in characterDB.Characters)
+                /*foreach (Character character in characterDB.Characters)
                 {
                     string[] charTags = character.characterTag.Split(":");
                     bool isChar = false;
@@ -69,29 +90,21 @@ public class DialoguePanel : MonoBehaviour
 
                         //CharacterArt.sprite = character.GetSprite();
                     }
-                }
+                }*/
             }
         }
-
-        StartCoroutine(ScrawlText(line));
+        textCoroutine = StartCoroutine(ScrawlText(line));
     }
 
     IEnumerator ScrawlText(string line)
     {
         scrawling = true;
         DialogueBox.text = "";
-        //advanceIndicator.enabled = false;
         scrawlSpeed = defaultScrawlSpeed;
 
         int i = 0;
         while (i < line.Length)
         {
-            //if (!dialogueAudio.isPlaying)
-            //{
-            //    int rand = Random.Range(0, 7);
-            //    dialogueAudio.PlayOneShot(TypingSounds[rand]);
-            //}
-
             DialogueBox.text += line[i];
             i++;
 
@@ -99,15 +112,23 @@ public class DialoguePanel : MonoBehaviour
         }
 
         scrawling = false;
-        //advanceIndicator.enabled = true;
 
         if (inkStory.currentChoices.Count > 0)
+        {
             ShowChoices();
+            StartCoroutine(Advance());
+        }
+
+        else
+        {
+            StartCoroutine(Advance());
+        }
+
     }
 
     void ShowChoices()
     {
-        ChoiceParent.SetActive(true);
+        /*ChoiceParent.SetActive(true);
 
         int i = 0;
         foreach (Transform choice in ChoiceParent.transform)
@@ -123,28 +144,23 @@ public class DialoguePanel : MonoBehaviour
                 choice.gameObject.SetActive(false);
             }
             i++;
-        }
+        }*/
     }
 
     public void SelectChoice(float choice)
     {
         inkStory.ChooseChoiceIndex((int)choice);
 
-        ChoiceParent.SetActive(false);
-
         ShowLine(inkStory.Continue());
     }
 
-    public void Advance()
+    public IEnumerator Advance()
     {
-        if (inkStory.canContinue && !scrawling && !pauseDialogue)
+        yield return new WaitForSeconds(defaultWaitTimeSeconds);
+
+        if (inkStory.canContinue && !scrawling)
         {
             ShowLine(inkStory.Continue());
-        }
-        else if (scrawling)
-        {
-            //Debug.Log("SCRAWLING SPED UP");
-            scrawlSpeed = defaultScrawlSpeed * scrawlMultiplier;
         }
         else if (!inkStory.canContinue && !scrawling && inkStory.currentChoices.Count > 0)
         {
@@ -160,5 +176,40 @@ public class DialoguePanel : MonoBehaviour
     void UpdateAffinity(string character, int value)
     {
         Debug.Log(character + ": " + value);
+    }
+
+    void SpawnChoice(string message, string knot, float time, string positionPreset)
+    {
+        Vector3 position;
+
+        //TO-DO: Post-prototype, this should be handled in its own function. 
+        switch(positionPreset)
+        {
+            case "top-right":
+                position = new Vector3(300, 300, 0);
+                break;
+            case "top-left":
+                position = new Vector3(200, 300, 0);
+                break;
+
+            case "bottom-right":
+                position = new Vector3(300, 200, 0);
+                break;
+            case "bottom-left":
+                position = new Vector3(200, 200, 0);
+                break;
+            default:
+                position = Vector3.zero;
+                break;
+        }
+
+        ChoicePanel.Instantiate(choicePrefab, position, transform.rotation, message, knot, time);
+    }
+
+    public void ForcePath(string path)
+    {
+        StopCoroutine(textCoroutine);
+        inkStory.ChoosePathString(path);
+        ShowLine(inkStory.Continue());
     }
 }
