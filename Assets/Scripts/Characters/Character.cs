@@ -7,7 +7,6 @@ public class Character : ScriptableObject
     public string characterName = "New Character";
     public string characterTag; 
 
-    public List<Preference> Preferences = new List<Preference>();
     public List<CharacterSprite> CharacterSprites = new List<CharacterSprite>();
 
     public string fileName;

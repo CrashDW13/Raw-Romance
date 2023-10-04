@@ -74,25 +74,46 @@ public class DialoguePanel : MonoBehaviour
         {
             if (tag.Contains("Speaker"))
             {
-                string name = tag.Substring(tag.IndexOf(":") + 1);
+                string tagData = tag.Substring(tag.IndexOf(":") + 1);
+                string[] info = tagData.Split(",");
 
-                /*foreach (Character character in characterDB.Characters)
+                string name = info[0];
+                string sprite = null;
+
+                Debug.Log(info[0]);
+
+                if (info.Length > 1)
+                {
+                    sprite = info[1];
+                    Debug.Log(sprite);
+                }
+
+                foreach (Character character in characterDB.Characters)
                 {
                     string[] charTags = character.characterTag.Split(":");
                     bool isChar = false;
+
                     foreach (string s in charTags)
+                    {
                         if (s == name)
+                        {
                             isChar = true;
+                        } 
+                    }
 
                     if (isChar)
                     {
                         CharacterName.text = character.characterName;
 
-                        //CharacterArt.sprite = character.GetSprite();
+                        if (sprite != null)
+                        {
+                            CharacterArt.sprite = character.GetSprite(sprite);
+                        }
                     }
-                }*/
+                }
             }
         }
+
         textCoroutine = StartCoroutine(ScrawlText(line));
     }
 
@@ -191,7 +212,6 @@ public class DialoguePanel : MonoBehaviour
             case "top-left":
                 position = new Vector3(150, 300, 0);
                 break;
-
             case "bottom-right":
                 position = new Vector3(725, 150, 0);
                 break;
