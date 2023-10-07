@@ -8,7 +8,7 @@ public class IngredientInteractable : MonoBehaviour
     [HideInInspector]
     public Ingredient ingredient;
 
-    private Collider2D collider;
+    private BoxCollider2D boxCollider2D;
 
     private SpriteRenderer spriteRenderer;
 
@@ -20,7 +20,7 @@ public class IngredientInteractable : MonoBehaviour
 
     private void Start()
     {
-        collider = GetComponent<Collider2D>();
+        boxCollider2D = GetComponent<BoxCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = ingredient.sprite;
     }
@@ -51,12 +51,12 @@ public class IngredientInteractable : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             offset = transform.position - mousePosition;
-            if (collider == Physics2D.OverlapPoint(mousePosition))
+            if (boxCollider2D == Physics2D.OverlapPoint(mousePosition))
             {
                 Debug.Log(ingredient.name);
                 Collider2D[] results = Physics2D.OverlapPointAll(mousePosition);
                 Collider2D highestCollider = GetHighestObject(results);
-                if (collider == highestCollider)
+                if (boxCollider2D == highestCollider)
                 {
                     initialPosition = transform.position; 
                     dragging = true;

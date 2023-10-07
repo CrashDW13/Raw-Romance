@@ -9,7 +9,7 @@ public class IngredientGiver : MonoBehaviour
     public Ingredient ingredientToGive;
     public GameObject ingredientInteractablePrefab;
     public int ingredientIndex = 0; //  Only used in Editor script. 
-    private Collider2D collider;
+    private BoxCollider2D thisCollider;
 
     [Space(10)]
     public bool isInfinite;
@@ -17,7 +17,7 @@ public class IngredientGiver : MonoBehaviour
 
     private void Start()
     {
-        collider = GetComponent<Collider2D>();
+        thisCollider = GetComponent<BoxCollider2D>();
     }
 
     private void Update()
@@ -28,7 +28,7 @@ public class IngredientGiver : MonoBehaviour
     private void CheckForInput()
     {
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        if (collider == Physics2D.OverlapPoint(mousePosition))
+        if (thisCollider == Physics2D.OverlapPoint(mousePosition))
         {
             if (Input.GetMouseButtonDown(0))
             {
