@@ -1,29 +1,34 @@
-using System.Collections.Generic;
+// StoryStateHandler.cs
 using Ink.Runtime;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class StoryStateHandler
 {
-    private Story inkStory;
+    private Story story;
     private List<string> storyStateHistory = new List<string>();
 
-    public StoryStateHandler(Story story)
+    public StoryStateHandler(Story inkStory)
     {
-        inkStory = story;
+        this.story = inkStory;
+        SaveState();
     }
 
     public void SaveState()
     {
-        storyStateHistory.Add(inkStory.state.ToJson());
+        storyStateHistory.Add(story.state.ToJson());
     }
 
     public void RewindStoryState()
     {
-        if (storyStateHistory.Count <= 1) return;
-      
-        storyStateHistory.RemoveAt(storyStateHistory.Count - 1);
-
-       
-        string previousState = storyStateHistory[storyStateHistory.Count - 1];
-        inkStory.state.LoadJson(previousState);
+        if (storyStateHistory.Count > 1) 
+        {
+            storyStateHistory.RemoveAt(storyStateHistory.Count - 1);
+            story.state.LoadJson(storyStateHistory[storyStateHistory.Count - 1]);
+        }
+        else
+        {
+            Debug.LogWarning("No more states to rewind to.");
+        }
     }
 }
