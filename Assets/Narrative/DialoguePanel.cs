@@ -8,6 +8,8 @@ using System;
 
 public class DialoguePanel : MonoBehaviour
 {
+    private StoryStateHandler stateHandler;
+
     [Header("Characters")]
     [SerializeField] private CharacterDatabase characterDB;
     [Space(10)]
@@ -53,6 +55,7 @@ public class DialoguePanel : MonoBehaviour
         scrawlSpeed = defaultScrawlSpeed;
 
         inkStory = new Story(inkAsset.text);
+        stateHandler = new StoryStateHandler(inkStory);
 
         inkStory.BindExternalFunction("updateAffinity", (string character, int value) => { UpdateAffinity(character, value); });
         inkStory.BindExternalFunction("spawnChoice", (string message, string knot, float time, string positionPreset) => { SpawnChoice(message, knot, time, positionPreset); });
