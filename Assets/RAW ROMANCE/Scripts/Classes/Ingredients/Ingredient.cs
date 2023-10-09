@@ -15,7 +15,7 @@ public class Ingredient : ScriptableObject
     [HideInInspector]
     public bool sliced;
     [HideInInspector]
-    public bool slicedCount; 
+    public int slicedCount; 
     public enum IngredientType
     {
         Meat,
