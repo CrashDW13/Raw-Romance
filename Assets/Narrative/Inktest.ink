@@ -1,9 +1,12 @@
 EXTERNAL spawnChoice(message, knot, time, positionPreset)
 EXTERNAL saveState()
+EXTERNAL waitNextLine(delaySeconds)
+
 === demo_start ===
 "This is some test dialogue." #Speaker:Bo,happy
 "The next line of dialogue should spawn some choices."#Speaker:Bo,sad
 ~saveState()
+~waitNextLine(10)
 ~spawnChoice("nah that's a whole demon", "choice1", 10, "top-left")
 ~spawnChoice("nah that's a whole demon", "choice2", 10, "top-right")
 ~spawnChoice("nah that's a whole demon", "choice3", 10, "bottom-left")
