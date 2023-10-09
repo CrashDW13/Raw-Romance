@@ -38,6 +38,7 @@ public class DialoguePanel : MonoBehaviour
     [SerializeField] private float defaultScrawlSpeed;
     [SerializeField] private float scrawlMultiplier;
     [SerializeField] private float defaultWaitTimeSeconds;
+    private float waitTimeSeconds; 
 
     private Coroutine textCoroutine;
 
@@ -46,6 +47,8 @@ public class DialoguePanel : MonoBehaviour
 
     private void Start()
     {
+
+        waitTimeSeconds = defaultWaitTimeSeconds;
         
         CharacterName.text = "";
         DialogueBox.text = "";
@@ -61,6 +64,7 @@ public class DialoguePanel : MonoBehaviour
         inkStory.BindExternalFunction("updateAffinity", (string character, int value) => { UpdateAffinity(character, value); });
         inkStory.BindExternalFunction("spawnChoice", (string message, string knot, float time, string positionPreset) => { SpawnChoice(message, knot, time, positionPreset); });
         inkStory.BindExternalFunction("saveState", () => { SaveState(); });
+        inkStory.BindExternalFunction("waitNextLine", (float delaySeconds) => { WaitNextLine(delaySeconds); });
 
         inkStory.ChoosePathString(knot);
     
@@ -184,7 +188,9 @@ public class DialoguePanel : MonoBehaviour
 
     public IEnumerator Advance()
     {
-        yield return new WaitForSeconds(defaultWaitTimeSeconds);
+        yield return new WaitForSeconds(waitTimeSeconds);
+
+        waitTimeSeconds = defaultWaitTimeSeconds;
 
         if (inkStory.canContinue && !scrawling)
         {
@@ -244,6 +250,12 @@ public class DialoguePanel : MonoBehaviour
     {
         scrawlSpeed = speed;
     }
+
+    public void WaitNextLine(float delaySeconds)
+    {
+        waitTimeSeconds = delaySeconds;
+    }
+
     void SaveState()
     {
         stateHandler.SaveState(); 
