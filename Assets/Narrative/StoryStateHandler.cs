@@ -19,16 +19,18 @@ public class StoryStateHandler
         storyStateHistory.Add(story.state.ToJson());
     }
 
-    public void RewindStoryState()
+    public bool RewindStoryState()
     {
         if (storyStateHistory.Count > 1) 
         {
             storyStateHistory.RemoveAt(storyStateHistory.Count - 1);
             story.state.LoadJson(storyStateHistory[storyStateHistory.Count - 1]);
+            return true;
         }
         else
         {
             Debug.LogWarning("No more states to rewind to.");
+            return false;
         }
     }
 }

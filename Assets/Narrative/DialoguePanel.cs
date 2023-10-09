@@ -255,7 +255,21 @@ public class DialoguePanel : MonoBehaviour
     {
         waitTimeSeconds = delaySeconds;
     }
-
+    public void HandleRewind()
+    {
+        if (stateHandler.RewindStoryState())
+        {
+            if (inkStory.canContinue)
+            {
+                ShowLine(inkStory.Continue());
+            }
+            else
+            {
+                
+                ShowChoices();
+            }
+        }
+    }
     void SaveState()
     {
         stateHandler.SaveState(); 
@@ -263,7 +277,8 @@ public class DialoguePanel : MonoBehaviour
     }
     public void Rewind()
     {
-        stateHandler.RewindStoryState();
+        StopCoroutine(textCoroutine); 
+        HandleRewind();
         Debug.Log("Rewind");
     }
 
