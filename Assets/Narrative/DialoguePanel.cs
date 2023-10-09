@@ -46,8 +46,7 @@ public class DialoguePanel : MonoBehaviour
 
     private void Start()
     {
-        StartConversation("demo_start");
-
+        
         CharacterName.text = "";
         DialogueBox.text = "";
 
@@ -55,11 +54,16 @@ public class DialoguePanel : MonoBehaviour
         scrawlSpeed = defaultScrawlSpeed;
 
         inkStory = new Story(inkAsset.text);
+        StartConversation("demo_start");
+
         stateHandler = new StoryStateHandler(inkStory);
 
         inkStory.BindExternalFunction("updateAffinity", (string character, int value) => { UpdateAffinity(character, value); });
         inkStory.BindExternalFunction("spawnChoice", (string message, string knot, float time, string positionPreset) => { SpawnChoice(message, knot, time, positionPreset); });
+        inkStory.BindExternalFunction("saveState", () => { SaveState(); });
+
         inkStory.ChoosePathString(knot);
+    
 
         ShowLine(inkStory.Continue());
     }
@@ -240,4 +244,15 @@ public class DialoguePanel : MonoBehaviour
     {
         scrawlSpeed = speed;
     }
+    void SaveState()
+    {
+        stateHandler.SaveState(); 
+        Debug.Log("saved");
+    }
+    public void Rewind()
+    {
+        stateHandler.RewindStoryState();
+        Debug.Log("Rewind");
+    }
+
 }
