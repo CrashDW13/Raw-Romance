@@ -1898,7 +1898,7 @@ PrefabInstance:
     - target: {fileID: 3164346195282623395, guid: 928959dc829c0ea4dae836e4dcf2ead6, type: 3}
       propertyPath: inkAsset
       value: 
-      objectReference: {fileID: 4900000, guid: 5e7482ba0803c2744bfc6aad67176cea, type: 3}
+      objectReference: {fileID: 4900000, guid: 10422fbd270692c4282d0e90f882951a, type: 3}
     - target: {fileID: 3164346195282623395, guid: 928959dc829c0ea4dae836e4dcf2ead6, type: 3}
       propertyPath: characterDB
       value: 

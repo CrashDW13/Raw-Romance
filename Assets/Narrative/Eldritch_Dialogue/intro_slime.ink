@@ -1,18 +1,27 @@
+EXTERNAL spawnChoice(message, knot, time, positionPreset)
+EXTERNAL saveState()
+EXTERNAL waitNextLine(delaySeconds)
+
+=== demo_start ===
 
 -> intro_beg
 
 === intro_beg ===
-+ [Hi.] -> welc
+~saveState()
+~spawnChoice("Hi.", "welc", 10, "top-left")
+~spawnChoice("Hello?", "welc", 10, "top-right")
 ...
-+ [Hello?] -> welc
 ...
-...
+~waitNextLine(5)
 //remove greet options here
 "Why are you here?"
-+ [I'm looking for someone.] -> looking
-+ [That's none of your business] ->no_bis
+~saveState()
+~spawnChoice("I'm looking for someone.", "looking", 10, "top-left")
+~spawnChoice("That's none of your business.?", "no_bis", 10, "top-right")
 ...
+
 ...
+
 "I will only ask one more time."
 "Why are you here?"
 ...
@@ -25,13 +34,16 @@
 "Welcome."
 "You must be naïve if you've come here of your own free will."
 "Or unfortunate, if you're here against your wishes."
-+ [I chose to be here.] -> chose
-+ [You think I want to be here?] -> lie_str
+~saveState()
+~spawnChoice("I chose to be here.?", "chose", 10, "top-left")
+~spawnChoice("You think I want to be here?", "lie_str", 10, "top-right")
 ...
 "So, which is it?"
 ...
 ...
 "Do not make me answer for you."
+
+~waitNextLine(5)
 ...
 //remove both options here
 ...
@@ -44,6 +56,8 @@
 ...
 "Your honesty has been recognized."
 "Now, let me ask you something."
+~saveState()
+
 -> intro_cont
 
 
@@ -51,6 +65,8 @@
 "A liar."
 "I like liars."
 "Though I do hope you'll be truthful enough to answer my next question."
+~saveState()
+
 -> intro_cont
 
 
@@ -59,6 +75,8 @@
 "So that is what brings you to our den."
 "Your honesty is admirable."
 "Now, I have another question for you."
+~saveState()
+
 -> intro_cont
 
 
@@ -68,23 +86,31 @@
 "Curt sencences will not help you here."
 "Remember: you came to me."
 "Do you ununderstand?"
-+ [Yes] -> y
-+ [No] -> n
+~saveState()
+~spawnChoice("Yes?", "y", 10, "top-left")
+~spawnChoice("No?", "n", 10, "top-right")
+~waitNextLine(10)
 ...
 "What a shame."
 "Your comprehension seems to have disappeared."
+
+
 -> intro_death
 
 
 === y ===
 "Good."
 "Now, I have another question for you."
+~saveState()
+
 -> intro_cont
 
 
 === n ===
 ...
 "Then I will make you understand."
+~saveState()
+
 -> intro_death
 
 

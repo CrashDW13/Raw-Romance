@@ -1078,7 +1078,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterDB: {fileID: 0}
-  inkAsset: {fileID: 4900000, guid: 869dda2962dfd7143889b94122af9fd4, type: 3}
+  inkAsset: {fileID: 4900000, guid: 10422fbd270692c4282d0e90f882951a, type: 3}
   Background: {fileID: 3164346193883149978}
   CharacterArt: {fileID: 3164346195632978403}
   choicePrefab: {fileID: 7537198020764234369, guid: b86626b67eee7514bb7dfbba682d0585, type: 3}

@@ -24,10 +24,12 @@ public class StoryStateHandler
 
     public bool RewindStoryState()
     {
+        Debug.Log("Number of saved states: " + storyStateHistory.Count);
+
         if (CanRewind()) 
         {
-            storyStateHistory.RemoveAt(storyStateHistory.Count - 1);
             story.state.LoadJson(storyStateHistory[storyStateHistory.Count - 1]);
+            storyStateHistory.RemoveAt(storyStateHistory.Count - 1);
             return true;
         }
         else
