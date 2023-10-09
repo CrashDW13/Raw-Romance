@@ -702,10 +702,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 1344090306}
   m_HandleRect: {fileID: 100314743}
   m_Direction: 0
-  m_MinValue: 0.5
+  m_MinValue: 1
   m_MaxValue: 5
   m_WholeNumbers: 0
-  m_Value: 0.5
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1578,18 +1578,6 @@ PrefabInstance:
       value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 3164346195282623394, guid: 928959dc829c0ea4dae836e4dcf2ead6, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.99999994
-      objectReference: {fileID: 0}
-    - target: {fileID: 3164346195282623394, guid: 928959dc829c0ea4dae836e4dcf2ead6, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.99999994
-      objectReference: {fileID: 0}
-    - target: {fileID: 3164346195282623394, guid: 928959dc829c0ea4dae836e4dcf2ead6, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.99999994
-      objectReference: {fileID: 0}
-    - target: {fileID: 3164346195282623394, guid: 928959dc829c0ea4dae836e4dcf2ead6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -1619,11 +1607,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3164346195282623394, guid: 928959dc829c0ea4dae836e4dcf2ead6, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.000091552734
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3164346195282623394, guid: 928959dc829c0ea4dae836e4dcf2ead6, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 50.00006
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 3164346195282623394, guid: 928959dc829c0ea4dae836e4dcf2ead6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1641,21 +1629,5 @@ PrefabInstance:
       propertyPath: characterDB
       value: 
       objectReference: {fileID: 1633495325}
-    - target: {fileID: 3164346195282623395, guid: 928959dc829c0ea4dae836e4dcf2ead6, type: 3}
-      propertyPath: choicePrefab
-      value: 
-      objectReference: {fileID: 7537198020764234369, guid: b86626b67eee7514bb7dfbba682d0585, type: 3}
-    - target: {fileID: 3164346195282623395, guid: 928959dc829c0ea4dae836e4dcf2ead6, type: 3}
-      propertyPath: defaultScrawlSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3164346195282623395, guid: 928959dc829c0ea4dae836e4dcf2ead6, type: 3}
-      propertyPath: defaultWaitTimeSeconds
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3164346195632978403, guid: 928959dc829c0ea4dae836e4dcf2ead6, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 928959dc829c0ea4dae836e4dcf2ead6, type: 3}

@@ -43,7 +43,7 @@ public class ChoicePanel : MonoBehaviour
     private string JumbleBySanity(string message)
     {
         char[] chars = message.ToCharArray();
-        float sanity = SanityHandler.GetSanity();
+        float sanity = SanityHandler.GetSanity() + 0.4f;
 
         for (var i = 0; i < chars.Length; i++)
         {
@@ -76,7 +76,11 @@ public class ChoicePanel : MonoBehaviour
         }
 
         dialoguePanel.ForcePath(choice);
-        Destroy(gameObject);
+        ChoicePanel[] choicePanels = FindObjectsOfType<ChoicePanel>();
+        foreach (ChoicePanel choicePanel in choicePanels)
+        {
+            Destroy(choicePanel.gameObject);
+        }
     }
 
     public static void Instantiate(GameObject original, Vector3 position, Quaternion rotation, string message, string choice, float maxTime)

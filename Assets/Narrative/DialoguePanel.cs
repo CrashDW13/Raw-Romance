@@ -207,13 +207,13 @@ public class DialoguePanel : MonoBehaviour
         switch(positionPreset)
         {
             case "top-right":
-                position = new Vector3(725, 300, 0);
+                position = new Vector3(575, 300, 0);
                 break;
             case "top-left":
                 position = new Vector3(150, 300, 0);
                 break;
             case "bottom-right":
-                position = new Vector3(725, 150, 0);
+                position = new Vector3(575, 150, 0);
                 break;
             case "bottom-left":
                 position = new Vector3(150, 150, 0);
