@@ -259,17 +259,39 @@ public class DialoguePanel : MonoBehaviour
     {
         if (stateHandler.RewindStoryState())
         {
-            if (inkStory.canContinue)
+            ShowLine(inkStory.Continue());
+        }
+    }
+
+    void DisplayCurrentChoices()
+        
+    {
+        foreach (Transform child in transform)
+        {
+            if (child.gameObject.CompareTag("Choice")) //Tag choice prefabs with "Choice" or a suitable tag.
             {
-                ShowLine(inkStory.Continue());
+                Destroy(child.gameObject);
             }
-            else
+        }
+        foreach (Choice choice in inkStory.currentChoices)
+        {
+          
+            GameObject choiceObject = Instantiate(choicePrefab, transform);
+            TMP_Text choiceText = choiceObject.GetComponentInChildren<TMP_Text>();
+            if (choiceText != null)
             {
-                
-                ShowChoices();
+                choiceText.text = choice.text;
+            }
+            
+            Button choiceButton = choiceObject.GetComponent<Button>();
+            if (choiceButton != null)
+            {
+                int choiceIndex = choice.index;
+                choiceButton.onClick.AddListener(() => SelectChoice(choiceIndex));
             }
         }
     }
+
     void SaveState()
     {
         stateHandler.SaveState(); 
@@ -277,9 +299,29 @@ public class DialoguePanel : MonoBehaviour
     }
     public void Rewind()
     {
-        StopCoroutine(textCoroutine); 
+        if (!stateHandler.CanRewind())
+        {
+            Debug.Log("No saved states to rewind to.");
+            return;
+        }
+
+        StopCoroutine(textCoroutine); // Stop any ongoing dialogue scrawling
         HandleRewind();
         Debug.Log("Rewind");
+
+        // Comment out this block to prevent auto-progression
+        // while (inkStory.canContinue)
+        // {
+        //     ShowLine(inkStory.Continue());
+        // }
+
+        // Display choices after a rewind, if there are any.
+        if (inkStory.currentChoices.Count > 0)
+        {
+            DisplayCurrentChoices();
+        }
     }
+
+
 
 }

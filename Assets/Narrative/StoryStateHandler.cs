@@ -1,4 +1,3 @@
-// StoryStateHandler.cs
 using Ink.Runtime;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +10,6 @@ public class StoryStateHandler
     public StoryStateHandler(Story inkStory)
     {
         this.story = inkStory;
-        SaveState();
     }
 
     public void SaveState()
@@ -19,9 +17,14 @@ public class StoryStateHandler
         storyStateHistory.Add(story.state.ToJson());
     }
 
+    public bool CanRewind()
+    {
+        return storyStateHistory.Count > 1;
+    }
+
     public bool RewindStoryState()
     {
-        if (storyStateHistory.Count > 1) 
+        if (CanRewind()) 
         {
             storyStateHistory.RemoveAt(storyStateHistory.Count - 1);
             story.state.LoadJson(storyStateHistory[storyStateHistory.Count - 1]);
@@ -33,4 +36,5 @@ public class StoryStateHandler
             return false;
         }
     }
+
 }
