@@ -2,8 +2,8 @@
 EXTERNAL spawnChoice(message, knot, time, positionPreset)
 EXTERNAL saveState()
 EXTERNAL waitNextLine(delaySeconds)
-EXTERNAL Lose()
-EXTERNAL Win()
+EXTERNAL lose()
+EXTERNAL win()
 
 
 ->core_start
@@ -119,11 +119,9 @@ EXTERNAL Win()
 
 
 === intro_death ===
-The monster stands, slowly outstretching its arms as it leans over towards you. 
-You feel its cold hands touch your face, liquid slowly engulfing your lungs as your vision darkens.
+The monster stands, slowly outstretching its arms as it leans over towards you. You feel its cold hands touch your face, liquid slowly engulfing your lungs as your vision darkens.
 # lose
-~Lose()
-"brrr"
+~lose()
 
 
 === intro_cont ===
@@ -442,7 +440,7 @@ You feel its cold hands touch your face, liquid slowly engulfing your lungs as y
 "Have you even tried to get rid of it?"
 "Address the unwanetd companion?"
 ~saveState()
-~spawnChoice("I really can't think of anything", "none", 10, "top-left")
+~spawnChoice("I really can'y think of anything", "none", 10, "top-left")
 
 "Or do you just ignore it."
 "Sit in silence, like you are currently."
@@ -543,7 +541,7 @@ You feel its cold hands touch your face, liquid slowly engulfing your lungs as y
 === core_live ===
 The monster stands, walking towards a rotting wooden door. It pushes it open, a candlelit hallway greeting you from the other side.
 # win
-~Win() 
+~win() 
 "yarrr"
 
 
@@ -552,5 +550,5 @@ The monster stands, walking towards a rotting wooden door. It pushes it open, a 
 You flinch as the monster reaches over the table, the slime cool as it engulfs your face. 
 The last thing you see is it towering over you, your lungs filling with the thick liquid as you fall to the ground.
 # lose
-~Lose()
+~lose()
 "yeek"
