@@ -86,10 +86,22 @@ public class ChoicePanel : MonoBehaviour
     public static void Instantiate(GameObject original, Vector3 position, Quaternion rotation, string message, string choice, float maxTime)
     {
         GameObject panelObject = Instantiate(original, position, rotation);
+        Canvas canvas = FindObjectOfType<Canvas>();
+
         if (panelObject.TryGetComponent(out RectTransform rectTransform))
         {
-            rectTransform.position = position;
+            if (canvas)
+            {
+                rectTransform.SetParent(canvas.transform);
+                rectTransform.position = position;
+            }
         }
+
+        else
+        {
+            Debug.Log("No RectTransform found.");
+        }
+
         if (panelObject.TryGetComponent(out ChoicePanel choicePanel))
         {
             choicePanel.message = message;

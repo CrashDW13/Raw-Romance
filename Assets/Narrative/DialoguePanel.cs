@@ -57,7 +57,7 @@ public class DialoguePanel : MonoBehaviour
         scrawlSpeed = defaultScrawlSpeed;
 
         inkStory = new Story(inkAsset.text);
-        StartConversation("demo_start");
+        StartConversation("core_start");
 
         stateHandler = new StoryStateHandler(inkStory);
 

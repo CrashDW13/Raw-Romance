@@ -32,7 +32,7 @@ EXTERNAL waitNextLine(delaySeconds)
 
 === welc ===
 "Welcome."
-"You must be naïve if you've come here of your own free will."
+"You must be naive if you've come here of your own free will."
 "Or unfortunate, if you're here against your wishes."
 ~saveState()
 ~spawnChoice("I chose to be here.?", "chose", 10, "top-left")
@@ -47,7 +47,7 @@ EXTERNAL waitNextLine(delaySeconds)
 ...
 //remove both options here
 ...
-"Naïve it is, then."
+"Naive it is, then."
 -> intro_death
 
 

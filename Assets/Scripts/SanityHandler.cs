@@ -16,7 +16,7 @@ public class SanityHandler : MonoBehaviour
 
     private void Start()
     {
-        sanity = MaxSanity / 2;
+        sanity = MaxSanity;
         maxSanity = MaxSanity;
 
         slider = GetComponent<Slider>();
