@@ -2,20 +2,23 @@ EXTERNAL spawnChoice(message, knot, time, positionPreset)
 EXTERNAL saveState()
 EXTERNAL waitNextLine(delaySeconds)
 
-=== demo_start ===
+=== core_start ===
 
 -> intro_beg
 
 === intro_beg ===
 ~saveState()
+~saveState()
+
 ~spawnChoice("Hi.", "welc", 10, "top-left")
 ~spawnChoice("Hello?", "welc", 10, "top-right")
 ...
 ...
 ~waitNextLine(5)
 //remove greet options here
-"Why are you here?"
 ~saveState()
+"Why are you here?"
+
 ~spawnChoice("I'm looking for someone.", "looking", 10, "top-left")
 ~spawnChoice("That's none of your business.?", "no_bis", 10, "top-right")
 ...
@@ -33,8 +36,9 @@ EXTERNAL waitNextLine(delaySeconds)
 === welc ===
 "Welcome."
 "You must be naive if you've come here of your own free will."
-"Or unfortunate, if you're here against your wishes."
 ~saveState()
+"Or unfortunate, if you're here against your wishes."
+
 ~spawnChoice("I chose to be here.?", "chose", 10, "top-left")
 ~spawnChoice("You think I want to be here?", "lie_str", 10, "top-right")
 ...
@@ -56,7 +60,7 @@ EXTERNAL waitNextLine(delaySeconds)
 ...
 "Your honesty has been recognized."
 "Now, let me ask you something."
-~saveState()
+
 
 -> intro_cont
 
@@ -65,7 +69,7 @@ EXTERNAL waitNextLine(delaySeconds)
 "A liar."
 "I like liars."
 "Though I do hope you'll be truthful enough to answer my next question."
-~saveState()
+
 
 -> intro_cont
 
@@ -75,7 +79,7 @@ EXTERNAL waitNextLine(delaySeconds)
 "So that is what brings you to our den."
 "Your honesty is admirable."
 "Now, I have another question for you."
-~saveState()
+
 
 -> intro_cont
 
@@ -85,8 +89,9 @@ EXTERNAL waitNextLine(delaySeconds)
 ...
 "Curt sencences will not help you here."
 "Remember: you came to me."
-"Do you ununderstand?"
 ~saveState()
+"Do you ununderstand?"
+
 ~spawnChoice("Yes?", "y", 10, "top-left")
 ~spawnChoice("No?", "n", 10, "top-right")
 ~waitNextLine(10)
@@ -101,7 +106,7 @@ EXTERNAL waitNextLine(delaySeconds)
 === y ===
 "Good."
 "Now, I have another question for you."
-~saveState()
+
 
 -> intro_cont
 
@@ -109,13 +114,14 @@ EXTERNAL waitNextLine(delaySeconds)
 === n ===
 ...
 "Then I will make you understand."
-~saveState()
+
 
 -> intro_death
 
 
 === intro_death ===
-The monster stands, slowly outstretching its arms as it leans over towards you. You feel its cold hands touch your face, liquid slowly engulfing your lungs as your vision darkens.
+The monster stands, slowly outstretching its arms as it leans over towards you. You feel its cold hands touch your face, liquid slowly engulfing your lungs as your vision darkens.# lose
+
 ->END
 
 

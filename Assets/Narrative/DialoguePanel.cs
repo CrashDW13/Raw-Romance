@@ -10,6 +10,8 @@ using UnityEngine.SceneManagement;
 public class DialoguePanel : MonoBehaviour
 {
     private StoryStateHandler stateHandler;
+    private bool isInRewindMode = false;
+    private bool preventAutoSave = false;
 
     [Header("Characters")]
     [SerializeField] private CharacterDatabase characterDB;
@@ -87,42 +89,45 @@ public class DialoguePanel : MonoBehaviour
         List<string> tags = inkStory.currentTags;
         foreach (string tag in tags)
         {
-            if (tag.Contains("Speaker"))
+            if (!isInRewindMode || (isInRewindMode && tag == "saveState"))
             {
-                string tagData = tag.Substring(tag.IndexOf(":") + 1);
-                string[] info = tagData.Split(",");
-
-                string name = info[0];
-                string sprite = null;
-
-                Debug.Log(info[0]);
-
-                if (info.Length > 1)
+                if (tag.Contains("Speaker"))
                 {
-                    sprite = info[1];
-                    Debug.Log(sprite);
-                }
+                    string tagData = tag.Substring(tag.IndexOf(":") + 1);
+                    string[] info = tagData.Split(",");
 
-                foreach (Character character in characterDB.Characters)
-                {
-                    string[] charTags = character.characterTag.Split(":");
-                    bool isChar = false;
+                    string name = info[0];
+                    string sprite = null;
 
-                    foreach (string s in charTags)
+                    Debug.Log(info[0]);
+
+                    if (info.Length > 1)
                     {
-                        if (s == name)
-                        {
-                            isChar = true;
-                        } 
+                        sprite = info[1];
+                        Debug.Log(sprite);
                     }
 
-                    if (isChar)
+                    foreach (Character character in characterDB.Characters)
                     {
-                        CharacterName.text = character.characterName;
+                        string[] charTags = character.characterTag.Split(":");
+                        bool isChar = false;
 
-                        if (sprite != null)
+                        foreach (string s in charTags)
                         {
-                            CharacterArt.sprite = character.GetSprite(sprite);
+                            if (s == name)
+                            {
+                                isChar = true;
+                            } 
+                        }
+
+                        if (isChar)
+                        {
+                            CharacterName.text = character.characterName;
+
+                            if (sprite != null)
+                            {
+                                CharacterArt.sprite = character.GetSprite(sprite);
+                            }
                         }
                     }
                 }
@@ -130,8 +135,8 @@ public class DialoguePanel : MonoBehaviour
         }
 
         textCoroutine = StartCoroutine(ScrawlText(line));
+        
     }
-
     IEnumerator ScrawlText(string line)
     {
         scrawling = true;
@@ -299,9 +304,16 @@ public class DialoguePanel : MonoBehaviour
 
     void SaveState()
     {
+        if (preventAutoSave)
+        {
+            preventAutoSave = false;  // Reset the flag
+            return; // Do not save if the flag is set
+        }
+    
         stateHandler.SaveState(); 
         Debug.Log("saved");
     }
+
     public void Rewind()
     {
         if (!stateHandler.CanRewind())
@@ -309,10 +321,14 @@ public class DialoguePanel : MonoBehaviour
             Debug.Log("No saved states to rewind to.");
             return;
         }
-
+     
         StopCoroutine(textCoroutine); // Stop any ongoing dialogue scrawling
+        isInRewindMode = true;
+        preventAutoSave = true; // Set the flag to prevent the next save
         HandleRewind();
+        isInRewindMode = false;
         Debug.Log("Rewind");
+
 
         // Comment out this block to prevent auto-progression
         // while (inkStory.canContinue)
@@ -325,6 +341,15 @@ public class DialoguePanel : MonoBehaviour
         {
             DisplayCurrentChoices();
         }
+    }
+    void LoadWinScene()
+    {
+        SceneManager.LoadScene("WinScene"); 
+    }
+
+    void LoadLoseScene()
+    {
+        SceneManager.LoadScene("LoseScene"); 
     }
 
     public void Win()
