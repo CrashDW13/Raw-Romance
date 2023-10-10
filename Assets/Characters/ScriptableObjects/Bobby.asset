@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0bd38aa6afd4c2469ce083b40c029ed, type: 3}
+  m_Name: Bobby
+  m_EditorClassIdentifier: 
+  characterName: Bobby
+  characterTag: Bo
+  CharacterSprites:
+  - sprite: {fileID: 21300000, guid: a924ad07110c5bf4eb5797fa0eb01fd4, type: 3}
+    name: happy
+  - sprite: {fileID: 21300000, guid: 280b02b21ffbadb4a842ea15ea4d2926, type: 3}
+    name: sad
+  - sprite: {fileID: 21300000, guid: 0fa7509109173a1499758f414ea98245, type: 3}
+    name: angry
+  fileName: Assets/Characters/ScriptableObjects/Bobby.asset

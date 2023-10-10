@@ -1077,14 +1077,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d976c3639ad1d2499840fa4ef5710ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inkAsset: {fileID: 4900000, guid: 869dda2962dfd7143889b94122af9fd4, type: 3}
+  characterDB: {fileID: 0}
+  inkAsset: {fileID: 4900000, guid: 10422fbd270692c4282d0e90f882951a, type: 3}
   Background: {fileID: 3164346193883149978}
   CharacterArt: {fileID: 3164346195632978403}
-  ChoiceParent: {fileID: 5296868654276201782}
+  choicePrefab: {fileID: 7537198020764234369, guid: b86626b67eee7514bb7dfbba682d0585, type: 3}
   CharacterName: {fileID: 3164346193688165490}
   DialogueBox: {fileID: 3164346194430367000}
-  defaultScrawlSpeed: 3
+  defaultScrawlSpeed: 1
   scrawlMultiplier: 3
+  defaultWaitTimeSeconds: 1
 --- !u!1 &3164346195632978401
 GameObject:
   m_ObjectHideFlags: 0

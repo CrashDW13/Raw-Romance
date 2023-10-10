@@ -5,9 +5,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using Ink.Runtime;
 using System;
+using UnityEngine.SceneManagement;
 
 public class DialoguePanel : MonoBehaviour
 {
+    private StoryStateHandler stateHandler;
+    private bool isInRewindMode = false;
+    private bool preventAutoSave = false;
+
     [Header("Characters")]
     [SerializeField] private CharacterDatabase characterDB;
     [Space(10)]
@@ -36,6 +41,7 @@ public class DialoguePanel : MonoBehaviour
     [SerializeField] private float defaultScrawlSpeed;
     [SerializeField] private float scrawlMultiplier;
     [SerializeField] private float defaultWaitTimeSeconds;
+    private float waitTimeSeconds; 
 
     private Coroutine textCoroutine;
 
@@ -44,8 +50,9 @@ public class DialoguePanel : MonoBehaviour
 
     private void Start()
     {
-        StartConversation("demo_start");
 
+        waitTimeSeconds = defaultWaitTimeSeconds;
+        
         CharacterName.text = "";
         DialogueBox.text = "";
 
@@ -53,10 +60,20 @@ public class DialoguePanel : MonoBehaviour
         scrawlSpeed = defaultScrawlSpeed;
 
         inkStory = new Story(inkAsset.text);
+        StartConversation("core_start");
+
+        stateHandler = new StoryStateHandler(inkStory);
 
         inkStory.BindExternalFunction("updateAffinity", (string character, int value) => { UpdateAffinity(character, value); });
         inkStory.BindExternalFunction("spawnChoice", (string message, string knot, float time, string positionPreset) => { SpawnChoice(message, knot, time, positionPreset); });
+        inkStory.BindExternalFunction("saveState", () => { SaveState(); });
+        inkStory.BindExternalFunction("waitNextLine", (float delaySeconds) => { WaitNextLine(delaySeconds); });
+        inkStory.BindExternalFunction("win", () => { win(); });
+        inkStory.BindExternalFunction("lose", () => { lose(); });
+
+
         inkStory.ChoosePathString(knot);
+    
 
         ShowLine(inkStory.Continue());
     }
@@ -72,30 +89,54 @@ public class DialoguePanel : MonoBehaviour
         List<string> tags = inkStory.currentTags;
         foreach (string tag in tags)
         {
-            if (tag.Contains("Speaker"))
+            if (!isInRewindMode || (isInRewindMode && tag == "saveState"))
             {
-                string name = tag.Substring(tag.IndexOf(":") + 1);
-
-                /*foreach (Character character in characterDB.Characters)
+                if (tag.Contains("Speaker"))
                 {
-                    string[] charTags = character.characterTag.Split(":");
-                    bool isChar = false;
-                    foreach (string s in charTags)
-                        if (s == name)
-                            isChar = true;
+                    string tagData = tag.Substring(tag.IndexOf(":") + 1);
+                    string[] info = tagData.Split(",");
 
-                    if (isChar)
+                    string name = info[0];
+                    string sprite = null;
+
+                    Debug.Log(info[0]);
+
+                    if (info.Length > 1)
                     {
-                        CharacterName.text = character.characterName;
-
-                        //CharacterArt.sprite = character.GetSprite();
+                        sprite = info[1];
+                        Debug.Log(sprite);
                     }
-                }*/
+
+                    foreach (Character character in characterDB.Characters)
+                    {
+                        string[] charTags = character.characterTag.Split(":");
+                        bool isChar = false;
+
+                        foreach (string s in charTags)
+                        {
+                            if (s == name)
+                            {
+                                isChar = true;
+                            } 
+                        }
+
+                        if (isChar)
+                        {
+                            CharacterName.text = character.characterName;
+
+                            if (sprite != null)
+                            {
+                                CharacterArt.sprite = character.GetSprite(sprite);
+                            }
+                        }
+                    }
+                }
             }
         }
-        textCoroutine = StartCoroutine(ScrawlText(line));
-    }
 
+        textCoroutine = StartCoroutine(ScrawlText(line));
+        
+    }
     IEnumerator ScrawlText(string line)
     {
         scrawling = true;
@@ -156,7 +197,9 @@ public class DialoguePanel : MonoBehaviour
 
     public IEnumerator Advance()
     {
-        yield return new WaitForSeconds(defaultWaitTimeSeconds);
+        yield return new WaitForSeconds(waitTimeSeconds);
+
+        waitTimeSeconds = defaultWaitTimeSeconds;
 
         if (inkStory.canContinue && !scrawling)
         {
@@ -181,29 +224,29 @@ public class DialoguePanel : MonoBehaviour
     void SpawnChoice(string message, string knot, float time, string positionPreset)
     {
         Vector3 position;
+        Debug.Log(positionPreset);
 
         //TO-DO: Post-prototype, this should be handled in its own function. 
         switch(positionPreset)
         {
             case "top-right":
-                position = new Vector3(300, 300, 0);
+                position = new Vector3(4, 3, 0);
                 break;
             case "top-left":
-                position = new Vector3(200, 300, 0);
+                position = new Vector3(-4, 3, 0);
                 break;
-
             case "bottom-right":
-                position = new Vector3(300, 200, 0);
+                position = new Vector3(4, 0, 0);
                 break;
             case "bottom-left":
-                position = new Vector3(200, 200, 0);
+                position = new Vector3(-4, 0, 0);
                 break;
             default:
                 position = Vector3.zero;
                 break;
         }
 
-        ChoicePanel.Instantiate(choicePrefab, position, transform.rotation, message, knot, time);
+        ChoicePanel.Instantiate(choicePrefab, Camera.main.WorldToScreenPoint(position), transform.rotation, message, knot, time);
     }
 
     public void ForcePath(string path)
@@ -212,4 +255,113 @@ public class DialoguePanel : MonoBehaviour
         inkStory.ChoosePathString(path);
         ShowLine(inkStory.Continue());
     }
+
+    public void SetScrawlSpeed(float speed)
+    {
+        scrawlSpeed = speed;
+    }
+
+    public void WaitNextLine(float delaySeconds)
+    {
+        waitTimeSeconds = delaySeconds;
+    }
+    public void HandleRewind()
+    {
+        if (stateHandler.RewindStoryState())
+        {
+            ShowLine(inkStory.Continue());
+        }
+    }
+
+    void DisplayCurrentChoices()
+        
+    {
+        foreach (Transform child in transform)
+        {
+            if (child.gameObject.CompareTag("Choice")) //Tag choice prefabs with "Choice" or a suitable tag.
+            {
+                Destroy(child.gameObject);
+            }
+        }
+        foreach (Choice choice in inkStory.currentChoices)
+        {
+          
+            GameObject choiceObject = Instantiate(choicePrefab, transform);
+            TMP_Text choiceText = choiceObject.GetComponentInChildren<TMP_Text>();
+            if (choiceText != null)
+            {
+                choiceText.text = choice.text;
+            }
+            
+            Button choiceButton = choiceObject.GetComponent<Button>();
+            if (choiceButton != null)
+            {
+                int choiceIndex = choice.index;
+                choiceButton.onClick.AddListener(() => SelectChoice(choiceIndex));
+            }
+        }
+    }
+
+    void SaveState()
+    {
+        if (preventAutoSave)
+        {
+            preventAutoSave = false;  // Reset the flag
+            return; // Do not save if the flag is set
+        }
+    
+        stateHandler.SaveState(); 
+        Debug.Log("saved");
+    }
+
+    public void Rewind()
+    {
+        if (!stateHandler.CanRewind())
+        {
+            Debug.Log("No saved states to rewind to.");
+            return;
+        }
+     
+        StopCoroutine(textCoroutine); // Stop any ongoing dialogue scrawling
+        isInRewindMode = true;
+        preventAutoSave = true; // Set the flag to prevent the next save
+        HandleRewind();
+        isInRewindMode = false;
+        ChoicePanel.ClearAll(); //  Clears all choice panels. 
+        Debug.Log("Rewind");
+
+
+        // Comment out this block to prevent auto-progression
+        // while (inkStory.canContinue)
+        // {
+        //     ShowLine(inkStory.Continue());
+        // }
+
+        // Display choices after a rewind, if there are any.
+        if (inkStory.currentChoices.Count > 0)
+        {
+            DisplayCurrentChoices();
+        }
+    }
+    void LoadWinScene()
+    {
+        SceneManager.LoadScene("WinScene"); 
+    }
+
+    void LoadLoseScene()
+    {
+        SceneManager.LoadScene("LoseScene"); 
+    }
+
+    public void win()
+    {
+        SceneManager.LoadScene("TempWinScreen");
+    }
+
+    public void lose()
+    {
+        SceneManager.LoadScene("TempLoseScreen");
+    }
+
+
 }

@@ -43,7 +43,7 @@ public class ChoicePanel : MonoBehaviour
     private string JumbleBySanity(string message)
     {
         char[] chars = message.ToCharArray();
-        float sanity = SanityHandler.GetSanity();
+        float sanity = SanityHandler.GetSanity() + 0.4f;
 
         for (var i = 0; i < chars.Length; i++)
         {
@@ -76,16 +76,46 @@ public class ChoicePanel : MonoBehaviour
         }
 
         dialoguePanel.ForcePath(choice);
-        Destroy(gameObject);
+        ChoicePanel[] choicePanels = FindObjectsOfType<ChoicePanel>();
+        foreach (ChoicePanel choicePanel in choicePanels)
+        {
+            Destroy(choicePanel.gameObject);
+        }
+    }
+
+    public static void ClearAll()
+    {
+        ChoicePanel[] choicePanels = FindObjectsOfType<ChoicePanel>();
+        foreach (ChoicePanel choicePanel in choicePanels)
+        {
+            Destroy(choicePanel.gameObject);
+        }
     }
 
     public static void Instantiate(GameObject original, Vector3 position, Quaternion rotation, string message, string choice, float maxTime)
     {
-        GameObject panelObject = Instantiate(original, position, rotation);
+        Canvas canvas = FindObjectOfType<Canvas>();
+        if (!canvas)
+        {
+            Debug.Log("Tried spawning ChoicePanel, canvas not found.");
+            return;
+        }
+
+        GameObject panelObject = Instantiate(original, position, rotation, canvas.transform);
+
         if (panelObject.TryGetComponent(out RectTransform rectTransform))
         {
-            rectTransform.position = position;
+            if (canvas)
+            {
+                rectTransform.position = position;
+            }
         }
+
+        else
+        {
+            Debug.Log("No RectTransform found.");
+        }
+
         if (panelObject.TryGetComponent(out ChoicePanel choicePanel))
         {
             choicePanel.message = message;
@@ -99,6 +129,8 @@ public class ChoicePanel : MonoBehaviour
         {
             Debug.Log("No ChoicePanel component found.");
         }
+
+        Debug.Log(panelObject.transform.position);
     }
 
     public void CalculateTimer()

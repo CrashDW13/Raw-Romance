@@ -2,10 +2,13 @@
 EXTERNAL spawnChoice(message, knot, time, positionPreset)
 
 === demo_start ===
-"This is some test dialogue." #Speaker:Bo
-"The next line of dialogue should spawn some choices." #Speaker:Bo
+"This is some test dialogue." #Speaker:Bo,happy
+"The next line of dialogue should spawn some choices." #Speaker:Bo,sad
 ~spawnChoice("nah that's a whole demon", "start_cook", 10, "top-left")
-"Test1" #Speaker:Bo
+~spawnChoice("nah that's a whole demon", "start_cook", 10, "top-right")
+~spawnChoice("nah that's a whole demon", "start_cook", 10, "bottom-left")
+~spawnChoice("nah that's a whole demon", "start_cook", 10, "bottom-right")
+"Test1" #Speaker:Bo,angry
 "A longer test 2 to test for strange behavior regarding the coroutine??" #Speaker:Bo
 "Test3?" #Speaker:Bo
 -> DONE

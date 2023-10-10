@@ -100,7 +100,7 @@ public class OrderManager : MonoBehaviour
     {
         Bowl bowl = FindObjectOfType<Bowl>();
         orderIsActive = false;
-        Grade grade = bowl.GetGrade(currentCharacter.Preferences);
+        /*Grade grade = bowl.GetGrade(currentCharacter.Preferences);
         Debug.Log("Final grade " + grade.gradeNumber);
         if (grade.gradeNumber > 30)
         {
@@ -118,7 +118,7 @@ public class OrderManager : MonoBehaviour
         {
             Debug.Log("mid");
             dialogueManager.StartConversation("outcome_mid");
-        }
+        }*/
 
         //  TO-DO: Adjust grade based on how long the player has waited since the start of the order (currentOrderTime). 
         //  TO-DO: Implement UI that uses grade to show player feedback (ie. which preferences were included + final grade)

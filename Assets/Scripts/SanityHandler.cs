@@ -6,11 +6,11 @@ using UnityEngine.UI;
 
 public class SanityHandler : MonoBehaviour
 {
-    private static int sanity;
+    private static float sanity;
 
     [SerializeField]
-    private int MaxSanity; 
-    private static int maxSanity;
+    private float MaxSanity; 
+    private static float maxSanity;
 
     private Slider slider;
 
@@ -32,7 +32,7 @@ public class SanityHandler : MonoBehaviour
         slider.value = sanity / maxSanity;
     }
 
-    public void UpdateSanity(int change)
+    public void UpdateSanity(float change)
     {
         sanity = Mathf.Clamp(sanity + change, 0, maxSanity); 
     }
