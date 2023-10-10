@@ -89,7 +89,7 @@ EXTERNAL win()
 
 === lie_str ===
 "A liar."
-saveState("lie_str")
+~saveState("lie_str")
 "I like liars."
 "Though I do hope you'll be truthful enough to answer my next question."
 
@@ -130,8 +130,8 @@ saveState("lie_str")
 "Need I remind you that curt sencences will not help you here."
 "Remember: you came to me."
 "Do you ununderstand?"
-~spawnChoice("Yes?", "y", 10, "top-left")
-~spawnChoice("No?", "n", 10, "top-right")
+~spawnChoice("Yes.", "y", 10, "top-left")
+~spawnChoice("No.", "n", 10, "top-right")
 ~waitNextLine(10)
 ...
 "What a shame."
@@ -173,7 +173,7 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 
 "Be warned, I do not take silence as a satisfactory answer."
 ...
-"Now; do you know what your worst lie is?"
+"Do you know what your worst lie is?"
 ~saveState("start_rpt")
 ~spawnChoice("Yes", "know", 15, "top-left")
 ~spawnChoice("No", "dont_know", 15, "top-right")
