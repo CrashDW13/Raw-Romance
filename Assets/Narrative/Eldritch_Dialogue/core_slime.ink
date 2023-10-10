@@ -2,8 +2,8 @@
 EXTERNAL spawnChoice(message, knot, time, positionPreset)
 EXTERNAL saveState()
 EXTERNAL waitNextLine(delaySeconds)
-EXTERNAL Lose()
-EXTERNAL Win()
+EXTERNAL lose()
+EXTERNAL win()
 
 
 ->core_start
@@ -121,7 +121,7 @@ EXTERNAL Win()
 === intro_death ===
 The monster stands, slowly outstretching its arms as it leans over towards you. You feel its cold hands touch your face, liquid slowly engulfing your lungs as your vision darkens.
 # lose
-~Lose()
+~lose()
 
 
 === intro_cont ===
@@ -541,7 +541,7 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 === core_live ===
 The monster stands, walking towards a rotting wooden door. It pushes it open, a candlelit hallway greeting you from the other side.
 # win
-~Win() 
+~win() 
 "yarrr"
 
 
@@ -550,5 +550,5 @@ The monster stands, walking towards a rotting wooden door. It pushes it open, a 
 You flinch as the monster reaches over the table, the slime cool as it engulfs your face. 
 The last thing you see is it towering over you, your lungs filling with the thick liquid as you fall to the ground.
 # lose
-~Lose()
+~lose()
 "yeek"
