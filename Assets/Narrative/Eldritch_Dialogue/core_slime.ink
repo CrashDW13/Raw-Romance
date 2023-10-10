@@ -119,7 +119,8 @@ EXTERNAL Win()
 
 
 === intro_death ===
-The monster stands, slowly outstretching its arms as it leans over towards you. You feel its cold hands touch your face, liquid slowly engulfing your lungs as your vision darkens.
+The monster stands, slowly outstretching its arms as it leans over towards you. 
+SYou feel its cold hands touch your face, liquid slowly engulfing your lungs as your vision darkens.
 # lose
 ~Lose()
 
