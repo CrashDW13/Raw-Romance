@@ -62,7 +62,7 @@ EXTERNAL win()
 "Now, let me ask you something."
 ~saveState()
 
--> intro_cont
+-> core_cont
 
 
 === lie_str ===
@@ -71,7 +71,7 @@ EXTERNAL win()
 "Though I do hope you'll be truthful enough to answer my next question."
 ~saveState()
 
--> intro_cont
+-> core_cont
 
 
 === looking ===
@@ -81,7 +81,7 @@ EXTERNAL win()
 "Now, I have another question for you."
 ~saveState()
 
--> intro_cont
+-> core_cont
 
 
 
@@ -107,7 +107,7 @@ EXTERNAL win()
 "Now, I have another question for you."
 ~saveState()
 
--> intro_cont
+-> core_cont
 
 
 === n ===
