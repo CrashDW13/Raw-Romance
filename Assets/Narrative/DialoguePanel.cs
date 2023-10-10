@@ -66,7 +66,7 @@ public class DialoguePanel : MonoBehaviour
 
         inkStory.BindExternalFunction("updateAffinity", (string character, int value) => { UpdateAffinity(character, value); });
         inkStory.BindExternalFunction("spawnChoice", (string message, string knot, float time, string positionPreset) => { SpawnChoice(message, knot, time, positionPreset); });
-        inkStory.BindExternalFunction("saveState", () => { SaveState(); });
+        inkStory.BindExternalFunction("saveState", (string fallbackNode) => { SaveState(fallbackNode); });
         inkStory.BindExternalFunction("waitNextLine", (float delaySeconds) => { WaitNextLine(delaySeconds); });
         inkStory.BindExternalFunction("win", () => { win(); });
         inkStory.BindExternalFunction("lose", () => { lose(); });
@@ -89,8 +89,8 @@ public class DialoguePanel : MonoBehaviour
         List<string> tags = inkStory.currentTags;
         foreach (string tag in tags)
         {
-            if (!isInRewindMode || (isInRewindMode && tag == "saveState"))
-            {
+            //if (!isInRewindMode || (isInRewindMode && tag == "saveState"))
+            //{
                 if (tag.Contains("Speaker"))
                 {
                     string tagData = tag.Substring(tag.IndexOf(":") + 1);
@@ -130,10 +130,11 @@ public class DialoguePanel : MonoBehaviour
                             }
                         }
                     }
-                }
+                //}
             }
         }
 
+        Debug.Log("Starting coroutine");
         textCoroutine = StartCoroutine(ScrawlText(line));
         
     }
@@ -251,6 +252,7 @@ public class DialoguePanel : MonoBehaviour
 
     public void ForcePath(string path)
     {
+        Debug.Log("Stopping Coroutine");
         StopCoroutine(textCoroutine);
         inkStory.ChoosePathString(path);
         ShowLine(inkStory.Continue());
@@ -267,10 +269,10 @@ public class DialoguePanel : MonoBehaviour
     }
     public void HandleRewind()
     {
-        if (stateHandler.RewindStoryState())
-        {
-            ShowLine(inkStory.Continue());
-        }
+        //if (stateHandler.RewindStoryState())
+        //{
+        //    ShowLine(inkStory.Continue());
+        //}
     }
 
     void DisplayCurrentChoices()
@@ -302,7 +304,7 @@ public class DialoguePanel : MonoBehaviour
         }
     }
 
-    void SaveState()
+    void SaveState(string fallbackNode)
     {
         if (preventAutoSave)
         {
@@ -310,25 +312,34 @@ public class DialoguePanel : MonoBehaviour
             return; // Do not save if the flag is set
         }
     
-        stateHandler.SaveState(); 
+        stateHandler.SaveState(fallbackNode); 
         Debug.Log("saved");
     }
 
     public void Rewind()
     {
+        float sanityPenalty = -3;
+
         if (!stateHandler.CanRewind())
         {
             Debug.Log("No saved states to rewind to.");
             return;
         }
-     
+
         StopCoroutine(textCoroutine); // Stop any ongoing dialogue scrawling
+
         isInRewindMode = true;
         preventAutoSave = true; // Set the flag to prevent the next save
-        HandleRewind();
         isInRewindMode = false;
+
+        SanityHandler.UpdateSanity(sanityPenalty);
         ChoicePanel.ClearAll(); //  Clears all choice panels. 
         Debug.Log("Rewind");
+
+        if (stateHandler.RewindStoryState())
+        {
+            Debug.Log("Success.");
+        }
 
 
         // Comment out this block to prevent auto-progression
@@ -338,19 +349,16 @@ public class DialoguePanel : MonoBehaviour
         // }
 
         // Display choices after a rewind, if there are any.
-        if (inkStory.currentChoices.Count > 0)
-        {
-            DisplayCurrentChoices();
-        }
-    }
-    void LoadWinScene()
-    {
-        SceneManager.LoadScene("WinScene"); 
+        //if (inkStory.currentChoices.Count > 0)
+        //{
+        //    DisplayCurrentChoices();
+        //}
     }
 
-    void LoadLoseScene()
+    public void Continue()
     {
-        SceneManager.LoadScene("LoseScene"); 
+        ShowLine(inkStory.Continue());
+
     }
 
     public void win()
