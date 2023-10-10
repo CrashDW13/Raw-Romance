@@ -152,8 +152,9 @@ EXTERNAL waitNextLine(delaySeconds)
 
 "Or, have you run out of time?"
 "Unable to correct it even if you tried."
-"Which is it?"
 ~saveState()
+"Which is it?"
+
 ~spawnChoice("I ran out of time", "no_time", 10, "bottom-left")
 
 "Both options are disheartening, to say the least."
@@ -213,14 +214,17 @@ EXTERNAL waitNextLine(delaySeconds)
 "I wonder what guilt feels like to a human."
 "Your lives are so short, and it seems many of you never find the courage to reconcile."
 "It must be exhausting, carrying it with you everywhere you go."
-"Do you hope to make peace with it?"
 ~saveState()
+
+"Do you hope to make peace with it?"
 ~spawnChoice("I want to move past it", "want", 10, "top-left")
 
 "Develop means to alleviate the weight on your shoulders."
 "Or perhaps you're yet to realize you have a choice in the matter."
-"I assure you, you do."
 ~saveState()
+
+"I assure you, you do."
+
 ~spawnChoice("I don't know if I can move past it", "courage", 10, "top-right")
 
 "Strange, how many of you I've met that either believe they can control everything or nothing."
@@ -229,8 +233,10 @@ EXTERNAL waitNextLine(delaySeconds)
 "There is only so much time left for you."
 //want to move past option disappear here 
 "Will you feed into your companion?"
-"Or find the courage to help yourself?"
 ~saveState()
+
+"Or find the courage to help yourself?"
+
 ~spawnChoice("I don't know.", "freeze", 10, "top-left")
 
 ...
@@ -279,8 +285,9 @@ EXTERNAL waitNextLine(delaySeconds)
 "Content to exist in your world, like a child with her head under the covers."
 "How cute."
 "Do you think you'll come out from under the covers one day?"
-"Move past it?"
 ~saveState()
+"Move past it?"
+
 ~spawnChoice("I want to", "want", 10, "top-right")
 
 "Find a path where you no longer need to hide from the monster in your closet?"
@@ -299,22 +306,25 @@ EXTERNAL waitNextLine(delaySeconds)
 
 === dont_know ===
 "Understandable. Many would like to forget their wrongdoings."
-"Especially the worst of them."
 ~saveState()
+"Especially the worst of them."
+
 ~spawnChoice("I think I have one.", "know", 10, "top-left")
 
 "Ignoring it until it goes away, like a mosquito bite."
 "Or crawls into bed and talks until sunrise."
-"Like a little pet."
 ~saveState()
+"Like a little pet."
+
 ~spawnChoice("I'm having trouble picking the worst", "trouble", 10, "top-right")
 
 "Or perhaps, a parasite?"
 "Following you around, no matter how hard you try to get rid of it."
 //think I have one option disappear here
 "Have you even tried to get rid of it?"
-"Address the unwanetd companion?"
 ~saveState()
+"Address the unwanetd companion?"
+
 ~spawnChoice("I really can'y think of anything", "none", 10, "top-left")
 
 "Or do you just ignore it."
@@ -328,20 +338,23 @@ EXTERNAL waitNextLine(delaySeconds)
 
 
 === none ===
-"Oh? Nothing at all?"
 ~saveState()
+"Oh? Nothing at all?"
+
 ~spawnChoice("Actually I know what my lie is", "know", 10, "top-left")
 "How peculiar."
-"So, you've never told a lie?"
 ~saveState()
+"So, you've never told a lie?"
+
 ~spawnChoice("Never", "no_lie", 10, "top-right")
 
 "Not once?"
 "Never said you felt ill to avoid school?"
+~saveState()
 "Told someone their hair looked good when it didn't?"
 
 //know lie option disappear here
-~saveState()
+
 ~spawnChoice("That's not what I meant", "no_mean", 10, "top-left")
 
 "Or said sorry and didn't mean it?"
@@ -358,8 +371,9 @@ EXTERNAL waitNextLine(delaySeconds)
 
 
 === no_mean ===
-"Ah, but that means you must know what your worst lie is, now."
 ~saveState()
+"Ah, but that means you must know what your worst lie is, now."
+
 ~spawnChoice("Yes, I do", "know", 10, "top-right")
 
 "So, will you tell me?"
@@ -414,12 +428,12 @@ EXTERNAL waitNextLine(delaySeconds)
 
 
 === core_live ===
-The monster stands, walking towards a rotting wooden door. It pushes it open, a candlelit hallway greeting you from the other side.
-# win
+The monster stands, walking towards a rotting wooden door. It pushes it open, a candlelit hallway greeting you from the other side.# win
+
 ->END 
 
 
 === core_death ===
-You flinch as the monster reaches over the table, the slime cool as it engulfs your face. The last thing you see is it towering over you, your lungs filling with the thick liquid as you fall to the ground.
-# lose
+You flinch as the monster reaches over the table, the slime cool as it engulfs your face. The last thing you see is it towering over you, your lungs filling with the thick liquid as you fall to the ground.# lose
+
 -> END 
