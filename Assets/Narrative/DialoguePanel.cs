@@ -132,23 +132,7 @@ public class DialoguePanel : MonoBehaviour
         }
 
         textCoroutine = StartCoroutine(ScrawlText(line));
-        foreach (string tag in tags)
-        {
-            if (tag.Contains("Speaker"))
-            {
-                // ... [your existing code for processing speaker tags]
-            }
-            else if (tag == "win")
-            {
-                LoadWinScene();
-                return; 
-            }
-            else if (tag == "lose")
-            {
-                LoadLoseScene();
-                return;
-            }
-        }
+        
     }
     IEnumerator ScrawlText(string line)
     {
