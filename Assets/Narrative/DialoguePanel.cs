@@ -327,6 +327,7 @@ public class DialoguePanel : MonoBehaviour
         preventAutoSave = true; // Set the flag to prevent the next save
         HandleRewind();
         isInRewindMode = false;
+        ChoicePanel.ClearAll(); //  Clears all choice panels. 
         Debug.Log("Rewind");
 
 
