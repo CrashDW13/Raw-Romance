@@ -85,14 +85,19 @@ public class ChoicePanel : MonoBehaviour
 
     public static void Instantiate(GameObject original, Vector3 position, Quaternion rotation, string message, string choice, float maxTime)
     {
-        GameObject panelObject = Instantiate(original, position, rotation);
         Canvas canvas = FindObjectOfType<Canvas>();
+        if (!canvas)
+        {
+            Debug.Log("Tried spawning ChoicePanel, canvas not found.");
+            return;
+        }
+
+        GameObject panelObject = Instantiate(original, position, rotation, canvas.transform);
 
         if (panelObject.TryGetComponent(out RectTransform rectTransform))
         {
             if (canvas)
             {
-                rectTransform.SetParent(canvas.transform);
                 rectTransform.position = position;
             }
         }
@@ -115,6 +120,8 @@ public class ChoicePanel : MonoBehaviour
         {
             Debug.Log("No ChoicePanel component found.");
         }
+
+        Debug.Log(panelObject.transform.position);
     }
 
     public void CalculateTimer()

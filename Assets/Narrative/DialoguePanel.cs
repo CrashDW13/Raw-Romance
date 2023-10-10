@@ -215,28 +215,29 @@ public class DialoguePanel : MonoBehaviour
     void SpawnChoice(string message, string knot, float time, string positionPreset)
     {
         Vector3 position;
+        Debug.Log(positionPreset);
 
         //TO-DO: Post-prototype, this should be handled in its own function. 
         switch(positionPreset)
         {
             case "top-right":
-                position = new Vector3(575, 300, 0);
+                position = new Vector3(4, 3, 0);
                 break;
             case "top-left":
-                position = new Vector3(150, 300, 0);
+                position = new Vector3(-4, 3, 0);
                 break;
             case "bottom-right":
-                position = new Vector3(575, 150, 0);
+                position = new Vector3(4, 0, 0);
                 break;
             case "bottom-left":
-                position = new Vector3(150, 150, 0);
+                position = new Vector3(-4, 0, 0);
                 break;
             default:
                 position = Vector3.zero;
                 break;
         }
 
-        ChoicePanel.Instantiate(choicePrefab, position, transform.rotation, message, knot, time);
+        ChoicePanel.Instantiate(choicePrefab, Camera.main.WorldToScreenPoint(position), transform.rotation, message, knot, time);
     }
 
     public void ForcePath(string path)
