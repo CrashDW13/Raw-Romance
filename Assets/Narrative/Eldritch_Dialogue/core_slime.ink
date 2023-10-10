@@ -547,7 +547,8 @@ The monster stands, walking towards a rotting wooden door. It pushes it open, a 
 
 
 === core_death ===
-You flinch as the monster reaches over the table, the slime cool as it engulfs your face. The last thing you see is it towering over you, your lungs filling with the thick liquid as you fall to the ground.
+You flinch as the monster reaches over the table, the slime cool as it engulfs your face. 
+The last thing you see is it towering over you, your lungs filling with the thick liquid as you fall to the ground.
 # lose
 ~Lose()
 "yeek"
