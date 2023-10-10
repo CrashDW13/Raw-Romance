@@ -1,21 +1,21 @@
 //eldritch main dialogue
 EXTERNAL spawnChoice(message, knot, time, positionPreset)
-EXTERNAL saveState()
+EXTERNAL saveState(fallbackNode)
 EXTERNAL waitNextLine(delaySeconds)
 EXTERNAL Win()
 EXTERNAL Lose()
 -> core_start
 
 === core_start ===
-~saveState()
-~saveState()
+~saveState("core_start")
+~saveState("core_start")
 
 "Be warned, I do not take silence as a satisfactory answer."
 ...
 "Now; do you know what your worst lie is?"
-~saveState()
+~saveState("")
 "The one that came with the most consequences?"
-// options that appear 
+// options that appear
 
 ~spawnChoice("Yes", "know", 15, "top-left")
 ~spawnChoice("No", "dont_know", 15, "top-right")
@@ -26,7 +26,7 @@ EXTERNAL Lose()
 ...
 "Now tell me, do you know what your worst lie is? Or are you still searching for an answer?"
 ...
-//remove options 
+//remove options
 ...
 ~waitNextLine(2)
 "I told you, I don't like silence."
@@ -35,20 +35,20 @@ EXTERNAL Lose()
 
 === know ===
 "Good."
-~saveState()
+~saveState("know")
 "Have you made peace with it?"
 
 ~spawnChoice("I've made peace with it.", "peace", 10, "top-right")
 "Or are you able to recall it so quickly because the guilt haunts you?"
 "A nagging feeling in the back of your head, interrupting your thoughts like a newborn and sleep."
-//remove peace option here 
-~saveState()
+//remove peace option here
+~saveState("")
 "Or maybe it's a jacket during the transition from summer to autumn: a little too warm, but taking it off would leave you vulnerable to the consequences of the elements."
 
 ~spawnChoice("I'm still haunted by it.", "haunted", 10, "top-right")
 
 "Or would you describe it as a monster in the corner, completely forgotten until you're in bed and the lights are off."
-~saveState()
+~saveState("")
 "Staring at you with a smile and cocked head as you try to sleep."
 
 ~spawnChoice("I try not to think about it", "avoid", 10, "top-right")
@@ -76,7 +76,7 @@ EXTERNAL Lose()
 ...
 "And a sliding scale of remission."
 ...
-~saveState()
+~saveState("")
 "Tell me, was your lie victimless?"
 
 ~spawnChoice("Yes", "a_victim", 10, "top-right")
@@ -85,18 +85,18 @@ EXTERNAL Lose()
 "And thus, your conscience has remained clean?"
 "Are you so far removed from reality to believe that there is no consequence?"
 "Or was someone at the mercy of your words?"
-//remove yes option 
+//remove yes option
 "Did you know you held that power?"
 "Did you revel in it?"
 "Did you make peace with the victims of your actions?"
-~saveState()
+~saveState("")
 "Or have you only made peace with yourself?"
 
 ~spawnChoice("I've atoned.", "atone", 10, "top-left")
 ~spawnChoice("Only with myself", "reparations", 10, "top-right")
 
 "Or, were you the victim?"
-~saveState()
+~saveState("")
 "Unknowingly working against yourself."
 
 ~spawnChoice("I was the victim", "self", 10, "bottom-left")
@@ -107,7 +107,7 @@ EXTERNAL Lose()
 ...
 "Perhaps you never reflected."
 "Never contemplated the ripples after they escaped your wingspan."
-//remove all options 
+//remove all options
 "Ignorance is, indeed, bliss."
 "Let me help you maintain that ignorance."
 -> core_death
@@ -125,7 +125,7 @@ EXTERNAL Lose()
 "I hope is stays that way during your time here."
 "Good luck."
 -> core_live
-//IF PLAYER LIES DURING CHAPT 1 LETS HAVE THEM DIE HERE 
+//IF PLAYER LIES DURING CHAPT 1 LETS HAVE THEM DIE HERE
 /*LIE dialogue
 "And yet, I find that hard to believe."
 "All you have is your word, and you've already shown the lack of weight it holds."
@@ -141,20 +141,20 @@ EXTERNAL Lose()
 "Such fickle creatures."
 "Given your lifespan, I suppose it makes sense."
 "If you're around for such a short time, why bother with reparations."
-~saveState()
+~saveState("")
 "Do you agree?"
 
 ~spawnChoice("It's not like it matters", "a_victim", 10, "top-left")
 
 "Nobody will remember it come the next century, so what's the point?"
-~saveState()
+~saveState("")
 "There's also the possibility you haven't gathered the courage to correct the record."
 
 ~spawnChoice("It's daunting, correcting the record", "courage", 10, "top-right")
 
 "Or, have you run out of time?"
 "Unable to correct it even if you tried."
-~saveState()
+~saveState("")
 "Which is it?"
 
 ~spawnChoice("I ran out of time", "no_time", 10, "bottom-left")
@@ -170,7 +170,7 @@ EXTERNAL Lose()
 //run out of time disappear Here
 "Nihilistic about spending it on the cost of reconciling."
 ...
-//doesn't matter option disappear here 
+//doesn't matter option disappear here
 "No matter, then."
 "Let me help you spend the rest of your time."
 -> core_death
@@ -212,18 +212,18 @@ EXTERNAL Lose()
 "What does it feel like?"
 "A jacket worn too early in the season?"
 "A child and the boogeyman?"
-"An itch that keeps coming back?" 
+"An itch that keeps coming back?"
 "I wonder what guilt feels like to a human."
 "Your lives are so short, and it seems many of you never find the courage to reconcile."
 "It must be exhausting, carrying it with you everywhere you go."
-~saveState()
+~saveState("")
 
 "Do you hope to make peace with it?"
 ~spawnChoice("I want to move past it", "want", 10, "top-left")
 
 "Develop means to alleviate the weight on your shoulders."
 "Or perhaps you're yet to realize you have a choice in the matter."
-~saveState()
+~saveState("")
 
 "I assure you, you do."
 
@@ -233,9 +233,9 @@ EXTERNAL Lose()
 "The former is amusing, the latter disheartening."
 "Which path do you want to take?"
 "There is only so much time left for you."
-//want to move past option disappear here 
+//want to move past option disappear here
 "Will you feed into your companion?"
-~saveState()
+~saveState("")
 
 "Or find the courage to help yourself?"
 
@@ -258,10 +258,10 @@ EXTERNAL Lose()
 "Third, you must take the courage that brought you through those doors and carry it out with you."
 "Let it lead you to your peace."
 "I hope you will have enough left once you finish your time here."
-//SANITY AFFECT: NONE 
+//SANITY AFFECT: NONE
 -> core_live
 
-//IF PLAYER LIES DURING CHAPT 1 LETS HAVE THEM DIE HERE 
+//IF PLAYER LIES DURING CHAPT 1 LETS HAVE THEM DIE HERE
 /*LIE dialogue
 "And yet, I find that hard to believe."
 "All you have is your word, and you've already shown the lack of weight it holds."
@@ -287,7 +287,7 @@ EXTERNAL Lose()
 "Content to exist in your world, like a child with her head under the covers."
 "How cute."
 "Do you think you'll come out from under the covers one day?"
-~saveState()
+~saveState("")
 "Move past it?"
 
 ~spawnChoice("I want to", "want", 10, "top-right")
@@ -295,7 +295,7 @@ EXTERNAL Lose()
 "Find a path where you no longer need to hide from the monster in your closet?"
 "Or do you plan to stay under the covers?"
 "Pretend the outside world doesn't exist, even when you know you can't stay in your fantasy world forever?"
-//I want option disappear here 
+//I want option disappear here
 "Though I understand the appeal, it must be exhausting."
 "Delusion is a consuming hobby."
 "Do not let it fester during your time here. They will sense and exploit it."
@@ -308,14 +308,14 @@ EXTERNAL Lose()
 
 === dont_know ===
 "Understandable. Many would like to forget their wrongdoings."
-~saveState()
+~saveState("")
 "Especially the worst of them."
 
 ~spawnChoice("I think I have one.", "know", 10, "top-left")
 
 "Ignoring it until it goes away, like a mosquito bite."
 "Or crawls into bed and talks until sunrise."
-~saveState()
+~saveState("")
 "Like a little pet."
 
 ~spawnChoice("I'm having trouble picking the worst", "trouble", 10, "top-right")
@@ -324,7 +324,7 @@ EXTERNAL Lose()
 "Following you around, no matter how hard you try to get rid of it."
 //think I have one option disappear here
 "Have you even tried to get rid of it?"
-~saveState()
+~saveState("")
 "Address the unwanetd companion?"
 
 ~spawnChoice("I really can'y think of anything", "none", 10, "top-left")
@@ -340,19 +340,19 @@ EXTERNAL Lose()
 
 
 === none ===
-~saveState()
+~saveState("")
 "Oh? Nothing at all?"
 
 ~spawnChoice("Actually I know what my lie is", "know", 10, "top-left")
 "How peculiar."
-~saveState()
+~saveState("")
 "So, you've never told a lie?"
 
 ~spawnChoice("Never", "no_lie", 10, "top-right")
 
 "Not once?"
 "Never said you felt ill to avoid school?"
-~saveState()
+~saveState("")
 "Told someone their hair looked good when it didn't?"
 
 //know lie option disappear here
@@ -373,7 +373,7 @@ EXTERNAL Lose()
 
 
 === no_mean ===
-~saveState()
+~saveState("")
 "Ah, but that means you must know what your worst lie is, now."
 
 ~spawnChoice("Yes, I do", "know", 10, "top-right")
@@ -386,10 +386,10 @@ EXTERNAL Lose()
 "Yor decision, of course."
 ...
 "Now, it's time for mine."
-->core_death 
+->core_death
 
 
-=== no_lie === //NEEDS MORE WORK 
+=== no_lie === //NEEDS MORE WORK
 "Such conviction."
 "But, your confidence is just amusing enough."
 "Others must admire you for your honesty."
@@ -409,7 +409,7 @@ EXTERNAL Lose()
 "But, I must thank you."
 "Playing with my food is my favorite sport."
 -> core_death
-*/ 
+*/
 
 
 === trouble ===
@@ -425,17 +425,17 @@ EXTERNAL Lose()
 ->core_live
 
 //SANITY PENALTY - None
-//GAIN ITEM 
+//GAIN ITEM
 
 
 
 === core_live ===
 The monster stands, walking towards a rotting wooden door. It pushes it open, a candlelit hallway greeting you from the other side.# win
 
-->END 
+->END
 
 
 === core_death ===
 You flinch as the monster reaches over the table, the slime cool as it engulfs your face. The last thing you see is it towering over you, your lungs filling with the thick liquid as you fall to the ground.# lose
 
--> END 
+-> END

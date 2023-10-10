@@ -62,7 +62,7 @@ public class BasicInkExample : MonoBehaviour
     void OnClickChoiceButton(Choice choice)
     {
         story.ChooseChoiceIndex(choice.index);
-        stateHandler.SaveState();
+        //stateHandler.SaveState();
         RefreshView();
     }
 

@@ -32,7 +32,7 @@ public class SanityHandler : MonoBehaviour
         slider.value = sanity / maxSanity;
     }
 
-    public void UpdateSanity(float change)
+    public static void UpdateSanity(float change)
     {
         sanity = Mathf.Clamp(sanity + change, 0, maxSanity); 
     }
