@@ -6,13 +6,17 @@ EXTERNAL waitNextLine(delaySeconds)
 
 === core_start ===
 ~saveState()
+~saveState()
+
 "Be warned, I do not take silence as a satisfactory answer."
 ...
 "Now; do you know what your worst lie is?"
+~saveState()
 "The one that came with the most consequences?"
 // options that appear 
-~spawnChoice("Yes", "know", 15, "top_left")
-~spawnChoice("No", "dont_know", 15, "top_right")
+
+~spawnChoice("Yes", "know", 15, "top-left")
+~spawnChoice("No", "dont_know", 15, "top-right")
 //cont txt
 "Maybe it's a white lie, such as drawing on the walls as a child."
 "Or perhaps you were somewhere you weren't meant to be."
@@ -29,18 +33,23 @@ EXTERNAL waitNextLine(delaySeconds)
 
 === know ===
 "Good."
+~saveState()
 "Have you made peace with it?"
-~spawnChoice("I've made peace with it.", "peace", 10, "top_right")
+
+~spawnChoice("I've made peace with it.", "peace", 10, "top-right")
 "Or are you able to recall it so quickly because the guilt haunts you?"
 "A nagging feeling in the back of your head, interrupting your thoughts like a newborn and sleep."
 //remove peace option here 
+~saveState()
 "Or maybe it's a jacket during the transition from summer to autumn: a little too warm, but taking it off would leave you vulnerable to the consequences of the elements."
 
-~spawnChoice("I'm still haunted by it.", "haunted", 10, "top_right")
+~spawnChoice("I'm still haunted by it.", "haunted", 10, "top-right")
 
 "Or would you describe it as a monster in the corner, completely forgotten until you're in bed and the lights are off."
+~saveState()
 "Staring at you with a smile and cocked head as you try to sleep."
-~spawnChoice("I try not to think about it", "avoid", 10, "top_right")
+
+~spawnChoice("I try not to think about it", "avoid", 10, "top-right")
 
 "Or maybe, it grips at your throat when you think of it."
 "And you cannot speak or move."
@@ -65,8 +74,10 @@ EXTERNAL waitNextLine(delaySeconds)
 ...
 "And a sliding scale of remission."
 ...
+~saveState()
 "Tell me, was your lie victimless?"
-~spawnChoice("Yes", "a_victim", 10, "top_right")
+
+~spawnChoice("Yes", "a_victim", 10, "top-right")
 
 "Without consequence?"
 "And thus, your conscience has remained clean?"
@@ -76,14 +87,17 @@ EXTERNAL waitNextLine(delaySeconds)
 "Did you know you held that power?"
 "Did you revel in it?"
 "Did you make peace with the victims of your actions?"
+~saveState()
 "Or have you only made peace with yourself?"
-~spawnChoice("I've atoned.", "atone", 10, "top_left")
-~spawnChoice("Only with myself", "reparations", 10, "top_right")
+
+~spawnChoice("I've atoned.", "atone", 10, "top-left")
+~spawnChoice("Only with myself", "reparations", 10, "top-right")
 
 "Or, were you the victim?"
+~saveState()
 "Unknowingly working against yourself."
 
-~spawnChoice("I was the victim", "self", 10, "bottom_left")
+~spawnChoice("I was the victim", "self", 10, "bottom-left")
 
 "Or perhaps, you knew you would be the victim."
 "Incriminating yourself to protect others, or because it's what you've been taught to do."
@@ -125,20 +139,22 @@ EXTERNAL waitNextLine(delaySeconds)
 "Such fickle creatures."
 "Given your lifespan, I suppose it makes sense."
 "If you're around for such a short time, why bother with reparations."
+~saveState()
 "Do you agree?"
 
-~spawnChoice("It's not like it matters", "a_victim", 10, "top_left")
+~spawnChoice("It's not like it matters", "a_victim", 10, "top-left")
 
 "Nobody will remember it come the next century, so what's the point?"
+~saveState()
 "There's also the possibility you haven't gathered the courage to correct the record."
 
-~spawnChoice("It's daunting, correcting the record", "courage", 10, "top_right")
+~spawnChoice("It's daunting, correcting the record", "courage", 10, "top-right")
 
 "Or, have you run out of time?"
 "Unable to correct it even if you tried."
 "Which is it?"
-
-~spawnChoice("I ran out of time", "no_time", 10, "bottom_left")
+~saveState()
+~spawnChoice("I ran out of time", "no_time", 10, "bottom-left")
 
 "Both options are disheartening, to say the least."
 "Though, one does offer a path forward."
@@ -198,12 +214,14 @@ EXTERNAL waitNextLine(delaySeconds)
 "Your lives are so short, and it seems many of you never find the courage to reconcile."
 "It must be exhausting, carrying it with you everywhere you go."
 "Do you hope to make peace with it?"
-~spawnChoice("I want to move past it", "want", 10, "top_left")
+~saveState()
+~spawnChoice("I want to move past it", "want", 10, "top-left")
 
 "Develop means to alleviate the weight on your shoulders."
 "Or perhaps you're yet to realize you have a choice in the matter."
 "I assure you, you do."
-~spawnChoice("I don't know if I can move past it", "courage", 10, "top_right")
+~saveState()
+~spawnChoice("I don't know if I can move past it", "courage", 10, "top-right")
 
 "Strange, how many of you I've met that either believe they can control everything or nothing."
 "The former is amusing, the latter disheartening."
@@ -212,7 +230,8 @@ EXTERNAL waitNextLine(delaySeconds)
 //want to move past option disappear here 
 "Will you feed into your companion?"
 "Or find the courage to help yourself?"
-~spawnChoice("I don't know.", "freeze", 10, "top_left")
+~saveState()
+~spawnChoice("I don't know.", "freeze", 10, "top-left")
 
 ...
 //dk if can move past option disappear here
@@ -261,7 +280,8 @@ EXTERNAL waitNextLine(delaySeconds)
 "How cute."
 "Do you think you'll come out from under the covers one day?"
 "Move past it?"
-~spawnChoice("I want to", "want", 10, "top_right")
+~saveState()
+~spawnChoice("I want to", "want", 10, "top-right")
 
 "Find a path where you no longer need to hide from the monster in your closet?"
 "Or do you plan to stay under the covers?"
@@ -280,19 +300,22 @@ EXTERNAL waitNextLine(delaySeconds)
 === dont_know ===
 "Understandable. Many would like to forget their wrongdoings."
 "Especially the worst of them."
-~spawnChoice("I think I have one.", "know", 10, "top_left")
+~saveState()
+~spawnChoice("I think I have one.", "know", 10, "top-left")
 
 "Ignoring it until it goes away, like a mosquito bite."
 "Or crawls into bed and talks until sunrise."
 "Like a little pet."
-~spawnChoice("I'm having trouble picking the worst", "trouble", 10, "top_right")
+~saveState()
+~spawnChoice("I'm having trouble picking the worst", "trouble", 10, "top-right")
 
 "Or perhaps, a parasite?"
 "Following you around, no matter how hard you try to get rid of it."
 //think I have one option disappear here
 "Have you even tried to get rid of it?"
 "Address the unwanetd companion?"
-~spawnChoice("I really can'y think of anything", "none", 10, "top_left")
+~saveState()
+~spawnChoice("I really can'y think of anything", "none", 10, "top-left")
 
 "Or do you just ignore it."
 "Sit in silence, like you are currently."
@@ -306,17 +329,20 @@ EXTERNAL waitNextLine(delaySeconds)
 
 === none ===
 "Oh? Nothing at all?"
-~spawnChoice("Actually I know what my lie is", "know", 10, "top_left")
+~saveState()
+~spawnChoice("Actually I know what my lie is", "know", 10, "top-left")
 "How peculiar."
 "So, you've never told a lie?"
-~spawnChoice("Never", "no_lie", 10, "top_right")
+~saveState()
+~spawnChoice("Never", "no_lie", 10, "top-right")
 
 "Not once?"
 "Never said you felt ill to avoid school?"
 "Told someone their hair looked good when it didn't?"
 
 //know lie option disappear here
-~spawnChoice("That's not what I meant", "no_mean", 10, "top_left")
+~saveState()
+~spawnChoice("That's not what I meant", "no_mean", 10, "top-left")
 
 "Or said sorry and didn't mean it?"
 //no lie option disappear Here
@@ -333,7 +359,8 @@ EXTERNAL waitNextLine(delaySeconds)
 
 === no_mean ===
 "Ah, but that means you must know what your worst lie is, now."
-~spawnChoice("Yes, I do", "know", 10, "top_right")
+~saveState()
+~spawnChoice("Yes, I do", "know", 10, "top-right")
 
 "So, will you tell me?"
 "Divulge a secret?"
@@ -388,9 +415,11 @@ EXTERNAL waitNextLine(delaySeconds)
 
 === core_live ===
 The monster stands, walking towards a rotting wooden door. It pushes it open, a candlelit hallway greeting you from the other side.
+# win
 ->END 
 
 
 === core_death ===
 You flinch as the monster reaches over the table, the slime cool as it engulfs your face. The last thing you see is it towering over you, your lungs filling with the thick liquid as you fall to the ground.
+# lose
 -> END 
