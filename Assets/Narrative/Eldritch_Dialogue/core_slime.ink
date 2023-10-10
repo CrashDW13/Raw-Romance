@@ -6,9 +6,9 @@ EXTERNAL Lose()
 EXTERNAL Win()
 
 
--> intro_beg
+->core_start
 
-=== intro_beg ===
+=== core_start ===
 ~saveState()
 ~saveState()
 
@@ -126,10 +126,10 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 
 === intro_cont ===
 // go to core_slime dialogue
--> core_start
+-> core_cont
 
 
-=== core_start ===
+=== core_cont ===
 ~saveState()
 ~saveState()
 
