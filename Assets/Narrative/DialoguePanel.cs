@@ -68,8 +68,8 @@ public class DialoguePanel : MonoBehaviour
         inkStory.BindExternalFunction("spawnChoice", (string message, string knot, float time, string positionPreset) => { SpawnChoice(message, knot, time, positionPreset); });
         inkStory.BindExternalFunction("saveState", () => { SaveState(); });
         inkStory.BindExternalFunction("waitNextLine", (float delaySeconds) => { WaitNextLine(delaySeconds); });
-        inkStory.BindExternalFunction("Win", () => { Win(); });
-        inkStory.BindExternalFunction("Lose", () => { Lose(); });
+        inkStory.BindExternalFunction("win", () => { win(); });
+        inkStory.BindExternalFunction("lose", () => { lose(); });
 
 
         inkStory.ChoosePathString(knot);
@@ -353,12 +353,12 @@ public class DialoguePanel : MonoBehaviour
         SceneManager.LoadScene("LoseScene"); 
     }
 
-    public void Win()
+    public void win()
     {
         SceneManager.LoadScene("TempWinScreen");
     }
 
-    public void Lose()
+    public void lose()
     {
         SceneManager.LoadScene("TempLoseScreen");
     }

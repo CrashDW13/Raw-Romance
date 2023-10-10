@@ -2,8 +2,8 @@
 EXTERNAL spawnChoice(message, knot, time, positionPreset)
 EXTERNAL saveState()
 EXTERNAL waitNextLine(delaySeconds)
-EXTERNAL Win()
-EXTERNAL Lose()
+EXTERNAL win()
+EXTERNAL lose()
 -> core_start
 
 === core_start ===
@@ -431,11 +431,11 @@ EXTERNAL Lose()
 
 === core_live ===
 The monster stands, walking towards a rotting wooden door. It pushes it open, a candlelit hallway greeting you from the other side.# win
-
+~win()
 ->END 
 
 
 === core_death ===
 You flinch as the monster reaches over the table, the slime cool as it engulfs your face. The last thing you see is it towering over you, your lungs filling with the thick liquid as you fall to the ground.# lose
-
+~lose()
 -> END 
