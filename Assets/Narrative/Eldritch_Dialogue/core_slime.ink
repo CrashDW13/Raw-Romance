@@ -2,11 +2,134 @@
 EXTERNAL spawnChoice(message, knot, time, positionPreset)
 EXTERNAL saveState()
 EXTERNAL waitNextLine(delaySeconds)
-EXTERNAL win()
-EXTERNAL lose()
--> core_start
+EXTERNAL Lose()
+EXTERNAL Win()
+
+
+->core_start
 
 === core_start ===
+~saveState()
+~saveState()
+
+~spawnChoice("Hi.", "welc", 10, "top-left")
+~spawnChoice("Hello?", "welc", 10, "top-right")
+...
+...
+~waitNextLine(5)
+//remove greet options here
+"Why are you here?"
+~saveState()
+~spawnChoice("I'm looking for someone.", "looking", 10, "top-left")
+~spawnChoice("That's none of your business.?", "no_bis", 10, "top-right")
+...
+
+...
+
+"I will only ask one more time."
+"Why are you here?"
+...
+...
+// remove options here
+"Have it your way."
+-> intro_death
+
+=== welc ===
+"Welcome."
+"You must be naive if you've come here of your own free will."
+"Or unfortunate, if you're here against your wishes."
+~saveState()
+~spawnChoice("I chose to be here.?", "chose", 10, "top-left")
+~spawnChoice("You think I want to be here?", "lie_str", 10, "top-right")
+...
+"So, which is it?"
+...
+...
+"Do not make me answer for you."
+
+~waitNextLine(5)
+...
+//remove both options here
+...
+"Naive it is, then."
+-> intro_death
+
+
+=== chose ===
+"I wonder what compels someone to come here."
+...
+"Your honesty has been recognized."
+"Now, let me ask you something."
+~saveState()
+
+-> intro_cont
+
+
+=== lie_str ===
+"A liar."
+"I like liars."
+"Though I do hope you'll be truthful enough to answer my next question."
+~saveState()
+
+-> intro_cont
+
+
+=== looking ===
+"Someone..."
+"So that is what brings you to our den."
+"Your honesty is admirable."
+"Now, I have another question for you."
+~saveState()
+
+-> intro_cont
+
+
+
+=== no_bis ===
+...
+"Curt sencences will not help you here."
+"Remember: you came to me."
+"Do you ununderstand?"
+~saveState()
+~spawnChoice("Yes?", "y", 10, "top-left")
+~spawnChoice("No?", "n", 10, "top-right")
+~waitNextLine(10)
+...
+"What a shame."
+"Your comprehension seems to have disappeared."
+
+
+-> intro_death
+
+
+=== y ===
+"Good."
+"Now, I have another question for you."
+~saveState()
+
+-> intro_cont
+
+
+=== n ===
+...
+"Then I will make you understand."
+~saveState()
+
+-> intro_death
+
+
+=== intro_death ===
+The monster stands, slowly outstretching its arms as it leans over towards you. You feel its cold hands touch your face, liquid slowly engulfing your lungs as your vision darkens.
+# lose
+~Lose()
+
+
+=== intro_cont ===
+// go to core_slime dialogue
+-> core_cont
+
+
+=== core_cont ===
 ~saveState()
 ~saveState()
 
@@ -154,9 +277,8 @@ EXTERNAL lose()
 
 "Or, have you run out of time?"
 "Unable to correct it even if you tried."
-~saveState()
 "Which is it?"
-
+~saveState()
 ~spawnChoice("I ran out of time", "no_time", 10, "bottom-left")
 
 "Both options are disheartening, to say the least."
@@ -216,17 +338,14 @@ EXTERNAL lose()
 "I wonder what guilt feels like to a human."
 "Your lives are so short, and it seems many of you never find the courage to reconcile."
 "It must be exhausting, carrying it with you everywhere you go."
-~saveState()
-
 "Do you hope to make peace with it?"
+~saveState()
 ~spawnChoice("I want to move past it", "want", 10, "top-left")
 
 "Develop means to alleviate the weight on your shoulders."
 "Or perhaps you're yet to realize you have a choice in the matter."
-~saveState()
-
 "I assure you, you do."
-
+~saveState()
 ~spawnChoice("I don't know if I can move past it", "courage", 10, "top-right")
 
 "Strange, how many of you I've met that either believe they can control everything or nothing."
@@ -235,10 +354,8 @@ EXTERNAL lose()
 "There is only so much time left for you."
 //want to move past option disappear here 
 "Will you feed into your companion?"
-~saveState()
-
 "Or find the courage to help yourself?"
-
+~saveState()
 ~spawnChoice("I don't know.", "freeze", 10, "top-left")
 
 ...
@@ -287,9 +404,8 @@ EXTERNAL lose()
 "Content to exist in your world, like a child with her head under the covers."
 "How cute."
 "Do you think you'll come out from under the covers one day?"
-~saveState()
 "Move past it?"
-
+~saveState()
 ~spawnChoice("I want to", "want", 10, "top-right")
 
 "Find a path where you no longer need to hide from the monster in your closet?"
@@ -308,25 +424,22 @@ EXTERNAL lose()
 
 === dont_know ===
 "Understandable. Many would like to forget their wrongdoings."
-~saveState()
 "Especially the worst of them."
-
+~saveState()
 ~spawnChoice("I think I have one.", "know", 10, "top-left")
 
 "Ignoring it until it goes away, like a mosquito bite."
 "Or crawls into bed and talks until sunrise."
-~saveState()
 "Like a little pet."
-
+~saveState()
 ~spawnChoice("I'm having trouble picking the worst", "trouble", 10, "top-right")
 
 "Or perhaps, a parasite?"
 "Following you around, no matter how hard you try to get rid of it."
 //think I have one option disappear here
 "Have you even tried to get rid of it?"
-~saveState()
 "Address the unwanetd companion?"
-
+~saveState()
 ~spawnChoice("I really can'y think of anything", "none", 10, "top-left")
 
 "Or do you just ignore it."
@@ -340,23 +453,20 @@ EXTERNAL lose()
 
 
 === none ===
-~saveState()
 "Oh? Nothing at all?"
-
+~saveState()
 ~spawnChoice("Actually I know what my lie is", "know", 10, "top-left")
 "How peculiar."
-~saveState()
 "So, you've never told a lie?"
-
+~saveState()
 ~spawnChoice("Never", "no_lie", 10, "top-right")
 
 "Not once?"
 "Never said you felt ill to avoid school?"
-~saveState()
 "Told someone their hair looked good when it didn't?"
 
 //know lie option disappear here
-
+~saveState()
 ~spawnChoice("That's not what I meant", "no_mean", 10, "top-left")
 
 "Or said sorry and didn't mean it?"
@@ -373,9 +483,8 @@ EXTERNAL lose()
 
 
 === no_mean ===
-~saveState()
 "Ah, but that means you must know what your worst lie is, now."
-
+~saveState()
 ~spawnChoice("Yes, I do", "know", 10, "top-right")
 
 "So, will you tell me?"
@@ -430,12 +539,15 @@ EXTERNAL lose()
 
 
 === core_live ===
-The monster stands, walking towards a rotting wooden door. It pushes it open, a candlelit hallway greeting you from the other side.# win
-~win()
-->END 
+The monster stands, walking towards a rotting wooden door. It pushes it open, a candlelit hallway greeting you from the other side.
+# win
+~Win() 
+"yarrr"
+
 
 
 === core_death ===
-You flinch as the monster reaches over the table, the slime cool as it engulfs your face. The last thing you see is it towering over you, your lungs filling with the thick liquid as you fall to the ground.# lose
-~lose()
--> END 
+You flinch as the monster reaches over the table, the slime cool as it engulfs your face. The last thing you see is it towering over you, your lungs filling with the thick liquid as you fall to the ground.
+# lose
+~Lose()
+"yeek"
