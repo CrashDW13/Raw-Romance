@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Ink.Runtime;
 using System;
+using UnityEngine.SceneManagement;
 
 public class DialoguePanel : MonoBehaviour
 {
@@ -65,6 +66,9 @@ public class DialoguePanel : MonoBehaviour
         inkStory.BindExternalFunction("spawnChoice", (string message, string knot, float time, string positionPreset) => { SpawnChoice(message, knot, time, positionPreset); });
         inkStory.BindExternalFunction("saveState", () => { SaveState(); });
         inkStory.BindExternalFunction("waitNextLine", (float delaySeconds) => { WaitNextLine(delaySeconds); });
+        inkStory.BindExternalFunction("Win", () => { Win(); });
+        inkStory.BindExternalFunction("Lose", () => { Lose(); });
+
 
         inkStory.ChoosePathString(knot);
     
@@ -323,6 +327,15 @@ public class DialoguePanel : MonoBehaviour
         }
     }
 
+    public void Win()
+    {
+        SceneManager.LoadScene("TempWinScreen");
+    }
+
+    public void Lose()
+    {
+        SceneManager.LoadScene("TempLoseScreen");
+    }
 
 
 }

@@ -2,6 +2,8 @@
 EXTERNAL spawnChoice(message, knot, time, positionPreset)
 EXTERNAL saveState()
 EXTERNAL waitNextLine(delaySeconds)
+EXTERNAL Win()
+EXTERNAL Lose()
 -> core_start
 
 === core_start ===
