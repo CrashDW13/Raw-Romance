@@ -1,6 +1,6 @@
 //eldritch main dialogue
 EXTERNAL spawnChoice(message, knot, time, positionPreset)
-EXTERNAL saveState()
+EXTERNAL saveState(knot)
 EXTERNAL waitNextLine(delaySeconds)
 EXTERNAL lose()
 EXTERNAL win()
@@ -9,8 +9,7 @@ EXTERNAL win()
 ->core_start
 
 === core_start ===
-~saveState()
-~saveState()
+~saveState("core_start")
 
 ~spawnChoice("Hi.", "welc", 10, "top-left")
 ~spawnChoice("Hello?", "welc", 10, "top-right")
@@ -20,7 +19,6 @@ EXTERNAL win()
 
 //remove greet options here
 "Why are you here?"
-~saveState()
 ~spawnChoice("I'm looking for someone.", "looking", 10, "top-left")
 ~spawnChoice("That's none of your business.", "no_bis", 10, "top-right")
 ...
@@ -439,7 +437,7 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 //REPARATIONS REPEAT
 === reparations_rpt ===
 ...
-~saveState()
+~saveState("reparations_rpt")
 "I hold the same opinion as the last time."
 "To only make peace with yourself and not another."
 ...
