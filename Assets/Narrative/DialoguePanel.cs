@@ -135,23 +135,7 @@ public class DialoguePanel : MonoBehaviour
         }
 
         textCoroutine = StartCoroutine(ScrawlText(line));
-        foreach (string tag in tags)
-        {
-            if (tag.Contains("Speaker"))
-            {
-                // ... [your existing code for processing speaker tags]
-            }
-            else if (tag == "win")
-            {
-                LoadWinScene();
-                return; 
-            }
-            else if (tag == "lose")
-            {
-                LoadLoseScene();
-                return;
-            }
-        }
+        
     }
     IEnumerator ScrawlText(string line)
     {
@@ -343,6 +327,7 @@ public class DialoguePanel : MonoBehaviour
         preventAutoSave = true; // Set the flag to prevent the next save
         HandleRewind();
         isInRewindMode = false;
+        ChoicePanel.ClearAll(); //  Clears all choice panels. 
         Debug.Log("Rewind");
 
 

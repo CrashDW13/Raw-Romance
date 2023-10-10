@@ -83,6 +83,15 @@ public class ChoicePanel : MonoBehaviour
         }
     }
 
+    public static void ClearAll()
+    {
+        ChoicePanel[] choicePanels = FindObjectsOfType<ChoicePanel>();
+        foreach (ChoicePanel choicePanel in choicePanels)
+        {
+            Destroy(choicePanel.gameObject);
+        }
+    }
+
     public static void Instantiate(GameObject original, Vector3 position, Quaternion rotation, string message, string choice, float maxTime)
     {
         Canvas canvas = FindObjectOfType<Canvas>();
