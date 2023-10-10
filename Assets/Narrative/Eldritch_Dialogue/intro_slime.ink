@@ -2,12 +2,14 @@ EXTERNAL spawnChoice(message, knot, time, positionPreset)
 EXTERNAL saveState()
 EXTERNAL waitNextLine(delaySeconds)
 
-=== demo_start ===
+=== core_start ===
 
 -> intro_beg
 
 === intro_beg ===
 ~saveState()
+~saveState()
+
 ~spawnChoice("Hi.", "welc", 10, "top-left")
 ~spawnChoice("Hello?", "welc", 10, "top-right")
 ...
@@ -116,6 +118,7 @@ EXTERNAL waitNextLine(delaySeconds)
 
 === intro_death ===
 The monster stands, slowly outstretching its arms as it leans over towards you. You feel its cold hands touch your face, liquid slowly engulfing your lungs as your vision darkens.
+# lose
 ->END
 
 
