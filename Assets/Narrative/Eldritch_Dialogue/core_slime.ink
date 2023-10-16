@@ -5,6 +5,7 @@ EXTERNAL waitNextLine(delaySeconds)
 EXTERNAL lose()
 EXTERNAL win()
 
+VAR lied = false
 
 ->core_start
 
@@ -92,6 +93,7 @@ EXTERNAL win()
 ~saveState("lie_str")
 "I like liars."
 "Though I do hope you'll be truthful enough to answer my next question."
+~ lied = true
 
 -> core_cont
 
@@ -136,6 +138,7 @@ EXTERNAL win()
 ...
 "What a shame."
 "Your comprehension seems to have disappeared."
+-> core_death
 
 
 === y ===
@@ -381,19 +384,21 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 
 
 === atone ===
+{lied: It's true | It's false -> atone_lied}
+
 "A truly clean conscience."
 "How admirable."
 "I hope is stays that way during your time here."
 "Good luck."
 -> core_live
-//IF PLAYER LIES DURING CHAPT 1 LETS HAVE THEM DIE HERE 
-/*LIE dialogue
+
+
+=== atone_lied ===
 "And yet, I find that hard to believe."
 "All you have is your word, and you've already shown the lack of weight it holds."
 "I said I liked liars."
 "What I meant was I like how they taste."
--> core_end
-*/
+-> core_death
 
 
 === reparations ===
@@ -586,6 +591,7 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 
 
 === want ===
+{lied: It's true | It's false -> want_lied}
 "Good. That is the first step."
 "The second is finding your words, something you will have ample time to do during your time here."
 "Third, you must take the courage that brought you through those doors and carry it out with you."
@@ -594,14 +600,15 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 //SANITY AFFECT: NONE 
 -> core_live
 
-//IF PLAYER LIES DURING CHAPT 1 LETS HAVE THEM DIE HERE 
-/*LIE dialogue
+
+//PLAYER LIED IN INTRO
+=== want_lied ===
 "And yet, I find that hard to believe."
 "All you have is your word, and you've already shown the lack of weight it holds."
 "I said I liked liars."
 "What I meant was I like how they taste."
--> core_end
-*/
+-> core_death
+
 
 === freeze ===
 "But you must."
@@ -787,6 +794,7 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 
 
 === no_lie === //NEEDS MORE WORK 
+{lied: It's true | It's false -> no_lie_lied}
 "Such conviction."
 "But, your confidence is just amusing enough."
 "Others must admire you for your honesty."
@@ -800,13 +808,14 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 //SANITY PENALTY: light
 
 
-/*IF PLAYER lied before
+//IF PLAYER lied before
+=== no_lie_lied ===
 "I find that hard to believe."
 "Seeing how you contradicted yourself during our earlier conversation."
 "But, I must thank you."
 "Playing with my food is my favorite sport."
 -> core_death
-*/ 
+
 
 
 === trouble ===
@@ -835,6 +844,7 @@ The monster stands, walking towards a rotting wooden door. It pushes it open, a 
 
 
 === core_death ===
+~ lied = false
 You flinch as the monster reaches over the table, the slime cool as it engulfs your face. 
 The last thing you see is it towering over you, your lungs filling with the thick liquid as you fall to the ground.
 # lose
