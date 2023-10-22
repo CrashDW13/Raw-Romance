@@ -60,7 +60,8 @@ public class DialoguePanel : MonoBehaviour
         scrawlSpeed = defaultScrawlSpeed;
 
         inkStory = new Story(inkAsset.text);
-        StartConversation("core_start");
+        //StartConversation("core_start");
+        Debug.Log(knot);
 
         stateHandler = new StoryStateHandler(inkStory);
 
@@ -78,8 +79,14 @@ public class DialoguePanel : MonoBehaviour
         ShowLine(inkStory.Continue());
     }
 
-    public void StartConversation(string knotToLoad)
+    private void Update()
     {
+
+    }
+
+    public void StartConversation(TextAsset inkAssetToLoad, string knotToLoad)
+    {
+        inkAsset = inkAssetToLoad;
         knot = knotToLoad;
     }
 
