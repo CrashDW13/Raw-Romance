@@ -89,7 +89,7 @@ EXTERNAL win()
 
 === lie_str ===
 "A liar."
-saveState("lie_str")
+~saveState("lie_str")
 "I like liars."
 "Though I do hope you'll be truthful enough to answer my next question."
 
@@ -178,7 +178,7 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 ~spawnChoice("Yes", "know", 15, "top-left")
 ~spawnChoice("No", "dont_know", 15, "top-right")
 "The one that came with the most consequences?"
-// options that appear 
+// options that appear
 
 //cont txt
 "Maybe it's a white lie, such as drawing on the walls as a child."
@@ -187,7 +187,7 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 ...
 "Now tell me, do you know what your worst lie is? Or are you still searching for an answer?"
 ...
-//remove options 
+//remove options
 ...
 ~waitNextLine(2)
 "I told you, I don't like silence."
@@ -203,7 +203,7 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 ~spawnChoice("Yes", "know", 15, "top-left")
 ~spawnChoice("No", "dont_know", 15, "top-right")
 "The one that came with the most consequences?"
-// options that appear 
+// options that appear
 
 //cont txt
 "Maybe it's a white lie, such as drawing on the walls as a child."
@@ -212,7 +212,7 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 ...
 "Now tell me, do you know what your worst lie is? Or are you still searching for an answer?"
 ...
-//remove options 
+//remove options
 ...
 ~waitNextLine(2)
 "I told you, I don't like silence."
@@ -228,7 +228,7 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 
 ~spawnChoice("I'm still haunted by it.", "haunted", 10, "top-left")
 "A nagging feeling in the back of your head, interrupting your thoughts like a newborn and sleep."
-//remove peace option here 
+//remove peace option here
 "Or maybe it's a jacket during the transition from summer to autumn: a little too warm, but taking it off would leave you vulnerable to the consequences of the elements."
 
 "Or would you describe it as a monster in the corner, completely forgotten until you're in bed and the lights are off."
@@ -260,7 +260,7 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 ~spawnChoice("I've made peace with it.", "peace", 10, "top-right")
 "Or are you able to recall it so quickly because the guilt haunts you?"
 "A nagging feeling in the back of your head, interrupting your thoughts like a newborn and sleep."
-//remove peace option here 
+//remove peace option here
 "Or maybe it's a jacket during the transition from summer to autumn: a little too warm, but taking it off would leave you vulnerable to the consequences of the elements."
 
 ~spawnChoice("I'm still haunted by it.", "haunted", 10, "top-right")
@@ -302,7 +302,7 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 "And thus, your conscience has remained clean?"
 "Are you so far removed from reality to believe that there is no consequence?"
 "Or was someone at the mercy of your words?"
-//remove yes option 
+//remove yes option
 "Did you know you held that power?"
 "Did you revel in it?"
 "Did you make peace with the victims of your actions?"
@@ -322,7 +322,7 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 ...
 "Perhaps you never reflected."
 "Never contemplated the ripples after they escaped your wingspan."
-//remove all options 
+//remove all options
 "Ignorance is, indeed, bliss."
 "Let me help you maintain that ignorance."
 -> core_death
@@ -346,7 +346,7 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 "And thus, your conscience has remained clean?"
 "Are you so far removed from reality to believe that there is no consequence?"
 "Or was someone at the mercy of your words?"
-//remove yes option 
+//remove yes option
 "Did you know you held that power?"
 "Did you revel in it?"
 "Did you make peace with the victims of your actions?"
@@ -366,7 +366,7 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 ...
 "Perhaps you never reflected."
 "Never contemplated the ripples after they escaped your wingspan."
-//remove all options 
+//remove all options
 "Ignorance is, indeed, bliss."
 "Let me help you maintain that ignorance."
 -> core_death
@@ -386,7 +386,7 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 "I hope is stays that way during your time here."
 "Good luck."
 -> core_live
-//IF PLAYER LIES DURING CHAPT 1 LETS HAVE THEM DIE HERE 
+//IF PLAYER LIES DURING CHAPT 1 LETS HAVE THEM DIE HERE
 /*LIE dialogue
 "And yet, I find that hard to believe."
 "All you have is your word, and you've already shown the lack of weight it holds."
@@ -428,7 +428,7 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 //run out of time disappear Here
 "Nihilistic about spending it on the cost of reconciling."
 ...
-//doesn't matter option disappear here 
+//doesn't matter option disappear here
 "No matter, then."
 "Let me help you spend the rest of your time."
 -> core_death
@@ -470,7 +470,7 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 //run out of time disappear Here
 "Nihilistic about spending it on the cost of reconciling."
 ...
-//doesn't matter option disappear here 
+//doesn't matter option disappear here
 "No matter, then."
 "Let me help you spend the rest of your time."
 -> core_death
@@ -514,7 +514,7 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 "What does it feel like?"
 "A jacket worn too early in the season?"
 "A child and the boogeyman?"
-"An itch that keeps coming back?" 
+"An itch that keeps coming back?"
 "I wonder what guilt feels like to a human."
 "Your lives are so short, and it seems many of you never find the courage to reconcile."
 "It must be exhausting, carrying it with you everywhere you go."
@@ -530,7 +530,7 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 "The former is amusing, the latter disheartening."
 "Which path do you want to take?"
 "There is only so much time left for you."
-//want to move past option disappear here 
+//want to move past option disappear here
 "Will you feed into your companion?"
 "Or find the courage to help yourself?"
 ~spawnChoice("I don't know.", "freeze", 10, "top-left")
@@ -553,7 +553,7 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 "What does it feel like?"
 "A jacket worn too early in the season?"
 "A child and the boogeyman?"
-"An itch that keeps coming back?" 
+"An itch that keeps coming back?"
 "I wonder what guilt feels like to a human."
 "Your lives are so short, and it seems many of you never find the courage to reconcile."
 "It must be exhausting, carrying it with you everywhere you go."
@@ -569,7 +569,7 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 "The former is amusing, the latter disheartening."
 "Which path do you want to take?"
 "There is only so much time left for you."
-//want to move past option disappear here 
+//want to move past option disappear here
 "Will you feed into your companion?"
 "Or find the courage to help yourself?"
 ~spawnChoice("I don't know.", "freeze", 10, "top-left")
@@ -591,10 +591,10 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 "Third, you must take the courage that brought you through those doors and carry it out with you."
 "Let it lead you to your peace."
 "I hope you will have enough left once you finish your time here."
-//SANITY AFFECT: NONE 
+//SANITY AFFECT: NONE
 -> core_live
 
-//IF PLAYER LIES DURING CHAPT 1 LETS HAVE THEM DIE HERE 
+//IF PLAYER LIES DURING CHAPT 1 LETS HAVE THEM DIE HERE
 /*LIE dialogue
 "And yet, I find that hard to believe."
 "All you have is your word, and you've already shown the lack of weight it holds."
@@ -627,7 +627,7 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 "Find a path where you no longer need to hide from the monster in your closet?"
 "Or do you plan to stay under the covers?"
 "Pretend the outside world doesn't exist, even when you know you can't stay in your fantasy world forever?"
-//I want option disappear here 
+//I want option disappear here
 "Though I understand the appeal, it must be exhausting."
 "Delusion is a consuming hobby."
 "Do not let it fester during your time here. They will sense and exploit it."
@@ -649,7 +649,7 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 "Find a path where you no longer need to hide from the monster in your closet?"
 "Or do you plan to stay under the covers?"
 "Pretend the outside world doesn't exist, even when you know you can't stay in your fantasy world forever?"
-//I want option disappear here 
+//I want option disappear here
 "Though I understand the appeal, it must be exhausting."
 "Delusion is a consuming hobby."
 "Do not let it fester during your time here. They will sense and exploit it."
@@ -783,10 +783,10 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 "Yor decision, of course."
 ...
 "Now, it's time for mine."
-->core_death 
+->core_death
 
 
-=== no_lie === //NEEDS MORE WORK 
+=== no_lie === //NEEDS MORE WORK
 "Such conviction."
 "But, your confidence is just amusing enough."
 "Others must admire you for your honesty."
@@ -806,7 +806,7 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 "But, I must thank you."
 "Playing with my food is my favorite sport."
 -> core_death
-*/ 
+*/
 
 
 === trouble ===
@@ -822,20 +822,20 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 ->core_live
 
 //SANITY PENALTY - None
-//GAIN ITEM 
+//GAIN ITEM
 
 
 
 === core_live ===
 The monster stands, walking towards a rotting wooden door. It pushes it open, a candlelit hallway greeting you from the other side.
 # win
-~win() 
+~win()
 "yarrr"
 
 
 
 === core_death ===
-You flinch as the monster reaches over the table, the slime cool as it engulfs your face. 
+You flinch as the monster reaches over the table, the slime cool as it engulfs your face.
 The last thing you see is it towering over you, your lungs filling with the thick liquid as you fall to the ground.
 # lose
 ~lose()
