@@ -21,6 +21,9 @@ public class ChoicePanel : MonoBehaviour
 
     private Slider slider;
 
+    private float easeScaleTimer = 0;
+    private float easeScaleLength = 0.5f;
+
     private void Start()
     {
         timer = maxTime;
@@ -64,6 +67,17 @@ public class ChoicePanel : MonoBehaviour
     private void Update()
     {
         CalculateTimer();
+
+        if (easeScaleTimer < 1)
+        {
+            EasingFunction.Ease ease = EasingFunction.Ease.EaseOutQuad;
+            EasingFunction.Function func = EasingFunction.GetEasingFunction(ease);
+            
+            float value = func(0, 0.6f, easeScaleTimer);
+            transform.localScale = new Vector3(value, value, 1);
+
+            easeScaleTimer += easeScaleLength * Time.deltaTime;
+        }
     }
 
     public void OnClick()

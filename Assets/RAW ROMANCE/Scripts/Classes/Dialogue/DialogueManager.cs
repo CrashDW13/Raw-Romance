@@ -18,7 +18,7 @@ public class DialogueManager : MonoBehaviour
         GameObject prefab = Instantiate(dialoguePrefab, canvas.transform);
         if (prefab.TryGetComponent(out DialoguePanel dialoguePanel))
         {
-            dialoguePanel.StartConversation(conversationId);
+            //dialoguePanel.StartConversation(conversationId);
 
         }
     }
