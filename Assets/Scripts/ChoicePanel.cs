@@ -82,12 +82,14 @@ public class ChoicePanel : MonoBehaviour
 
     public void OnClick()
     {
+
         DialoguePanel dialoguePanel = FindObjectOfType<DialoguePanel>();
         if (!dialoguePanel)
         {
             Debug.Log("Dialogue Panel can't be found.");
             return;
         }
+        SoundManager.instance.PlaySFX("choiceClick");
 
         dialoguePanel.ForcePath(choice);
         ChoicePanel[] choicePanels = FindObjectsOfType<ChoicePanel>();

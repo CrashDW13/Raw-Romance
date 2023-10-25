@@ -50,6 +50,7 @@ public class DialoguePanel : MonoBehaviour
 
     private void Start()
     {
+        SoundManager.instance.PlayBGM("rainandthunderBGM");
 
         waitTimeSeconds = defaultWaitTimeSeconds;
         
