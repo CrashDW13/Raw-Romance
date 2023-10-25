@@ -89,11 +89,18 @@ public class PointAndClickInteractable : MonoBehaviour
 
         if (panel.TryGetComponent(out DialoguePanel dialoguePanel))
         {
-
-            dialoguePanel.StartConversation(inkAsset, encounters[0].Knot);
+            dialoguePanel.StartConversation(inkAsset, encounters[encounterIndex].Knot);
         }
 
-        
+        if (encounters[encounterIndex].Note.GetTitle() != "")
+        {
+            NotesManager.AddNote(encounters[encounterIndex].Note);
+        }
+
+        if (encounterIndex <  encounters.Length - 1)
+        {
+            encounterIndex++;
+        }
     }
 }
 
@@ -101,7 +108,7 @@ public class PointAndClickInteractable : MonoBehaviour
 class PointAndClickEncounter
 {
     public string Knot;
-    public string Note;
+    public Note Note;
 }
 
 public interface IInteractable

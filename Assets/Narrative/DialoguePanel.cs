@@ -59,6 +59,8 @@ public class DialoguePanel : MonoBehaviour
         scrawling = false;
         scrawlSpeed = defaultScrawlSpeed;
 
+        CharacterArt.enabled = false;
+
         inkStory = new Story(inkAsset.text);
         //StartConversation("core_start");
         Debug.Log(knot);
@@ -133,7 +135,11 @@ public class DialoguePanel : MonoBehaviour
 
                             if (sprite != null)
                             {
-                                CharacterArt.sprite = character.GetSprite(sprite);
+                                if (CharacterArt.enabled == false)
+                                {
+                                    CharacterArt.enabled = true;
+                                    CharacterArt.sprite = character.GetSprite(sprite);
+                                }
                             }
                         }
                     }
