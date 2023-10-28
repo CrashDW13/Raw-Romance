@@ -6,11 +6,11 @@ using UnityEngine.UI;
 using Ink.Runtime;
 using System;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class DialoguePanel : MonoBehaviour
 {
     private StoryStateHandler stateHandler;
-    private bool isInRewindMode = false;
     private bool preventAutoSave = false;
 
     [Header("Characters")]
@@ -50,8 +50,6 @@ public class DialoguePanel : MonoBehaviour
 
     private void Start()
     {
-        SoundManager.instance.PlayBGM("rainandthunderBGM");
-
         waitTimeSeconds = defaultWaitTimeSeconds;
         
         CharacterName.text = "";
@@ -63,7 +61,6 @@ public class DialoguePanel : MonoBehaviour
         CharacterArt.enabled = false;
 
         inkStory = new Story(inkAsset.text);
-        //StartConversation("core_start");
         Debug.Log(knot);
 
         stateHandler = new StoryStateHandler(inkStory);
@@ -99,59 +96,55 @@ public class DialoguePanel : MonoBehaviour
         List<string> tags = inkStory.currentTags;
         foreach (string tag in tags)
         {
-            //if (!isInRewindMode || (isInRewindMode && tag == "saveState"))
-            //{
-                if (tag.Contains("Speaker"))
+            if (tag.Contains("Speaker"))
+            {
+                string tagData = tag.Substring(tag.IndexOf(":") + 1);
+                string[] info = tagData.Split(",");
+
+                string name = info[0];
+                string sprite = null;
+
+                if (info.Length > 1)
                 {
-                    string tagData = tag.Substring(tag.IndexOf(":") + 1);
-                    string[] info = tagData.Split(",");
+                    sprite = info[1];
+                    Debug.Log(sprite);
+                }
 
-                    string name = info[0];
-                    string sprite = null;
+                foreach (Character character in characterDB.Characters)
+                {
+                    string[] charTags = character.characterTag.Split(":");
+                    bool isChar = false;
 
-                    Debug.Log(info[0]);
-
-                    if (info.Length > 1)
+                    foreach (string s in charTags)
                     {
-                        sprite = info[1];
-                        Debug.Log(sprite);
+                        if (s == name)
+                        {
+                            isChar = true;
+                        }
                     }
 
-                    foreach (Character character in characterDB.Characters)
+                    if (isChar)
                     {
-                        string[] charTags = character.characterTag.Split(":");
-                        bool isChar = false;
+                        CharacterName.text = character.characterName;
 
-                        foreach (string s in charTags)
+                        if (sprite != null)
                         {
-                            if (s == name)
+                            if (CharacterArt.enabled == false)
                             {
-                                isChar = true;
-                            } 
-                        }
-
-                        if (isChar)
-                        {
-                            CharacterName.text = character.characterName;
-
-                            if (sprite != null)
-                            {
-                                if (CharacterArt.enabled == false)
-                                {
-                                    CharacterArt.enabled = true;
-                                    CharacterArt.sprite = character.GetSprite(sprite);
-                                }
+                                CharacterArt.enabled = true;
+                                CharacterArt.sprite = character.GetSprite(sprite);
                             }
                         }
                     }
-                //}
+                }
+
             }
         }
 
         Debug.Log("Starting coroutine");
         textCoroutine = StartCoroutine(ScrawlText(line));
-        
     }
+
     IEnumerator ScrawlText(string line)
     {
         scrawling = true;
@@ -227,6 +220,12 @@ public class DialoguePanel : MonoBehaviour
         else if (!inkStory.canContinue && !scrawling && inkStory.currentChoices.Count == 0)
         {
             //GameManager.Instance.CloseDialogue(this);
+            var interactables = FindObjectsOfType<MonoBehaviour>().OfType<IInteractable>();
+            foreach (IInteractable interactable in interactables)
+            {
+                interactable.Unfreeze();
+            }
+
             Destroy(gameObject);
         }
     }
