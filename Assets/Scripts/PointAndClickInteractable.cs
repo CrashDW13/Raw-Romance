@@ -4,11 +4,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PointAndClickInteractable : MonoBehaviour
+public class PointAndClickInteractable : MonoBehaviour, IFreezable
 {
     private bool selected;
     private float easeScaleTimer = 0;
     private float easeScaleLength = 3f;
+    private bool canInteract = true; 
 
     private int encounterIndex = 0;
 
@@ -19,15 +20,17 @@ public class PointAndClickInteractable : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        selected = true;
+        if (canInteract) selected = true;
     }
 
     private void OnMouseOver()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            SpawnDialoguePanel();
+           if (canInteract) SpawnDialoguePanel();
         }
+
+        if (!canInteract) selected = false;
     }
 
     private void OnMouseExit()
@@ -102,6 +105,16 @@ public class PointAndClickInteractable : MonoBehaviour
             encounterIndex++;
         }
     }
+
+    public void Freeze()
+    {
+        canInteract = false;
+    }
+
+    public void Unfreeze()
+    {
+        canInteract = true;
+    }
 }
 
 [System.Serializable]
@@ -109,10 +122,4 @@ class PointAndClickEncounter
 {
     public string Knot;
     public Note Note;
-}
-
-public interface IInteractable
-{
-    public void Freeze();
-    public void Unfreeze();
 }

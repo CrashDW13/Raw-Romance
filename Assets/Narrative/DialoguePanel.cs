@@ -77,6 +77,12 @@ public class DialoguePanel : MonoBehaviour
     
 
         ShowLine(inkStory.Continue());
+
+        var interactables = FindObjectsOfType<MonoBehaviour>().OfType<IFreezable>();
+        foreach (IFreezable interactable in interactables)
+        {
+            interactable.Freeze();
+        }
     }
 
     private void Update()
@@ -220,8 +226,8 @@ public class DialoguePanel : MonoBehaviour
         else if (!inkStory.canContinue && !scrawling && inkStory.currentChoices.Count == 0)
         {
             //GameManager.Instance.CloseDialogue(this);
-            var interactables = FindObjectsOfType<MonoBehaviour>().OfType<IInteractable>();
-            foreach (IInteractable interactable in interactables)
+            var interactables = FindObjectsOfType<MonoBehaviour>().OfType<IFreezable>();
+            foreach (IFreezable interactable in interactables)
             {
                 interactable.Unfreeze();
             }
@@ -341,9 +347,7 @@ public class DialoguePanel : MonoBehaviour
 
         StopCoroutine(textCoroutine); // Stop any ongoing dialogue scrawling
 
-        isInRewindMode = true;
         preventAutoSave = true; // Set the flag to prevent the next save
-        isInRewindMode = false;
 
         SanityHandler.UpdateSanity(sanityPenalty);
         ChoicePanel.ClearAll(); //  Clears all choice panels. 
