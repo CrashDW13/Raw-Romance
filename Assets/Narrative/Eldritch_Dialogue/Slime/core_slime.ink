@@ -4,6 +4,7 @@ EXTERNAL saveState(knot)
 EXTERNAL waitNextLine(delaySeconds)
 EXTERNAL lose()
 EXTERNAL win()
+VAR lieTold = false
 
 
 ->core_start
@@ -88,11 +89,12 @@ EXTERNAL win()
 
 
 === lie_str ===
+
 "A liar."
 ~saveState("lie_str")
 "I like liars."
 "Though I do hope you'll be truthful enough to answer my next question."
-
+~lieTold = true
 -> core_cont
 
 
@@ -381,19 +383,23 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 
 
 === atone ===
+//if lie = true 
+// ->atone_lie
+{not lieTold} ->lie_death
 "A truly clean conscience."
 "How admirable."
 "I hope is stays that way during your time here."
 "Good luck."
 -> core_live
 //IF PLAYER LIES DURING CHAPT 1 LETS HAVE THEM DIE HERE
-/*LIE dialogue
+
+===lie_death===
 "And yet, I find that hard to believe."
 "All you have is your word, and you've already shown the lack of weight it holds."
 "I said I liked liars."
 "What I meant was I like how they taste."
--> core_end
-*/
+-> core_death
+
 
 
 === reparations ===
