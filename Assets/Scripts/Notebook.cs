@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -31,8 +32,6 @@ public class Notebook : MonoBehaviour
     private void Start()
     {
         Debug.Log(tabs[0].Notes[0].GetContents());
-
-
         UpdateCurrentNote();
     }
 

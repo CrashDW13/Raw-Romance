@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class NotesManager : MonoBehaviour
+public class NotesManager : MonoBehaviour, IFreezable
 {
     private static List<Tab> tabs = new List<Tab>();
     private static int currentTab = 0;
     private static int currentNote = 0;
+
+    private bool canInteract = true;
 
     [SerializeField] private GameObject notebookPrefab;
     private Notebook notebook; 
@@ -28,7 +31,7 @@ public class NotesManager : MonoBehaviour
     private void Update()
     {
         //debug
-        if (Input.GetKeyDown(KeyCode.N))
+        if (Input.GetKeyDown(KeyCode.N) && canInteract)
         {
             ToggleNotebook();
         }
@@ -69,6 +72,15 @@ public class NotesManager : MonoBehaviour
         rectTransform.localScale = new Vector3(1f, 1f, 1);
 
         notebook.Show();
+
+        var interactables = FindObjectsOfType<MonoBehaviour>().OfType<IFreezable>();
+        foreach (IFreezable interactable in interactables)
+        {
+            if (interactable != this.GetComponent<IFreezable>()) 
+            {
+                interactable.Freeze();
+            }
+        }
     }
 
     private void HideNotebook()
@@ -77,11 +89,31 @@ public class NotesManager : MonoBehaviour
         //notebook.Leave();
         Destroy(notebook.gameObject);
         notebook = null;
+
+        var interactables = FindObjectsOfType<MonoBehaviour>().OfType<IFreezable>();
+        foreach (IFreezable interactable in interactables)
+        {
+            if (interactable != this.GetComponent<IFreezable>())
+            {
+                interactable.Unfreeze();
+            }
+        }
     }
 
     public static List<Tab> GetNotes()
     {
         return tabs;
+    }
+
+    public void Freeze()
+    {
+        canInteract = false;
+        if (notebook != null) Destroy(notebook.gameObject);
+    }
+
+    public void Unfreeze()
+    {
+        canInteract = true; 
     }
 }
 
