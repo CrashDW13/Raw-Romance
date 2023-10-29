@@ -240,34 +240,42 @@ public class DialoguePanel : MonoBehaviour
     {
         Debug.Log(character + ": " + value);
     }
+    private Dictionary<string, Vector3> positionPresets = new Dictionary<string, Vector3>()
+    {
+        { "top-right", new Vector3(4, 3, 0) },
+        { "top-left", new Vector3(-4, 3, 0) },
+        { "bottom-right", new Vector3(4, 0, 0) },
+        { "bottom-left", new Vector3(-4, 0, 0) },
+        { "middle", new Vector3(0, 0, 0) },
+        { "middle-right", new Vector3(4, 1.5, 0) },
+        { "middle-left", new Vector3(-4, 1.5, 0) },
+        { "middle-top", new Vector3(0, 3, 0) },
+        { "middle-bottom", new Vector3(0, -1, 0) },
+        { "mop-left", new Vector3(-4, 2, 0) },
+        { "mop-right", new Vector3(-4, 2, 0) },
+        { "middle-mop", new Vector3(0, 2, 0) },
+    
+
+        
+    };
 
     void SpawnChoice(string message, string knot, float time, string positionPreset)
     {
-        Vector3 position;
         Debug.Log(positionPreset);
 
-        //TO-DO: Post-prototype, this should be handled in its own function. 
-        switch(positionPreset)
+        Vector3 position;
+        if (positionPresets.TryGetValue(positionPreset, out position))
         {
-            case "top-right":
-                position = new Vector3(4, 3, 0);
-                break;
-            case "top-left":
-                position = new Vector3(-4, 3, 0);
-                break;
-            case "bottom-right":
-                position = new Vector3(4, 0, 0);
-                break;
-            case "bottom-left":
-                position = new Vector3(-4, 0, 0);
-                break;
-            default:
-                position = Vector3.zero;
-                break;
+          
+            ChoicePanel.Instantiate(choicePrefab, Camera.main.WorldToScreenPoint(position), transform.rotation, message, knot, time);
         }
-
-        ChoicePanel.Instantiate(choicePrefab, Camera.main.WorldToScreenPoint(position), transform.rotation, message, knot, time);
+        else
+        {
+            Debug.LogError($"Position preset '{positionPreset}' not found.");
+          
+        }
     }
+
 
     public void ForcePath(string path)
     {
