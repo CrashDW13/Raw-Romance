@@ -138,6 +138,7 @@ VAR lieTold = false
 ...
 "What a shame."
 "Your comprehension seems to have disappeared."
+->intro_death
 
 
 === y ===
@@ -158,6 +159,7 @@ VAR lieTold = false
 The monster stands, slowly outstretching its arms as it leans over towards you. You feel its cold hands touch your face, liquid slowly engulfing your lungs as your vision darkens.
 # lose
 ~lose()
+
 
 
 === intro_cont ===
@@ -836,7 +838,6 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 The monster stands, walking towards a rotting wooden door. It pushes it open, a candlelit hallway greeting you from the other side.
 # win
 ~win()
-"yarrr"
 
 
 
@@ -845,4 +846,3 @@ You flinch as the monster reaches over the table, the slime cool as it engulfs y
 The last thing you see is it towering over you, your lungs filling with the thick liquid as you fall to the ground.
 # lose
 ~lose()
-"yeek"
