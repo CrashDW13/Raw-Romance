@@ -39,7 +39,7 @@ public class LevelLoader : MonoBehaviour
 
         else
         {
-            Debug.LogError("Animator not found.");
+            Debug.LogError("Animator not found in Transition object, aborting.");
         }
 
     }
@@ -53,11 +53,5 @@ public class LevelLoader : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-
-    private void Start()
-    {
-        StartCoroutine(Load("TestTransition", "TempWinScreen"));
-
     }
 }

@@ -7,6 +7,7 @@ using Ink.Runtime;
 using System;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using Unity.VisualScripting.Dependencies.Sqlite;
 
 public class DialoguePanel : MonoBehaviour
 {
@@ -48,6 +49,8 @@ public class DialoguePanel : MonoBehaviour
     private bool scrawling;
     private float scrawlSpeed;
 
+    private bool auto = false;
+
     private void Start()
     {
         waitTimeSeconds = defaultWaitTimeSeconds;
@@ -85,13 +88,9 @@ public class DialoguePanel : MonoBehaviour
         }
     }
 
-    private void Update()
+    public void StartConversation(TextAsset inkAssetToLoad, string knotToLoad, bool auto = false)
     {
-
-    }
-
-    public void StartConversation(TextAsset inkAssetToLoad, string knotToLoad)
-    {
+        this.auto = auto; 
         inkAsset = inkAssetToLoad;
         knot = knotToLoad;
     }
