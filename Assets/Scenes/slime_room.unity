@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 619898761}
   - component: {fileID: 619898760}
   - component: {fileID: 619898762}
+  - component: {fileID: 619898763}
   m_Layer: 0
   m_Name: Lamp_placeholder
   m_TagString: Untagged
@@ -224,7 +225,22 @@ MonoBehaviour:
   inkAsset: {fileID: 4900000, guid: 3cd52c88c94de134eb0e289a41ac1196, type: 3}
   encounters:
   - Knot: lighting
-    Note: 
+    Note:
+      title: 
+      contents: 
+--- !u!65 &619898763
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619898759}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.78, y: 1.85, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &906416591
 GameObject:
   m_ObjectHideFlags: 0
@@ -324,7 +340,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialoguePanelPrefab: {fileID: 3164346195282623393, guid: 928959dc829c0ea4dae836e4dcf2ead6, type: 3}
   inkAsset: {fileID: 4900000, guid: 3cd52c88c94de134eb0e289a41ac1196, type: 3}
-  encounters: []
+  encounters:
+  - Knot: portrait
+    Note:
+      title: Rich Richardson's Portrait
+      contents: A dusty painting from 1936 of the homeowner, Rich Richardson
 --- !u!1 &947297229
 GameObject:
   m_ObjectHideFlags: 0
@@ -420,6 +440,7 @@ GameObject:
   - component: {fileID: 1036125349}
   - component: {fileID: 1036125348}
   - component: {fileID: 1036125350}
+  - component: {fileID: 1036125351}
   m_Layer: 0
   m_Name: Display_case_placeholder
   m_TagString: Untagged
@@ -509,8 +530,24 @@ MonoBehaviour:
   dialoguePanelPrefab: {fileID: 3164346195282623393, guid: 928959dc829c0ea4dae836e4dcf2ead6, type: 3}
   inkAsset: {fileID: 4900000, guid: 3cd52c88c94de134eb0e289a41ac1196, type: 3}
   encounters:
-  - Knot: 
-    Note: 
+  - Knot: display
+    Note:
+      title: Lady Justice
+      contents: There was a bronze Lady Justice statuette in the display cabinet.
+        It's still in good condition.
+--- !u!65 &1036125351
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1036125347}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.26, y: 3.83, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1120151476
 GameObject:
   m_ObjectHideFlags: 0
@@ -613,7 +650,9 @@ MonoBehaviour:
   inkAsset: {fileID: 4900000, guid: 3cd52c88c94de134eb0e289a41ac1196, type: 3}
   encounters:
   - Knot: armchair
-    Note: 
+    Note:
+      title: 
+      contents: 
 --- !u!65 &1120151480
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -810,7 +849,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialoguePanelPrefab: {fileID: 3164346195282623393, guid: 928959dc829c0ea4dae836e4dcf2ead6, type: 3}
   inkAsset: {fileID: 4900000, guid: 3cd52c88c94de134eb0e289a41ac1196, type: 3}
-  encounters: []
+  encounters:
+  - Knot: fireplace
+    Note:
+      title: 
+      contents: 
 --- !u!1 &1907427211
 GameObject:
   m_ObjectHideFlags: 0
@@ -822,6 +865,7 @@ GameObject:
   - component: {fileID: 1907427213}
   - component: {fileID: 1907427212}
   - component: {fileID: 1907427214}
+  - component: {fileID: 1907427215}
   m_Layer: 0
   m_Name: Door_placeholder
   m_TagString: Untagged
@@ -910,7 +954,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialoguePanelPrefab: {fileID: 3164346195282623393, guid: 928959dc829c0ea4dae836e4dcf2ead6, type: 3}
   inkAsset: {fileID: 4900000, guid: 3cd52c88c94de134eb0e289a41ac1196, type: 3}
-  encounters: []
+  encounters:
+  - Knot: door
+    Note:
+      title: 
+      contents: 
+--- !u!65 &1907427215
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1907427211}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.18, y: 4.08, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1907960027
 GameObject:
   m_ObjectHideFlags: 0
@@ -1013,7 +1074,9 @@ MonoBehaviour:
   inkAsset: {fileID: 4900000, guid: 3cd52c88c94de134eb0e289a41ac1196, type: 3}
   encounters:
   - Knot: sidetable
-    Note: 
+    Note:
+      title: 
+      contents: 
 --- !u!65 &1907960031
 BoxCollider:
   m_ObjectHideFlags: 0
