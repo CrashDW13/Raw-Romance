@@ -221,7 +221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialoguePanelPrefab: {fileID: 3164346195282623393, guid: 928959dc829c0ea4dae836e4dcf2ead6, type: 3}
-  inkAsset: {fileID: 0}
+  inkAsset: {fileID: 4900000, guid: 3cd52c88c94de134eb0e289a41ac1196, type: 3}
   encounters: []
 --- !u!1 &119178964
 GameObject:
@@ -321,7 +321,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialoguePanelPrefab: {fileID: 3164346195282623393, guid: 928959dc829c0ea4dae836e4dcf2ead6, type: 3}
-  inkAsset: {fileID: 0}
+  inkAsset: {fileID: 4900000, guid: 3cd52c88c94de134eb0e289a41ac1196, type: 3}
   encounters: []
 --- !u!1 &658229120
 GameObject:
@@ -421,7 +421,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialoguePanelPrefab: {fileID: 3164346195282623393, guid: 928959dc829c0ea4dae836e4dcf2ead6, type: 3}
-  inkAsset: {fileID: 0}
+  inkAsset: {fileID: 4900000, guid: 3cd52c88c94de134eb0e289a41ac1196, type: 3}
   encounters: []
 --- !u!1 &1015848884
 GameObject:
@@ -521,7 +521,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialoguePanelPrefab: {fileID: 3164346195282623393, guid: 928959dc829c0ea4dae836e4dcf2ead6, type: 3}
-  inkAsset: {fileID: 0}
+  inkAsset: {fileID: 4900000, guid: 3cd52c88c94de134eb0e289a41ac1196, type: 3}
   encounters: []
 --- !u!1 &1283819800
 GameObject:
