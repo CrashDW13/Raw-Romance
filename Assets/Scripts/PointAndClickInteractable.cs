@@ -4,11 +4,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PointAndClickInteractable : MonoBehaviour
+public class PointAndClickInteractable : MonoBehaviour, IFreezable
 {
     private bool selected;
     private float easeScaleTimer = 0;
     private float easeScaleLength = 3f;
+    private bool canInteract = true; 
 
     private int encounterIndex = 0;
 
@@ -19,15 +20,17 @@ public class PointAndClickInteractable : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        selected = true;
+        if (canInteract) selected = true;
     }
 
     private void OnMouseOver()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            SpawnDialoguePanel();
+           if (canInteract) SpawnDialoguePanel();
         }
+
+        if (!canInteract) selected = false;
     }
 
     private void OnMouseExit()
@@ -89,11 +92,28 @@ public class PointAndClickInteractable : MonoBehaviour
 
         if (panel.TryGetComponent(out DialoguePanel dialoguePanel))
         {
-
-            dialoguePanel.StartConversation(inkAsset, encounters[0].Knot);
+            dialoguePanel.StartConversation(inkAsset, encounters[encounterIndex].Knot);
         }
 
-        
+        if (encounters[encounterIndex].Note.GetTitle() != "")
+        {
+            NotesManager.AddNote(encounters[encounterIndex].Note);
+        }
+
+        if (encounterIndex <  encounters.Length - 1)
+        {
+            encounterIndex++;
+        }
+    }
+
+    public void Freeze()
+    {
+        canInteract = false;
+    }
+
+    public void Unfreeze()
+    {
+        canInteract = true;
     }
 }
 
@@ -101,11 +121,5 @@ public class PointAndClickInteractable : MonoBehaviour
 class PointAndClickEncounter
 {
     public string Knot;
-    public string Note;
-}
-
-public interface IInteractable
-{
-    public void Freeze();
-    public void Unfreeze();
+    public Note Note;
 }
