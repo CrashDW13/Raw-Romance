@@ -221,7 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ef0c32989c59594490c57c06c81e12f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialoguePanelPrefab: {fileID: 0}
+  dialoguePanelPrefab: {fileID: 3164346195282623393, guid: 928959dc829c0ea4dae836e4dcf2ead6, type: 3}
   inkAsset: {fileID: 4900000, guid: 3cd52c88c94de134eb0e289a41ac1196, type: 3}
   encounters:
   - Knot: lighting
@@ -252,6 +252,7 @@ GameObject:
   - component: {fileID: 906416593}
   - component: {fileID: 906416592}
   - component: {fileID: 906416594}
+  - component: {fileID: 906416595}
   m_Layer: 0
   m_Name: painting_placeholder
   m_TagString: Untagged
@@ -345,6 +346,19 @@ MonoBehaviour:
     Note:
       title: Rich Richardson's Portrait
       contents: A dusty painting from 1936 of the homeowner, Rich Richardson
+--- !u!65 &906416595
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 906416591}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.26, y: 3.83, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &947297229
 GameObject:
   m_ObjectHideFlags: 0
@@ -508,7 +522,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1036125347}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.165225, y: -0.5691765, z: 0}
+  m_LocalPosition: {x: 5.165225, y: -0.5691765, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -761,6 +775,7 @@ GameObject:
   - component: {fileID: 1551628221}
   - component: {fileID: 1551628220}
   - component: {fileID: 1551628222}
+  - component: {fileID: 1551628223}
   m_Layer: 0
   m_Name: Fireplace_placeholder
   m_TagString: Untagged
@@ -854,6 +869,19 @@ MonoBehaviour:
     Note:
       title: 
       contents: 
+--- !u!65 &1551628223
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551628219}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.15, y: 4.58, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1907427211
 GameObject:
   m_ObjectHideFlags: 0
