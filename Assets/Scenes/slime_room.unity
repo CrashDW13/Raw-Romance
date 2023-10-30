@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 619898761}
   - component: {fileID: 619898760}
+  - component: {fileID: 619898762}
   m_Layer: 0
   m_Name: Lamp_placeholder
   m_TagString: Untagged
@@ -207,6 +208,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &619898762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619898759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef0c32989c59594490c57c06c81e12f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialoguePanelPrefab: {fileID: 0}
+  inkAsset: {fileID: 4900000, guid: 3cd52c88c94de134eb0e289a41ac1196, type: 3}
+  encounters:
+  - Knot: lighting
+    Note: 
 --- !u!1 &906416591
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,6 +235,7 @@ GameObject:
   m_Component:
   - component: {fileID: 906416593}
   - component: {fileID: 906416592}
+  - component: {fileID: 906416594}
   m_Layer: 0
   m_Name: painting_placeholder
   m_TagString: Untagged
@@ -291,6 +310,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &906416594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 906416591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef0c32989c59594490c57c06c81e12f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialoguePanelPrefab: {fileID: 3164346195282623393, guid: 928959dc829c0ea4dae836e4dcf2ead6, type: 3}
+  inkAsset: {fileID: 4900000, guid: 3cd52c88c94de134eb0e289a41ac1196, type: 3}
+  encounters: []
 --- !u!1 &947297229
 GameObject:
   m_ObjectHideFlags: 0
@@ -385,6 +419,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1036125349}
   - component: {fileID: 1036125348}
+  - component: {fileID: 1036125350}
   m_Layer: 0
   m_Name: Display_case_placeholder
   m_TagString: Untagged
@@ -459,6 +494,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1036125350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1036125347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef0c32989c59594490c57c06c81e12f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialoguePanelPrefab: {fileID: 3164346195282623393, guid: 928959dc829c0ea4dae836e4dcf2ead6, type: 3}
+  inkAsset: {fileID: 4900000, guid: 3cd52c88c94de134eb0e289a41ac1196, type: 3}
+  encounters:
+  - Knot: 
+    Note: 
 --- !u!1 &1120151476
 GameObject:
   m_ObjectHideFlags: 0
@@ -469,6 +521,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1120151478}
   - component: {fileID: 1120151477}
+  - component: {fileID: 1120151479}
+  - component: {fileID: 1120151480}
   m_Layer: 0
   m_Name: Couch_placeholder
   m_TagString: Untagged
@@ -543,6 +597,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1120151479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1120151476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef0c32989c59594490c57c06c81e12f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialoguePanelPrefab: {fileID: 3164346195282623393, guid: 928959dc829c0ea4dae836e4dcf2ead6, type: 3}
+  inkAsset: {fileID: 4900000, guid: 3cd52c88c94de134eb0e289a41ac1196, type: 3}
+  encounters:
+  - Knot: armchair
+    Note: 
+--- !u!65 &1120151480
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1120151476}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.38, y: 3.49, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1359887502
 GameObject:
   m_ObjectHideFlags: 0
@@ -637,6 +721,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1551628221}
   - component: {fileID: 1551628220}
+  - component: {fileID: 1551628222}
   m_Layer: 0
   m_Name: Fireplace_placeholder
   m_TagString: Untagged
@@ -711,6 +796,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1551628222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551628219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef0c32989c59594490c57c06c81e12f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialoguePanelPrefab: {fileID: 3164346195282623393, guid: 928959dc829c0ea4dae836e4dcf2ead6, type: 3}
+  inkAsset: {fileID: 4900000, guid: 3cd52c88c94de134eb0e289a41ac1196, type: 3}
+  encounters: []
 --- !u!1 &1907427211
 GameObject:
   m_ObjectHideFlags: 0
@@ -721,6 +821,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1907427213}
   - component: {fileID: 1907427212}
+  - component: {fileID: 1907427214}
   m_Layer: 0
   m_Name: Door_placeholder
   m_TagString: Untagged
@@ -795,6 +896,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1907427214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1907427211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef0c32989c59594490c57c06c81e12f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialoguePanelPrefab: {fileID: 3164346195282623393, guid: 928959dc829c0ea4dae836e4dcf2ead6, type: 3}
+  inkAsset: {fileID: 4900000, guid: 3cd52c88c94de134eb0e289a41ac1196, type: 3}
+  encounters: []
 --- !u!1 &1907960027
 GameObject:
   m_ObjectHideFlags: 0
@@ -805,6 +921,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1907960029}
   - component: {fileID: 1907960028}
+  - component: {fileID: 1907960030}
+  - component: {fileID: 1907960031}
   m_Layer: 0
   m_Name: Side_table_placeholder
   m_TagString: Untagged
@@ -872,10 +990,40 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1907960027}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.86, y: -1.78, z: 0}
+  m_LocalPosition: {x: -2.65, y: -1.75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1907960030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1907960027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef0c32989c59594490c57c06c81e12f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialoguePanelPrefab: {fileID: 3164346195282623393, guid: 928959dc829c0ea4dae836e4dcf2ead6, type: 3}
+  inkAsset: {fileID: 4900000, guid: 3cd52c88c94de134eb0e289a41ac1196, type: 3}
+  encounters:
+  - Knot: sidetable
+    Note: 
+--- !u!65 &1907960031
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1907960027}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.49, y: 1.85, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
