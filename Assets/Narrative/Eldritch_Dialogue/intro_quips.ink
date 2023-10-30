@@ -44,6 +44,7 @@ Flip through the journal?
 It's a dusty painting.
 The plaque underneath it reads "Rich Richardson, 1936"
 "Beloved father, businessman, and homeowner."
+~richard = true
 
 === portrait_know ===
 It's a dusty painting.
@@ -82,3 +83,17 @@ A few sentences stick out to you.
 'Creepy books don't usually lead to good things.'
 ->END
 
+
+=== armchair ===
+The leather is peeling, and there's a dark and wet puddle in the middle of the chair.
+You think you see it move.
+->END
+
+
+=== lighting ===
+The shades are covered in cobwebs and mold.
+->END
+
+=== fireplace ===
+The bricks are warm, but there's only charcoal inside.
+->END
