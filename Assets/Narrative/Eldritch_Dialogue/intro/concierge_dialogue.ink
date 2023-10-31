@@ -1,5 +1,9 @@
 //self convo
-
+EXTERNAL spawnChoice(message, knot, time, positionPreset)
+EXTERNAL saveState(knot)
+EXTERNAL waitNextLine(delaySeconds)
+EXTERNAL lose()
+EXTERNAL win()
 //concierge
 
 ->meet_conc
@@ -15,8 +19,9 @@
 "But, nevermind that."
 "You've crossed the threshold, so there's no turning back for you now."
 "Are you ready?"
-+ ["Yes"] -> red_str
-+ ["No"] -> unfortunate
+~spawnChoice("Yes","red_str","10","top-left")
+~spawnChoice("No","unfortunate","10","top-right")
+
 "..."
 "..."
 "Perhaps not."
@@ -29,11 +34,12 @@
 "..."
 "Please, say something."
 "I don't enjoy people staring at me."
-+ ["Something"] ->ha
-+ ["Sorry"] -> thank
-...
+~spawnChoice("Something","ha","10","bottom-left")
+~spawnChoice("Yes","thank","10","bottom-right")
+"..."
+~waitNextLine(1000)
 //HOLD HERE AND FORCE PLAYER TO REPLY
-
+"..."
 === thank ===
 "Thank you."
 ->ready
@@ -61,9 +67,10 @@
 "Some are more easily agitated than others."
 "And most importantly, your life will be on the line with each monster you meet."
 "Do you understand?"
-+ [Yes] -> enter
-+ [No] ->rep_ready
-
+~spawnChoice("Yes","enter","10","middle-left")
+~spawnChoice("No","rep_ready","10","middle-right")
+~waitNextLine(1000)
+"..."
 
 
 === unfortunate ===
@@ -90,7 +97,8 @@
 "Should you choose to inspect and make note of something, make sure to press 'N' to see what you've written down."
 "And please, don't drop your pen on the floor."
 "There will be no food or refreshments inside, so I hope you've come with a satiated appetite."
-+ [Why?] ->why
+~spawnChoice("Why?", "why","10","middle")
+
 "Once you meet an inhabitant you cannot leave unless they allow you to leave."
 "They tend to monologue, and some enjoy the interjection while others want to be heard in full." 
 "Pick your responses carefully; if you take too long, your response will no longer be relavent and you will not be able to reply with the options you were provided."
@@ -98,8 +106,11 @@
 "Sometimes not responding is beneficial. Other times, it can be to your detriment."
 "And most importantly, your life will be on the line with each inhabitant you meet."
 "Do you understand?"
-+ [Yes] -> enter
-+ [No] ->rep_ag
+~spawnChoice("Yes","enter","10","middle-left")
+~spawnChoice("No","rep_ag","10","middle-right")
+~waitNextLine(1000)
+"..."
+
 
 
 === rep_ag ===
