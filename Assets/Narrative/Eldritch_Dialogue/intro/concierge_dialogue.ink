@@ -40,6 +40,8 @@ EXTERNAL win()
 ~waitNextLine(1000)
 //HOLD HERE AND FORCE PLAYER TO REPLY
 "..."
+
+
 === thank ===
 "Thank you."
 ->ready
@@ -54,25 +56,6 @@ EXTERNAL win()
 ->ready
 
 
-=== ready ===
-"Before you go in, we have some rules. Listen carefully."
-"You can touch, inspect, and ignore the items and furniture in the property, but you cannot take anything with you."
-"The estate must remain as it is."
-"I see you have a notebook with you - should you choose to inspect and make note of something make sure to press 'N' to see what you've written down."
-"And please, don't drop your pen on the floor."
-"There will be no food or refreshments inside, so I hope you've come with a satiated appetite."
-"Once you meet an inhabitant you cannot leave unless they allow you to leave."
-"They tend to monologue, and some enjoy the interjection while others want to be heard in full." 
-"Pick your responses carefully, as once they are no longer relavent to the conversation they will disappear."
-"Some are more easily agitated than others."
-"And most importantly, your life will be on the line with each monster you meet."
-"Do you understand?"
-~spawnChoice("Yes","enter","10","middle-left")
-~spawnChoice("No","rep_ready","10","middle-right")
-~waitNextLine(1000)
-"..."
-
-
 === unfortunate ===
 "Oh my."
 "Unfortunately you've already passed through the gates, so leaving is no longer an option."
@@ -80,17 +63,29 @@ EXTERNAL win()
 ->ready
 
 
-=== enter ===
-"Good."
-"It is time I take my leave."
-"Make sure to hold onto your notepad tightly."
-"Things are known to get lost in the fray."
-->END
+=== ready ===
+"Before you go in, we have some rules. Listen carefully."
+"You can touch, inspect, and ignore the items and furniture in the property, but you cannot take anything with you."
+"The estate must remain as it is."
+"I see you have a notebook with you - should you choose to inspect and make note of something make sure to press 'N' to see what you've written down."
+"And please, don't drop your pen on the floor."
+"There will be no food or refreshments inside, so I hope you've come with a satiated appetite."
+~spawnChoice("Why?", "why","10","middle")
+"Once you meet an inhabitant you cannot leave unless they allow you to leave."
+"They tend to monologue, and some enjoy the interjection while others want to be heard in full." 
+"Pick your responses carefully; if you take too long, your response will no longer be relavent and you will not be able to reply with the options you were provided."
+//REMOVE WHY HERE
+"Sometimes not responding is beneficial. Other times, it can be to your detriment."
+"And most importantly, your life will be on the line with each inhabitant you meet."
+"If you feel your life is in danger, you can 'PLEAD' to go back to the last key point in the conversation."
+"Come, give it a try."
+//PLEAD OPTION HERE
+//GO TO plead
 
 
 
 === rep_ready ===
-"I will repeat myself once more."
+"Understood."
 "Listen carefully, because I will not repeat myself again."
 "You can touch, inspect, and ignore the items and furniture in the property, but you cannot take anything with you."
 "The estate must remain as it was and as it is."
@@ -98,27 +93,17 @@ EXTERNAL win()
 "And please, don't drop your pen on the floor."
 "There will be no food or refreshments inside, so I hope you've come with a satiated appetite."
 ~spawnChoice("Why?", "why","10","middle")
-
 "Once you meet an inhabitant you cannot leave unless they allow you to leave."
 "They tend to monologue, and some enjoy the interjection while others want to be heard in full." 
 "Pick your responses carefully; if you take too long, your response will no longer be relavent and you will not be able to reply with the options you were provided."
 //REMOVE WHY HERE
 "Sometimes not responding is beneficial. Other times, it can be to your detriment."
 "And most importantly, your life will be on the line with each inhabitant you meet."
-"Do you understand?"
-~spawnChoice("Yes","enter","10","middle-left")
-~spawnChoice("No","rep_ag","10","middle-right")
-~waitNextLine(1000)
-"..."
+"If you feel your life is in danger, you can 'PLEAD' to go back to the last key point in the conversation."
+"Come, give it a try."
 
-
-
-=== rep_ag ===
-"Too bad."
-"It is time for you to enter."
-"Good luck, and keep a tight grip on that notepad of yours."
-"Things are known to get lost in the fray."
-->END
+//PLEAD APPEARS HERE
+//GO TO plead_ag
 
 
 === why ===
@@ -127,15 +112,60 @@ EXTERNAL win()
 "I want to make sure you understand the gravity of the situation you are about to enter."
 ->again
 
+
+
 === again ===
 "Once you meet an inhabitant you cannot leave unless they allow you to leave."
 "They tend to monologue, and some enjoy the interjection while others want to be heard in full." 
 "Pick your responses carefully; if you take too long, your response will no longer be relavent and you will not be able to reply with the options you were provided."
 "Sometimes not responding is beneficial. Other times, it can be to your detriment."
 "And most importantly, your life will be on the line with each inhabitant you meet."
+"If you feel your life is in danger, you can 'PLEAD' to go back to the last key point in the conversation."
+"Come, give it a try."
+///PLEAD HERE
+//GO TO 'plead'
+
+
+
+=== plead ===
+"Good job; when you 'PLEAD' in practice, the inhabitant will repeat themselves."
+"You can do this anytime during the conversation, but it comes with a cost: each time you 'PLEAD' you will lose sanity."
+"As you get closer to insanity, your responses will reflect that."
+"Be wise when you plead - you don't want to find yourself saying things you don't understand."
+"Do you understand?"
+~spawnChoice("Yes","enter","10","middle-left")
+~spawnChoice("No","rep_ready","10","middle-right")
+~waitNextLine(1000)
 "..."
-"I hope you are ready, as it is time for me to take my leave."
+
+
+
+
+=== plead_ag ===
+"Good job; when you 'PLEAD' in practice, the inhabitant will repeat themselves."
+"You can do this anytime during the conversation, but it comes with a cost: each time you 'PLEAD' you will lose sanity."
+"As you get closer to insanity, your responses will reflect that."
+"Be wise when you plead - you don't want to find yourself saying things you don't understand."
+"Now, it is time for you to begin."
 "Good luck, and keep your notepoad close."
 "Things are known to get lost in the fray."
 ->END
+
+
+
+=== enter ===
+"Good."
+"Keep your notepad close; things are known to get lost in the fray."
+"Best of luck; hopefully you'll see the sun again."
+
+
+
+
+
+
+
+
+
+
+
 
