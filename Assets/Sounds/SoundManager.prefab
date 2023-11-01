@@ -52,14 +52,14 @@ MonoBehaviour:
   sfxPrefab: {fileID: 3795628080844316605, guid: 60e9d5656d1c7b044bc758579c14c608, type: 3}
   sfxEntries:
   - clipName: choiceclick
-    clip: {fileID: 8300000, guid: ba87a1ce3af4be34f842d4c7b6870bfa, type: 3}
+    clip: {fileID: 8300000, guid: 1edac1836acea44bfba4e41789c18b05, type: 3}
     volume: 0.968
   - clipName: hedges
     clip: {fileID: 8300000, guid: 13cdc43b43574416b96d1d4729d07c3c, type: 3}
     volume: 0.897
   - clipName: placard
     clip: {fileID: 8300000, guid: 65053e3e3c9d442db9e43f43b73994e3, type: 3}
-    volume: 0.966
+    volume: 0.794
   - clipName: irongate
     clip: {fileID: 8300000, guid: 44b6fad08175a4fef8910e2c7c07bd25, type: 3}
     volume: 0.245
@@ -69,3 +69,6 @@ MonoBehaviour:
   - clipName: irongatetemp
     clip: {fileID: 8300000, guid: de0ec7348325244778ba9eb732344d19, type: 3}
     volume: 0.851
+  - clipName: blip
+    clip: {fileID: 8300000, guid: 4ecead44102534a15850183df38dd3b1, type: 3}
+    volume: 0.434
