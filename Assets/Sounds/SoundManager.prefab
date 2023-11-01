@@ -66,3 +66,6 @@ MonoBehaviour:
   - clipName: sanityrefill
     clip: {fileID: 8300000, guid: 13fbcd4980a714efaadd088dd156f304, type: 3}
     volume: 0.79
+  - clipName: irongatetemp
+    clip: {fileID: 8300000, guid: de0ec7348325244778ba9eb732344d19, type: 3}
+    volume: 0.711

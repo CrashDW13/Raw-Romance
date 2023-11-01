@@ -13,6 +13,7 @@ VAR richard = false
 'Welp...'
 'This looks creepy enough to be the right place.'
 'Time to go in.'
+~doPlaySFX("irongatetemp")
 ~sceneTransition("TestTransition", "Courtyard")
 
 === courtyard ===
@@ -20,6 +21,7 @@ VAR richard = false
 ->END
 
 === bushes ===
+~doPlaySFX("hedges")
 The bushes look like they could use some TLC.
 ->END
 
@@ -28,6 +30,7 @@ The bushes look like they could use some TLC.
 ->END
 
 === placard ===
+~doPlaySFX("placard")
 "Rich Richardson." 
 'Who would name their child that?'
 ~richard = true 
