@@ -133,6 +133,7 @@ public class DialoguePanel : MonoBehaviour
 
                 foreach (Character character in characterDB.Characters)
                 {
+             
                     string[] charTags = character.characterTag.Split(":");
                     bool isChar = false;
 
@@ -178,7 +179,12 @@ public class DialoguePanel : MonoBehaviour
         int i = 0;
         while (i < line.Length)
         {
+            
             DialogueBox.text += line[i];
+            if (i % 5 == 0){
+
+                SoundManager.instance.PlaySFX("blip");
+            }
             i++;
 
             yield return new WaitForSeconds(0.05f / scrawlSpeed);
