@@ -1,4 +1,5 @@
 
+EXTERNAL sceneTransition(transition, sceneName)
 ->entrance
 
 VAR richard = false
@@ -12,13 +13,15 @@ Time to go in.
 === entrance_gate ===
 (I grabbed the door handles and gave them a few forceful tugs.)
 (With a little elbow grease, the iron gate swung open...)
+~sceneTransition("TestTransition", "Courtyard")
+->END
 
 === courtyard ===
-Yeesh... This place could use a facelift.
+(Yeesh... This place could use a facelift.)
 ->END
 
 === bushes ===
-The bushes look like they could use some TLC.
+(The bushes look like they could use some TLC.)
 ->END
 
 === fountain ===
