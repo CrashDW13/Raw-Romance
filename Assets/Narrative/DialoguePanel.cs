@@ -190,8 +190,9 @@ public class DialoguePanel : MonoBehaviour
         {
             if (inkStory.currentChoices.Count > 0)
             {
+                Debug.Log("Show choices");
                 ShowChoices();
-                StartCoroutine(Advance());
+                //StartCoroutine(Advance());
             }
 
             else
@@ -202,7 +203,18 @@ public class DialoguePanel : MonoBehaviour
 
         else
         {
-            ContinueObject.SetActive(true);
+            if (inkStory.currentChoices.Count > 0)
+            {
+                Debug.Log("Show choices");
+                ShowChoices();
+                //StartCoroutine(Advance());
+            }
+
+            else
+            {
+                ContinueObject.SetActive(true);
+
+            }
         }
     }
 
@@ -231,18 +243,25 @@ public class DialoguePanel : MonoBehaviour
     {
         inkStory.ChooseChoiceIndex((int)choice);
 
+        foreach (Transform choiceTransform in ChoiceParent.transform)
+        {
+            choiceTransform.gameObject.SetActive(false);
+        }
+
+        ChoiceParent.SetActive(false);
+
         ShowLine(inkStory.Continue());
     }
 
     public void AdvanceImmediate()
     {
-        if (inkStory.canContinue && !scrawling)
+        if (inkStory.canContinue && !scrawling && inkStory.currentChoices.Count == 0)
         {
             ShowLine(inkStory.Continue());
         }
         else if (!inkStory.canContinue && !scrawling && inkStory.currentChoices.Count > 0)
         {
-            //SelectChoice();
+            ShowChoices();
         }
         else if (!inkStory.canContinue && !scrawling && inkStory.currentChoices.Count == 0)
         {
@@ -269,7 +288,7 @@ public class DialoguePanel : MonoBehaviour
         }
         else if (!inkStory.canContinue && !scrawling && inkStory.currentChoices.Count > 0)
         {
-            //SelectChoice();
+            ShowChoices();
         }
         else if (!inkStory.canContinue && !scrawling && inkStory.currentChoices.Count == 0)
         {
