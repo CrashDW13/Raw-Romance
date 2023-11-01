@@ -1,30 +1,36 @@
 
+EXTERNAL sceneTransition(transition, sceneName)
 ->entrance
 
 VAR richard = false
 
 === entrance ===
-'Welp...'
-'This looks creepy enough to be the right place.'
-'Time to go in.'
+Welp...
+This looks creepy enough to be the right place.
+Time to go in.
+->END
+
+=== entrance_gate ===
+(I grabbed the door handles and gave them a few forceful tugs.)
+(With a little elbow grease, the iron gate swung open...)
+~sceneTransition("TestTransition", "Courtyard")
 ->END
 
 === courtyard ===
-'Yeesh... This place could use a facelift.'
+(Yeesh... This place could use a facelift.)
 ->END
 
 === bushes ===
-The bushes look like they could use some TLC.
+(The bushes look like they could use some TLC.)
 ->END
 
 === fountain ===
-'I wonder who's paying the water bill.'
+I wonder who's paying the water bill.
 ->END
 
 === placard ===
-"Rich Richardson." 
-'Who would name their child that?'
-~richard = true 
+'Rich Richardson.' Who would name their child that?
+~richard = true
 ->END
 
 
@@ -64,7 +70,7 @@ Inside you see a bronze statue of Lady Justice.
 === door ===
 Ready to see what lies ahead?
     *[Yes] //SEND PLAYER TO CORE_SLIME
-    
+
     *[No]->END
 
 === snoop ===

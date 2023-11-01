@@ -4,6 +4,7 @@ EXTERNAL saveState(knot)
 EXTERNAL waitNextLine(delaySeconds)
 EXTERNAL lose()
 EXTERNAL win()
+EXTERNAL doPlaySFX(soundName)
 VAR lieTold = false
 
 
@@ -11,17 +12,16 @@ VAR lieTold = false
 
 === core_start ===
 ~saveState("core_start")
-
 ~spawnChoice("Hi.", "welc", 10, "top-left")
 ~spawnChoice("Hello?", "welc", 10, "top-right")
-~waitNextLine(5)
+~waitNextLine(6)
 ...
 ...
 
 //remove greet options here
 "Why are you here?"
-~spawnChoice("I'm looking for someone.", "looking", 10, "top-left")
-~spawnChoice("That's none of your business.", "no_bis", 10, "top-right")
+~spawnChoice("I'm looking for someone.", "looking", 10, "bottom-left")
+~spawnChoice("That's none of your business.", "no_bis", 10, "bottom-right")
 ...
 
 ...
@@ -39,8 +39,8 @@ VAR lieTold = false
 ~saveState("welc_rpt")
 "You must be naive if you've come here of your own free will."
 "Or unfortunate, if you're here against your wishes."
-~spawnChoice("I chose to be here.", "chose", 10, "top-left")
-~spawnChoice("You think I want to be here?", "lie_str", 10, "top-right")
+~spawnChoice("I chose to be here.", "chose", 10, "middle-left")
+~spawnChoice("You think I want to be here?", "lie_str", 10, "middle-right")
 ...
 "So, which is it?"
 ...
@@ -62,8 +62,8 @@ VAR lieTold = false
 "You must be naive if you've come here of your own free will."
 "Or unfortunate, if you're here against your wishes."
 ~saveState("welc")
-~spawnChoice("I chose to be here.", "chose", 10, "top-left")
-~spawnChoice("You think I want to be here?", "lie_str", 10, "top-right")
+~spawnChoice("I chose to be here.", "chose", 10, "middle-left")
+~spawnChoice("You think I want to be here?", "lie_str", 10, "middle-right")
 ...
 "So, which is it?"
 ...
@@ -179,8 +179,8 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 ...
 "Now; do you know what your worst lie is?"
 ~saveState("start_rpt")
-~spawnChoice("Yes", "know", 15, "top-left")
-~spawnChoice("No", "dont_know", 15, "top-right")
+~spawnChoice("Yes", "know", 15, "mop-left")
+~spawnChoice("No", "dont_know", 15, "mop-right")
 "The one that came with the most consequences?"
 // options that appear
 
@@ -204,8 +204,8 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 "Reminder that I do not take silence as a satisfactory answer."
 ...
 "Now; do you know what your worst lie is?"
-~spawnChoice("Yes", "know", 15, "top-left")
-~spawnChoice("No", "dont_know", 15, "top-right")
+~spawnChoice("Yes", "know", 15, "mop-left")
+~spawnChoice("No", "dont_know", 15, "mop-right")
 "The one that came with the most consequences?"
 // options that appear
 
@@ -237,7 +237,7 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 
 "Or would you describe it as a monster in the corner, completely forgotten until you're in bed and the lights are off."
 "Staring at you with a smile and cocked head as you try to sleep."
-~spawnChoice("I try not to think about it", "avoid", 10, "top-right")
+~spawnChoice("I try not to think about it", "avoid", 10, "bottom-right")
 
 "Or maybe, it grips at your throat when you think of it."
 "And you cannot speak or move."
@@ -267,12 +267,12 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 //remove peace option here
 "Or maybe it's a jacket during the transition from summer to autumn: a little too warm, but taking it off would leave you vulnerable to the consequences of the elements."
 
-~spawnChoice("I'm still haunted by it.", "haunted", 10, "top-right")
+~spawnChoice("I'm still haunted by it.", "haunted", 10, "top-left")
 
 "Or would you describe it as a monster in the corner, completely forgotten until you're in bed and the lights are off."
 "Staring at you with a smile and cocked head as you try to sleep."
 
-~spawnChoice("I try not to think about it", "avoid", 10, "top-right")
+~spawnChoice("I try not to think about it", "avoid", 10, "bottom-right")
 
 "Or maybe, it grips at your throat when you think of it."
 "And you cannot speak or move."
@@ -300,7 +300,7 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 ...
 "Tell me, was your lie victimless?"
 
-~spawnChoice("Yes", "a_victim", 10, "top-right")
+~spawnChoice("Yes", "a_victim", 10, "middle-right")
 
 "Without consequence?"
 "And thus, your conscience has remained clean?"
@@ -344,7 +344,7 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 ...
 "Tell me, was your lie victimless?"
 
-~spawnChoice("Yes", "a_victim", 10, "top-right")
+~spawnChoice("Yes", "a_victim", 10, "middle-right")
 
 "Without consequence?"
 "And thus, your conscience has remained clean?"
@@ -413,17 +413,17 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 "If you're around for such a short time, why bother with reparations."
 "Do you agree?"
 
-~spawnChoice("It's not like it matters", "a_victim", 10, "top-left")
+~spawnChoice("It's not like it matters", "a_victim", 10, "middle-left")
 
 "Nobody will remember it come the next century, so what's the point?"
 "There's also the possibility you haven't gathered the courage to correct the record."
 
-~spawnChoice("It's daunting, correcting the record", "courage", 10, "top-right")
+~spawnChoice("It's daunting, correcting the record", "courage", 10, "middle")
 
 "Or, have you run out of time?"
 "Unable to correct it even if you tried."
 "Which is it?"
-~spawnChoice("I ran out of time", "no_time", 10, "bottom-left")
+~spawnChoice("I ran out of time", "no_time", 10, "middle-right")
 
 "Both options are disheartening, to say the least."
 "Though, one does offer a path forward."
@@ -455,17 +455,17 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 "If you're around for such a short time, why bother with reparations."
 "Do you agree?"
 
-~spawnChoice("It's not like it matters", "a_victim", 10, "top-left")
+~spawnChoice("It's not like it matters", "a_victim", 10, "middle-left")
 
 "Nobody will remember it come the next century, so what's the point?"
 "There's also the possibility you haven't gathered the courage to correct the record."
 
-~spawnChoice("It's daunting, correcting the record", "courage", 10, "top-right")
+~spawnChoice("It's daunting, correcting the record", "courage", 10, "middle")
 
 "Or, have you run out of time?"
 "Unable to correct it even if you tried."
 "Which is it?"
-~spawnChoice("I ran out of time", "no_time", 10, "bottom-left")
+~spawnChoice("I ran out of time", "no_time", 10, "middle-right")
 
 "Both options are disheartening, to say the least."
 "Though, one does offer a path forward."
@@ -527,12 +527,12 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 "Your lives are so short, and it seems many of you never find the courage to reconcile."
 "It must be exhausting, carrying it with you everywhere you go."
 "Do you hope to make peace with it?"
-~spawnChoice("I want to move past it", "want", 10, "top-left")
+~spawnChoice("I want to move past it", "want", 10, "bottom-left")
 
 "Develop means to alleviate the weight on your shoulders."
 "Or perhaps you're yet to realize you have a choice in the matter."
 "I assure you, you do."
-~spawnChoice("I don't know if I can move past it", "courage", 10, "top-right")
+~spawnChoice("I don't know if I can move past it", "courage", 10, "bottom-right")
 
 "Strange, how many of you I've met that either believe they can control everything or nothing."
 "The former is amusing, the latter disheartening."
@@ -541,7 +541,7 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 //want to move past option disappear here
 "Will you feed into your companion?"
 "Or find the courage to help yourself?"
-~spawnChoice("I don't know.", "freeze", 10, "top-left")
+~spawnChoice("I don't know.", "freeze", 10, "middle")
 ...
 //dk if can move past option disappear here
 ...
@@ -566,12 +566,12 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 "Your lives are so short, and it seems many of you never find the courage to reconcile."
 "It must be exhausting, carrying it with you everywhere you go."
 "Do you hope to make peace with it?"
-~spawnChoice("I want to move past it", "want", 10, "top-left")
+~spawnChoice("I want to move past it", "want", 10, "bottom-left")
 
 "Develop means to alleviate the weight on your shoulders."
 "Or perhaps you're yet to realize you have a choice in the matter."
 "I assure you, you do."
-~spawnChoice("I don't know if I can move past it", "courage", 10, "top-right")
+~spawnChoice("I don't know if I can move past it", "courage", 10, "bottom-right")
 
 "Strange, how many of you I've met that either believe they can control everything or nothing."
 "The former is amusing, the latter disheartening."
@@ -580,7 +580,7 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 //want to move past option disappear here
 "Will you feed into your companion?"
 "Or find the courage to help yourself?"
-~spawnChoice("I don't know.", "freeze", 10, "top-left")
+~spawnChoice("I don't know.", "freeze", 10, "middle")
 ...
 //dk if can move past option disappear here
 ...
@@ -630,7 +630,7 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 "How cute."
 "Do you think you'll come out from under the covers one day?"
 "Move past it?"
-~spawnChoice("I want to", "want", 10, "top-right")
+~spawnChoice("I want to", "want", 10, "middle")
 
 "Find a path where you no longer need to hide from the monster in your closet?"
 "Or do you plan to stay under the covers?"
@@ -652,7 +652,7 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 "How cute."
 "Do you think you'll come out from under the covers one day?"
 "Move past it?"
-~spawnChoice("I want to", "want", 10, "top-right")
+~spawnChoice("I want to", "want", 10, "middle")
 
 "Find a path where you no longer need to hide from the monster in your closet?"
 "Or do you plan to stay under the covers?"
@@ -670,19 +670,19 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 "Understandable. Many would like to forget their wrongdoings."
 ~saveState("dont_know_rpt")
 "Especially the worst of them."
-~spawnChoice("I think I have one.", "know", 10, "top-left")
+~spawnChoice("I think I have one.", "know", 10, "mop-left")
 
 "Ignoring it until it goes away, like a mosquito bite."
 "Or crawls into bed and talks until sunrise."
 "Like a little pet."
-~spawnChoice("I'm having trouble picking the worst", "trouble", 10, "top-right")
+~spawnChoice("I'm having trouble picking the worst", "trouble", 10, "mop-right")
 
 "Or perhaps, a parasite?"
 "Following you around, no matter how hard you try to get rid of it."
 //think I have one option disappear here
 "Have you even tried to get rid of it?"
 "Address the unwanetd companion?"
-~spawnChoice("I really can't think of anything", "none", 10, "top-left")
+~spawnChoice("I really can't think of anything", "none", 10, "middle")
 
 "Or do you just ignore it."
 "Sit in silence, like you are currently."
@@ -697,19 +697,19 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 "Do you have a different answer for me now?"
 "I understand that many would like to forget their wrongdoings."
 "Especially the worst of them."
-~spawnChoice("I think I have one.", "know", 10, "top-left")
+~spawnChoice("I think I have one.", "know", 10, "mop-left")
 
 "Ignoring it until it goes away, like a mosquito bite."
 "Or crawls into bed and talks until sunrise."
 "Like a little pet."
-~spawnChoice("I'm having trouble picking the worst", "trouble", 10, "top-right")
+~spawnChoice("I'm having trouble picking the worst", "trouble", 10, "mop-right")
 
 "Or perhaps, a parasite?"
 "Following you around, no matter how hard you try to get rid of it."
 //think I have one option disappear here
 "Have you even tried to get rid of it?"
 "Address the unwanetd companion?"
-~spawnChoice("I really can't think of anything", "none", 10, "top-left")
+~spawnChoice("I really can't think of anything", "none", 10, "middle")
 
 "Or do you just ignore it."
 "Sit in silence, like you are currently."
@@ -732,7 +732,7 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 "Told someone their hair looked good when it didn't?"
 
 //know lie option disappear here
-~spawnChoice("That's not what I meant", "no_mean", 10, "top-left")
+~spawnChoice("That's not what I meant", "no_mean", 10, "bottom-left")
 
 "Or said sorry and didn't mean it?"
 //no lie option disappear Here
@@ -764,7 +764,7 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 "Told someone their hair looked good when it didn't?"
 
 //know lie option disappear here
-~spawnChoice("That's not what I meant", "no_mean", 10, "top-left")
+~spawnChoice("That's not what I meant", "no_mean", 10, "bottom-left")
 
 "Or said sorry and didn't mean it?"
 //no lie option disappear Here
@@ -781,7 +781,7 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 
 === no_mean ===
 "Ah, but that means you must know what your worst lie is, now."
-~spawnChoice("Yes, I do", "know", 10, "top-right")
+~spawnChoice("Yes, I do", "know", 10, "middle")
 
 "So, will you tell me?"
 "Divulge a secret?"

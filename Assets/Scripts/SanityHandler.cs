@@ -34,7 +34,11 @@ public class SanityHandler : MonoBehaviour
 
     public static void UpdateSanity(float change)
     {
-        sanity = Mathf.Clamp(sanity + change, 0, maxSanity); 
+        if (change> 0){
+            SoundManager.instance.PlaySFX("sanityrefill");
+        }
+        sanity = Mathf.Clamp(sanity + change, 0, maxSanity);
+     
     }
 
     public static float GetSanity()

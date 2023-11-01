@@ -260,6 +260,7 @@ GameObject:
   - component: {fileID: 368555780}
   - component: {fileID: 368555779}
   - component: {fileID: 368555778}
+  - component: {fileID: 368555781}
   m_Layer: 0
   m_Name: Gate_handle_placeholder
   m_TagString: Untagged
@@ -282,7 +283,7 @@ MonoBehaviour:
   dialoguePanelPrefab: {fileID: 3164346195282623393, guid: 928959dc829c0ea4dae836e4dcf2ead6, type: 3}
   inkAsset: {fileID: 4900000, guid: 3cd52c88c94de134eb0e289a41ac1196, type: 3}
   encounters:
-  - Knot: 
+  - Knot: entrance_gate
     Note:
       title: 
       contents: 
@@ -353,6 +354,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &368555781
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368555777}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.26, y: 3.02, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &513331137
 GameObject:
   m_ObjectHideFlags: 0
