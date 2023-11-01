@@ -1,9 +1,12 @@
 
 ->entrance
-
+EXTERNAL doPlaySFX(soundName)
+EXTERNAL doPlayBGM(bgmsoundName)
+EXTERNAL StopBGM(bgmsoundName)
 VAR richard = false
 
 === entrance ===
+~doPlayBGM("rainBGM")
 'Welp...'
 'This looks creepy enough to be the right place.'
 'Time to go in.'
