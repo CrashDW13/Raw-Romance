@@ -9,6 +9,10 @@ This looks creepy enough to be the right place.
 Time to go in.
 ->END
 
+=== entrance_gate ===
+(I grabbed the door handles and gave them a few forceful tugs.)
+(With a little elbow grease, the iron gate swung open...)
+
 === courtyard ===
 Yeesh... This place could use a facelift.
 ->END
@@ -23,7 +27,7 @@ I wonder who's paying the water bill.
 
 === placard ===
 'Rich Richardson.' Who would name their child that?
-~richard = true 
+~richard = true
 ->END
 
 
@@ -63,7 +67,7 @@ Inside you see a bronze statue of Lady Justice.
 === door ===
 Ready to see what lies ahead?
     *[Yes] //SEND PLAYER TO CORE_SLIME
-    
+
     *[No]->END
 
 === snoop ===
