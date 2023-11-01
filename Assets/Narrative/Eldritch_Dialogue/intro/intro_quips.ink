@@ -1,27 +1,26 @@
 
-EXTERNAL sceneTransition(transition, sceneName)
 ->entrance
-
+EXTERNAL doPlaySFX(soundName)
+EXTERNAL doPlayBGM(bgmsoundName)
+EXTERNAL StopBGM(bgmsoundName)
+EXTERNAL spawnChoice(message, knot, time, positionPreset)
+EXTERNAL slimeScene()
+EXTERNAL sceneTransition(transitionPreset, sceneName)
 VAR richard = false
 
 === entrance ===
-Welp...
-This looks creepy enough to be the right place.
-Time to go in.
-->END
-
-=== entrance_gate ===
-(I grabbed the door handles and gave them a few forceful tugs.)
-(With a little elbow grease, the iron gate swung open...)
+~doPlayBGM("rainBGM")
+'Welp...'
+'This looks creepy enough to be the right place.'
+'Time to go in.'
 ~sceneTransition("TestTransition", "Courtyard")
-->END
 
 === courtyard ===
-(Yeesh... This place could use a facelift.)
+'Yeesh... This place could use a facelift.'
 ->END
 
 === bushes ===
-(The bushes look like they could use some TLC.)
+The bushes look like they could use some TLC.
 ->END
 
 === fountain ===
@@ -29,7 +28,8 @@ Time to go in.
 ->END
 
 === placard ===
-('Rich Richardson.' Who would name their child that?)
+("Rich Richardson.")
+("Who would name their child that?")
 ~richard = true
 ->END
 
@@ -73,9 +73,8 @@ Time to go in.
 
 
 === door ===
-(Ready to see what lies ahead?)
-    *[Yes] //SEND PLAYER TO CORE_SLIME
-
+Ready to see what lies ahead?
+    *[Yes]->go
     *[No]->END
 
 === snoop ===
@@ -109,3 +108,9 @@ The shades are covered in cobwebs and mold.
 === fireplace ===
 The bricks are warm, but there's only charcoal inside.
 ->END
+
+
+=== go ===
+You push against the decaying wood, the doors swinging open.
+~sceneTransition("TestTransition", "Ink Test Scene")
+
