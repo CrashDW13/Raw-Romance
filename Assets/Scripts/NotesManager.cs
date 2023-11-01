@@ -21,6 +21,11 @@ public class NotesManager : MonoBehaviour, IFreezable
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
+
+        if (FindObjectsOfType<NotesManager>().Length > 1)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void Start()

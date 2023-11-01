@@ -93,7 +93,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
+  m_fontSize: 51.8
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -153,7 +153,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2608248974505334706
 RectTransform:
   m_ObjectHideFlags: 0
@@ -362,7 +362,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
+  m_fontSize: 51.8
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -422,7 +422,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3164346193641160332
 RectTransform:
   m_ObjectHideFlags: 0
@@ -441,8 +441,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -60.985, y: -15}
-  m_SizeDelta: {x: 30, y: 30}
+  m_AnchoredPosition: {x: 124, y: 27}
+  m_SizeDelta: {x: 88.0681, y: 88.068}
   m_Pivot: {x: 1, y: 0}
 --- !u!222 &3164346193641160335
 CanvasRenderer:
@@ -528,7 +528,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3164346195282623395}
         m_TargetAssemblyTypeName: DialoguePanel, Assembly-CSharp
-        m_MethodName: Advance
+        m_MethodName: AdvanceImmediate
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1082,6 +1082,8 @@ MonoBehaviour:
   Background: {fileID: 3164346193883149978}
   CharacterArt: {fileID: 3164346195632978403}
   choicePrefab: {fileID: 7537198020764234369, guid: b86626b67eee7514bb7dfbba682d0585, type: 3}
+  ChoiceParent: {fileID: 5296868654276201782}
+  ContinueObject: {fileID: 3164346193641160323}
   CharacterName: {fileID: 3164346193688165490}
   DialogueBox: {fileID: 3164346194430367000}
   defaultScrawlSpeed: 1
