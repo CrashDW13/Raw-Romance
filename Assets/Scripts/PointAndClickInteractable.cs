@@ -14,10 +14,18 @@ public class PointAndClickInteractable : MonoBehaviour, IFreezable
 
     private int encounterIndex = 0;
 
+    private Renderer renderer;
+
     [SerializeField] private GameObject dialoguePanelPrefab;
     [Space(10)]
     [SerializeField] private TextAsset inkAsset;
     [SerializeField] private PointAndClickEncounter[] encounters;
+
+
+    private void Start()
+    {
+        renderer = GetComponent<Renderer>();
+    }
 
     private void OnMouseEnter()
     {
@@ -48,9 +56,8 @@ public class PointAndClickInteractable : MonoBehaviour, IFreezable
                 EasingFunction.Ease ease = EasingFunction.Ease.EaseOutQuad;
                 EasingFunction.Function func = EasingFunction.GetEasingFunction(ease);
 
-                float value = func(1, 1.2f, easeScaleTimer);
-                transform.localScale = new Vector3(value, value, 1);
-
+                float value = func(0f, 1f, easeScaleTimer);
+                renderer.material.color = Color.Lerp(Color.white, Color.gray, value);
                 easeScaleTimer += easeScaleLength * Time.deltaTime;
             }
         }
@@ -62,9 +69,8 @@ public class PointAndClickInteractable : MonoBehaviour, IFreezable
                 EasingFunction.Ease ease = EasingFunction.Ease.EaseInQuad;
                 EasingFunction.Function func = EasingFunction.GetEasingFunction(ease);
 
-                float value = func(1f, 1.2f, easeScaleTimer);
-                transform.localScale = new Vector3(value, value, 1);
-
+                float value = func(1f, 0f, easeScaleTimer);
+                renderer.material.color = Color.Lerp(Color.gray, Color.white, value);
                 easeScaleTimer -= easeScaleLength * Time.deltaTime;
             }
         }
