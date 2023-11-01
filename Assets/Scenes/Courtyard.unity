@@ -133,8 +133,8 @@ GameObject:
   m_Component:
   - component: {fileID: 74782704}
   - component: {fileID: 74782703}
-  - component: {fileID: 74782705}
   - component: {fileID: 74782706}
+  - component: {fileID: 74782705}
   m_Layer: 0
   m_Name: Fountain_placeholder
   m_TagString: Untagged
@@ -223,13 +223,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialoguePanelPrefab: {fileID: 3164346195282623393, guid: 928959dc829c0ea4dae836e4dcf2ead6, type: 3}
   inkAsset: {fileID: 4900000, guid: 3cd52c88c94de134eb0e289a41ac1196, type: 3}
-  encounters:
-  - Knot: fountain
-    Note:
-      title: 
-      contents: 
---- !u!65 &74782706
-BoxCollider:
+  encounters: []
+--- !u!136 &74782706
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -238,9 +234,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 9.99, y: 7.41, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 3.3993132
+  m_Height: 6.7986264
+  m_Direction: 0
+  m_Center: {x: -0.0000037311183, y: 0.0000002870091, z: 0}
 --- !u!1 &119178964
 GameObject:
   m_ObjectHideFlags: 0
@@ -1010,7 +1007,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1899363654}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.58, z: 0}
+  m_LocalPosition: {x: 0, y: 0.58, z: 1}
   m_LocalScale: {x: 0.93, y: 0.93, z: 0.93}
   m_ConstrainProportionsScale: 0
   m_Children: []

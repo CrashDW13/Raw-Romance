@@ -283,7 +283,7 @@ MonoBehaviour:
   dialoguePanelPrefab: {fileID: 3164346195282623393, guid: 928959dc829c0ea4dae836e4dcf2ead6, type: 3}
   inkAsset: {fileID: 4900000, guid: 3cd52c88c94de134eb0e289a41ac1196, type: 3}
   encounters:
-  - Knot: entrance_gate
+  - Knot: entrance
     Note:
       title: 
       contents: 
