@@ -25,14 +25,19 @@ Time to go in.
 ->END
 
 === fountain ===
-I wonder who's paying the water bill.
+(I wonder who's paying the water bill.)
 ->END
 
 === placard ===
-'Rich Richardson.' Who would name their child that?
+('Rich Richardson.' Who would name their child that?)
 ~richard = true
 ->END
 
+=== advance_to_door ===
+(Just beyond this fountain is the mansion.)
+(Nowhere to go but forward...)
+~sceneTransition("TestTransition", "concierge")
+->END
 
 
 //SLIME ROOM
@@ -40,35 +45,35 @@ I wonder who's paying the water bill.
 
 
 === sidetable ===
-It's a rotting sidetable with a leather journal resting on top.
-Flip through the journal?
+(It's a rotting sidetable with a leather journal resting on top.)
+(Flip through the journal?)
     * [Yes] ->snoop
     * [No] ->no_snoop
 
 
 === portrait ===
 {richard} -> portrait_know
-It's a dusty painting.
-The plaque underneath it reads "Rich Richardson, 1936"
-"Beloved father, businessman, and homeowner."
+(It's a dusty painting.)
+(The plaque underneath it reads "Rich Richardson, 1936")
+("Beloved father, businessman, and homeowner.")
 ~richard = true
 
 === portrait_know ===
-It's a dusty painting.
-The plaque underneath it reads "Rich Richardson, 1936"
-"Beloved father, businessman, and homeowner."
-'Now I can put a name to the face.'
+(It's a dusty painting.)
+(The plaque underneath it reads "Rich Richardson, 1936")
+("Beloved father, businessman, and homeowner.")
+(Now I can put a name to the face.)
 ->END
 
 
 === display ===
-A coud of dust erupts as you swipe your hand across the display case.
-Inside you see a bronze statue of Lady Justice.
+(A cloud of dust erupts as you swipe your hand across the display case.)
+(Inside you see a bronze statue of Lady Justice.)
 ->END
 
 
 === door ===
-Ready to see what lies ahead?
+(Ready to see what lies ahead?)
     *[Yes] //SEND PLAYER TO CORE_SLIME
 
     *[No]->END

@@ -57,6 +57,7 @@ public class DialoguePanel : MonoBehaviour
     private void Start()
     {
         waitTimeSeconds = defaultWaitTimeSeconds;
+        characterDB = FindObjectOfType<CharacterDatabase>();
         
         CharacterName.text = "";
         DialogueBox.text = "";

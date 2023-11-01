@@ -12,6 +12,7 @@ EXTERNAL win()
 'It's... a ghost?'
 'Strange; there were only ever murmurs of monsters, never ghosts.'
 //GHOST SPRITE ELNARGE, GET CLOSER; WAIT FOR SPRITE TO ENLARGE
+#Speaker:con,def
 "Welcome to my estate."
 "I hope you made preparations for your disappearance."
 "It's ineviatable, really."
@@ -72,7 +73,7 @@ EXTERNAL win()
 "There will be no food or refreshments inside, so I hope you've come with a satiated appetite."
 ~spawnChoice("Why?", "why","10","middle")
 "Once you meet an inhabitant you cannot leave unless they allow you to leave."
-"They tend to monologue, and some enjoy the interjection while others want to be heard in full." 
+"They tend to monologue, and some enjoy the interjection while others want to be heard in full."
 "Pick your responses carefully; if you take too long, your response will no longer be relavent and you will not be able to reply with the options you were provided."
 //REMOVE WHY HERE
 "Sometimes not responding is beneficial. Other times, it can be to your detriment."
@@ -94,7 +95,7 @@ EXTERNAL win()
 "There will be no food or refreshments inside, so I hope you've come with a satiated appetite."
 ~spawnChoice("Why?", "why","10","middle")
 "Once you meet an inhabitant you cannot leave unless they allow you to leave."
-"They tend to monologue, and some enjoy the interjection while others want to be heard in full." 
+"They tend to monologue, and some enjoy the interjection while others want to be heard in full."
 "Pick your responses carefully; if you take too long, your response will no longer be relavent and you will not be able to reply with the options you were provided."
 //REMOVE WHY HERE
 "Sometimes not responding is beneficial. Other times, it can be to your detriment."
@@ -116,7 +117,7 @@ EXTERNAL win()
 
 === again ===
 "Once you meet an inhabitant you cannot leave unless they allow you to leave."
-"They tend to monologue, and some enjoy the interjection while others want to be heard in full." 
+"They tend to monologue, and some enjoy the interjection while others want to be heard in full."
 "Pick your responses carefully; if you take too long, your response will no longer be relavent and you will not be able to reply with the options you were provided."
 "Sometimes not responding is beneficial. Other times, it can be to your detriment."
 "And most importantly, your life will be on the line with each inhabitant you meet."
@@ -157,15 +158,3 @@ EXTERNAL win()
 "Good."
 "Keep your notepad close; things are known to get lost in the fray."
 "Best of luck; hopefully you'll see the sun again."
-
-
-
-
-
-
-
-
-
-
-
-
