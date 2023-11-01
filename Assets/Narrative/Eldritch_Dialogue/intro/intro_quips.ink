@@ -3,6 +3,9 @@
 EXTERNAL doPlaySFX(soundName)
 EXTERNAL doPlayBGM(bgmsoundName)
 EXTERNAL StopBGM(bgmsoundName)
+EXTERNAL spawnChoice(message, knot, time, positionPreset)
+EXTERNAL slimeScene()
+EXTERNAL sceneTransition(transitionPreset, sceneName)
 VAR richard = false
 
 === entrance ===
@@ -10,7 +13,7 @@ VAR richard = false
 'Welp...'
 'This looks creepy enough to be the right place.'
 'Time to go in.'
-->END
+~sceneTransition("TestTransition", "Courtyard")
 
 === courtyard ===
 'Yeesh... This place could use a facelift.'
@@ -30,6 +33,9 @@ The bushes look like they could use some TLC.
 ~richard = true 
 ->END
 
+=== leaveCourtyard ===
+'Time to get a move on.'
+~sceneTransition("TestTransition", "concierge")
 
 
 //SLIME ROOM
@@ -66,8 +72,7 @@ Inside you see a bronze statue of Lady Justice.
 
 === door ===
 Ready to see what lies ahead?
-    *[Yes] //SEND PLAYER TO CORE_SLIME
-    
+    *[Yes]->go
     *[No]->END
 
 === snoop ===
@@ -101,3 +106,9 @@ The shades are covered in cobwebs and mold.
 === fireplace ===
 The bricks are warm, but there's only charcoal inside.
 ->END
+
+
+=== go ===
+You push against the decaying wood, the doors swinging open.
+~sceneTransition("TestTransition", "Ink Test Scene")
+
