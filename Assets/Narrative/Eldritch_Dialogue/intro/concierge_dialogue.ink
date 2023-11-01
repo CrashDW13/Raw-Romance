@@ -12,6 +12,7 @@ EXTERNAL win()
 'It's... a ghost?'
 'Strange; there were only ever murmurs of monsters, never ghosts.'
 //GHOST SPRITE ELNARGE, GET CLOSER; WAIT FOR SPRITE TO ENLARGE
+#Speaker:con,def
 "Welcome to my estate."
 "I hope you made preparations for your disappearance."
 "It's ineviatable, really."
@@ -19,8 +20,8 @@ EXTERNAL win()
 "But, nevermind that."
 "You've crossed the threshold, so there's no turning back for you now."
 "Are you ready?"
-~spawnChoice("Yes","red_str","10","top-left")
-~spawnChoice("No","unfortunate","10","top-right")
+~spawnChoice("Yes","red_str",20,"top-left")
+~spawnChoice("No","unfortunate",20,"top-right")
 
 "..."
 "..."
@@ -34,14 +35,12 @@ EXTERNAL win()
 "..."
 "Please, say something."
 "I don't enjoy people staring at me."
-~spawnChoice("Something","ha","10","bottom-left")
-~spawnChoice("Yes","thank","10","bottom-right")
-"..."
-~waitNextLine(1000)
-//HOLD HERE AND FORCE PLAYER TO REPLY
++ ["Something."] -> ha
++ ["Yeah."] -> thank
 "..."
 
-
+//~spawnChoice("Something","ha",10,"bottom-left")
+//~spawnChoice("Yes","thank",10,"bottom-right")
 === thank ===
 "Thank you."
 ->ready
@@ -72,7 +71,7 @@ EXTERNAL win()
 "There will be no food or refreshments inside, so I hope you've come with a satiated appetite."
 ~spawnChoice("Why?", "why","10","middle")
 "Once you meet an inhabitant you cannot leave unless they allow you to leave."
-"They tend to monologue, and some enjoy the interjection while others want to be heard in full." 
+"They tend to monologue, and some enjoy the interjection while others want to be heard in full."
 "Pick your responses carefully; if you take too long, your response will no longer be relavent and you will not be able to reply with the options you were provided."
 //REMOVE WHY HERE
 "Sometimes not responding is beneficial. Other times, it can be to your detriment."
@@ -94,8 +93,8 @@ EXTERNAL win()
 "There will be no food or refreshments inside, so I hope you've come with a satiated appetite."
 ~spawnChoice("Why?", "why","10","middle")
 "Once you meet an inhabitant you cannot leave unless they allow you to leave."
-"They tend to monologue, and some enjoy the interjection while others want to be heard in full." 
-"Pick your responses carefully; if you take too long, your response will no longer be relavent and you will not be able to reply with the options you were provided."
+"They tend to monologue, and some enjoy the interjection while others want to be heard in full."
+"Pick your responses carefully; if you take too long, your response will no longer be relevant and you will not be able to reply with the options you were provided."
 //REMOVE WHY HERE
 "Sometimes not responding is beneficial. Other times, it can be to your detriment."
 "And most importantly, your life will be on the line with each inhabitant you meet."
@@ -116,8 +115,8 @@ EXTERNAL win()
 
 === again ===
 "Once you meet an inhabitant you cannot leave unless they allow you to leave."
-"They tend to monologue, and some enjoy the interjection while others want to be heard in full." 
-"Pick your responses carefully; if you take too long, your response will no longer be relavent and you will not be able to reply with the options you were provided."
+"They tend to monologue, and some enjoy the interjection while others want to be heard in full."
+"Pick your responses carefully; if you take too long, your response will no longer be relevant and you will not be able to reply with the options you were provided."
 "Sometimes not responding is beneficial. Other times, it can be to your detriment."
 "And most importantly, your life will be on the line with each inhabitant you meet."
 "If you feel your life is in danger, you can 'PLEAD' to go back to the last key point in the conversation."
@@ -147,7 +146,7 @@ EXTERNAL win()
 "As you get closer to insanity, your responses will reflect that."
 "Be wise when you plead - you don't want to find yourself saying things you don't understand."
 "Now, it is time for you to begin."
-"Good luck, and keep your notepoad close."
+"Good luck, and keep your notepad close."
 "Things are known to get lost in the fray."
 ->END
 
@@ -157,15 +156,3 @@ EXTERNAL win()
 "Good."
 "Keep your notepad close; things are known to get lost in the fray."
 "Best of luck; hopefully you'll see the sun again."
-
-
-
-
-
-
-
-
-
-
-
-

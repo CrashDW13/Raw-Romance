@@ -26,7 +26,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/concierge.unity
     guid: cede7be7dd53e52468d432dce6bb12fd
-  - enabled: 1
-    path: Assets/Scenes/slime_room.unity
-    guid: 62447ce3b2f6a46418aaa0ecf57d946f
   m_configObjects: {}
