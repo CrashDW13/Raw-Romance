@@ -6,7 +6,8 @@ public class DialogueStarter : MonoBehaviour
 {
     [SerializeField] private GameObject dialoguePanelPrefab;
     [SerializeField] private TextAsset inkAsset;
-    [SerializeField] private string knot; 
+    [SerializeField] private string knot;
+    [SerializeField] private bool automaticScroll = false;
 
     private void Start()
     {
@@ -19,7 +20,12 @@ public class DialogueStarter : MonoBehaviour
 
         if (panel.TryGetComponent(out DialoguePanel dialoguePanel))
         {
-            dialoguePanel.StartConversation(inkAsset, knot);
+            dialoguePanel.StartConversation(inkAsset, knot, automaticScroll);
+        }
+
+        else
+        {
+            Debug.LogError("Dialogue Panel not found.");
         }
     }
 }

@@ -78,6 +78,13 @@ public class DialoguePanel : MonoBehaviour
         inkStory.BindExternalFunction("win", () => { win(); });
         inkStory.BindExternalFunction("lose", () => { lose(); });
 
+        LevelLoader levelLoader = FindObjectOfType<LevelLoader>();
+        if (levelLoader == null)
+        {
+            Debug.LogError("Dialogue Panel: Level Loader not found, you won't be able to switch scenes.");
+        }
+        inkStory.BindExternalFunction("sceneTransition", (string transition, string sceneName) => { StartCoroutine(levelLoader.Load(transition, sceneName)); });
+
 
         inkStory.ChoosePathString(knot);
     
