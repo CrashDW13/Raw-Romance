@@ -74,7 +74,7 @@ public class DialoguePanel : MonoBehaviour
         inkStory.BindExternalFunction("waitNextLine", (float delaySeconds) => { WaitNextLine(delaySeconds); });
         inkStory.BindExternalFunction("win", () => { win(); });
         inkStory.BindExternalFunction("lose", () => { lose(); });
-
+        inkStory.BindExternalFunction("doplaysfx",(string soundName)() => {Doplaysfx(soundName);});
 
         inkStory.ChoosePathString(knot);
     
@@ -329,7 +329,9 @@ public class DialoguePanel : MonoBehaviour
             }
         }
     }
-
+    void Doplaysfx(soundName){
+        SoundManager.instance.PlaySFX(soundName);
+    }
     void SaveState(string fallbackNode)
     {
         if (preventAutoSave)
