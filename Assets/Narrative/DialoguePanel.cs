@@ -32,9 +32,12 @@ public class DialoguePanel : MonoBehaviour
 
 
     [Header("Choices")]
-    [SerializeField] private GameObject choicePrefab; 
+    [SerializeField] private GameObject choicePrefab;
+    [SerializeField] private GameObject ChoiceParent;
+    [SerializeField] private GameObject ContinueObject; 
     [SerializeField] private TMP_Text CharacterName;
     [SerializeField] private TMP_Text DialogueBox;
+
     [Space(10)]
 
 
@@ -147,6 +150,7 @@ public class DialoguePanel : MonoBehaviour
         }
 
         Debug.Log("Starting coroutine");
+        ContinueObject.SetActive(false);
         textCoroutine = StartCoroutine(ScrawlText(line));
     }
 
@@ -156,6 +160,8 @@ public class DialoguePanel : MonoBehaviour
         DialogueBox.text = "";
         scrawlSpeed = defaultScrawlSpeed;
 
+        if (!auto) scrawlSpeed *= 3; 
+ 
         int i = 0;
         while (i < line.Length)
         {
@@ -166,23 +172,30 @@ public class DialoguePanel : MonoBehaviour
         }
 
         scrawling = false;
-
-        if (inkStory.currentChoices.Count > 0)
+        
+        if (auto)
         {
-            ShowChoices();
-            StartCoroutine(Advance());
+            if (inkStory.currentChoices.Count > 0)
+            {
+                ShowChoices();
+                StartCoroutine(Advance());
+            }
+
+            else
+            {
+                StartCoroutine(Advance());
+            }
         }
 
         else
         {
-            StartCoroutine(Advance());
+            ContinueObject.SetActive(true);
         }
-
     }
 
     void ShowChoices()
     {
-        /*ChoiceParent.SetActive(true);
+        ChoiceParent.SetActive(true);
 
         int i = 0;
         foreach (Transform choice in ChoiceParent.transform)
@@ -198,7 +211,7 @@ public class DialoguePanel : MonoBehaviour
                 choice.gameObject.SetActive(false);
             }
             i++;
-        }*/
+        }
     }
 
     public void SelectChoice(float choice)
@@ -206,6 +219,29 @@ public class DialoguePanel : MonoBehaviour
         inkStory.ChooseChoiceIndex((int)choice);
 
         ShowLine(inkStory.Continue());
+    }
+
+    public void AdvanceImmediate()
+    {
+        if (inkStory.canContinue && !scrawling)
+        {
+            ShowLine(inkStory.Continue());
+        }
+        else if (!inkStory.canContinue && !scrawling && inkStory.currentChoices.Count > 0)
+        {
+            //SelectChoice();
+        }
+        else if (!inkStory.canContinue && !scrawling && inkStory.currentChoices.Count == 0)
+        {
+            //GameManager.Instance.CloseDialogue(this);
+            var interactables = FindObjectsOfType<MonoBehaviour>().OfType<IFreezable>();
+            foreach (IFreezable interactable in interactables)
+            {
+                interactable.Unfreeze();
+            }
+
+            Destroy(gameObject);
+        }
     }
 
     public IEnumerator Advance()
