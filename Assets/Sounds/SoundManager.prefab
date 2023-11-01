@@ -48,24 +48,24 @@ MonoBehaviour:
   bgmEntries:
   - clipName: rainBGM
     clip: {fileID: 8300000, guid: 991df30db8844cb4caadf060b738ef7e, type: 3}
-    volume: 0.261
+    volume: 0.106
   sfxPrefab: {fileID: 3795628080844316605, guid: 60e9d5656d1c7b044bc758579c14c608, type: 3}
   sfxEntries:
   - clipName: choiceclick
     clip: {fileID: 8300000, guid: ba87a1ce3af4be34f842d4c7b6870bfa, type: 3}
-    volume: 0.74
+    volume: 0.968
   - clipName: hedges
     clip: {fileID: 8300000, guid: 13cdc43b43574416b96d1d4729d07c3c, type: 3}
-    volume: 0.731
+    volume: 0.897
   - clipName: placard
     clip: {fileID: 8300000, guid: 65053e3e3c9d442db9e43f43b73994e3, type: 3}
-    volume: 0.832
+    volume: 0.966
   - clipName: irongate
     clip: {fileID: 8300000, guid: 44b6fad08175a4fef8910e2c7c07bd25, type: 3}
-    volume: 0.336
+    volume: 0.245
   - clipName: sanityrefill
     clip: {fileID: 8300000, guid: 13fbcd4980a714efaadd088dd156f304, type: 3}
-    volume: 0.79
+    volume: 0.951
   - clipName: irongatetemp
     clip: {fileID: 8300000, guid: de0ec7348325244778ba9eb732344d19, type: 3}
-    volume: 0.711
+    volume: 0.851
