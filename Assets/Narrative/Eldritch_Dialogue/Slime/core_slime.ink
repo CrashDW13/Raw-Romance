@@ -4,6 +4,7 @@ EXTERNAL saveState(knot)
 EXTERNAL waitNextLine(delaySeconds)
 EXTERNAL lose()
 EXTERNAL win()
+EXTERNAL doPlaySFX(soundName)
 VAR lieTold = false
 
 
@@ -11,7 +12,6 @@ VAR lieTold = false
 
 === core_start ===
 ~saveState("core_start")
-
 ~spawnChoice("Hi.", "welc", 10, "top-left")
 ~spawnChoice("Hello?", "welc", 10, "top-right")
 ~waitNextLine(5)

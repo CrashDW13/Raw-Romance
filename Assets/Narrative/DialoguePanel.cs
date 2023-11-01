@@ -77,6 +77,7 @@ public class DialoguePanel : MonoBehaviour
         inkStory.BindExternalFunction("waitNextLine", (float delaySeconds) => { WaitNextLine(delaySeconds); });
         inkStory.BindExternalFunction("win", () => { win(); });
         inkStory.BindExternalFunction("lose", () => { lose(); });
+        inkStory.BindExternalFunction("doPlaySFX", (string soundName) => { DoPlaySFX(soundName); });
 
         LevelLoader levelLoader = FindObjectOfType<LevelLoader>();
         if (levelLoader == null)
@@ -277,7 +278,10 @@ public class DialoguePanel : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+    void DoPlaySFX(string soundName)
+    {
+        SoundManager.instance.PlaySFX(soundName);
+    }
     void UpdateAffinity(string character, int value)
     {
         Debug.Log(character + ": " + value);
