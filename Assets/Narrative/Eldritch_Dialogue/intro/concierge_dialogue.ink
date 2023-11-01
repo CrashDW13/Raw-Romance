@@ -85,7 +85,7 @@ EXTERNAL win()
 
 
 === rep_ready ===
-"I will repeat myself once more."
+"Understood."
 "Listen carefully, because I will not repeat myself again."
 "You can touch, inspect, and ignore the items and furniture in the property, but you cannot take anything with you."
 "The estate must remain as it was and as it is."
