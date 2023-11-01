@@ -24,23 +24,19 @@ EXTERNAL win()
 ~spawnChoice("No","unfortunate",20,"top-right")
 
 "..."
+~waitNextLine(2)
 "..."
 "Perhaps not."
 "..."
+~waitNextLine(15)
 "..."
 //REMOVE RESPONSES HERE
-"..."
 "This... is awkward..."
-"..."
-"..."
 "Please, say something."
 "I don't enjoy people staring at me."
 + ["Something."] -> ha
 + ["Yeah."] -> thank
 "..."
-
-//~spawnChoice("Something","ha",10,"bottom-left")
-//~spawnChoice("Yes","thank",10,"bottom-right")
 === thank ===
 "Thank you."
 ->ready
@@ -69,10 +65,10 @@ EXTERNAL win()
 "I see you have a notebook with you - should you choose to inspect and make note of something make sure to press 'N' to see what you've written down."
 "And please, don't drop your pen on the floor."
 "There will be no food or refreshments inside, so I hope you've come with a satiated appetite."
-~spawnChoice("Why?", "why","10","middle")
+~spawnChoice("Why?", "why",10,"middle")
 "Once you meet an inhabitant you cannot leave unless they allow you to leave."
 "They tend to monologue, and some enjoy the interjection while others want to be heard in full."
-"Pick your responses carefully; if you take too long, your response will no longer be relavent and you will not be able to reply with the options you were provided."
+"Pick your responses carefully; if you take too long, your response will no longer be relevant and you will not be able to reply with the options you were provided."
 //REMOVE WHY HERE
 "Sometimes not responding is beneficial. Other times, it can be to your detriment."
 "And most importantly, your life will be on the line with each inhabitant you meet."
@@ -91,7 +87,7 @@ EXTERNAL win()
 "Should you choose to inspect and make note of something, make sure to press 'N' to see what you've written down."
 "And please, don't drop your pen on the floor."
 "There will be no food or refreshments inside, so I hope you've come with a satiated appetite."
-~spawnChoice("Why?", "why","10","middle")
+~spawnChoice("Why?", "why",10,"middle")
 "Once you meet an inhabitant you cannot leave unless they allow you to leave."
 "They tend to monologue, and some enjoy the interjection while others want to be heard in full."
 "Pick your responses carefully; if you take too long, your response will no longer be relevant and you will not be able to reply with the options you were provided."
@@ -132,9 +128,8 @@ EXTERNAL win()
 "As you get closer to insanity, your responses will reflect that."
 "Be wise when you plead - you don't want to find yourself saying things you don't understand."
 "Do you understand?"
-~spawnChoice("Yes","enter","10","middle-left")
-~spawnChoice("No","rep_ready","10","middle-right")
-~waitNextLine(1000)
+["Yes."] -> enter
+["No."] -> rep_ready
 "..."
 
 
