@@ -2,7 +2,7 @@
 ->entrance
 EXTERNAL doPlaySFX(soundName)
 EXTERNAL doPlayBGM(bgmsoundName)
-EXTERNAL StopBGM(bgmsoundName)
+EXTERNAL doStopBGM(bgmsoundName)
 EXTERNAL spawnChoice(message, knot, time, positionPreset)
 EXTERNAL slimeScene()
 EXTERNAL sceneTransition(transitionPreset, sceneName)
@@ -18,7 +18,6 @@ VAR richard = false
 === gate_open ===
 (I gave the door handle a good tug.)
 (It took a little elbow grease, but the iron gate eventually swung open...)
-~doPlaySFX("irongatetemp")
 ~sceneTransition("TestTransition", "Courtyard")
 ->END
 
@@ -27,7 +26,6 @@ VAR richard = false
 ->END
 
 === bushes ===
-~doPlaySFX("hedges")
 The bushes look like they could use some TLC.
 ->END
 
@@ -36,11 +34,8 @@ The bushes look like they could use some TLC.
 ->END
 
 === placard ===
-~doPlaySFX("placard")
 ("Rich Richardson.")
 ("Who would name their child that?")
-~doPlaySFX("addnote")
-A new note was added to your notebook.
 ~richard = true
 ->END
 
@@ -53,12 +48,12 @@ A new note was added to your notebook.
 
 === move_to_concierge ===
 (Nowhere to go but forward...)
+
 ~sceneTransition("TestTransition", "concierge")
 ->END
 
 === cancel_concierge ===
 (Maybe I should take another look around, first. The rain's nice.)
-->END
 
 
 //SLIME ROOM
@@ -80,7 +75,6 @@ A new note was added to your notebook.
 ~doPlaySFX("addnote")
 A new note was added to your notebook.
 ~richard = true
-->END
 
 === portrait_know ===
 (A portrait of "Rich Richardson," dated 1936.)
@@ -95,8 +89,7 @@ A new note was added to your notebook.
 ->END
 
 === display_know ===
-(A glass display showcasing a miniature of Lady Justice.)
-->END
+(A glass display showcasing a miniature of Lady Liberty.)
 
 
 === door ===
