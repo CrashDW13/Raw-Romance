@@ -13,6 +13,7 @@ public class DialogueSpeedSlider : MonoBehaviour
     private void Start()
     {
         slider = GetComponent<Slider>();
+        dialoguePanel = FindObjectOfType<DialoguePanel>();
     }
 
     private void Update()

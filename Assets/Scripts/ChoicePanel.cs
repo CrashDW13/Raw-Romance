@@ -90,8 +90,10 @@ public class ChoicePanel : MonoBehaviour
             return;
         }
         SoundManager.instance.PlaySFX("choiceClick");
+        dialoguePanel.ResetWaitTime();
 
         dialoguePanel.ForcePath(choice);
+        dialoguePanel.HideChoices();
         ChoicePanel[] choicePanels = FindObjectsOfType<ChoicePanel>();
         foreach (ChoicePanel choicePanel in choicePanels)
         {

@@ -13,7 +13,13 @@ VAR richard = false
 'Welp...'
 'This looks creepy enough to be the right place.'
 'Time to go in.'
+->END
+
+=== gate_open ===
+(I gave the door handle a good tug.)
+(It took a little elbow grease, but the iron gate eventually swung open...)
 ~sceneTransition("TestTransition", "Courtyard")
+->END
 
 === courtyard ===
 'Yeesh... This place could use a facelift.'
@@ -35,9 +41,18 @@ The bushes look like they could use some TLC.
 
 === advance_to_door ===
 (Just beyond this fountain is the mansion.)
+(Should I continue?)
++ [Yes.] -> move_to_concierge
++ [No.] -> cancel_concierge
+->END
+
+=== move_to_concierge ===
 (Nowhere to go but forward...)
 ~sceneTransition("TestTransition", "concierge")
 ->END
+
+=== cancel_concierge ===
+(Maybe I should take another look around, first. The rain's nice.)
 
 
 //SLIME ROOM
@@ -52,30 +67,36 @@ The bushes look like they could use some TLC.
 
 
 === portrait ===
-{richard} -> portrait_know
-(It's a dusty painting.)
-(The plaque underneath it reads "Rich Richardson, 1936")
-("Beloved father, businessman, and homeowner.")
-~richard = true
-
-=== portrait_know ===
 (It's a dusty painting.)
 (The plaque underneath it reads "Rich Richardson, 1936")
 ("Beloved father, businessman, and homeowner.")
 (Now I can put a name to the face.)
+A new note was added to your notebook.
+~richard = true
+
+=== portrait_know ===
+(A portrait of "Rich Richardson," dated 1936.)
 ->END
 
 
 === display ===
 (A cloud of dust erupts as you swipe your hand across the display case.)
 (Inside you see a bronze statue of Lady Justice.)
+A new note was added to your notebook.
 ->END
+
+=== display_know ===
+(A glass display showcasing a miniature of Lady Liberty.)
 
 
 === door ===
 Ready to see what lies ahead?
     *[Yes]->go
-    *[No]->END
+    *[No]->door_stop
+
+=== door_stop ===
+(Maybe I should keep investigating...)
+->END
 
 === snoop ===
 You pick it up; the leather is smooth.
@@ -86,6 +107,7 @@ A few sentences stick out to you.
 "...consume the..."
 ...
 'Creepy.'
+A new note was added to your notebook.
 ->END
 
 
@@ -113,4 +135,3 @@ The bricks are warm, but there's only charcoal inside.
 === go ===
 You push against the decaying wood, the doors swinging open.
 ~sceneTransition("TestTransition", "Ink Test Scene")
-

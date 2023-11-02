@@ -57,6 +57,11 @@ public class NotesManager : MonoBehaviour, IFreezable
             return;
         }
 
+        if (tabs[tab].Notes.Contains(note))
+        {
+            return;
+        }
+
         if (tabs[0].Notes[0].GetTitle() == "")
         {
             tabs[0].Notes.RemoveAt(0);

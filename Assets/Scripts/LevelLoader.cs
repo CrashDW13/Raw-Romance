@@ -30,10 +30,12 @@ public class LevelLoader : MonoBehaviour
         {
             float length = animator.GetCurrentAnimatorClipInfo(0).Length;
             yield return new WaitForSeconds(length);
+            Debug.Log("loading");
+
             SceneManager.LoadScene(sceneName);
 
-            length = animator.GetCurrentAnimatorClipInfo(0).Length;
             yield return new WaitForSeconds(length);
+            Debug.Log("deleting");
             Destroy(transitionObject);
         }
 

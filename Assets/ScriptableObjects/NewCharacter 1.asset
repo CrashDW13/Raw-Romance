@@ -10,13 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b0bd38aa6afd4c2469ce083b40c029ed, type: 3}
-  m_Name: Concierge
+  m_Name: NewCharacter 1
   m_EditorClassIdentifier: 
-  characterName: Concierge
-  characterTag: con
+  characterName: 
+  characterTag: BLANK
   CharacterSprites:
-  - sprite: {fileID: 21300000, guid: 7afdb193ce62d3f46950ea823709c91f, type: 3}
-    name: def
   - sprite: {fileID: 0}
-    name: clear
-  fileName: Assets/ScriptableObjects/Concierge.asset
+    name: .
+  fileName: Assets/ScriptableObjects/.asset

@@ -37,7 +37,8 @@ public class DialoguePanel : MonoBehaviour
     [SerializeField] private GameObject ContinueObject; 
     [SerializeField] private TMP_Text CharacterName;
     [SerializeField] private TMP_Text DialogueBox;
-
+    [SerializeField] private GameObject PleadButton;
+    [SerializeField] private GameObject SanityBar; 
     [Space(10)]
 
 
@@ -58,7 +59,7 @@ public class DialoguePanel : MonoBehaviour
     {
         waitTimeSeconds = defaultWaitTimeSeconds;
         characterDB = FindObjectOfType<CharacterDatabase>();
-        
+
         CharacterName.text = "";
         DialogueBox.text = "";
 
@@ -81,6 +82,7 @@ public class DialoguePanel : MonoBehaviour
         inkStory.BindExternalFunction("doPlaySFX", (string soundName) => { DoPlaySFX(soundName); });
         inkStory.BindExternalFunction("doPlayBGM", (string bgmsoundName) => { DoPlayBGM(bgmsoundName); });
         inkStory.BindExternalFunction("doStopBGM", (string bgmsoundName) => { StopBGM(bgmsoundName); });
+        inkStory.BindExternalFunction("toggleSanity", () => { ToggleSanity(); });
 
 
 
@@ -145,6 +147,11 @@ public class DialoguePanel : MonoBehaviour
                         }
                     }
 
+                    if (name == "BLANK")
+                    {
+                        CharacterName.text = "";
+                    }
+
                     if (isChar)
                     {
                         CharacterName.text = character.characterName;
@@ -155,6 +162,11 @@ public class DialoguePanel : MonoBehaviour
                             {
                                 CharacterArt.enabled = true;
                                 CharacterArt.sprite = character.GetSprite(sprite);
+                            }
+
+                            else if (sprite == "clear")
+                            {
+                                CharacterArt.enabled = false;
                             }
                         }
                     }
@@ -249,14 +261,19 @@ public class DialoguePanel : MonoBehaviour
     {
         inkStory.ChooseChoiceIndex((int)choice);
 
-        foreach (Transform choiceTransform in ChoiceParent.transform)
-        {
-            choiceTransform.gameObject.SetActive(false);
-        }
+        HideChoices();
 
         ChoiceParent.SetActive(false);
 
         ShowLine(inkStory.Continue());
+    }
+
+    public void HideChoices()
+    {
+        foreach (Transform choiceTransform in ChoiceParent.transform)
+        {
+            choiceTransform.gameObject.SetActive(false);
+        }
     }
 
     public void AdvanceImmediate()
@@ -308,6 +325,13 @@ public class DialoguePanel : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public void ResetWaitTime()
+    {
+        waitTimeSeconds = defaultWaitTimeSeconds;
+
+    }
+
     void DoPlaySFX(string soundName)
     {
         SoundManager.instance.PlaySFX(soundName);
@@ -412,15 +436,15 @@ public class DialoguePanel : MonoBehaviour
                 choiceButton.onClick.AddListener(() => SelectChoice(choiceIndex));
             }
         }
-    }
+    } 
 
     void SaveState(string fallbackNode)
     {
-        if (preventAutoSave)
-        {
-            preventAutoSave = false;  // Reset the flag
-            return; // Do not save if the flag is set
-        }
+        //if (preventAutoSave)
+       // {
+       //     preventAutoSave = false;  // Reset the flag
+       //     return; // Do not save if the flag is set
+       // }
     
         stateHandler.SaveState(fallbackNode); 
         Debug.Log("saved");
@@ -437,6 +461,8 @@ public class DialoguePanel : MonoBehaviour
         }
 
         StopCoroutine(textCoroutine); // Stop any ongoing dialogue scrawling
+
+        HideChoices();
 
         preventAutoSave = true; // Set the flag to prevent the next save
 
@@ -479,5 +505,9 @@ public class DialoguePanel : MonoBehaviour
         SceneManager.LoadScene("TempLoseScreen");
     }
 
-
+    public void ToggleSanity()
+    {
+        PleadButton.SetActive(!PleadButton.activeSelf);
+        SanityBar.SetActive(!SanityBar.activeSelf);
+    }
 }
