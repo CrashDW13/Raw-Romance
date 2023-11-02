@@ -18,6 +18,7 @@ VAR richard = false
 === gate_open ===
 (I gave the door handle a good tug.)
 (It took a little elbow grease, but the iron gate eventually swung open...)
+~doPlaySFX("irongatetemp")
 ~sceneTransition("TestTransition", "Courtyard")
 ->END
 
@@ -26,6 +27,7 @@ VAR richard = false
 ->END
 
 === bushes ===
+~doPlaySFX("hedges")
 The bushes look like they could use some TLC.
 ->END
 
@@ -34,6 +36,7 @@ The bushes look like they could use some TLC.
 ->END
 
 === placard ===
+~doPlaySFX("placard")
 ("Rich Richardson.")
 ("Who would name their child that?")
 ~richard = true
