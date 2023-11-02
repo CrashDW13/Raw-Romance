@@ -7,7 +7,7 @@ using Ink.Runtime;
 using System;
 using UnityEngine.SceneManagement;
 using System.Linq;
-using Unity.VisualScripting.Dependencies.Sqlite;
+//using Unity.VisualScripting.Dependencies.Sqlite;
 
 public class DialoguePanel : MonoBehaviour
 {

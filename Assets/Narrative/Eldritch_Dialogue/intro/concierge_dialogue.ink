@@ -33,15 +33,18 @@ EXTERNAL doPlayBGM(bgmsoundName)
 ~waitNextLine(2)
 "..."
 "Perhaps not."
-~waitNextLine(15)
+~waitNextLine(5)
+"..."
+*cough*
+~waitNextLine(10)
 "..."
 //REMOVE RESPONSES HERE
 "This... is awkward..."
 "Please, say something."
 "I don't enjoy people staring at me."
-+ ["Something."] -> ha
-+ ["Yeah."] -> thank
 "..."
++ [Ok] -> thank
++ [Something] -> ha
 ->END
 
 === thank ===

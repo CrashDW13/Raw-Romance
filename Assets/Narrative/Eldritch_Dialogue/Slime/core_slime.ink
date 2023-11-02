@@ -116,8 +116,8 @@ VAR lieTold = false
 "Curt sencences will not help you here."
 "Remember: you came to me."
 "Do you ununderstand?"
-~spawnChoice("Yes?", "y", 10, "top-left")
-~spawnChoice("No?", "n", 10, "top-right")
+~spawnChoice("Yes", "y", 10, "top-left")
+~spawnChoice("No", "n", 10, "top-right")
 ~waitNextLine(10)
 ...
 "What a shame."
@@ -132,8 +132,8 @@ VAR lieTold = false
 "Need I remind you that curt sencences will not help you here."
 "Remember: you came to me."
 "Do you ununderstand?"
-~spawnChoice("Yes?", "y", 10, "top-left")
-~spawnChoice("No?", "n", 10, "top-right")
+~spawnChoice("Yes", "y", 10, "top-left")
+~spawnChoice("No", "n", 10, "top-right")
 ~waitNextLine(10)
 ...
 "What a shame."
@@ -179,8 +179,8 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 ...
 "Now; do you know what your worst lie is?"
 ~saveState("start_rpt")
-~spawnChoice("Yes", "know", 15, "mop-left")
-~spawnChoice("No", "dont_know", 15, "mop-right")
+~spawnChoice("Yes", "know", 15, "top-left")
+~spawnChoice("No", "dont_know", 15, "top-right")
 "The one that came with the most consequences?"
 // options that appear
 
@@ -204,8 +204,8 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 "Reminder that I do not take silence as a satisfactory answer."
 ...
 "Now; do you know what your worst lie is?"
-~spawnChoice("Yes", "know", 15, "mop-left")
-~spawnChoice("No", "dont_know", 15, "mop-right")
+~spawnChoice("Yes", "know", 15, "top-left")
+~spawnChoice("No", "dont_know", 15, "top-right")
 "The one that came with the most consequences?"
 // options that appear
 
