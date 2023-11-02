@@ -72,6 +72,7 @@ The bushes look like they could use some TLC.
 (The plaque underneath it reads "Rich Richardson, 1936")
 ("Beloved father, businessman, and homeowner.")
 (Now I can put a name to the face.)
+~doPlaySFX("addnote")
 A new note was added to your notebook.
 ~richard = true
 
@@ -83,6 +84,7 @@ A new note was added to your notebook.
 === display ===
 (A cloud of dust erupts as you swipe your hand across the display case.)
 (Inside you see a bronze statue of Lady Justice.)
+~doPlaySFX("addnote")
 A new note was added to your notebook.
 ->END
 
