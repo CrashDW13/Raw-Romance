@@ -8,4 +8,9 @@ public class Transition : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);
     }
+
+    public void Delete()
+    {
+        Destroy(gameObject);
+    }
 }
