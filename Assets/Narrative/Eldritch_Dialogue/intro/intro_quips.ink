@@ -2,7 +2,7 @@
 ->entrance
 EXTERNAL doPlaySFX(soundName)
 EXTERNAL doPlayBGM(bgmsoundName)
-EXTERNAL StopBGM(bgmsoundName)
+EXTERNAL doStopBGM(bgmsoundName)
 EXTERNAL spawnChoice(message, knot, time, positionPreset)
 EXTERNAL slimeScene()
 EXTERNAL sceneTransition(transitionPreset, sceneName)
@@ -18,6 +18,7 @@ VAR richard = false
 === gate_open ===
 (I gave the door handle a good tug.)
 (It took a little elbow grease, but the iron gate eventually swung open...)
+~doPlaySFX("irongatetemp")
 ~sceneTransition("TestTransition", "Courtyard")
 ->END
 
@@ -26,6 +27,7 @@ VAR richard = false
 ->END
 
 === bushes ===
+~doPlaySFX("hedges")
 The bushes look like they could use some TLC.
 ->END
 
@@ -34,6 +36,7 @@ The bushes look like they could use some TLC.
 ->END
 
 === placard ===
+~doPlaySFX("placard")
 ("Rich Richardson.")
 ("Who would name their child that?")
 ~richard = true
@@ -48,6 +51,7 @@ The bushes look like they could use some TLC.
 
 === move_to_concierge ===
 (Nowhere to go but forward...)
+
 ~sceneTransition("TestTransition", "concierge")
 ->END
 
@@ -71,6 +75,7 @@ The bushes look like they could use some TLC.
 (The plaque underneath it reads "Rich Richardson, 1936")
 ("Beloved father, businessman, and homeowner.")
 (Now I can put a name to the face.)
+~doPlaySFX("addnote")
 A new note was added to your notebook.
 ~richard = true
 
@@ -82,6 +87,7 @@ A new note was added to your notebook.
 === display ===
 (A cloud of dust erupts as you swipe your hand across the display case.)
 (Inside you see a bronze statue of Lady Justice.)
+~doPlaySFX("addnote")
 A new note was added to your notebook.
 ->END
 

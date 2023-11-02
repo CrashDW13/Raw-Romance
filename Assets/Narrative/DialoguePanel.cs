@@ -7,7 +7,7 @@ using Ink.Runtime;
 using System;
 using UnityEngine.SceneManagement;
 using System.Linq;
-using Unity.VisualScripting.Dependencies.Sqlite;
+//using Unity.VisualScripting.Dependencies.Sqlite;
 
 public class DialoguePanel : MonoBehaviour
 {
@@ -52,7 +52,7 @@ public class DialoguePanel : MonoBehaviour
 
     private bool scrawling;
     private float scrawlSpeed;
-
+    private float slowBlipSpeed;
     private bool auto = false;
 
     private void Start()
@@ -65,7 +65,7 @@ public class DialoguePanel : MonoBehaviour
 
         scrawling = false;
         scrawlSpeed = defaultScrawlSpeed;
-
+        slowBlipSpeed = 2f;
         CharacterArt.enabled = false;
 
         inkStory = new Story(inkAsset.text);
@@ -193,7 +193,7 @@ public class DialoguePanel : MonoBehaviour
         {
             
             DialogueBox.text += line[i];
-            if (i % 5 == 0){
+            if (i % slowBlipSpeed == 0){
 
                 SoundManager.instance.PlaySFX("blip");
             }

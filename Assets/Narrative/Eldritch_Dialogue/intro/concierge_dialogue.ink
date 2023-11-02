@@ -6,6 +6,9 @@ EXTERNAL lose()
 EXTERNAL win()
 EXTERNAL toggleSanity()
 EXTERNAL sceneTransition(transition, sceneName)
+EXTERNAL doStopBGM(bgmsoundName)
+EXTERNAL doPlayBGM(bgmsoundName)
+
 //concierge
 
 ->meet_conc
@@ -30,15 +33,24 @@ EXTERNAL sceneTransition(transition, sceneName)
 ~waitNextLine(2)
 "..."
 "Perhaps not."
-~waitNextLine(15)
+~waitNextLine(5)
+"..."
+(cough)
+~waitNextLine(10)
 "..."
 //REMOVE RESPONSES HERE
 "This... is awkward..."
 "Please, say something."
 "I don't enjoy people staring at me."
-+ ["Something."] -> ha
-+ ["Yeah."] -> thank
 "..."
+~spawnChoice("Ok","thank",1000,"middle-left")
+~spawnChoice("Something","ha",1000,"middle-right")
+~waitNextLine(1000)
+
+
+"..."
+->END
+
 === thank ===
 "Thank you."
 ->ready
@@ -77,9 +89,9 @@ EXTERNAL sceneTransition(transition, sceneName)
 "If you feel your life is in danger, you can 'PLEAD' to go back to the last key point in the conversation."
 ~toggleSanity()
 "Come, give it a try."
-+["I don't get it..."] -> plead_explain
++["Plead"] -> plead_explain
 "..."
-
+->END
 
 
 === rep_ready ===
@@ -100,9 +112,9 @@ EXTERNAL sceneTransition(transition, sceneName)
 "If you feel your life is in danger, you can 'PLEAD' to go back to the last key point in the conversation."
 ~toggleSanity()
 "Come, give it a try."
-+["I don't get it..."] -> plead_explain
++["Plead"] -> plead_explain
 "..."
-
+->END
 
 === why ===
 "I-"
@@ -122,13 +134,14 @@ EXTERNAL sceneTransition(transition, sceneName)
 "If you feel your life is in danger, you can 'PLEAD' to go back to the last key point in the conversation."
 ~toggleSanity()
 "Come, give it a try."
-+["I don't get it..."] -> plead_explain
++["Plead"] -> plead_explain
 "..."
+->END
 
 === plead_explain ===
 "If you feel like the conversation has gone awry, you can 'PLEAD' to go back to the previous topic of discussion."
 "Try doing so now."
-+["I don't get it..."] -> plead_explain
++["Plead"] -> plead_explain
 
 
 
@@ -139,7 +152,7 @@ EXTERNAL sceneTransition(transition, sceneName)
 "Be wise when you plead - you don't want to find yourself saying things you don't understand."
 "Do you understand?"
 ["Yes."] -> enter
-["No."] -> rep_ready
+["I don't get it..."] -> rep_ready
 "..."
 
 
@@ -170,5 +183,7 @@ EXTERNAL sceneTransition(transition, sceneName)
 (Just as quickly as he appeared, the ghost vanished. Guess that's all I'm getting out of him.)
 (He made himself pretty clear, at least... I'll need to watch my mouth while I'm here.)
 (With nothing more waiting for me outside the mansion, I walked up the stairs and pressed onwards...)
+~doStopBGM("rainBGM")
+~doPlayBGM("mansionAmb")
 ~sceneTransition("TestTransition", "slime_room")
 ->END
