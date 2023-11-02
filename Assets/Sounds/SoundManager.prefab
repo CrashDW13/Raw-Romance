@@ -74,7 +74,7 @@ MonoBehaviour:
     volume: 0.851
   - clipName: blip
     clip: {fileID: 8300000, guid: 4ecead44102534a15850183df38dd3b1, type: 3}
-    volume: 0.434
+    volume: 0.334
   - clipName: addnote
     clip: {fileID: 8300000, guid: 63a5f2ec6ecca97468518031928e7621, type: 3}
     volume: 0.812

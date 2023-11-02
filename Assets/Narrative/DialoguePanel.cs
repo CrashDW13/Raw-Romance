@@ -65,7 +65,7 @@ public class DialoguePanel : MonoBehaviour
 
         scrawling = false;
         scrawlSpeed = defaultScrawlSpeed;
-        slowBlipSpeed = 3f;
+        slowBlipSpeed = 2f;
         CharacterArt.enabled = false;
 
         inkStory = new Story(inkAsset.text);
