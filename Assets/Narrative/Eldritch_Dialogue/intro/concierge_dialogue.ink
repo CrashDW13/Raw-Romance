@@ -6,6 +6,7 @@ EXTERNAL lose()
 EXTERNAL win()
 EXTERNAL toggleSanity()
 EXTERNAL sceneTransition(transition, sceneName)
+EXTERNAL stopBGM(bgmsoundName)
 //concierge
 
 ->meet_conc
@@ -170,5 +171,6 @@ EXTERNAL sceneTransition(transition, sceneName)
 (Just as quickly as he appeared, the ghost vanished. Guess that's all I'm getting out of him.)
 (He made himself pretty clear, at least... I'll need to watch my mouth while I'm here.)
 (With nothing more waiting for me outside the mansion, I walked up the stairs and pressed onwards...)
+~stopBGM("rainBGM")
 ~sceneTransition("TestTransition", "slime_room")
 ->END
