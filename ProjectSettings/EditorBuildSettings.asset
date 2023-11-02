@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Gate.unity
+    guid: f0c9599464230a7449dd7d5635e905fd
+  - enabled: 1
     path: Assets/Scenes/Ink Test Scene.unity
     guid: 460e2b1d6846dea4daa88fd6cc17d244
   - enabled: 1
@@ -17,9 +20,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TempLoseScreen.unity
     guid: 653f21791bdb39d409489f544680f350
-  - enabled: 1
-    path: Assets/Scenes/Gate.unity
-    guid: f0c9599464230a7449dd7d5635e905fd
   - enabled: 1
     path: Assets/Scenes/Courtyard.unity
     guid: 58bd27aebd17bd5469404c83842048c0
