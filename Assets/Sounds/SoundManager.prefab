@@ -49,6 +49,9 @@ MonoBehaviour:
   - clipName: rainBGM
     clip: {fileID: 8300000, guid: 991df30db8844cb4caadf060b738ef7e, type: 3}
     volume: 0.106
+  - clipName: mansionAmb
+    clip: {fileID: 8300000, guid: f2183a39c3aa24cb9b21f5e581adaf3a, type: 3}
+    volume: 0.056
   sfxPrefab: {fileID: 3795628080844316605, guid: 60e9d5656d1c7b044bc758579c14c608, type: 3}
   sfxEntries:
   - clipName: choiceclick
