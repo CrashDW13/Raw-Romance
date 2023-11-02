@@ -35,7 +35,7 @@ EXTERNAL doPlayBGM(bgmsoundName)
 "Perhaps not."
 ~waitNextLine(5)
 "..."
-*cough*
+(cough)
 ~waitNextLine(10)
 "..."
 //REMOVE RESPONSES HERE
