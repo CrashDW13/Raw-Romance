@@ -43,8 +43,12 @@ EXTERNAL doPlayBGM(bgmsoundName)
 "Please, say something."
 "I don't enjoy people staring at me."
 "..."
-+ [Ok] -> thank
-+ [Something] -> ha
+~spawnChoice("Ok","thank",1000,"middle-left")
+~spawnChoice("Something","ha",1000,"middle-right")
+~waitNextLine(1000)
+
+
+"..."
 ->END
 
 === thank ===
