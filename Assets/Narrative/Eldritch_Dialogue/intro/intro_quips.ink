@@ -53,6 +53,7 @@ The bushes look like they could use some TLC.
 
 === cancel_concierge ===
 (Maybe I should take another look around, first. The rain's nice.)
+->END
 
 
 //SLIME ROOM
@@ -87,6 +88,7 @@ A new note was added to your notebook.
 
 === display_know ===
 (A glass display showcasing a miniature of Lady Liberty.)
+->END
 
 
 === door ===
