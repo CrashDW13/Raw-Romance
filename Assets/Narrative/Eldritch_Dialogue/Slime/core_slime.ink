@@ -670,12 +670,12 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 "Understandable. Many would like to forget their wrongdoings."
 ~saveState("dont_know_rpt")
 "Especially the worst of them."
-~spawnChoice("I think I have one.", "know", 10, "mop-left")
+~spawnChoice("I think I have one.", "know", 10, "top-left")
 
 "Ignoring it until it goes away, like a mosquito bite."
 "Or crawls into bed and talks until sunrise."
 "Like a little pet."
-~spawnChoice("I'm having trouble picking the worst", "trouble", 10, "mop-right")
+~spawnChoice("I'm having trouble picking the worst", "trouble", 10, "top-right")
 
 "Or perhaps, a parasite?"
 "Following you around, no matter how hard you try to get rid of it."
@@ -697,12 +697,12 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 "Do you have a different answer for me now?"
 "I understand that many would like to forget their wrongdoings."
 "Especially the worst of them."
-~spawnChoice("I think I have one.", "know", 10, "mop-left")
+~spawnChoice("I think I have one.", "know", 10, "top-left")
 
 "Ignoring it until it goes away, like a mosquito bite."
 "Or crawls into bed and talks until sunrise."
 "Like a little pet."
-~spawnChoice("I'm having trouble picking the worst", "trouble", 10, "mop-right")
+~spawnChoice("I'm having trouble picking the worst", "trouble", 10, "top-right")
 
 "Or perhaps, a parasite?"
 "Following you around, no matter how hard you try to get rid of it."
