@@ -43,11 +43,8 @@ EXTERNAL doPlayBGM(bgmsoundName)
 "Please, say something."
 "I don't enjoy people staring at me."
 "..."
-~spawnChoice("Ok","thank",1000,"middle-left")
-~spawnChoice("Something","ha",1000,"middle-right")
-~waitNextLine(1000)
-
-
++ ["Ok."]->thank
++ ["Something."]->ha
 "..."
 ->END
 
@@ -89,7 +86,7 @@ EXTERNAL doPlayBGM(bgmsoundName)
 "If you feel your life is in danger, you can 'PLEAD' to go back to the last key point in the conversation."
 ~toggleSanity()
 "Come, give it a try."
-+["Plead"] -> plead_explain
++["I don't get it..."] -> plead_explain
 "..."
 ->END
 
@@ -112,7 +109,7 @@ EXTERNAL doPlayBGM(bgmsoundName)
 "If you feel your life is in danger, you can 'PLEAD' to go back to the last key point in the conversation."
 ~toggleSanity()
 "Come, give it a try."
-+["Plead"] -> plead_explain
++["I don't get it..."] -> plead_explain
 "..."
 ->END
 
@@ -134,14 +131,14 @@ EXTERNAL doPlayBGM(bgmsoundName)
 "If you feel your life is in danger, you can 'PLEAD' to go back to the last key point in the conversation."
 ~toggleSanity()
 "Come, give it a try."
-+["Plead"] -> plead_explain
++["I don't get it."] -> plead_explain
 "..."
 ->END
 
 === plead_explain ===
 "If you feel like the conversation has gone awry, you can 'PLEAD' to go back to the previous topic of discussion."
 "Try doing so now."
-+["Plead"] -> plead_explain
++["I still don't get it."] -> plead_explain
 
 
 

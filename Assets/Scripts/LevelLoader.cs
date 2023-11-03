@@ -33,10 +33,6 @@ public class LevelLoader : MonoBehaviour
             Debug.Log("loading");
 
             SceneManager.LoadScene(sceneName);
-
-            yield return new WaitForSeconds(length);
-            Debug.Log("deleting");
-            Destroy(transitionObject);
         }
 
         else

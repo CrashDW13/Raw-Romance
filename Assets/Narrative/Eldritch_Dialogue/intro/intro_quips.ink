@@ -57,6 +57,7 @@ The bushes look like they could use some TLC.
 
 === cancel_concierge ===
 (Maybe I should take another look around, first. The rain's nice.)
+->END
 
 
 //SLIME ROOM

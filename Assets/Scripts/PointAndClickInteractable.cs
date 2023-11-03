@@ -91,7 +91,7 @@ public class PointAndClickInteractable : MonoBehaviour, IFreezable
         }
 
         GameObject panel = Instantiate(dialoguePanelPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-        panel.transform.SetParent(FindObjectOfType<Canvas>().gameObject.transform);
+        panel.transform.SetParent(GameObject.Find("Canvas").gameObject.transform);
 
         RectTransform rectTransform = panel.GetComponent<RectTransform>();
         rectTransform.anchoredPosition = new Vector3(0, 50, 0);
