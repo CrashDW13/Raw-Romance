@@ -10,14 +10,14 @@ VAR richard = false
 
 === entrance ===
 ~doPlayBGM("rainBGM")
-'Welp...'
-'This looks creepy enough to be the right place.'
-'Time to go in.'
+(Welp...)
+(This looks creepy enough to be the right place.)
+(Let's hope my notebook doesn't get soaked in the rain... I don't want to recall the interviews from memory..."
 ->END
 
 === gate_open ===
-(I gave the door handle a good tug.)
-(It took a little elbow grease, but the iron gate eventually swung open...)
+You tug at the slippery gate handles, only for them to stay firmly shut.
+After a few more tugs, one side swings open.
 ~doPlaySFX("irongatetemp")
 ~sceneTransition("TestTransition", "Courtyard")
 ->END
@@ -140,5 +140,10 @@ The bricks are warm, but there's only charcoal inside.
 
 
 === go ===
+(Ok, ok... You can do this... It's just monsters. It's not like they're anything special.)
+(I've talked to and documented so many of them, why should this be any different?)
+(...)
+(Damnit - why am I so nervous? It's just another monster... The ghost couldn't have been serious about nobody coming out, right?)
+(Whatever. I said I'd document the inhabitants and it's too late to turn back now.)
 You push against the decaying wood, the doors swinging open.
 ~sceneTransition("TestTransition", "Ink Test Scene")

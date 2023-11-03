@@ -1450,8 +1450,8 @@ MonoBehaviour:
   encounters:
   - Knot: sidetable
     Note:
-      title: 
-      contents: 
+      title: Leather Journal
+      contents: There was an aged leather journal with yellowed pages.
 --- !u!65 &1907960031
 BoxCollider:
   m_ObjectHideFlags: 0
