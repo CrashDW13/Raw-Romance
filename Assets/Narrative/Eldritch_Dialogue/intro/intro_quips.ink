@@ -78,7 +78,7 @@ The bushes look like they could use some TLC.
 (Now I can put a name to the face.)
 ~doPlaySFX("addnote")
 A new note was added to your notebook.
-~richard = true
+->END
 
 === portrait_know ===
 (A portrait of "Rich Richardson," dated 1936.)
@@ -94,6 +94,7 @@ A new note was added to your notebook.
 
 === display_know ===
 (A glass display showcasing a miniature of Lady Liberty.)
+->END
 
 
 === door ===
