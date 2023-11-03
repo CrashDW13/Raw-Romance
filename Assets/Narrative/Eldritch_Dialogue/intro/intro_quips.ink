@@ -12,7 +12,7 @@ VAR richard = false
 ~doPlayBGM("rainBGM")
 (Welp...)
 (This looks creepy enough to be the right place.)
-(Let's hope my notebook doesn't get soaked in the rain... I don't want to recall the interviews from memory..."
+(Let's hope my notebook doesn't get soaked in the rain... I don't want to recall the interviews from memory...)
 ->END
 
 === gate_open ===
@@ -23,12 +23,12 @@ After a few more tugs, one side swings open.
 ->END
 
 === courtyard ===
-'Yeesh... This place could use a facelift.'
+(Yeesh... This place could use a facelift.)
 ->END
 
 === bushes ===
 ~doPlaySFX("hedges")
-The bushes look like they could use some TLC.
+(The bushes look like they could use some TLC.)
 ->END
 
 === fountain ===
@@ -56,7 +56,7 @@ The bushes look like they could use some TLC.
 ->END
 
 === cancel_concierge ===
-(Maybe I should take another look around, first. The rain's nice.)
+(Maybe I should take another look around; there might be some things I can write about once I'm done here.)
 ->END
 
 
@@ -113,14 +113,14 @@ A few sentences stick out to you.
 "...truth will guide..."
 "...consume the..."
 ...
-'Creepy.'
+(Creepy.)
 A new note was added to your notebook.
 ->END
 
 
 === no_snoop ===
-'Better to leave it alone.'
-'Creepy books don't usually lead to good things.'
+(Better to leave it alone.)
+(Creepy books don't usually lead to good things.)
 ->END
 
 
