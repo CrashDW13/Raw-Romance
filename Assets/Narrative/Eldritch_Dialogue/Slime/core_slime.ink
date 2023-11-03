@@ -5,17 +5,19 @@ EXTERNAL waitNextLine(delaySeconds)
 EXTERNAL lose()
 EXTERNAL win()
 EXTERNAL doPlaySFX(soundName)
+EXTERNAL toggleSanity()
 VAR lieTold = false
 
 
 ->core_start
 
 === core_start ===
+~toggleSanity()
 ~saveState("core_start")
 ~spawnChoice("Hi.", "welc", 10, "top-left")
 ~spawnChoice("Hello?", "welc", 10, "top-right")
 ~waitNextLine(6)
-...
+... #Speaker:slime,def
 ...
 
 //remove greet options here
@@ -385,7 +387,7 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 
 
 === atone ===
-//if lie = true 
+//if lie = true
 // ->atone_lie
 {not lieTold} ->lie_death
 "A truly clean conscience."

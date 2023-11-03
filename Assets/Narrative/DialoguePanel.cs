@@ -162,6 +162,8 @@ public class DialoguePanel : MonoBehaviour
                             {
                                 CharacterArt.enabled = true;
                                 CharacterArt.sprite = character.GetSprite(sprite);
+                                RectTransform rectTransform = CharacterArt.GetComponent<RectTransform>();
+                                rectTransform.sizeDelta = new Vector2(CharacterArt.sprite.bounds.size.x * 100, CharacterArt.sprite.bounds.size.y * 100);
                             }
 
                             else if (sprite == "clear")
