@@ -17,24 +17,29 @@ EXTERNAL doPlayBGM(bgmsoundName)
 ~saveState(meet_conc)
 (Ew... There's... I don't even know what that is on the stairs.)
 (They look a little too shiny for my liking... Let's hope I don't slip on the way to the door.)
-(Oh wow, a ghost! Nobody told me this place had ghosts.)
-(This is gonna be great! My first ghost encounter!)
 //GHOST SPRITE ELNARGE, GET CLOSER; WAIT FOR SPRITE TO ENLARGE
 #Speaker:con,def
 "Welcome to my estate."
+(Oh.
+(Oh. My.
+(Oh. My. God.)
 "..."
+(A ghost!)
 "... *ahem* I said, welcome to my estate."
+(This is amazing.)
 "..."
+(Nobody told me this place had ghosts!)
 "Ok then..."
 "I hope you made preparations for your disappearance, as I've yet to see someone walk out of these doors."
 "But, nevermind that."
 "You've crossed the threshold, so there's no turning back for you now."
 "Are you ready?"
+(What? No turning back?)
 "..."
 "*Ahem*" 
-"Do you hear me? If you give everyone you meet the cold shoulder, you won't make it far in this place."
+"Did you hear me? If you give everyone you meet the cold shoulder, you won't make it far in this place."
 "You'd ought to remember to give someone an answer when they ask you a question."
-"Now, I'll ask you again... Are you ready for what's behind these doors?"
+"I'll ask you again... Are you ready for what's behind these doors?"
 ~spawnChoice("Yes","red_str",20,"top-left")
 ~spawnChoice("No","unfortunate",20,"top-right")
 

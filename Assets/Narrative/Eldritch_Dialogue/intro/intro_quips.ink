@@ -97,7 +97,7 @@ A new note was added to your notebook.
 
 
 === door ===
-Ready to see what lies ahead?
+(Maybe I should move on...)
     *[Yes]->go
     *[No]->door_stop
 
@@ -145,5 +145,6 @@ The bricks are warm, but there's only charcoal inside.
 (...)
 (Damnit - why am I so nervous? It's just another monster... The ghost couldn't have been serious about nobody coming out, right?)
 (Whatever. I said I'd document the inhabitants and it's too late to turn back now.)
+(I can't waste this opportunity after fighting so hard for it.)
 You push against the decaying wood, the doors swinging open.
 ~sceneTransition("TestTransition", "Ink Test Scene")
