@@ -38,8 +38,10 @@ After a few more tugs, one side swings open.
 === placard ===
 ~doPlaySFX("placard")
 ("Rich Richardson.")
-("Who would name their child that?")
+(Who would name their child that?)
 ~richard = true
+~doPlaySFX("addnote")
+You made note of the placard.
 ->END
 
 === advance_to_door ===
@@ -93,7 +95,8 @@ A new note was added to your notebook.
 ->END
 
 === display_know ===
-(A glass display showcasing a miniature of Lady Liberty.)
+(A glass display showcasing a miniature of Lady Justice.)
+->END
 
 
 === door ===
