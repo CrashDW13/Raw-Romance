@@ -17,7 +17,7 @@ VAR lieTold = false
 ~spawnChoice("Hi.", "welc", 10, "top-left")
 ~spawnChoice("Hello?", "welc", 10, "top-right")
 ~waitNextLine(6)
-... #Speaker:slime,def
+...#Speaker:slime,def
 ...
 
 //remove greet options here

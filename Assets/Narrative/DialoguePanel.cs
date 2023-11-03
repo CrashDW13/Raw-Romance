@@ -163,7 +163,11 @@ public class DialoguePanel : MonoBehaviour
                                 CharacterArt.enabled = true;
                                 CharacterArt.sprite = character.GetSprite(sprite);
                                 RectTransform rectTransform = CharacterArt.GetComponent<RectTransform>();
-                                rectTransform.sizeDelta = new Vector2(CharacterArt.sprite.bounds.size.x * 100, CharacterArt.sprite.bounds.size.y * 100);
+                                rectTransform.sizeDelta = new Vector2(CharacterArt.sprite.bounds.size.x * 80, CharacterArt.sprite.bounds.size.y * 80);
+                                if (character.characterName == "Slime")
+                                {
+                                    rectTransform.position = new Vector2(rectTransform.position.x, rectTransform.position.y + 150);
+                                }
                             }
 
                             else if (sprite == "clear")
