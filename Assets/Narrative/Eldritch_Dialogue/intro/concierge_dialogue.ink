@@ -15,17 +15,26 @@ EXTERNAL doPlayBGM(bgmsoundName)
 
 === meet_conc ===
 ~saveState(meet_conc)
-'It's... a ghost?'
-'Strange; there were only ever murmurs of monsters, never ghosts.'
+(Ew... There's... I don't even know what that is on the stairs.)
+(They look a little too shiny for my liking... Let's hope I don't slip on the way to the door.)
+(Oh wow, a ghost! Nobody told me this place had ghosts.)
+(This is gonna be great! My first ghost encounter!)
 //GHOST SPRITE ELNARGE, GET CLOSER; WAIT FOR SPRITE TO ENLARGE
 #Speaker:con,def
 "Welcome to my estate."
-"I hope you made preparations for your disappearance."
-"It's ineviatable, really."
-"I've yet to see someone come out."
+"..."
+"... *ahem* I said, welcome to my estate."
+"..."
+"Ok then..."
+"I hope you made preparations for your disappearance, as I've yet to see someone walk out of these doors."
 "But, nevermind that."
 "You've crossed the threshold, so there's no turning back for you now."
 "Are you ready?"
+"..."
+"*Ahem*" 
+"Do you hear me? If you give everyone you meet the cold shoulder, you won't make it far in this place."
+"You'd ought to remember to give someone an answer when they ask you a question."
+"Now, I'll ask you again... Are you ready for what's behind these doors?"
 ~spawnChoice("Yes","red_str",20,"top-left")
 ~spawnChoice("No","unfortunate",20,"top-right")
 
@@ -170,16 +179,17 @@ EXTERNAL doPlayBGM(bgmsoundName)
 
 === enter ===
 "Good."
-"Keep your notepad close; things are known to get lost in the fray."
+"Keep your notepad close; I've come to find many an entrant's items scattered amongst the rooms."
 "Best of luck; hopefully you'll see the sun again."
 -> final
 
 === final ===
 #Speaker:BLANK,clear
 ~toggleSanity()
-(Just as quickly as he appeared, the ghost vanished. Guess that's all I'm getting out of him.)
+(Huh. I guess that's all I'm getting out of him. Kind of disappointing.)
 (He made himself pretty clear, at least... I'll need to watch my mouth while I'm here.)
-(With nothing more waiting for me outside the mansion, I walked up the stairs and pressed onwards...)
+(Come on, this isn't the time to get scared. It's not like I can turn back.)
+(Someone needs to interview and document them - it might as well be me.)
 ~doStopBGM("rainBGM")
 ~doPlayBGM("mansionAmb")
 ~sceneTransition("TestTransition", "slime_room")
