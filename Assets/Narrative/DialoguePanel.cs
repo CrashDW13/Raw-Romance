@@ -150,6 +150,7 @@ public class DialoguePanel : MonoBehaviour
                     if (name == "BLANK")
                     {
                         CharacterName.text = "";
+                        CharacterArt.enabled = false;
                     }
 
                     if (isChar)
@@ -170,7 +171,7 @@ public class DialoguePanel : MonoBehaviour
                                 }
                             }
 
-                            else if (sprite == "clear")
+                            if (sprite == "clear")
                             {
                                 CharacterArt.enabled = false;
                             }

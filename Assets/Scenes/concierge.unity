@@ -604,7 +604,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Characters:
   - {fileID: 11400000, guid: ca1b5c4eccd07264dbc5579632d71b1f, type: 2}
-  - {fileID: 11400000, guid: b5c689833207b59488b29e9d5e3ac3a2, type: 2}
   scriptableObjectsPath: Assets/ScriptableObjects
 --- !u!4 &1775517355
 Transform:

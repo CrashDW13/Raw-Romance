@@ -31,7 +31,7 @@ EXTERNAL doPlayBGM(bgmsoundName)
 "You've crossed the threshold, so there's no turning back for you now."
 "Are you ready?"
 "..."
-"*Ahem*" 
+"*Ahem*"
 "Do you hear me? If you give everyone you meet the cold shoulder, you won't make it far in this place."
 "You'd ought to remember to give someone an answer when they ask you a question."
 "Now, I'll ask you again... Are you ready for what's behind these doors?"
@@ -181,12 +181,11 @@ EXTERNAL doPlayBGM(bgmsoundName)
 "Good."
 "Keep your notepad close; I've come to find many an entrant's items scattered amongst the rooms."
 "Best of luck; hopefully you'll see the sun again."
+~toggleSanity()
 -> final
 
 === final ===
-#Speaker:BLANK,clear
-~toggleSanity()
-(Huh. I guess that's all I'm getting out of him. Kind of disappointing.)
+(Huh. I guess that's all I'm getting out of him. Kind of disappointing.) #Speaker:BLANK,clear
 (He made himself pretty clear, at least... I'll need to watch my mouth while I'm here.)
 (Come on, this isn't the time to get scared. It's not like I can turn back.)
 (Someone needs to interview and document them - it might as well be me.)
