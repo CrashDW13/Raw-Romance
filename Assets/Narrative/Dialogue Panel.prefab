@@ -2472,7 +2472,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 332105711118256238, guid: a1ed3fc515c7f40f4962a26cf5d3a26b, type: 3}
         m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
         m_MethodName: PlaySFX
         m_Mode: 5
@@ -2481,7 +2481,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: choiceClick
+          m_StringArgument: rewindsound
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &7204371362610546369
