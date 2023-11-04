@@ -2472,9 +2472,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 332105711118256238, guid: a1ed3fc515c7f40f4962a26cf5d3a26b, type: 3}
-        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
-        m_MethodName: PlaySFX
+      - m_Target: {fileID: 3164346195282623395}
+        m_TargetAssemblyTypeName: DialoguePanel, Assembly-CSharp
+        m_MethodName: DoPlaySFX
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

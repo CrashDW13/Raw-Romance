@@ -90,5 +90,5 @@ MonoBehaviour:
     loop: 0
   - clipName: rewindsound
     clip: {fileID: 8300000, guid: 341a1e73dd3412a4d93924b54503d187, type: 3}
-    volume: 0.785
+    volume: 0.274
     loop: 0
