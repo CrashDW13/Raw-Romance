@@ -438,7 +438,7 @@ PrefabInstance:
     - target: {fileID: 2731129861733658649, guid: b5edc168d9bf3d74fb16842341eb328a, type: 3}
       propertyPath: inkAsset
       value: 
-      objectReference: {fileID: 4900000, guid: 36fd47dcf6880f04e97492a9f6fb08d5, type: 3}
+      objectReference: {fileID: 4900000, guid: 72bbc35285b06eb40ae11a13dab424f6, type: 3}
     - target: {fileID: 2731129861733658649, guid: b5edc168d9bf3d74fb16842341eb328a, type: 3}
       propertyPath: automaticScroll
       value: 1
