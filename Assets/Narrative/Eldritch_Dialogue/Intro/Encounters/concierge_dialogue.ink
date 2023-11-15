@@ -16,25 +16,29 @@ EXTERNAL doPlayBGM(bgmsoundName)
 === meet_conc ===
 ~saveState(meet_conc)
 (Ew... There's... I don't even know what that is on the stairs.)
-(They look a little too shiny for my liking... Let's hope I don't slip on the way to the door.)
-(Oh wow, a ghost! Nobody told me this place had ghosts.)
-(This is gonna be great! My first ghost encounter!)
+(They look a little too shiny for my liking... I'll have to go up them carefully.)
+(I-...)
+(I have to be hallucinating.)
 //GHOST SPRITE ELNARGE, GET CLOSER; WAIT FOR SPRITE TO ENLARGE
 #Speaker:con,def
 "Welcome to my estate."
 "..."
-"... *ahem* I said, welcome to my estate."
+(I must be crazy.)#Speaker:BLANK
+"... *ahem* I said, welcome to my estate."#Speaker:con,def
 "..."
 "Ok then..."
-"I hope you made preparations for your disappearance, as I've yet to see someone walk out of these doors."
+(There's no way this is real.)#Speaker:BLANK,def
+"I hope you made preparations for your disappearance;  I've yet to see someone walk out of these doors."#Speaker:con,def
 "But, nevermind that."
 "You've crossed the threshold, so there's no turning back for you now."
-"Are you ready?"
+(Wait... what?)#Speaker:BLANK,clear
+"Are you ready?"#Speaker:con,def
 "..."
 "*Ahem*"
 "Do you hear me? If you give everyone you meet the cold shoulder, you won't make it far in this place."
 "You'd ought to remember to give someone an answer when they ask you a question."
 "Now, I'll ask you again... Are you ready for what's behind these doors?"
+~spawnChoice("I need to make a call","call",20,"middle")
 ~spawnChoice("Yes","red_str",20,"top-left")
 ~spawnChoice("No","unfortunate",20,"top-right")
 
@@ -52,9 +56,15 @@ EXTERNAL doPlayBGM(bgmsoundName)
 "Please, say something."
 "I don't enjoy people staring at me."
 "..."
-+ ["Ok."]->thank
-+ ["Something."]->ha
+~spawnChoice("I need to make a call","call",20,"middle")
+~spawnChoice("Something","ha",20,"bottom-right")
+~spawnChoice("Ok","thank",20,"bottom-left")
 "..."
+->END
+
+=== call ===
+"Do as you need."
+~sceneTransition("TestTransition", "Call_Fam")
 ->END
 
 === thank ===
@@ -108,7 +118,6 @@ EXTERNAL doPlayBGM(bgmsoundName)
 "Should you choose to inspect and make note of something, make sure to press 'N' to see what you've written down."
 "And please, don't drop your pen on the floor."
 "There will be no food or refreshments inside, so I hope you've come with a satiated appetite."
-~spawnChoice("Why?", "why",10,"middle")
 "Once you meet an inhabitant you cannot leave unless they allow you to leave."
 "They tend to monologue, and some enjoy the interjection while others want to be heard in full."
 "Pick your responses carefully; if you take too long, you'll lose the opportunity to make your remark."
@@ -185,10 +194,10 @@ EXTERNAL doPlayBGM(bgmsoundName)
 -> final
 
 === final ===
-(Huh. I guess that's all I'm getting out of him. Kind of disappointing.) #Speaker:BLANK,clear
+(That was... something out of a movie.) #Speaker:BLANK,clear
 (He made himself pretty clear, at least... I'll need to watch my mouth while I'm here.)
 (Come on, this isn't the time to get scared. It's not like I can turn back.)
-(Someone needs to interview and document them - it might as well be me.)
+(Plus, $10,000 would be great to have if I make it out alive.)
 ~doStopBGM("rainBGM")
 ~doPlayBGM("mansionAmb")
 ~sceneTransition("TestTransition", "slime_room")
