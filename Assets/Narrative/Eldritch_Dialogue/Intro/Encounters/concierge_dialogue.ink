@@ -8,6 +8,7 @@ EXTERNAL toggleSanity()
 EXTERNAL sceneTransition(transition, sceneName)
 EXTERNAL doStopBGM(bgmsoundName)
 EXTERNAL doPlayBGM(bgmsoundName)
+VAR called = false
 
 //concierge
 
@@ -15,23 +16,24 @@ EXTERNAL doPlayBGM(bgmsoundName)
 
 === meet_conc ===
 ~saveState(meet_conc)
+{called}
 (Ew... There's... I don't even know what that is on the stairs.)
 (They look a little too shiny for my liking... I'll have to go up them carefully.)
 (I-...)
 (I have to be hallucinating.)
 //GHOST SPRITE ELNARGE, GET CLOSER; WAIT FOR SPRITE TO ENLARGE
-#Speaker:con,def
+#Speaker:con,conc
 "Welcome to my estate."
 "..."
-(I must be crazy.)#Speaker:BLANK
-"... *ahem* I said, welcome to my estate."#Speaker:con,def
+(I must be crazy.)#Speaker:kaiCon, conc
+"... *ahem* I said, welcome to my estate."#Speaker:con,conc
 "..."
 "Ok then..."
-(There's no way this is real.)#Speaker:BLANK,def
-"I hope you made preparations for your disappearance;  I've yet to see someone walk out of these doors."#Speaker:con,def
+(There's no way this is real.)#Speaker:kaiCon, conc
+"I hope you made preparations for your disappearance;  I've yet to see someone walk out of these doors."#Speaker:con,conc
 "But, nevermind that."
 "You've crossed the threshold, so there's no turning back for you now."
-(Wait... what?)#Speaker:BLANK,clear
+(Wait... what?)#Speaker:kaiCon,conc
 "Are you ready?"#Speaker:con,def
 "..."
 "*Ahem*"
@@ -64,6 +66,9 @@ EXTERNAL doPlayBGM(bgmsoundName)
 
 === call ===
 "Do as you need."
+~ called = true
+{called}
+story.variablesState["called"] = unitySyncVar
 ~sceneTransition("TestTransition", "Call_Fam")
 ->END
 
@@ -90,6 +95,11 @@ EXTERNAL doPlayBGM(bgmsoundName)
 
 === ready ===
 "Before you go in, we have some rules. Listen carefully."
+~ called = false
+{called:
+    - else:
+    ~spawnChoice("I need to make a call","call",20,"middle")
+    }
 "You can touch, inspect, and ignore the items and furniture in the property, but you cannot take anything with you."
 "The estate must remain as it is."
 "I see you have a notebook with you - should you choose to inspect and make note of something make sure to press 'N' to see what you've written down."
