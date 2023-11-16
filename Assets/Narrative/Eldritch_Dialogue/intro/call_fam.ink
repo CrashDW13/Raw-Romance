@@ -1,7 +1,9 @@
 ->call_start
 
 === call_start ===
-story.variablesState["called"] = unitySyncVar
-testing
-~sceneTransition("TestTransition", "concierge")
+//RINGING SOUND EFFECT
+(...)
+(...)
+"Hello?"#Speaker:contr
+"Hey, it's Kai."#Speaker:kai
 ->END
