@@ -50,6 +50,7 @@ VAR called = false
 "Perhaps not."
 ~waitNextLine(5)
 "..."
+//COUGH SFX
 (cough)
 ~waitNextLine(10)
 "..."
