@@ -14,6 +14,8 @@ public class PointAndClickInteractable : MonoBehaviour, IFreezable
 
     private int encounterIndex = 0;
 
+    //public delegate void 
+
     private Renderer renderer;
 
     [SerializeField] private GameObject dialoguePanelPrefab;
@@ -90,17 +92,15 @@ public class PointAndClickInteractable : MonoBehaviour, IFreezable
             return;
         }
 
-        GameObject panel = Instantiate(dialoguePanelPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-        panel.transform.SetParent(GameObject.Find("Canvas").gameObject.transform);
+        GameObject canvas = GameObject.Find("Canvas");
 
-        RectTransform rectTransform = panel.GetComponent<RectTransform>();
-        rectTransform.anchoredPosition = new Vector3(0, 50, 0);
-        rectTransform.localScale = new Vector3(1f, 1f, 1);
-
-        if (panel.TryGetComponent(out DialoguePanel dialoguePanel))
+        if (canvas == null)
         {
-            dialoguePanel.StartConversation(inkAsset, encounters[encounterIndex].Knot);
+            Debug.LogError("PointAndClickInteracable: You're missing a Canvas!");
+            return; 
         }
+
+        DialoguePanel.Create(dialoguePanelPrefab, inkAsset, encounters[encounterIndex].Knot);
 
         if (encounters[encounterIndex].Note.GetTitle() != "")
         {
