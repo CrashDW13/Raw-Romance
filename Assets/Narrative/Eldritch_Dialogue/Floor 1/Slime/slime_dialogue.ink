@@ -256,7 +256,7 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 "Or maybe, you freeze."
 -> core_death
 
-/KNOW DIALOGUE REPEAT
+//KNOW DIALOGUE REPEAT
 === know_rpt ===
 ~saveState("know_rpt")
 "I understand we're back here because your answer has changed."
