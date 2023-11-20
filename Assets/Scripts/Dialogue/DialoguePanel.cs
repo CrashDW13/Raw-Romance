@@ -7,6 +7,8 @@ using Ink.Runtime;
 using System;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using Unity.VisualScripting;
+using UnityEditor;
 //using Unity.VisualScripting.Dependencies.Sqlite;
 
 public class DialoguePanel : MonoBehaviour
@@ -38,7 +40,7 @@ public class DialoguePanel : MonoBehaviour
     [SerializeField] private TMP_Text CharacterName;
     [SerializeField] private TMP_Text DialogueBox;
     [SerializeField] private GameObject PleadButton;
-    [SerializeField] private GameObject SanityBar; 
+    [SerializeField] private GameObject SanityBar;
     [Space(10)]
 
 
@@ -59,7 +61,6 @@ public class DialoguePanel : MonoBehaviour
     {
         waitTimeSeconds = defaultWaitTimeSeconds;
         characterDB = FindObjectOfType<CharacterDatabase>();
-
         CharacterName.text = "";
         DialogueBox.text = "";
 
@@ -113,6 +114,90 @@ public class DialoguePanel : MonoBehaviour
         knot = knotToLoad;
     }
 
+    public static void Create(GameObject prefab, TextAsset inkAsset, string knot, bool automaticScroll = false)
+    {
+        GameObject canvas = GameObject.Find("Canvas");
+        if (canvas == null)
+        {
+            Debug.LogError("PointAndClickInteracable: You're missing a Canvas!");
+            return;
+        }
+
+        GameObject panel = Instantiate(prefab, new Vector3(0, 0, 0), Quaternion.identity);
+        panel.transform.SetParent(canvas.gameObject.transform);
+
+        RectTransform rectTransform = panel.GetComponent<RectTransform>();
+        rectTransform.anchoredPosition = new Vector3(0, 50, 0);
+        rectTransform.localScale = new Vector3(1f, 1f, 1);
+
+        if (panel.TryGetComponent(out DialoguePanel dialoguePanel))
+        {
+            dialoguePanel.StartConversation(inkAsset, knot, automaticScroll);
+        }
+
+        else
+        {
+            Debug.LogError("Dialogue Panel not found.");
+        }
+    }
+
+
+    IEnumerator ScrawlText(string line)
+    {
+        scrawling = true;
+        DialogueBox.text = "";
+        scrawlSpeed = defaultScrawlSpeed;
+
+        if (!auto) scrawlSpeed *= 3; 
+ 
+        int i = 0;
+        while (i < line.Length)
+        {
+            
+            DialogueBox.text += line[i];
+            if (i % slowBlipSpeed == 0){
+
+                //SoundManager.instance.PlaySFX("blip");
+            }
+            i++;
+
+            yield return new WaitForSeconds(0.05f / scrawlSpeed);
+        }
+
+        scrawling = false;
+        
+        if (auto)
+        {
+            if (inkStory.currentChoices.Count > 0)
+            {
+                Debug.Log("Show choices");
+                ShowChoices();
+                //StartCoroutine(Advance());
+            }
+
+            else
+            {
+                StartCoroutine(Advance());
+            }
+        }
+
+        else
+        {
+            if (inkStory.currentChoices.Count > 0)
+            {
+                Debug.Log("Show choices");
+                ShowChoices();
+                //StartCoroutine(Advance());
+            }
+
+            else
+            {
+                ContinueObject.SetActive(true);
+
+            }
+        }
+    }
+
     void ShowLine(string line)
     {
         // Check tags as necessary
@@ -135,7 +220,7 @@ public class DialoguePanel : MonoBehaviour
 
                 foreach (Character character in characterDB.Characters)
                 {
-             
+
                     string[] charTags = character.characterTag.Split(":");
                     bool isChar = false;
 
@@ -183,65 +268,14 @@ public class DialoguePanel : MonoBehaviour
         }
 
         Debug.Log("Starting coroutine");
-        ContinueObject.SetActive(false);
+        //ContinueObject.SetActive(false);
+        Debug.Log(line);
+        Debug.Log(textCoroutine);
+        Debug.Log(ScrawlText(line));
         textCoroutine = StartCoroutine(ScrawlText(line));
+        Debug.Log(textCoroutine);
     }
 
-    IEnumerator ScrawlText(string line)
-    {
-        scrawling = true;
-        DialogueBox.text = "";
-        scrawlSpeed = defaultScrawlSpeed;
-
-        if (!auto) scrawlSpeed *= 3; 
- 
-        int i = 0;
-        while (i < line.Length)
-        {
-            
-            DialogueBox.text += line[i];
-            if (i % slowBlipSpeed == 0){
-
-                SoundManager.instance.PlaySFX("blip");
-            }
-            i++;
-
-            yield return new WaitForSeconds(0.05f / scrawlSpeed);
-        }
-
-        scrawling = false;
-        
-        if (auto)
-        {
-            if (inkStory.currentChoices.Count > 0)
-            {
-                Debug.Log("Show choices");
-                ShowChoices();
-                //StartCoroutine(Advance());
-            }
-
-            else
-            {
-                StartCoroutine(Advance());
-            }
-        }
-
-        else
-        {
-            if (inkStory.currentChoices.Count > 0)
-            {
-                Debug.Log("Show choices");
-                ShowChoices();
-                //StartCoroutine(Advance());
-            }
-
-            else
-            {
-                ContinueObject.SetActive(true);
-
-            }
-        }
-    }
 
     void ShowChoices()
     {
