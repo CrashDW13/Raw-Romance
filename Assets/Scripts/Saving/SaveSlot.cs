@@ -47,9 +47,9 @@ public class PointAndClickInteractableState
     public string name;
     public int clickCount; 
 
-    public PointAndClickInteractableState(string name, int count)
+    public PointAndClickInteractableState(string name, int clickCount)
     {
         this.name = name;
-        this.clickCount = count;
+        this.clickCount = clickCount;
     }
 }

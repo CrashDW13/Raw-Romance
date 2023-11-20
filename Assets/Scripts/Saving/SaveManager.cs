@@ -1,15 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SaveManager : MonoBehaviour
 {
     [SerializeField]
     private Save currentSave;
+
     public void SaveToJson()
     {
         string json = JsonUtility.ToJson(currentSave);
         System.IO.File.WriteAllText(Application.persistentDataPath + "/TestSaveData.json", json);
+        Debug.Log(Application.persistentDataPath);
     }
     public static void UpdateNotebook()
     {
@@ -22,7 +25,6 @@ public class SaveManager : MonoBehaviour
 
     private void Start()
     {
-        //SaveToJson();
-        Debug.Log(Application.persistentDataPath);
+        PointAndClickInteractable.OnClick += SaveToJson;
     }
 }

@@ -100,8 +100,8 @@ public class DialoguePanel : MonoBehaviour
 
         ShowLine(inkStory.Continue());
 
-        var interactables = FindObjectsOfType<MonoBehaviour>().OfType<IFreezable>();
-        foreach (IFreezable interactable in interactables)
+        var interactables = FindObjectsOfType<PointAndClickInteractable>();
+        foreach (PointAndClickInteractable interactable in interactables)
         {
             interactable.Freeze();
         }

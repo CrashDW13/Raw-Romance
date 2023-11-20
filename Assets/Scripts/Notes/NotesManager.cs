@@ -35,7 +35,7 @@ public class NotesManager : MonoBehaviour, IFreezable
 
     private void Update()
     {
-        //debug
+        Debug.Log(canInteract);
         if (Input.GetKeyDown(KeyCode.N) && canInteract)
         {
             ToggleNotebook();
@@ -84,13 +84,13 @@ public class NotesManager : MonoBehaviour, IFreezable
         notebook.Show();
 
         var interactables = FindObjectsOfType<MonoBehaviour>().OfType<IFreezable>();
-        foreach (IFreezable interactable in interactables)
+        /*foreach (IFreezable interactable in interactables)
         {
             if (interactable != this.GetComponent<IFreezable>()) 
             {
                 interactable.Freeze();
             }
-        }
+        }*/
     }
 
     private void HideNotebook()
