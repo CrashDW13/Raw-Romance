@@ -849,3 +849,15 @@ You flinch as the monster reaches over the table, the slime cool as it engulfs y
 The last thing you see is it towering over you, your lungs filling with the thick liquid as you fall to the ground.
 # lose
 ~lose()
+
+
+
+
+=== slime_win ===
+(That was intense... but at least I'm alive.)
+(I don't know how I managed to go that entire time without asking what the hell it was.)
+(Then again, I don't know what any of the... 'people'... here are.)
+(I can't let myself dwell on this - I have to figure out where that stupid will is.)
+->END
+
+
