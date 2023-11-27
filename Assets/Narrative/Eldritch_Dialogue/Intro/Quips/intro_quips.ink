@@ -11,13 +11,14 @@ VAR richard = false
 === entrance ===
 ~doPlayBGM("rainBGM")
 (Welp...)
-(This looks creepy enough to be the right place.)
-(Let's hope my notebook doesn't get soaked in the rain... I don't want to recall the interviews from memory...)
+(This is creepy.)
+(Let's hope the $10,000 is worth it.)
 ->END
 
 === gate_open ===
 You tug at the slippery gate handles, only for them to stay firmly shut.
-After a few more tugs, one side swings open.
+(Come on...)
+You dig your feet into the mud, slowly forcing the door open.
 ~doPlaySFX("irongatetemp")
 ~sceneTransition("TestTransition", "Courtyard")
 ->END
@@ -37,26 +38,26 @@ After a few more tugs, one side swings open.
 
 === placard ===
 ~doPlaySFX("placard")
-("Rich Richardson.")
+("Rich Richardson")
 ("Who would name their child that?")
 ~richard = true
 ->END
 
 === advance_to_door ===
-(Just beyond this fountain is the mansion.)
+(I can see the mansion up ahead.)
 (Should I continue?)
 + [Yes.] -> move_to_concierge
 + [No.] -> cancel_concierge
 ->END
 
 === move_to_concierge ===
-(Nowhere to go but forward...)
+(Might as well get this over with.)
 
 ~sceneTransition("TestTransition", "concierge")
 ->END
 
 === cancel_concierge ===
-(Maybe I should take another look around; there might be some things I can write about once I'm done here.)
+(I should take a moment to take this all in. It's not like I'm going to be at a mansion again anytime soon.)
 ->END
 
 
@@ -65,40 +66,41 @@ After a few more tugs, one side swings open.
 
 
 === sidetable ===
-(It's a rotting sidetable with a leather journal resting on top.)
-(Flip through the journal?)
+It's a rotting sidetable with a leather journal resting on top.
+Read it?
     * [Yes] ->snoop
     * [No] ->no_snoop
 
 
 === portrait ===
-(It's a dusty painting.)
-(The plaque underneath it reads "Rich Richardson, 1936")
-("Beloved father, businessman, and homeowner.")
+It's a dusty painting.
+The plaque underneath it reads "Rich Richardson, 1936"
+"Beloved father, businessman, and homeowner."
 (Now I can put a name to the face.)
 ~doPlaySFX("addnote")
 A new note was added to your notebook.
 ->END
 
 === portrait_know ===
-(A portrait of "Rich Richardson," dated 1936.)
+A portrait of Rich Richardson, dated 1936.
 ->END
 
 
 === display ===
-(A cloud of dust erupts as you swipe your hand across the display case.)
-(Inside you see a bronze statue of Lady Justice.)
+A cloud of dust erupts as you swipe your hand across the display case.
+Inside you see a bronze statue of Lady Justice.
 ~doPlaySFX("addnote")
 A new note was added to your notebook.
 ->END
 
 === display_know ===
-(A glass display showcasing a miniature of Lady Liberty.)
+A glass display showcasing a miniature of Lady Justice.
 ->END
 
 
 === door ===
-Ready to see what lies ahead?
+(I know I need to search the other rooms...)
+Enter the next room?
     *[Yes]->go
     *[No]->door_stop
 
@@ -141,10 +143,5 @@ The bricks are warm, but there's only charcoal inside.
 
 
 === go ===
-(Ok, ok... You can do this... It's just monsters. It's not like they're anything special.)
-(I've talked to and documented so many of them, why should this be any different?)
-(...)
-(Damnit - why am I so nervous? It's just another monster... The ghost couldn't have been serious about nobody coming out, right?)
-(Whatever. I said I'd document the inhabitants and it's too late to turn back now.)
-You push against the decaying wood, the doors swinging open.
+(Alright, time for another creepy room.)
 ~sceneTransition("TestTransition", "Ink Test Scene")

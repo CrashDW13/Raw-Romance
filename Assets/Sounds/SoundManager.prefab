@@ -49,32 +49,46 @@ MonoBehaviour:
   - clipName: rainBGM
     clip: {fileID: 8300000, guid: 991df30db8844cb4caadf060b738ef7e, type: 3}
     volume: 0.106
+    loop: 1
   - clipName: mansionAmb
     clip: {fileID: 8300000, guid: f2183a39c3aa24cb9b21f5e581adaf3a, type: 3}
     volume: 0.056
+    loop: 1
   sfxPrefab: {fileID: 3795628080844316605, guid: 60e9d5656d1c7b044bc758579c14c608, type: 3}
   sfxEntries:
   - clipName: choiceclick
     clip: {fileID: 8300000, guid: 1edac1836acea44bfba4e41789c18b05, type: 3}
     volume: 0.968
+    loop: 0
   - clipName: hedges
     clip: {fileID: 8300000, guid: 13cdc43b43574416b96d1d4729d07c3c, type: 3}
-    volume: 0.897
+    volume: 0.639
+    loop: 0
   - clipName: placard
     clip: {fileID: 8300000, guid: 65053e3e3c9d442db9e43f43b73994e3, type: 3}
     volume: 0.794
+    loop: 0
   - clipName: irongate
     clip: {fileID: 8300000, guid: 44b6fad08175a4fef8910e2c7c07bd25, type: 3}
     volume: 0.245
+    loop: 0
   - clipName: sanityrefill
     clip: {fileID: 8300000, guid: 13fbcd4980a714efaadd088dd156f304, type: 3}
     volume: 0.951
+    loop: 0
   - clipName: irongatetemp
     clip: {fileID: 8300000, guid: de0ec7348325244778ba9eb732344d19, type: 3}
     volume: 0.851
+    loop: 0
   - clipName: blip
     clip: {fileID: 8300000, guid: 4ecead44102534a15850183df38dd3b1, type: 3}
     volume: 0.334
+    loop: 0
   - clipName: addnote
     clip: {fileID: 8300000, guid: 63a5f2ec6ecca97468518031928e7621, type: 3}
     volume: 0.812
+    loop: 0
+  - clipName: rewindsound
+    clip: {fileID: 8300000, guid: 341a1e73dd3412a4d93924b54503d187, type: 3}
+    volume: 0.274
+    loop: 0

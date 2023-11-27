@@ -5432,17 +5432,13 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1001 &1538469055
+--- !u!1001 &1356099340
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 332105711118256238, guid: a1ed3fc515c7f40f4962a26cf5d3a26b, type: 3}
-      propertyPath: sfxEntries.Array.data[1].volume
-      value: 0.661
-      objectReference: {fileID: 0}
     - target: {fileID: 2971463539294922946, guid: a1ed3fc515c7f40f4962a26cf5d3a26b, type: 3}
       propertyPath: m_RootOrder
       value: 9

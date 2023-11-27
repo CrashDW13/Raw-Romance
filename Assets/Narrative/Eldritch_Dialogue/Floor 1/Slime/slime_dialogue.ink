@@ -22,7 +22,7 @@ VAR lieTold = false
 
 //remove greet options here
 "Why are you here?"
-~spawnChoice("I'm looking for someone.", "looking", 10, "bottom-left")
+~spawnChoice("I'm here to talk to you.", "looking", 10, "bottom-left")
 ~spawnChoice("That's none of your business.", "no_bis", 10, "bottom-right")
 ...
 
@@ -101,11 +101,12 @@ VAR lieTold = false
 
 
 === looking ===
-"Someone..."
+"Ah, a fan..."
 ~saveState("looking")
 "So that is what brings you to our den."
-"Your honesty is admirable."
-"Now, I have another question for you."
+"Your bravery and honesty is admirable."
+"We do not get many visitors that enjoy our... hosting..."
+"Now, newcomer, I have a question for you."
 
 
 -> core_cont
@@ -255,7 +256,7 @@ The monster stands, slowly outstretching its arms as it leans over towards you. 
 "Or maybe, you freeze."
 -> core_death
 
-/KNOW DIALOGUE REPEAT
+//KNOW DIALOGUE REPEAT
 === know_rpt ===
 ~saveState("know_rpt")
 "I understand we're back here because your answer has changed."
@@ -848,3 +849,15 @@ You flinch as the monster reaches over the table, the slime cool as it engulfs y
 The last thing you see is it towering over you, your lungs filling with the thick liquid as you fall to the ground.
 # lose
 ~lose()
+
+
+
+
+=== slime_win ===
+(That was intense... but at least I'm alive.)
+(I don't know how I managed to go that entire time without asking what the hell it was.)
+(Then again, I don't know what any of the... 'people'... here are.)
+(I can't let myself dwell on this - I have to figure out where that stupid will is.)
+->END
+
+

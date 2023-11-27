@@ -7,6 +7,7 @@ public class AudioEntry
     public string clipName;
     public AudioClip clip;
     [Range(0, 1)] public float volume = 1f;
+    public bool loop;
 }
 
 public class SoundManager : MonoBehaviour
@@ -49,6 +50,7 @@ public class SoundManager : MonoBehaviour
             AudioSource source = audioObject.GetComponent<AudioSource>();
             source.clip = entry.clip;
             source.volume = entry.volume;
+            source.loop = entry.loop;
             sourceDict.Add(entry.clipName, source);
         }
     }

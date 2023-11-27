@@ -604,6 +604,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Characters:
   - {fileID: 11400000, guid: ca1b5c4eccd07264dbc5579632d71b1f, type: 2}
+  - {fileID: 11400000, guid: f3777df115079b8408955624061fbd59, type: 2}
   scriptableObjectsPath: Assets/ScriptableObjects
 --- !u!4 &1775517355
 Transform:
@@ -673,7 +674,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2731129861733658649, guid: b5edc168d9bf3d74fb16842341eb328a, type: 3}
       propertyPath: knot
-      value: meet_conc
+      value: ready
       objectReference: {fileID: 0}
     - target: {fileID: 2731129861733658649, guid: b5edc168d9bf3d74fb16842341eb328a, type: 3}
       propertyPath: inkAsset

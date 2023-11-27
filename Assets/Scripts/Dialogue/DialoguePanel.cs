@@ -373,7 +373,7 @@ public class DialoguePanel : MonoBehaviour
 
     }
 
-    void DoPlaySFX(string soundName)
+    public void DoPlaySFX(string soundName)
     {
         SoundManager.instance.PlaySFX(soundName);
     }
