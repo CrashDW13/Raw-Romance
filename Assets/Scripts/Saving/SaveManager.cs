@@ -12,7 +12,7 @@ public class SaveManager : MonoBehaviour
     {
         string json = JsonUtility.ToJson(currentSave);
         System.IO.File.WriteAllText(Application.persistentDataPath + "/TestSaveData.json", json);
-        Debug.Log(Application.persistentDataPath);
+        Debug.Log("Autosave saved to " + Application.persistentDataPath);
     }
     public static void UpdateNotebook()
     {
