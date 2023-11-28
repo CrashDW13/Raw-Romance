@@ -9,14 +9,20 @@ EXTERNAL sceneTransition(transition, sceneName)
 EXTERNAL doStopBGM(bgmsoundName)
 EXTERNAL doPlayBGM(bgmsoundName)
 VAR called = false
+VAR knotToReturn = -> ready
+->check
+===check===
+{called:
+    -> ready
+- else:
+    -> meet_conc
+}
 
 //concierge
 
-->meet_conc
 
 === meet_conc ===
 ~saveState(meet_conc)
-{called}
 (Ew... There's... I don't even know what that is on the stairs.)
 (They look a little too shiny for my liking... I'll have to go up them carefully.)
 (I-...)
@@ -68,8 +74,7 @@ VAR called = false
 === call ===
 "Do as you need."
 ~ called = true
-{called}
-story.variablesState["called"] = unitySyncVar
+//story.variablesState["called"] = unitySyncVar 
 ~sceneTransition("TestTransition", "Call_Fam")
 ->END
 
@@ -96,9 +101,8 @@ story.variablesState["called"] = unitySyncVar
 
 === ready ===
 "Before you go in, we have some rules. Listen carefully."
-~ called = false
 {called:
-    - else:
+- else:
     ~spawnChoice("I need to make a call","call",20,"middle")
     }
 "You can touch, inspect, and ignore the items and furniture in the property, but you cannot take anything with you."
