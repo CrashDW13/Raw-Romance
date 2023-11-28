@@ -17,14 +17,17 @@ VAR lieTold = false
 ~spawnChoice("Hi.", "welc", 10, "top-left")
 ~spawnChoice("Hello?", "welc", 10, "top-right")
 ~waitNextLine(6)
-...#Speaker:slime,def
-...
+"..."#Speaker:slime,def
+"..."
 
 //remove greet options here
-"Why are you here?"
+"Well, what is it, Bernard?"
+"..."
+"..."
+"You know I do not like silence."
 ~spawnChoice("I'm here to talk to you.", "looking", 10, "bottom-left")
 ~spawnChoice("That's none of your business.", "no_bis", 10, "bottom-right")
-...
+"..."
 
 ...
 
@@ -39,8 +42,7 @@ VAR lieTold = false
 === welc ===
 "Welcome."
 ~saveState("welc_rpt")
-"You must be naive if you've come here of your own free will."
-"Or unfortunate, if you're here against your wishes."
+"
 ~spawnChoice("I chose to be here.", "chose", 10, "middle-left")
 ~spawnChoice("You think I want to be here?", "lie_str", 10, "middle-right")
 ...
