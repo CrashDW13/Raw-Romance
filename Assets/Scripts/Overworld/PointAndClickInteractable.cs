@@ -14,7 +14,8 @@ public class PointAndClickInteractable : MonoBehaviour, IFreezable
 
     private int encounterIndex = 0;
 
-    //public delegate void 
+    public delegate void ClickEventHandler();
+    public static event ClickEventHandler OnClick; 
 
     private Renderer renderer;
 
@@ -27,6 +28,14 @@ public class PointAndClickInteractable : MonoBehaviour, IFreezable
     private void Start()
     {
         renderer = GetComponent<Renderer>();
+        PauseManager.OnPause += Freeze;
+        PauseManager.OnResume += Unfreeze;
+    }
+
+    private void OnDestroy()
+    {
+        PauseManager.OnPause -= Freeze;
+        PauseManager.OnResume -= Unfreeze;
     }
 
     private void OnMouseEnter()
@@ -38,7 +47,14 @@ public class PointAndClickInteractable : MonoBehaviour, IFreezable
     {
         if (Input.GetMouseButtonDown(0))
         {
-           if (canInteract) SpawnDialoguePanel();
+            if (canInteract)
+            {
+                OnClick += SpawnDialoguePanel;
+                OnClick?.Invoke();
+                OnClick -= SpawnDialoguePanel;
+
+                SaveManager.UpdateClickCount(name, encounterIndex);
+            }
         }
 
         if (!canInteract) selected = false;
@@ -98,6 +114,7 @@ public class PointAndClickInteractable : MonoBehaviour, IFreezable
         {
             Debug.LogError("PointAndClickInteracable: You're missing a Canvas!");
             return; 
+            
         }
 
         DialoguePanel.Create(dialoguePanelPrefab, inkAsset, encounters[encounterIndex].Knot);
@@ -111,6 +128,8 @@ public class PointAndClickInteractable : MonoBehaviour, IFreezable
         {
             encounterIndex++;
         }
+
+        Debug.Log("encounter index" + encounterIndex);
     }
 
     public void Freeze()

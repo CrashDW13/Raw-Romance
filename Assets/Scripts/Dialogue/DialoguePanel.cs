@@ -85,8 +85,6 @@ public class DialoguePanel : MonoBehaviour
         inkStory.BindExternalFunction("doStopBGM", (string bgmsoundName) => { StopBGM(bgmsoundName); });
         inkStory.BindExternalFunction("toggleSanity", () => { ToggleSanity(); });
 
-
-
         LevelLoader levelLoader = FindObjectOfType<LevelLoader>();
         if (levelLoader == null)
         {
@@ -100,8 +98,8 @@ public class DialoguePanel : MonoBehaviour
 
         ShowLine(inkStory.Continue());
 
-        var interactables = FindObjectsOfType<MonoBehaviour>().OfType<IFreezable>();
-        foreach (IFreezable interactable in interactables)
+        var interactables = FindObjectsOfType<PointAndClickInteractable>();
+        foreach (PointAndClickInteractable interactable in interactables)
         {
             interactable.Freeze();
         }
@@ -266,14 +264,7 @@ public class DialoguePanel : MonoBehaviour
 
             }
         }
-
-        Debug.Log("Starting coroutine");
-        //ContinueObject.SetActive(false);
-        Debug.Log(line);
-        Debug.Log(textCoroutine);
-        Debug.Log(ScrawlText(line));
         textCoroutine = StartCoroutine(ScrawlText(line));
-        Debug.Log(textCoroutine);
     }
 
 
