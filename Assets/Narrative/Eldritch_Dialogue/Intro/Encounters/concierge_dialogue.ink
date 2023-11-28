@@ -14,6 +14,7 @@ VAR called = false
 
 ->meet_conc
 
+
 === meet_conc ===
 ~saveState(meet_conc)
 {called}
@@ -76,6 +77,7 @@ VAR called = false
 {called}
 story.variablesState["called"] = unitySyncVar
 ~sceneTransition("TestTransition", "call_fam")
+-> DONE
 
 === check ===
 transition skipped
@@ -221,3 +223,5 @@ transition skipped
 ~doPlayBGM("mansionAmb")
 ~sceneTransition("TestTransition", "slime_room")
 ->END
+
+

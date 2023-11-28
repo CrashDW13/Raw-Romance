@@ -41,17 +41,22 @@ EXTERNAL sceneTransition(transitionPreset, sceneName)
 "..."
 ~spawnChoice("I'm here to talk to you", "interview", 10, "bottom-left")
 ~spawnChoice("I'm looking for a will?", "will", 10, "top-right")
-~waitNextLine(6)
+~waitNextLine(3)
 "..."
 "..."
 "Well? Out with it."
+"..."
+~waitNextLine(2)
+"Get out."
+~sceneTransition("TestTransition", "slime_room")
 
 
 === interview ===
 "Oh? And why is that?"
-"I've heard murmurs about monsters living here, and I've always wanted to see if it's real."#Speaker: kai
-"How peculiar - the family tried so hard to hide our existence, and yet here you are."#Speaker: lawyer
+"I've heard murmurs about monsters living here - finally got the courage to actually check it out."#Speaker: kai
+"How peculiar - the family tried so hard to hide our existence, yet here you are."#Speaker: lawyer
 "Goes to show how effective shoving us in a closet was."
+
 
 
 === will ===
@@ -63,7 +68,7 @@ EXTERNAL sceneTransition(transitionPreset, sceneName)
 //RUMMAGING SOUND
 //CHANGE TO RUMMAGING SPRITE
 "..."
-~waitNextLine(5)
+~waitNextLine(3)
 "Aha! Here it is."
 "I haven't needed this document in decades."
 //RETURN TO LOOKING AT PLAYER SPRITE
@@ -83,7 +88,12 @@ EXTERNAL sceneTransition(transitionPreset, sceneName)
 
 
 === take ===
-->END
+~doPlaySFX("addnote")
+"Of course."
+"Though, I must ask."
+(...)
+"Did you really think it would be that easy?"
+->take_death
 
 
 === easy ===
@@ -102,5 +112,10 @@ EXTERNAL sceneTransition(transitionPreset, sceneName)
 
 
 
-=== law_death ===
+=== take_death ===
+The paper in your hand starts to glow as the temperature rises.#Speaker: null
+//FIRE HISSING SOUND
+Despite your efforts it sticks to you, smoke emitting from your hand.
+Cackling and the smell of burnt skin engulf the room; your vision darkens as you collapse to the floor.
+"Dinner is served."#Speaker: lawyer
 ~lose()

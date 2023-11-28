@@ -570,6 +570,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2a1139e63a9c9744996890811e791591, type: 2}
   - {fileID: 11400000, guid: f37073b9d299aed42844dbda1f329619, type: 2}
   - {fileID: 11400000, guid: 0dc2acf3cbce74f48ad9f63a7103d6a1, type: 2}
+  - {fileID: 11400000, guid: f18416a10652abb4da77c9cbf52c8b4b, type: 2}
   scriptableObjectsPath: Assets/Characters/ScriptableObjects
 --- !u!4 &1633495326
 Transform:

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Lawyer
   m_EditorClassIdentifier: 
   characterName: Lawyer
-  characterTag: slime
+  characterTag: lawyer
   CharacterSprites:
   - sprite: {fileID: 21300000, guid: d955aacf135368240bf1073c5ae01980, type: 3}
-    name: def
+    name: law
   fileName: Assets/Characters/ScriptableObjects/Lawyer.asset
