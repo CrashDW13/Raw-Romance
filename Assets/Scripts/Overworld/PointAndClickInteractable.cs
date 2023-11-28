@@ -28,6 +28,14 @@ public class PointAndClickInteractable : MonoBehaviour, IFreezable
     private void Start()
     {
         renderer = GetComponent<Renderer>();
+        PauseManager.OnPause += Freeze;
+        PauseManager.OnResume += Unfreeze;
+    }
+
+    private void OnDestroy()
+    {
+        PauseManager.OnPause -= Freeze;
+        PauseManager.OnResume -= Unfreeze;
     }
 
     private void OnMouseEnter()
@@ -44,6 +52,8 @@ public class PointAndClickInteractable : MonoBehaviour, IFreezable
                 OnClick += SpawnDialoguePanel;
                 OnClick?.Invoke();
                 OnClick -= SpawnDialoguePanel;
+
+                SaveManager.UpdateClickCount(name, encounterIndex);
             }
         }
 
@@ -118,6 +128,8 @@ public class PointAndClickInteractable : MonoBehaviour, IFreezable
         {
             encounterIndex++;
         }
+
+        Debug.Log("encounter index" + encounterIndex);
     }
 
     public void Freeze()
