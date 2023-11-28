@@ -144,4 +144,4 @@ The bricks are warm, but there's only charcoal inside.
 
 === go ===
 (Alright, time for another creepy room.)
-~sceneTransition("TestTransition", "Ink Test Scene")
+~sceneTransition("TestTransition", "Lawyer_Test")

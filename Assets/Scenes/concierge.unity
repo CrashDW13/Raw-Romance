@@ -582,7 +582,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1775517355}
-  - component: {fileID: 1775517354}
+  - component: {fileID: 1775517356}
   m_Layer: 0
   m_Name: CharacterEditor
   m_TagString: Untagged
@@ -590,22 +590,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1775517354
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1775517353}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e844f5d42099884aa281836da3e99ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Characters:
-  - {fileID: 11400000, guid: ca1b5c4eccd07264dbc5579632d71b1f, type: 2}
-  - {fileID: 11400000, guid: f3777df115079b8408955624061fbd59, type: 2}
-  scriptableObjectsPath: Assets/ScriptableObjects
 --- !u!4 &1775517355
 Transform:
   m_ObjectHideFlags: 0
@@ -621,6 +605,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1775517356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1775517353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e844f5d42099884aa281836da3e99ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Characters:
+  - {fileID: 11400000, guid: af0c4169be014bf43bde99734f79f52f, type: 2}
+  - {fileID: 11400000, guid: 081e8bb3e48ba874c90c920c1b129db1, type: 2}
+  scriptableObjectsPath: Assets/ScriptableObjects
 --- !u!1001 &2069051687
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -674,7 +674,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2731129861733658649, guid: b5edc168d9bf3d74fb16842341eb328a, type: 3}
       propertyPath: knot
-      value: ready
+      value: meet_conc
       objectReference: {fileID: 0}
     - target: {fileID: 2731129861733658649, guid: b5edc168d9bf3d74fb16842341eb328a, type: 3}
       propertyPath: inkAsset
