@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Collider))]
 public class PointAndClickInteractable : MonoBehaviour, IFreezable
@@ -24,12 +25,20 @@ public class PointAndClickInteractable : MonoBehaviour, IFreezable
     [SerializeField] private TextAsset inkAsset;
     [SerializeField] private PointAndClickEncounter[] encounters;
 
+    private LockSystem locks;
 
     private void Start()
     {
+
+        locks = new LockSystem();
+
         renderer = GetComponent<Renderer>();
         PauseManager.OnPause += Freeze;
         PauseManager.OnResume += Unfreeze;
+
+        GetSavedVariables();
+
+
     }
 
     private void OnDestroy()
@@ -47,7 +56,7 @@ public class PointAndClickInteractable : MonoBehaviour, IFreezable
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (canInteract)
+            if (!locks.IsLocked())
             {
                 OnClick += SpawnDialoguePanel;
                 OnClick?.Invoke();
@@ -132,13 +141,37 @@ public class PointAndClickInteractable : MonoBehaviour, IFreezable
         Debug.Log("encounter index" + encounterIndex);
     }
 
+    private void GetSavedVariables()
+    {
+        Save s = SaveManager.currentSave;
+        PointAndClickInteractableState state = s.interactableStates.Find(x => x.name == name);
+        foreach(PointAndClickInteractableState testState in SaveManager.currentSave.interactableStates)
+        {
+            Debug.Log(testState.name + " " + testState.clickCount);
+        }
+
+        if (state == null)
+        {
+            Debug.Log("state is null!");
+            return;
+        }
+
+        else
+        {
+            Debug.Log("success!");
+            encounterIndex = state.clickCount;
+        }
+    }
+
     public void Freeze()
     {
+        locks.AddLock("Frozen");
         canInteract = false;
     }
 
     public void Unfreeze()
     {
+        locks.RemoveLock("Frozen");
         canInteract = true;
     }
 }

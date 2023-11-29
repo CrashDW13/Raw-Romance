@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -14,7 +15,7 @@ public class SaveManager : MonoBehaviour
 
     public static void UpdateNotebook()
     {
-
+        
     }
 
     public static void UpdateClickCount(string name, int count)
@@ -22,8 +23,23 @@ public class SaveManager : MonoBehaviour
         currentSave.UpdateClickCount(name, count);
     }
 
-    private void Start()
+    public static void UpdateCheckpoint()
     {
+        currentSave.UpdateCheckpoint();
+    }
+
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+
+        if (FindObjectsOfType<SaveManager>().Length > 1)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+
         currentSave = new Save("Autosave");
         saves.Add(currentSave);
         for (int i = 0; i < saveSlotCount; i++)
@@ -31,9 +47,10 @@ public class SaveManager : MonoBehaviour
             Save s = new Save();            
             Debug.Log(s.name);
 
-            if (File.Exists(Application.persistentDataPath + string.Format("/{0}.json", name)))
+            if (File.Exists(Application.persistentDataPath + string.Format("/{0}.json", s.name)))
             {
                 s = s.LoadFromJson();
+                Debug.Log(s);
             }
 
             else
@@ -43,5 +60,10 @@ public class SaveManager : MonoBehaviour
 
             saves.Add(s);
         }
+    }
+
+    private void Start()
+    {
+        currentSave.UpdateCheckpoint();
     }
 }

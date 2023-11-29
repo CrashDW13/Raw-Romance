@@ -5,8 +5,7 @@ using System.IO;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
-
-
+using UnityEngine.SceneManagement;
 
 public class SaveSlot : MonoBehaviour
 {
@@ -22,48 +21,81 @@ public class SaveSlot : MonoBehaviour
 
     private void OnEnable()
     {
-        if (save == null)
+        UpdateSaveAppearance();
+    }
+
+    private void UpdateSaveAppearance()
+    {
+        save = SaveManager.saves[index]; 
+
+        if (save.JsonExists())
+        {
+            Save s = save.LoadFromJson();
+            saveName.text = s.name;
+            saveTime.text = s.dateTime;
+            return;
+        }
+
+        else
         {
             if (index == 0)
             {
-                save = SaveManager.currentSave;
-                save.UpdateDateTime();
-            }
-
-            else if (SaveManager.saves[index].JsonExists())
-            {
-                save = SaveManager.saves[index];
+                save.SaveToJson();
+                saveName.text = save.name;
+                saveTime.text = save.dateTime;
             }
 
             else
             {
                 saveName.text = "Empty";
                 saveTime.text = "";
-                return;
             }
         }
-
-        saveName.text = save.name;
-        saveTime.text = save.dateTime.ToString();
     }
 
-    /*public void Save(Save save)
+    public void UpdateSave()
     {
-        this.save = save;
+
+        Debug.Log("Updating save...");
+
+        Save s = SaveManager.currentSave.GetCopy();
+        s.name = SaveManager.saves[index].name;
+        SaveManager.saves[index] = s;
+        SaveManager.saves[index].SaveToJson();
+        UpdateSaveAppearance();
     }
 
-    public Save LoadSave()
+    public void LoadSave()
     {
-        return save;
-    }*/
+        if (!SaveManager.saves[index].JsonExists())
+        {
+            Debug.Log("File doesn't exist!");
+        }
+
+        LevelLoader levelLoader = FindObjectOfType<LevelLoader>();
+        if (levelLoader != null)
+        {
+            if (save.checkpoint != null)
+            {
+                SaveManager.currentSave = SaveManager.saves[index];
+                StartCoroutine(levelLoader.Load("TestTransition", "PointAndClickTestScene"));
+                Debug.Log("Loading...");
+            }
+
+            else
+            {
+                Debug.LogError("Checkpoint has not been saved!");
+            }
+        }
+    }
 }
 
 [System.Serializable]
+
 public class Save
 {
-    //private Checkpoint checkpoint;
     public string name;
-    public System.DateTime dateTime;
+    public string dateTime;
     public string checkpoint;
     public List<Tab> notebook;
     public List<PointAndClickInteractableState> interactableStates = new List<PointAndClickInteractableState>();
@@ -96,12 +128,18 @@ public class Save
 
     public void UpdateDateTime()
     {
-        dateTime = System.DateTime.Now;
+        dateTime = System.DateTime.Now.ToString();
     }
 
-    private void SaveToJson()
+    public void UpdateCheckpoint()
+    {
+        checkpoint = SceneManager.GetActiveScene().name;
+    }
+
+    public void SaveToJson()
     {
         UpdateDateTime();
+
         string json = JsonUtility.ToJson(this);
         System.IO.File.WriteAllText(Application.persistentDataPath + string.Format("/{0}.json", name), json);
         Debug.Log("Save named " + name + " to " + Application.persistentDataPath + string.Format("/{0}.json", name));
@@ -126,6 +164,11 @@ public class Save
     {
         string filePath = Application.persistentDataPath + string.Format("/{0}.json", name);
         return (File.Exists(filePath));
+    }
+
+    public Save GetCopy()
+    {
+        return MemberwiseClone() as Save;
     }
 }
 
