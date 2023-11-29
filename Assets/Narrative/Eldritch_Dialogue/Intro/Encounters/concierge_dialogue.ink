@@ -9,37 +9,43 @@ EXTERNAL sceneTransition(transition, sceneName)
 EXTERNAL doStopBGM(bgmsoundName)
 EXTERNAL doPlayBGM(bgmsoundName)
 VAR called = false
+VAR knotToReturn = -> ready
+->check
+===check===
+{called:
+    ->  ready
+    
+- else:
+    -> meet_conc
+}
 
 //concierge
-
-->meet_conc
 
 
 === meet_conc ===
 ~saveState(meet_conc)
-{called}
-(Ew... There's... I don't even know what that is on the stairs.)#Speaker:kai
+(Ew... There's... I don't even know what that is on the stairs.)
 (They look a little too shiny for my liking... I'll have to go up them carefully.)
 (I-...)
 (I have to be hallucinating.)
 //GHOST SPRITE ELNARGE, GET CLOSER; WAIT FOR SPRITE TO ENLARGE
 #Speaker:con,conc
-"Welcome to the Richardson estate. I am the concierge of the property, and will be guiding you through your... journey."
+"Welcome to my estate."
 "..."
-(I must be crazy.)#Speaker:kai
-"... *ahem* I said, welcome to the Richardson estate."#Speaker:con,conc
+(I must be crazy.)#Speaker:kaiCon, conc
+"... *ahem* I said, welcome to my estate."#Speaker:con,conc
 "..."
 "Ok then..."
-(There's no way this is real.)#Speaker:kai
-"I hope you made preparations for your disappearance;  I've yet to see one of you walk out of these doors."#Speaker:con,conc
+(There's no way this is real.)#Speaker:kaiCon, conc
+"I hope you made preparations for your disappearance;  I've yet to see someone walk out of these doors."#Speaker:con,conc
 "But, nevermind that."
 "You've crossed the threshold, so there's no turning back for you now."
-(Wait... what?)#Speaker:kai
-"Are you ready?"#Speaker:con,conc
+(Wait... what?)#Speaker:kaiCon,conc
+"Are you ready?"#Speaker:con,def
 "..."
 "*Ahem*"
-"Do you hear me? If you give everyone you meet the cold shoulder, you won't make it very far."
-"You'd ought to remember to give someone an answer when asked a question."
+"Do you hear me? If you give everyone you meet the cold shoulder, you won't make it far in this place."
+"You'd ought to remember to give someone an answer when they ask you a question."
 "Now, I'll ask you again... Are you ready for what's behind these doors?"
 ~spawnChoice("I need to make a call","call",20,"middle")
 ~spawnChoice("Yes","red_str",20,"top-left")
@@ -63,24 +69,15 @@ VAR called = false
 ~spawnChoice("I need to make a call","call",20,"middle")
 ~spawnChoice("Something","ha",20,"bottom-right")
 ~spawnChoice("Ok","thank",20,"bottom-left")
-~waitNextLine(10)
 "..."
-"I think you should take some more time outside..."
-"..."
-~sceneTransition("TestTransition", "Courtyard")
-
-
+->END
 
 === call ===
 "Do as you need."
-~called = true
-{called}
-story.variablesState["called"] = unitySyncVar
-~sceneTransition("TestTransition", "call_fam")
--> DONE
+~ called = true
+//story.variablesState["called"] = unitySyncVar 
 
-=== check ===
-transition skipped
+~sceneTransition("TestTransition", "Call_Fam")
 ->END
 
 === thank ===
@@ -106,9 +103,8 @@ transition skipped
 
 === ready ===
 "Before you go in, we have some rules. Listen carefully."
-~called = false
 {called:
-    - else:
+- else:
     ~spawnChoice("I need to make a call","call",20,"middle")
     }
 "You can touch, inspect, and ignore the items and furniture in the property, but you cannot take anything with you."
@@ -223,5 +219,3 @@ transition skipped
 ~doPlayBGM("mansionAmb")
 ~sceneTransition("TestTransition", "slime_room")
 ->END
-
-
