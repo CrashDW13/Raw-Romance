@@ -14,6 +14,7 @@ using UnityEditor;
 public class DialoguePanel : MonoBehaviour
 {
     private StoryStateHandler stateHandler;
+    private SaveManager saveManager;
     private bool preventAutoSave = false;
 
     [Header("Characters")]
@@ -25,7 +26,6 @@ public class DialoguePanel : MonoBehaviour
     private Story inkStory;
     private string knot;
     [Space(10)]
-
 
     [Header("Graphics")]
     [SerializeField] private Image Background;
@@ -57,6 +57,7 @@ public class DialoguePanel : MonoBehaviour
     private float slowBlipSpeed;
     private bool auto = false;
 
+
     private void Start()
     {
         waitTimeSeconds = defaultWaitTimeSeconds;
@@ -73,6 +74,8 @@ public class DialoguePanel : MonoBehaviour
         Debug.Log(knot);
 
         stateHandler = new StoryStateHandler(inkStory);
+        saveManager = FindObjectOfType<SaveManager>();
+
 
         inkStory.BindExternalFunction("updateAffinity", (string character, int value) => { UpdateAffinity(character, value); });
         inkStory.BindExternalFunction("spawnChoice", (string message, string knot, float time, string positionPreset) => { SpawnChoice(message, knot, time, positionPreset); });
@@ -292,6 +295,10 @@ public class DialoguePanel : MonoBehaviour
     public void SelectChoice(float choice)
     {
         inkStory.ChooseChoiceIndex((int)choice);
+        
+        saveManager.UpdateUnityVariables(saveManager.unityVariables);
+        saveManager.UpdateInkVariables(saveManager.unityVariables);
+
 
         HideChoices();
 
@@ -472,11 +479,7 @@ public class DialoguePanel : MonoBehaviour
 
     void SaveState(string fallbackNode)
     {
-        //if (preventAutoSave)
-       // {
-       //     preventAutoSave = false;  // Reset the flag
-       //     return; // Do not save if the flag is set
-       // }
+    
     
         stateHandler.SaveState(fallbackNode); 
         Debug.Log("saved");
@@ -492,14 +495,14 @@ public class DialoguePanel : MonoBehaviour
             return;
         }
 
-        StopCoroutine(textCoroutine); // Stop any ongoing dialogue scrawling
+        StopCoroutine(textCoroutine); 
 
         HideChoices();
 
-        preventAutoSave = true; // Set the flag to prevent the next save
+        preventAutoSave = true; 
 
         SanityHandler.UpdateSanity(sanityPenalty);
-        ChoicePanel.ClearAll(); //  Clears all choice panels. 
+        ChoicePanel.ClearAll(); 
         Debug.Log("Rewind");
 
         if (stateHandler.RewindStoryState())
@@ -508,17 +511,7 @@ public class DialoguePanel : MonoBehaviour
         }
 
 
-        // Comment out this block to prevent auto-progression
-        // while (inkStory.canContinue)
-        // {
-        //     ShowLine(inkStory.Continue());
-        // }
-
-        // Display choices after a rewind, if there are any.
-        //if (inkStory.currentChoices.Count > 0)
-        //{
-        //    DisplayCurrentChoices();
-        //}
+      
     }
 
     public void Continue()

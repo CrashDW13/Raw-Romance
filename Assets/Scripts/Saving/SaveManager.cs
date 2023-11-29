@@ -36,6 +36,7 @@ public class SaveManager : MonoBehaviour
         {
             object inkValue = inkStory.variablesState[variableName];
             unityVariables[variableName] = inkValue;
+            Debug.Log(unityVariables);
         }
     }
     public void UpdateInkVariables(Dictionary<string, object> unityVariables)
@@ -44,7 +45,8 @@ public class SaveManager : MonoBehaviour
         {
           
             inkStory.variablesState[variable.Key] = variable.Value;
-            
+            Debug.Log(variable.Key);
+
         }
     }
     public string SaveInkState()
