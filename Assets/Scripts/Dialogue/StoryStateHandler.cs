@@ -20,6 +20,8 @@ public class StoryStateHandler : MonoBehaviour
 {
     private Story story;
     private List<SaveState> storyStateHistory = new List<SaveState>();
+    public bool calledUnit;
+
 
     public StoryStateHandler(Story inkStory)
     {
@@ -36,6 +38,7 @@ public class StoryStateHandler : MonoBehaviour
     {
         return storyStateHistory.Count > 1;
     }
+
 
     public bool RewindStoryState()
     {
@@ -74,4 +77,17 @@ public class StoryStateHandler : MonoBehaviour
             return false;
         }
     }
+    public void UpdateUnityVariables()
+    {
+        bool calledUnity = (bool)story.variablesState["called"];
+        calledUnit = calledUnity;
+        
+    }
+
+    public void UpdateInkVariables()
+    {
+        story.variablesState["called"] = calledUnit;
+
+    }
+
 }
