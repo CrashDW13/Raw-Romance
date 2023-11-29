@@ -76,8 +76,7 @@ VAR called = false
 ~called = true
 {called}
 story.variablesState["called"] = unitySyncVar
-~sceneTransition("TestTransition", "call_fam")
--> DONE
+~sceneTransition("TestTransition", "Call_Fam")
 
 === check ===
 transition skipped
