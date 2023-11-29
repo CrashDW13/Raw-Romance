@@ -16,6 +16,9 @@ VAR called = false
 
 
 === meet_conc ===
+{called:
+    ->call_ready
+    
 ~saveState(meet_conc)
 {called}
 (Ew... There's... I don't even know what that is on the stairs.)#Speaker:kai
@@ -73,11 +76,12 @@ VAR called = false
 
 === call ===
 "Do as you need."
+
 ~called = true
 {called}
-story.variablesState["called"] = unitySyncVar
 ~sceneTransition("TestTransition", "Call_Fam")
-
+=== call_ready===
+"Welcome back."
 === check ===
 transition skipped
 ->END
