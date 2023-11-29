@@ -13,6 +13,8 @@ EXTERNAL sceneTransition(transitionPreset, sceneName)
 ->core_start
 
 === core_start ===
+~doPlayBGM("lawConvo")
+~doPlayBGM("backLoop")
 ~toggleSanity()
 ~saveState("core_start")
 ~waitNextLine(2)

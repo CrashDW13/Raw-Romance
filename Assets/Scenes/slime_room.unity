@@ -230,6 +230,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 332105711118256238, guid: a1ed3fc515c7f40f4962a26cf5d3a26b, type: 3}
+      propertyPath: bgmEntries.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 332105711118256238, guid: a1ed3fc515c7f40f4962a26cf5d3a26b, type: 3}
+      propertyPath: bgmEntries.Array.data[2].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4b106a42d37a4e94dbb845879c896cd2, type: 3}
+    - target: {fileID: 332105711118256238, guid: a1ed3fc515c7f40f4962a26cf5d3a26b, type: 3}
+      propertyPath: bgmEntries.Array.data[2].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 332105711118256238, guid: a1ed3fc515c7f40f4962a26cf5d3a26b, type: 3}
+      propertyPath: bgmEntries.Array.data[1].volume
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 332105711118256238, guid: a1ed3fc515c7f40f4962a26cf5d3a26b, type: 3}
+      propertyPath: bgmEntries.Array.data[2].volume
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 332105711118256238, guid: a1ed3fc515c7f40f4962a26cf5d3a26b, type: 3}
+      propertyPath: bgmEntries.Array.data[2].clipName
+      value: sRoomBG
+      objectReference: {fileID: 0}
     - target: {fileID: 2971463539294922946, guid: a1ed3fc515c7f40f4962a26cf5d3a26b, type: 3}
       propertyPath: m_RootOrder
       value: 12

@@ -231,16 +231,52 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 332105711118256238, guid: a1ed3fc515c7f40f4962a26cf5d3a26b, type: 3}
+      propertyPath: bgmEntries.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 332105711118256238, guid: a1ed3fc515c7f40f4962a26cf5d3a26b, type: 3}
       propertyPath: sfxEntries.Array.size
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 332105711118256238, guid: a1ed3fc515c7f40f4962a26cf5d3a26b, type: 3}
+      propertyPath: bgmEntries.Array.data[2].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: e9da0a899795470428f4155c242e97e8, type: 3}
+    - target: {fileID: 332105711118256238, guid: a1ed3fc515c7f40f4962a26cf5d3a26b, type: 3}
+      propertyPath: bgmEntries.Array.data[2].loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 332105711118256238, guid: a1ed3fc515c7f40f4962a26cf5d3a26b, type: 3}
+      propertyPath: bgmEntries.Array.data[3].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: b5343f48e891b1548b0f7d94aa0a8772, type: 3}
+    - target: {fileID: 332105711118256238, guid: a1ed3fc515c7f40f4962a26cf5d3a26b, type: 3}
+      propertyPath: bgmEntries.Array.data[3].loop
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 332105711118256238, guid: a1ed3fc515c7f40f4962a26cf5d3a26b, type: 3}
       propertyPath: sfxEntries.Array.data[5].clip
       value: 
       objectReference: {fileID: 8300000, guid: 13fbcd4980a714efaadd088dd156f304, type: 3}
     - target: {fileID: 332105711118256238, guid: a1ed3fc515c7f40f4962a26cf5d3a26b, type: 3}
+      propertyPath: bgmEntries.Array.data[2].volume
+      value: 0.056
+      objectReference: {fileID: 0}
+    - target: {fileID: 332105711118256238, guid: a1ed3fc515c7f40f4962a26cf5d3a26b, type: 3}
+      propertyPath: bgmEntries.Array.data[3].volume
+      value: 0.056
+      objectReference: {fileID: 0}
+    - target: {fileID: 332105711118256238, guid: a1ed3fc515c7f40f4962a26cf5d3a26b, type: 3}
       propertyPath: sfxEntries.Array.data[5].volume
       value: 0.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 332105711118256238, guid: a1ed3fc515c7f40f4962a26cf5d3a26b, type: 3}
+      propertyPath: bgmEntries.Array.data[2].clipName
+      value: lawConvo
+      objectReference: {fileID: 0}
+    - target: {fileID: 332105711118256238, guid: a1ed3fc515c7f40f4962a26cf5d3a26b, type: 3}
+      propertyPath: bgmEntries.Array.data[3].clipName
+      value: backLoop
       objectReference: {fileID: 0}
     - target: {fileID: 332105711118256238, guid: a1ed3fc515c7f40f4962a26cf5d3a26b, type: 3}
       propertyPath: sfxEntries.Array.data[0].clipName

@@ -169,6 +169,10 @@ transition skipped
 
 === again ===
 "Once you meet an inhabitant you cannot leave unless they allow you to leave."
+{called:
+    - else:
+    ~spawnChoice("I need to make a call","call",20,"middle")
+    }
 "They tend to monologue, and some enjoy the interjection while others want to be heard in full."
 "Pick your responses carefully; if you take too long, you'll lose the opportunity to make your remark."
 ~saveState("plead_ag")
