@@ -14,7 +14,6 @@ using UnityEditor;
 public class DialoguePanel : MonoBehaviour
 {
     private StoryStateHandler stateHandler;
-    private SaveManager saveManager;
     private bool preventAutoSave = false;
 
     [Header("Characters")]
@@ -74,7 +73,7 @@ public class DialoguePanel : MonoBehaviour
         Debug.Log(knot);
 
         stateHandler = new StoryStateHandler(inkStory);
-        saveManager = FindObjectOfType<SaveManager>();
+    
 
 
         inkStory.BindExternalFunction("updateAffinity", (string character, int value) => { UpdateAffinity(character, value); });
@@ -87,6 +86,7 @@ public class DialoguePanel : MonoBehaviour
         inkStory.BindExternalFunction("doPlayBGM", (string bgmsoundName) => { DoPlayBGM(bgmsoundName); });
         inkStory.BindExternalFunction("doStopBGM", (string bgmsoundName) => { StopBGM(bgmsoundName); });
         inkStory.BindExternalFunction("toggleSanity", () => { ToggleSanity(); });
+        inkStory.BindExternalFunction("syncUnity",()=>{SyncUnity();});
 
         LevelLoader levelLoader = FindObjectOfType<LevelLoader>();
         if (levelLoader == null)
@@ -295,9 +295,9 @@ public class DialoguePanel : MonoBehaviour
     public void SelectChoice(float choice)
     {
         inkStory.ChooseChoiceIndex((int)choice);
+  
+
         
-        saveManager.UpdateUnityVariables(saveManager.unityVariables);
-        saveManager.UpdateInkVariables(saveManager.unityVariables);
 
 
         HideChoices();
@@ -363,6 +363,12 @@ public class DialoguePanel : MonoBehaviour
 
             Destroy(gameObject);
         }
+    }
+    public void SyncUnity()
+    {
+        stateHandler.UpdateUnityVariables();
+        stateHandler.UpdateUnityVariables();
+        Debug.Log(stateHandler.calledUnit);
     }
 
     public void ResetWaitTime()

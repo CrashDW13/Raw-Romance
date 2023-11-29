@@ -8,6 +8,7 @@ EXTERNAL toggleSanity()
 EXTERNAL sceneTransition(transition, sceneName)
 EXTERNAL doStopBGM(bgmsoundName)
 EXTERNAL doPlayBGM(bgmsoundName)
+EXTERNAL syncUnity()
 VAR called = false
 
 //concierge
@@ -18,11 +19,18 @@ VAR called = false
 === meet_conc ===
 {called:
     ->call_ready
+    -else:
+    "..."
+}
+    
     
 ~saveState(meet_conc)
 {called}
+~spawnChoice("I need to make a call","call",20,"middle")
+
 (Ew... There's... I don't even know what that is on the stairs.)#Speaker:kai
 (They look a little too shiny for my liking... I'll have to go up them carefully.)
+
 (I-...)
 (I have to be hallucinating.)
 //GHOST SPRITE ELNARGE, GET CLOSER; WAIT FOR SPRITE TO ENLARGE
@@ -76,12 +84,16 @@ VAR called = false
 
 === call ===
 "Do as you need."
-
 ~called = true
+~syncUnity()
 {called}
 ~sceneTransition("TestTransition", "Call_Fam")
+~waitNextLine(5)
+
+->DONE
 === call_ready===
 "Welcome back."
+->ready
 === check ===
 transition skipped
 ->END
