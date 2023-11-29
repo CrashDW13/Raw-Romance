@@ -102,6 +102,10 @@ transition skipped
 "No matter; I will prepare you as best as I can."
 ->ready
 
+=== return_call ===
+"Welcome back."
+->ready
+
 
 === ready ===
 "Before you go in, we have some rules. Listen carefully."
@@ -137,6 +141,10 @@ transition skipped
 "The estate must remain as it was and as it is."
 "Should you choose to inspect and make note of something, make sure to press 'N' to see what you've written down."
 "And please, don't drop your pen on the floor."
+{called:
+    - else:
+    ~spawnChoice("I need to make a call","call",20,"middle")
+    }
 "There will be no food or refreshments inside, so I hope you've come with a satiated appetite."
 "Once you meet an inhabitant you cannot leave unless they allow you to leave."
 "They tend to monologue, and some enjoy the interjection while others want to be heard in full."
