@@ -64,7 +64,6 @@ You dig your feet into the mud, slowly forcing the door open.
 //SLIME ROOM
 
 
-
 === sidetable ===
 It's a rotting sidetable with a leather journal resting on top.
 Read it?
@@ -144,4 +143,4 @@ The bricks are warm, but there's only charcoal inside.
 
 === go ===
 (Alright, time for another creepy room.)
-~sceneTransition("TestTransition", "Ink Test Scene")
+~sceneTransition("TestTransition", "Lawyer_Test")

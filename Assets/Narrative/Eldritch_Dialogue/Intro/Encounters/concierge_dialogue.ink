@@ -14,31 +14,32 @@ VAR called = false
 
 ->meet_conc
 
+
 === meet_conc ===
 ~saveState(meet_conc)
 {called}
-(Ew... There's... I don't even know what that is on the stairs.)
+(Ew... There's... I don't even know what that is on the stairs.)#Speaker:kai
 (They look a little too shiny for my liking... I'll have to go up them carefully.)
 (I-...)
 (I have to be hallucinating.)
 //GHOST SPRITE ELNARGE, GET CLOSER; WAIT FOR SPRITE TO ENLARGE
 #Speaker:con,conc
-"Welcome to my estate."
+"Welcome to the Richardson estate. I am the concierge of the property, and will be guiding you through your... journey."
 "..."
-(I must be crazy.)#Speaker:kaiCon, conc
-"... *ahem* I said, welcome to my estate."#Speaker:con,conc
+(I must be crazy.)#Speaker:kai
+"... *ahem* I said, welcome to the Richardson estate."#Speaker:con,conc
 "..."
 "Ok then..."
-(There's no way this is real.)#Speaker:kaiCon, conc
-"I hope you made preparations for your disappearance;  I've yet to see someone walk out of these doors."#Speaker:con,conc
+(There's no way this is real.)#Speaker:kai
+"I hope you made preparations for your disappearance;  I've yet to see one of you walk out of these doors."#Speaker:con,conc
 "But, nevermind that."
 "You've crossed the threshold, so there's no turning back for you now."
-(Wait... what?)#Speaker:kaiCon,conc
-"Are you ready?"#Speaker:con,def
+(Wait... what?)#Speaker:kai
+"Are you ready?"#Speaker:con,conc
 "..."
 "*Ahem*"
-"Do you hear me? If you give everyone you meet the cold shoulder, you won't make it far in this place."
-"You'd ought to remember to give someone an answer when they ask you a question."
+"Do you hear me? If you give everyone you meet the cold shoulder, you won't make it very far."
+"You'd ought to remember to give someone an answer when asked a question."
 "Now, I'll ask you again... Are you ready for what's behind these doors?"
 ~spawnChoice("I need to make a call","call",20,"middle")
 ~spawnChoice("Yes","red_str",20,"top-left")
@@ -62,15 +63,23 @@ VAR called = false
 ~spawnChoice("I need to make a call","call",20,"middle")
 ~spawnChoice("Something","ha",20,"bottom-right")
 ~spawnChoice("Ok","thank",20,"bottom-left")
+~waitNextLine(10)
 "..."
-->END
+"I think you should take some more time outside..."
+"..."
+~sceneTransition("TestTransition", "Courtyard")
+
+
 
 === call ===
 "Do as you need."
-~ called = true
+~called = true
 {called}
 story.variablesState["called"] = unitySyncVar
 ~sceneTransition("TestTransition", "Call_Fam")
+
+=== check ===
+transition skipped
 ->END
 
 === thank ===
@@ -93,10 +102,14 @@ story.variablesState["called"] = unitySyncVar
 "No matter; I will prepare you as best as I can."
 ->ready
 
+=== return_call ===
+"Welcome back."
+->ready
+
 
 === ready ===
 "Before you go in, we have some rules. Listen carefully."
-~ called = false
+~called = false
 {called:
     - else:
     ~spawnChoice("I need to make a call","call",20,"middle")
@@ -128,6 +141,10 @@ story.variablesState["called"] = unitySyncVar
 "The estate must remain as it was and as it is."
 "Should you choose to inspect and make note of something, make sure to press 'N' to see what you've written down."
 "And please, don't drop your pen on the floor."
+{called:
+    - else:
+    ~spawnChoice("I need to make a call","call",20,"middle")
+    }
 "There will be no food or refreshments inside, so I hope you've come with a satiated appetite."
 "Once you meet an inhabitant you cannot leave unless they allow you to leave."
 "They tend to monologue, and some enjoy the interjection while others want to be heard in full."
@@ -152,6 +169,10 @@ story.variablesState["called"] = unitySyncVar
 
 === again ===
 "Once you meet an inhabitant you cannot leave unless they allow you to leave."
+{called:
+    - else:
+    ~spawnChoice("I need to make a call","call",20,"middle")
+    }
 "They tend to monologue, and some enjoy the interjection while others want to be heard in full."
 "Pick your responses carefully; if you take too long, you'll lose the opportunity to make your remark."
 ~saveState("plead_ag")
@@ -213,3 +234,5 @@ story.variablesState["called"] = unitySyncVar
 ~doPlayBGM("mansionAmb")
 ~sceneTransition("TestTransition", "slime_room")
 ->END
+
+

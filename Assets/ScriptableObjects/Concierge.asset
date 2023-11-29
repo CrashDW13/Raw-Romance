@@ -16,7 +16,5 @@ MonoBehaviour:
   characterTag: con
   CharacterSprites:
   - sprite: {fileID: 21300000, guid: 22cf16dbf0575bc4d9a98c879dfad3cf, type: 3}
-    name: def
-  - sprite: {fileID: 0}
-    name: clear
+    name: conc
   fileName: Assets/ScriptableObjects/Concierge.asset
