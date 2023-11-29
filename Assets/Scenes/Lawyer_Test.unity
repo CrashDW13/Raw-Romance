@@ -243,6 +243,10 @@ PrefabInstance:
       value: 0.79
       objectReference: {fileID: 0}
     - target: {fileID: 332105711118256238, guid: a1ed3fc515c7f40f4962a26cf5d3a26b, type: 3}
+      propertyPath: sfxEntries.Array.data[0].clipName
+      value: choiceClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 332105711118256238, guid: a1ed3fc515c7f40f4962a26cf5d3a26b, type: 3}
       propertyPath: sfxEntries.Array.data[5].clipName
       value: sanityrefill
       objectReference: {fileID: 0}
