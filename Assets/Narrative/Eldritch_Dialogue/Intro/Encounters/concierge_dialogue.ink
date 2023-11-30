@@ -26,8 +26,7 @@ VAR called = false
     
     
 ~saveState(meet_conc)
-{called}
-~spawnChoice("I need to make a call","call",20,"middle")
+//{called}
 
 (Ew... There's... I don't even know what that is on the stairs.)#Speaker:kai
 (They look a little too shiny for my liking... I'll have to go up them carefully.)
@@ -87,7 +86,7 @@ VAR called = false
 "Do as you need."
 ~called = true
 ~syncUnity()
-{called}
+//{called}
 ~sceneTransition("TestTransition", "Call_Fam")
 ~waitNextLine(5)
 
