@@ -10,7 +10,7 @@ public class PauseManager : MonoBehaviour
     [SerializeField]
     private KeyCode pauseKey;
 
-    private bool paused = false; 
+    private static bool paused = false; 
 
     public delegate void PauseEventHandler();
     public static event PauseEventHandler OnPause;
@@ -89,5 +89,10 @@ public class PauseManager : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public static bool IsPaused()
+    {
+        return paused;
     }
 }

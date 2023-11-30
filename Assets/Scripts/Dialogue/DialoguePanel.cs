@@ -167,7 +167,9 @@ public class DialoguePanel : MonoBehaviour
         int i = 0;
         while (i < line.Length)
         {
-            
+
+            yield return new WaitUntil(() => PauseManager.IsPaused() == false);
+
             DialogueBox.text += line[i];
             if (i % slowBlipSpeed == 0){
 

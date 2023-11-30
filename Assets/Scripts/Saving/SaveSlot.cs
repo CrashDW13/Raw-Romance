@@ -78,7 +78,7 @@ public class SaveSlot : MonoBehaviour
             if (save.checkpoint != null)
             {
                 SaveManager.currentSave = SaveManager.saves[index];
-                StartCoroutine(levelLoader.Load("TestTransition", "PointAndClickTestScene"));
+                StartCoroutine(levelLoader.Load("TestTransition", SaveManager.saves[index].checkpoint));
                 Debug.Log("Loading...");
             }
 
@@ -96,7 +96,7 @@ public class Save
 {
     public string name;
     public string dateTime;
-    public string checkpoint;
+    public string checkpoint = "Gate";
     public List<Tab> notebook;
     public List<PointAndClickInteractableState> interactableStates = new List<PointAndClickInteractableState>();
     public Dictionary<string, object> inkGlobalVariables = new Dictionary<string, object>();
