@@ -13,8 +13,6 @@ EXTERNAL sceneTransition(transitionPreset, sceneName)
 ->core_start
 
 === core_start ===
-~doPlayBGM("lawConvo")
-~doPlayBGM("backLoop")
 ~toggleSanity()
 ~saveState("core_start")
 ~waitNextLine(2)
@@ -22,7 +20,7 @@ EXTERNAL sceneTransition(transitionPreset, sceneName)
 "What is it now?"
 "..."
 //remove greet options here
-"Well? I don't have all day."#Speaker:
+"Well? I don't have all day."
 "..."
 ~waitNextLine(2)
 "You know I do not like silence, Bernard."#Speaker:lawyer
@@ -31,9 +29,10 @@ EXTERNAL sceneTransition(transitionPreset, sceneName)
 ~waitNextLine(5)
 "..."
 "..."
-"If you're not going to say anything, then get out."
-//kick player back to lawyer lounge area
-~sceneTransition("TestTransition", "slime_room")
+"Bern-"
+You lock eyes#Speaker:BLANK
+"Oh!"
+->speak
 
 
 === bernard ===
@@ -49,8 +48,9 @@ EXTERNAL sceneTransition(transitionPreset, sceneName)
 "Well? Out with it."
 "..."
 ~waitNextLine(2)
-"Get out."
-~sceneTransition("TestTransition", "slime_room")
+"I don't appreciate it when someone wastes my time."
+"..."
+->law_death
 
 
 === interview ===
@@ -114,10 +114,9 @@ EXTERNAL sceneTransition(transitionPreset, sceneName)
 ~spawnChoice("Thanks", "take", 10, "top-left")
 ~spawnChoice("I think I'll pass", "pass", 10, "top-right")
 "Come now, I don't have all day."
-(...)
+"..."
 "You've wasted enough of my time."
-"Get out."
-~sceneTransition("TestTransition", "slime_room")
+->law_death
 
 
 === speak ===
@@ -125,7 +124,17 @@ EXTERNAL sceneTransition(transitionPreset, sceneName)
 "I'm Kai."#Speaker:kai 
 "Well, Kai, I wasn't expecting visitors."#Speaker:lawyer
 "At least, not of the human variety."
-->END
+"...surprise?"#Speaker:kai 
+"Ha. What brings you into my office?"#Speaker:lawyer
+~spawnChoice("I'm here to talk to you", "interview", 10, "bottom-left")
+~spawnChoice("I'm looking for a will?", "will", 10, "top-right")
+~waitNextLine(3)
+"..."
+"Well?
+~waitNextLine(2)
+"..."
+"I don't have time for this."
+->law_death
 
 
 
@@ -147,4 +156,11 @@ As your fingers meet the door handle you find it locked.
 
 === law_end ===
 ~win()
+
+=== law_win ===
+(That was intense... but at least I'm alive.)
+(I don't know how I managed to go that entire time without asking what the hell it was.)
+(Then again, I don't know what any of the... 'people'... here are.)
+(I can't let myself dwell on this - I have to figure out where that stupid will is.)
+->END
 

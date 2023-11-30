@@ -9,7 +9,7 @@ EXTERNAL sceneTransition(transition, sceneName)
 EXTERNAL doStopBGM(bgmsoundName)
 EXTERNAL doPlayBGM(bgmsoundName)
 EXTERNAL syncUnity()
-VAR called = false
+
 
 //concierge
 
@@ -17,6 +17,8 @@ VAR called = false
 
 
 === meet_conc ===
+VAR called = false
+~syncUnity()
 {called:
     ->call_ready
     -else:
@@ -24,9 +26,8 @@ VAR called = false
 }
     
     
-~saveState(meet_conc)
-{called}
-~spawnChoice("I need to make a call","call",20,"middle")
+~saveState(ready)
+//{called}
 
 (Ew... There's... I don't even know what that is on the stairs.)#Speaker:kai
 (They look a little too shiny for my liking... I'll have to go up them carefully.)
@@ -86,7 +87,7 @@ VAR called = false
 "Do as you need."
 ~called = true
 ~syncUnity()
-{called}
+//{called}
 ~sceneTransition("TestTransition", "Call_Fam")
 ~waitNextLine(5)
 
@@ -94,9 +95,7 @@ VAR called = false
 === call_ready===
 "Welcome back."
 ->ready
-=== check ===
-transition skipped
-->END
+
 
 === thank ===
 "Thank you."
