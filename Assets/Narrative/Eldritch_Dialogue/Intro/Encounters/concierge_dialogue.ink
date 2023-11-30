@@ -126,14 +126,14 @@ VAR called = false
 ~called = false
 {called:
     - else:
-    ~spawnChoice("I need to make a call","call",20,"middle")
+    ~spawnChoice("I need to make a call","call",5,"top-right")
     }
 "You can touch, inspect, and ignore the items and furniture in the property, but you cannot take anything with you."
 "The estate must remain as it is."
 "I see you have a notebook with you - should you choose to inspect and make note of something make sure to press 'N' to see what you've written down."
 "And please, don't drop your pen on the floor."
 "There will be no food or refreshments inside, so I hope you've come with a satiated appetite."
-~spawnChoice("Why?", "why",10,"middle")
+~spawnChoice("Why?", "why",10,"bottom-left")
 "Once you meet an inhabitant you cannot leave unless they allow you to leave."
 "They tend to monologue, and some enjoy the interjection while others want to be heard in full."
 "Pick your responses carefully; if you take too long, you'll lose the opportunity to make your remark."
