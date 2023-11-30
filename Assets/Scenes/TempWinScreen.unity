@@ -904,12 +904,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2731129861733658649, guid: b5edc168d9bf3d74fb16842341eb328a, type: 3}
       propertyPath: knot
-      value: slime_win
+      value: lawyer_win
       objectReference: {fileID: 0}
     - target: {fileID: 2731129861733658649, guid: b5edc168d9bf3d74fb16842341eb328a, type: 3}
       propertyPath: inkAsset
       value: 
-      objectReference: {fileID: 4900000, guid: 72bbc35285b06eb40ae11a13dab424f6, type: 3}
+      objectReference: {fileID: 4900000, guid: 323fe882484c6dd46820944f62bc414f, type: 3}
     - target: {fileID: 2731129861733658650, guid: b5edc168d9bf3d74fb16842341eb328a, type: 3}
       propertyPath: m_Name
       value: ImmediateConversation

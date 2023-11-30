@@ -123,6 +123,17 @@ EXTERNAL sceneTransition(transitionPreset, sceneName)
 "I'm Kai."#Speaker:kai 
 "Well, Kai, I wasn't expecting visitors."#Speaker:lawyer
 "At least, not of the human variety."
+"...surprise?"#Speaker:kai 
+"Ha. What brings you into my office?"#Speaker:lawyer
+~spawnChoice("I'm here to talk to you", "interview", 10, "bottom-left")
+~spawnChoice("I'm looking for a will?", "will", 10, "top-right")
+~waitNextLine(3)
+"..."
+"Well?
+~waitNextLine(2)
+"..."
+"Get out."
+~sceneTransition("TestTransition", "slime_room")
 ->END
 
 
@@ -145,4 +156,11 @@ As your fingers meet the door handle you find it locked.
 
 === law_end ===
 ~win()
+
+=== law_win ===
+(That was intense... but at least I'm alive.)
+(I don't know how I managed to go that entire time without asking what the hell it was.)
+(Then again, I don't know what any of the... 'people'... here are.)
+(I can't let myself dwell on this - I have to figure out where that stupid will is.)
+->END
 
