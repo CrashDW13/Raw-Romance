@@ -56,10 +56,8 @@ VAR called = false
 ~spawnChoice("I need to make a call","call",20,"middle")
 ~spawnChoice("Yes","red_str",20,"top-left")
 ~spawnChoice("No","unfortunate",20,"top-right")
-
 "..."
 ~waitNextLine(2)
-"..."
 "Perhaps not."
 ~waitNextLine(5)
 "..."
@@ -85,6 +83,7 @@ VAR called = false
 
 === call ===
 "Do as you need."
+~waitNextLine(2)
 ~called = true
 ~syncUnity()
 //{called}

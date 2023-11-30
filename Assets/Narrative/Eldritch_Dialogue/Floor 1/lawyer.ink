@@ -54,7 +54,7 @@ You lock eyes#Speaker:BLANK
 
 
 === interview ===
-"Oh? And why is that?"
+"Oh? And why is that?"#Speaker:lawyer
 "I've heard murmurs about monsters living here - finally got the courage to actually check it out."#Speaker: kai
 "How peculiar - the family tried so hard to hide our existence, yet here you are."#Speaker: lawyer
 "Goes to show how effective shoving us in a closet was."
@@ -117,6 +117,13 @@ You lock eyes#Speaker:BLANK
 "..."
 "You've wasted enough of my time."
 ->law_death
+
+
+=== pass ===
+"A smart decision."
+"Now, why are you here?"
+"I came here to talk to you, actually."#Speaker:kai
+->interview 
 
 
 === speak ===
