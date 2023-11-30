@@ -9,7 +9,7 @@ EXTERNAL doStopBGM(bgmsoundName)
 EXTERNAL doPlayBGM(bgmsoundName)
 VAR called = true
 
-->call_start
+->break_cont
 
 === call_start ===
 //RINGING SOUND EFFECT
@@ -82,6 +82,7 @@ VAR called = true
 (Ok, ok, ok. I got this. I've dealt with loan sharks - I can handle anything this creepy house throws at me.)
 ~sceneTransition("TestTransition","concierge")
 (...)
+->END
 //RETURN TO CONCIERGE
 
 
@@ -118,6 +119,7 @@ VAR called = true
 
 
 === hangup ===
+~sceneTransition("TestTransition", "concierge")
 "Anyway, I have to go. Duty calls and all that."#Speaker:ram
 "Good luck, Kent!"
 "Wait-!"#Speaker:kai
@@ -128,8 +130,4 @@ VAR called = true
 (Damnit, I should have stopped at the drive through when I had the chance.)
 (...)
 (Ok, ok, ok. I got this. I've dealt with loan sharks - I can handle anything this creepy house throws at me.)
-->leave
-
-=== leave ===
-~sceneTransition("TestTransition", "concierge")
-->END
+-> DONE
