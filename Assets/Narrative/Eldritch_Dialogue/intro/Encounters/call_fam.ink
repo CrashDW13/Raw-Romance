@@ -101,7 +101,7 @@ VAR called = true
 "I'm sure you'll figure something out - any excuse should be satisfactory."
 ->hangup
 
-    
+
 === search ===
 "The listing said 'document,' not 'will.' Why didn't you get your lawyer to do this?"#Speaker:kai
 "Unfortunately our family lawyer is bound to the will. You'll likely meet him inside; he's an interesting fellow."#Speaker:ram
@@ -132,3 +132,4 @@ VAR called = true
 
 === leave ===
 ~sceneTransition("TestTransition", "concierge")
+->END

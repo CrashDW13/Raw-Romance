@@ -24,8 +24,8 @@ VAR called = false
     -else:
     "..."
 }
-    
-    
+
+
 ~saveState(ready)
 //{called}
 
@@ -55,7 +55,7 @@ VAR called = false
 "Now, I'll ask you again... Are you ready for what's behind these doors?"
 ~spawnChoice("I need to make a call","call",20,"middle")
 ~spawnChoice("Yes","red_str",20,"top-left")
-~spawnChoice("No","unfortunate",20,"top-right")
+~spawnChoice("No","final",20,"top-right")
 
 "..."
 ~waitNextLine(2)
@@ -253,3 +253,4 @@ VAR called = false
 === slime_rm ===
 (...)
 ~sceneTransition("TestTransition", "slime_room")
+->END

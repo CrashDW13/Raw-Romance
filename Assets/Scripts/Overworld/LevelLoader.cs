@@ -29,6 +29,7 @@ public class LevelLoader : MonoBehaviour
         if (transitionObject.TryGetComponent(out Animator animator))
         {
             float length = animator.GetCurrentAnimatorClipInfo(0).Length;
+            Debug.Log("starting transition");
             yield return new WaitForSeconds(length);
             Debug.Log("loading");
 

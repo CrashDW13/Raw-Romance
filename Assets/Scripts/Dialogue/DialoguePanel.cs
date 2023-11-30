@@ -56,6 +56,13 @@ public class DialoguePanel : MonoBehaviour
     private float slowBlipSpeed;
     private bool auto = false;
 
+    private string transition;
+    private string sceneName;
+
+    public delegate IEnumerator DialoguePanelCompleteEventHandler();
+    public event DialoguePanelCompleteEventHandler OnComplete;
+
+    LevelLoader levelLoader;
 
     private void Start()
     {
@@ -88,12 +95,14 @@ public class DialoguePanel : MonoBehaviour
         inkStory.BindExternalFunction("toggleSanity", () => { ToggleSanity(); });
         inkStory.BindExternalFunction("syncUnity",()=>{SyncUnity();});
 
-        LevelLoader levelLoader = FindObjectOfType<LevelLoader>();
+        levelLoader = FindObjectOfType<LevelLoader>();
+
+
         if (levelLoader == null)
         {
             Debug.LogError("Dialogue Panel: Level Loader not found, you won't be able to switch scenes.");
         }
-        inkStory.BindExternalFunction("sceneTransition", (string transition, string sceneName) => { StartCoroutine(levelLoader.Load(transition, sceneName)); });
+        inkStory.BindExternalFunction("sceneTransition", (string transition, string sceneName) => { SetTransition(transition, sceneName); });
 
 
         inkStory.ChoosePathString(knot);
@@ -171,7 +180,6 @@ public class DialoguePanel : MonoBehaviour
         {
             if (inkStory.currentChoices.Count > 0)
             {
-                Debug.Log("Show choices");
                 ShowChoices();
                 //StartCoroutine(Advance());
             }
@@ -186,7 +194,6 @@ public class DialoguePanel : MonoBehaviour
         {
             if (inkStory.currentChoices.Count > 0)
             {
-                Debug.Log("Show choices");
                 ShowChoices();
                 //StartCoroutine(Advance());
             }
@@ -334,6 +341,19 @@ public class DialoguePanel : MonoBehaviour
                 interactable.Unfreeze();
             }
 
+
+            if (transition != null)
+            {
+                Debug.Log("loading");
+                levelLoader = FindObjectOfType<LevelLoader>();
+                levelLoader.StartCoroutine(levelLoader.Load(transition, sceneName));
+            }
+
+            else
+            {
+                Debug.LogWarning("Transition not set");
+            }
+
             Destroy(gameObject);
         }
     }
@@ -361,6 +381,17 @@ public class DialoguePanel : MonoBehaviour
                 interactable.Unfreeze();
             }
 
+            if (transition != null)
+            {
+                Debug.Log("Loading");
+                levelLoader = FindObjectOfType<LevelLoader>();
+                levelLoader.StartCoroutine(levelLoader.Load(transition, sceneName));
+            }
+
+            else
+            {
+                Debug.LogWarning("Transition not set");
+            }
             Destroy(gameObject);
         }
     }
@@ -518,6 +549,14 @@ public class DialoguePanel : MonoBehaviour
 
 
       
+    }
+
+    private void SetTransition(string transition, string sceneName)
+    {
+        this.transition = transition;
+        this.sceneName = sceneName;
+
+        Debug.Log("Transition set");
     }
 
     public void Continue()
