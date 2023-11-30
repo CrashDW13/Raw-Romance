@@ -89,7 +89,7 @@ VAR called = false
 ~syncUnity()
 //{called}
 ~sceneTransition("TestTransition", "Call_Fam")
-~waitNextLine(5)
+
 
 ->DONE
 === call_ready===
@@ -247,7 +247,9 @@ VAR called = false
 (Plus, $10,000 would be great to have if I make it out alive.)
 ~doStopBGM("rainBGM")
 ~doPlayBGM("mansionAmb")
+->slime_rm
+
+
+=== slime_rm ===
+(...)
 ~sceneTransition("TestTransition", "slime_room")
-->END
-
-
