@@ -120,6 +120,10 @@ public class DialoguePanel : MonoBehaviour
     public void StartConversation(TextAsset inkAssetToLoad, string knotToLoad, bool auto = false)
     {
         this.auto = auto; 
+        if (auto == true)
+        {
+            ContinueObject.SetActive(false);
+        }
         inkAsset = inkAssetToLoad;
         knot = knotToLoad;
     }
