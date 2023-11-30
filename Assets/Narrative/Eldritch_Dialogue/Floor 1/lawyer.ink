@@ -29,9 +29,10 @@ EXTERNAL sceneTransition(transitionPreset, sceneName)
 ~waitNextLine(5)
 "..."
 "..."
-"If you're not going to say anything, then get out."
-//kick player back to lawyer lounge area
-~sceneTransition("TestTransition", "slime_room")
+"Bern-"
+You lock eyes#Speaker:BLANK
+"Oh!"
+->speak
 
 
 === bernard ===
@@ -47,8 +48,9 @@ EXTERNAL sceneTransition(transitionPreset, sceneName)
 "Well? Out with it."
 "..."
 ~waitNextLine(2)
-"Get out."
-~sceneTransition("TestTransition", "slime_room")
+"I don't appreciate it when someone wastes my time."
+"..."
+->law_death
 
 
 === interview ===
@@ -112,10 +114,9 @@ EXTERNAL sceneTransition(transitionPreset, sceneName)
 ~spawnChoice("Thanks", "take", 10, "top-left")
 ~spawnChoice("I think I'll pass", "pass", 10, "top-right")
 "Come now, I don't have all day."
-(...)
+"..."
 "You've wasted enough of my time."
-"Get out."
-~sceneTransition("TestTransition", "slime_room")
+->law_death
 
 
 === speak ===
@@ -132,9 +133,8 @@ EXTERNAL sceneTransition(transitionPreset, sceneName)
 "Well?
 ~waitNextLine(2)
 "..."
-"Get out."
-~sceneTransition("TestTransition", "slime_room")
-->END
+"I don't have time for this."
+->law_death
 
 
 
