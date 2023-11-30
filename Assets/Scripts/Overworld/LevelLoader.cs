@@ -32,6 +32,12 @@ public class LevelLoader : MonoBehaviour
             yield return new WaitForSeconds(length);
             Debug.Log("loading");
 
+            if (!Application.CanStreamedLevelBeLoaded(sceneName))
+            {
+                Debug.LogError("Trying to go to scene that doesn't exist!");
+                yield break;
+            }
+
             SceneManager.LoadScene(sceneName);
         }
 
