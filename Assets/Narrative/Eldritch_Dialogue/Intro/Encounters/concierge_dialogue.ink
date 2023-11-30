@@ -9,7 +9,7 @@ EXTERNAL sceneTransition(transition, sceneName)
 EXTERNAL doStopBGM(bgmsoundName)
 EXTERNAL doPlayBGM(bgmsoundName)
 EXTERNAL syncUnity()
-VAR called = false
+
 
 //concierge
 
@@ -17,6 +17,7 @@ VAR called = false
 
 
 === meet_conc ===
+VAR called = false
 ~syncUnity()
 {called:
     ->call_ready
@@ -25,7 +26,7 @@ VAR called = false
 }
     
     
-~saveState(meet_conc)
+~saveState(ready)
 //{called}
 
 (Ew... There's... I don't even know what that is on the stairs.)#Speaker:kai
@@ -94,9 +95,7 @@ VAR called = false
 === call_ready===
 "Welcome back."
 ->ready
-=== check ===
-transition skipped
-->END
+
 
 === thank ===
 "Thank you."
