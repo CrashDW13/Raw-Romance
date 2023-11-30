@@ -81,6 +81,7 @@ VAR called = true
 (...)
 (Ok, ok, ok. I got this. I've dealt with loan sharks - I can handle anything this creepy house throws at me.)
 ~sceneTransition("TestTransition","concierge")
+(...)
 //RETURN TO CONCIERGE
 
 
@@ -127,4 +128,7 @@ VAR called = true
 (Damnit, I should have stopped at the drive through when I had the chance.)
 (...)
 (Ok, ok, ok. I got this. I've dealt with loan sharks - I can handle anything this creepy house throws at me.)
+->leave
+
+=== leave ===
 ~sceneTransition("TestTransition", "concierge")
