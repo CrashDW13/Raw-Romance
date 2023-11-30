@@ -13,8 +13,6 @@ EXTERNAL sceneTransition(transitionPreset, sceneName)
 ->core_start
 
 === core_start ===
-~doPlayBGM("lawConvo")
-~doPlayBGM("backLoop")
 ~toggleSanity()
 ~saveState("core_start")
 ~waitNextLine(2)
@@ -22,7 +20,7 @@ EXTERNAL sceneTransition(transitionPreset, sceneName)
 "What is it now?"
 "..."
 //remove greet options here
-"Well? I don't have all day."#Speaker:
+"Well? I don't have all day."
 "..."
 ~waitNextLine(2)
 "You know I do not like silence, Bernard."#Speaker:lawyer
