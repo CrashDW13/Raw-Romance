@@ -41,7 +41,8 @@ VAR called = true
 "Well? I don't have all day."
 ~waitNextLine(1)
 "I don't have time for this."
-"Goodbye, Kurt. And make sure you get that contract!"
+"Get the will, then get out."
+"And don't mention that you're looking for it to the employees - they'll probably kill you like they did the others."
 ->break_null
 
 === wtv ===
@@ -60,7 +61,7 @@ VAR called = true
 "Did you manage to find it?"
 "I haven't gone in yet. I think I'm seeing things - I was about to go in and I saw a ghost, and he basically told me I was going to die?"#Speaker:kai
 "Oh! Yes, that. It was in the fine print of your contract."#Speaker:ram
-(Shit... I was too excited about the money to read the contract.)#Speaker:kai
+(Shit... I was too excited about the money to read it.)#Speaker:kai
 "But clearly you didn't read it, so let me give you a refresher."#Speaker:ram
 "We are not responsible for any injury, trauma, property theft or destruction, or death that may occur while you're under this contract."
 "And you will recieve payment upon completion."
@@ -74,9 +75,13 @@ VAR called = true
 "You...?"#Speaker:ram
 ~waitNextLine(2)
 "Well? I don't have all day."
-~waitNextLine(1)
+~waitNextLine(2)
 "I don't have time for this."
-"Goodbye, Kurt. And make sure you get that contract!"
+"Get the will, then get out."
+"And don't mention that you're looking for it to the employees - they'll probably kill you like they did the others."
+"Honestly, don't mention that you're there for a job at all. It'll make things easier."
+"Wait-"#Speaker:kai
+"I'm sure you'll come up with something."#Speaker:ram
 ->break_null
 
 === break_cont ===
@@ -103,6 +108,9 @@ VAR called = true
 "..."
 "Look, I don't have time for this."
 "Good luck. And make sure you don't mention that you're looking for the will while you're in there. It'll piss off the employees."
+"Honestly, don't mention that you're there for a job at all. It'll make things easier."
+"Wait-"#Speaker:kai
+"I'm sure you'll come up with something."#Speaker:ram
 ->break_null
 
 === break_null ===
@@ -129,9 +137,10 @@ VAR called = true
 "But don't worry about that Kyle, I'm sure you'll do fine."#Speaker:ram
 "It's-... How do I make sure I don't die?!"#Speaker:kai
 "Well, for starters, don't mention that you're looking for the will."#Speaker:ram
+~waitNextLine(2)
+"Better yet, don't tell them you're there for a job."
 ~spawnChoice("The what?!","search",4,"top-left")
 ~spawnChoice("Noted","notd",4,"top-right")
-"Better yet, don't tell them you're there for a job."
 "I'm sure you'll figure something out - any excuse should be satisfactory."
 ->hangup
 

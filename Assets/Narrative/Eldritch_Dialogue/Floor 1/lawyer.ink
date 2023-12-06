@@ -24,13 +24,15 @@ EXTERNAL sceneTransition(transitionPreset, sceneName)
 "..."
 ~waitNextLine(2)
 "You know I do not like silence, Bernard."#Speaker:lawyer
+"..."
+~waitNextLine(1)
 ~spawnChoice("Who's Bernard?", "bernard", 10, "bottom-left")
 ~spawnChoice("Sorry", "speak", 10, "bottom-right")
 ~waitNextLine(5)
 "..."
 "..."
 "Bern-"
-You lock eyes#Speaker:BLANK
+You lock eyes.#Speaker:BLANK
 "Oh!"
 ->speak
 
@@ -108,9 +110,8 @@ You lock eyes#Speaker:BLANK
 "Hmph..."
 "Only if you want it to be."
 "Come, take it."
-"..."
-"..."
 ~waitNextLine(5)
+"..."
 ~spawnChoice("Thanks", "take", 10, "top-left")
 ~spawnChoice("I think I'll pass", "pass", 10, "top-right")
 "Come now, I don't have all day."
