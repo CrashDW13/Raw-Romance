@@ -121,6 +121,12 @@ VAR called = true
 (Damnit, I should have stopped at the drive through when I had the chance.)
 (...)
 (Ok, ok, ok. I got this. I've dealt with loan sharks - I can handle anything this creepy house throws at me.)
+(They say where there's a will there's a way...)
+~waitNextLine(2)
+(Ha.)
+(...)
+~waitNextLine(2)
+(I'm screwed.)
 ~sceneTransition("TestTransition","concierge")
 (...)
 ->END
@@ -162,7 +168,6 @@ VAR called = true
 
 
 === hangup ===
-~sceneTransition("TestTransition", "concierge")
 "Anyway, I have to go. Duty calls and all that."#Speaker:ram
 "Good luck, Kent!"
 "Wait-!"#Speaker:kai
@@ -173,4 +178,11 @@ VAR called = true
 (Damnit, I should have stopped at the drive through when I had the chance.)
 (...)
 (Ok, ok, ok. I got this. I've dealt with loan sharks - I can handle anything this creepy house throws at me.)
+(They say where there's a will there's a way...)
+~waitNextLine(2)
+(Ha.)
+(...)
+~waitNextLine(2)
+(I'm screwed.)
+~sceneTransition("TestTransition", "concierge")
 -> DONE

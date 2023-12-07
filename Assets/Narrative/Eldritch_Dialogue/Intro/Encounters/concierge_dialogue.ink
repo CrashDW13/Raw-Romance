@@ -48,7 +48,7 @@ VAR called = false
 "Are you ready?"#Speaker:con,conc
 (What threshold?)#Speaker:kai
 "*Ahem*"#Speaker:con,conc
-"Can you hear me? If you give everyone you meet the cold shoulder, you won't make it very far."
+"Do you hear me? If you give everyone you meet the cold shoulder, you won't make it very far."
 "You'd ought to remember to give someone an answer when asked a question."
 "Now, I'll ask you again... Are you ready for what's behind these doors?"
 ~spawnChoice("I need to make a call","call",10,"middle")
@@ -57,7 +57,7 @@ VAR called = false
 ~waitNextLine(4)
 "..."
 "Perhaps not."
-~waitNextLine(3)
+~waitNextLine(4)
 "..."
 //COUGH SFX
 "*Cough*"
@@ -131,8 +131,8 @@ VAR called = false
 "I see you have a notebook with you - should you choose to inspect and make note of something make sure to press 'N' to see what you've written down."
 "And please, don't drop your pen on the floor."
 "There will be no food or refreshments inside, so I hope you've come with a satiated appetite."
-"Once you meet an inhabitant you cannot leave unless they allow you to leave."
 ~spawnChoice("Why?", "why",10,"bottom-left")
+"Once you meet an inhabitant you cannot leave unless they allow you to leave."
 "They tend to monologue, and some enjoy the interjection while others want to be heard in full."
 "Pick your responses carefully; if you take too long, you'll lose the opportunity to make your remark."
 ~saveState("plead_ag")
@@ -159,7 +159,6 @@ VAR called = false
     }
 "There will be no food or refreshments inside, so I hope you've come with a satiated appetite."
 "Once you meet an inhabitant you cannot leave unless they allow you to leave."
-~spawnChoice("Why?", "why",10,"bottom-left")
 "They tend to monologue, and some enjoy the interjection while others want to be heard in full."
 "Pick your responses carefully; if you take too long, you'll lose the opportunity to make your remark."
 ~saveState("plead_ag")
@@ -184,7 +183,7 @@ VAR called = false
 "Once you meet an inhabitant you cannot leave unless they allow you to leave."
 {called:
     - else:
-    ~spawnChoice("I need to make a call","call",20,"bottom-left")
+    ~spawnChoice("I need to make a call","call",20,"middle")
     }
 "They tend to monologue, and some enjoy the interjection while others want to be heard in full."
 "Pick your responses carefully; if you take too long, you'll lose the opportunity to make your remark."
@@ -249,5 +248,6 @@ VAR called = false
 
 
 === slime_rm ===
+(...)
 ~sceneTransition("TestTransition", "slime_room")
 ->END

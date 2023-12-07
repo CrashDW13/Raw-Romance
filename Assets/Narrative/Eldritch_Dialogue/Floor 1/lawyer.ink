@@ -9,6 +9,8 @@ EXTERNAL toggleSanity()
 EXTERNAL doPlayBGM(bgmsoundName)
 EXTERNAL doStopBGM(bgmsoundName)
 EXTERNAL sceneTransition(transitionPreset, sceneName)
+VAR suspicion = 0
+VAR val = 3
 
 ->core_start
 
@@ -21,6 +23,7 @@ EXTERNAL sceneTransition(transitionPreset, sceneName)
 "..."
 //remove greet options here
 "Well? I don't have all day."
+
 "..."
 ~waitNextLine(2)
 "You know I do not like silence, Bernard."#Speaker:lawyer
@@ -42,14 +45,13 @@ You lock eyes.#Speaker:BLANK
 "Clearly not you."
 "Who are you? State your business."
 "..."
-~spawnChoice("I'm here to talk to you", "interview", 10, "bottom-left")
-~spawnChoice("I'm looking for a will?", "will", 10, "top-right")
-~waitNextLine(3)
+~spawnChoice("I'm here to talk to you", "interview", 7, "bottom-left")
+~spawnChoice("I'm looking for a will?", "will", 7, "top-right")
 "..."
-"..."
+~waitNextLine(4)
 "Well? Out with it."
 "..."
-~waitNextLine(2)
+~waitNextLine(3)
 "I don't appreciate it when someone wastes my time."
 "..."
 ->law_death
@@ -57,15 +59,51 @@ You lock eyes.#Speaker:BLANK
 
 === interview ===
 "Oh? And why is that?"#Speaker:lawyer
-"I've heard murmurs about monsters living here - finally got the courage to actually check it out."#Speaker: kai
-"How peculiar - the family tried so hard to hide our existence, yet here you are."#Speaker: lawyer
+"I've heard murmurs about monsters living here - finally got the courage to actually check it out."#Speaker:kai
+"How peculiar - the family tried so hard to hide our existence, yet here you are."#Speaker:lawyer
 "Goes to show how effective shoving us in a closet was."
-"That aside, how is it? Has your visit been everything you've imagined and more?"
+"Are we meeting expectations?"
 "Well..."#Speaker:kai
-"I don't know what I expected, but so far it's been... worth it?"
+"I don't know what I expected, but so far it's been... interesting?"
 "I'm glad the estate amuses you."#Speaker:lawyer
-"Now, run along. I don't have time for idle chatter."
-->law_end
+"I've come to find it mundane, though I have a half-century of existing here to blame for that."
+~spawnChoice("You've been here for 50 years?!", "century", 5, "bottom-left")
+"*Sigh* If I could go back in time, I would have stopped myself from signing that contract."
+~waitNextLine(2)
+~spawnChoice("About that...", "cont_look", 10, "bottom-left")
+"Such a waste, working a soul contract with a soulless family."
+~spawnChoice("Soul contract?", "contract", 10, "bottom-left")
+"But alas, I cannot change my mistake."
+->END
+
+
+
+=== century ===
+->END
+
+=== cont_look ===
+~suspicion++
+"I've been looking for a soul contract, and I was told it was here."#Speaker:kai
+"Have you seen it?"
+{suspicion + val}
+"Hm... elaborate on this 'soul contract.' What purpose does it serve?"
+~spawnChoice("I don't know... (truth)", "know_truth", 10, "bottom-left")
+~spawnChoice("I don't know... (lie)", "know_lie", 10, "bottom-right")
+
+=== contract ===
+~suspicion++
+"Yes, a soul contract. Does that interest you?"
+~spawnChoice("Actually, yeah...", "cont_look", 10, "bottom-left")
+->END
+
+
+=== know_truth ===
+->END
+
+
+=== know_lie ===
+->END
+
 
 
 
