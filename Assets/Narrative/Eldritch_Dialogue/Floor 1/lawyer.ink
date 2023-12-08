@@ -350,26 +350,49 @@ You shrink as the monster's eyes burn through you.#Speaker:blank
 
 === desk ===
 You stand and begin to make your way around the side of the desk, but the monster's head snaps in your direction.#Speaker:BLANK
-->END
+"What do you think you're doing?"#Speaker:lawyer
+~waitNextLine(2)
+"Uh..."#Speaker:kai 
+~spawnChoice("I wanted to stretch my legs", "legs", 4, "top-right")
+~spawnChoice("Your desk looks cool", "cool_desk", 6, "bottom-left")
+The monster takes a step towards you.#Speaker:BLANK
+~spawnChoice("I wanted to help", "help_look", 3, "bottom-right")
+~waitNextLine(2)
+"Well?"#Speaker:lawyer
+~spawnChoice("I wanted to look for something", "looking", 6, "bottom-right")
+It takes another step, halfway across the desk.#Speaker:BLANK
+~waitNextLine(3)
+"I-"
+~spawnChoice("figured I could help look", "help_look", 4, "middle")
+The monster takes another step, now looming in front of you.#Speaker:BLANK
+"You?"#Speaker:lawyer
+You find yourself at a loss for words.#Speaker:BLANK
+"Hm. Such a shame, I was starting to enjoy your company."#Speaker:lawyer
+"Nonetheless, I'll have to kill you now."
+"It was fun while it lasted."
+->law_death
 
 
-=== alone ===
+=== alone_start ===
 A few strides and one closed door later, you're alone in the room.#Speaker:BLANK
 (It's go time)#Speaker:kai
-->alone_start 
+->alone
 
  
- === alone_start === 
-~waitNextLine(9)
-(Where should I search first?)#Speaker:kai 
-{found == 1:
+ === alone === 
+{found == 0:
+    {search == 0:
+        (Where should I search first?)#Speaker:kai 
+    - else:
+        (Where else should I search?)#speaker:kai 
+    }
     {search < 3:
     
-        {bookshelf:
+        {books:
         - else:
             ~spawnChoice("Bookshelf", "book_search", 8, "bottom-right")
         }
-        {desk:
+        {cab:
         - else:
             ~spawnChoice("Desk", "desk_search", 8, "bottom-left")
         }
@@ -378,13 +401,72 @@ A few strides and one closed door later, you're alone in the room.#Speaker:BLANK
             ~spawnChoice("Chair", "chair_search", 8, "middle")
         }
     - else:
-    "Wait... I think I hear footsteps."
+    "Wait... I think I hear footsteps."#Speaker:kai 
     ->law_return
     }
 - else:
-    "Wait... I think I hear footsteps."
+    "Wait... I think I hear footsteps."#Speaker:kai 
     ->law_return
 }
+->DONE
+
+
+
+=== book_search ===
+VAR books = true 
+~search++
+You scan the spines, attempting to read the symbols they display to no avail.#Speaker:BLANK
+(I don't think this is a human language...)#Speaker:kai 
+(It doesn't seem like the will is here. I'll have to keep looking.)
+->alone
+
+
+=== desk_search ===
+VAR cab = true
+~search++
+{d_start:
+- else:
+    You walk around the side of the desk, being met by a set of drawers on either side of the chair.#Speaker:BLANK
+    (I need to be quick... I can probably only check two of these compartments.)#Speaker:kai 
+    VAR d_start = true
+}
+(What should I check?)#Speaker:kai 
+{found == 0:
+    {left_drawer:
+    - else:
+        + Top left drawer
+            You open the drawer, finding a handful of pens and paperclips.#Speaker:BLANK
+            VAR left_drawer = true 
+            ->DONE
+    }
+    {right_drawer:
+    - else:
+        + Top right drawer
+            The drawer jiggles open halfway, revealing... candy wrappers?#Speaker:BLANK
+            (Looks like someone's got a sweet tooth.)#Speaker:kai 
+            VAR right_drawer = true
+    }
+    {left_cab:
+    - else:
+        + Bottom left cabinet
+            You open the cabinet and find a lone piece of tattered paper.#Speaker:BLANK
+            
++ Bottom left cabinet
++ Bottom right cabinet
+
+}
+->alone 
+
+
+=== chair_search ===
+VAR chair = true 
+~search++
+The velvety cushion reveals nothing but dust underneath, mirroring your findings under the chair.#Speaker:BLANK
+(Hm... no sign of a will here.)#Speaker:kai 
+(I'll have to search somewhere else.)
+->alone 
+
+
 
 
 === law_return ===
