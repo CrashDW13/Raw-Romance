@@ -13,7 +13,7 @@ using UnityEditor;
 
 public class DialoguePanel : MonoBehaviour
 {
-    private StoryStateHandler stateHandler;
+   private StoryStateHandler stateHandler;
     private bool preventAutoSave = false;
 
     [Header("Characters")]
@@ -47,6 +47,10 @@ public class DialoguePanel : MonoBehaviour
     [SerializeField] private float defaultScrawlSpeed;
     [SerializeField] private float scrawlMultiplier;
     [SerializeField] private float defaultWaitTimeSeconds;
+    [Space(10)]
+
+    private SaveManager saveManager;
+
     private float waitTimeSeconds; 
 
     private Coroutine textCoroutine;
@@ -55,6 +59,7 @@ public class DialoguePanel : MonoBehaviour
     private float scrawlSpeed;
     private float slowBlipSpeed;
     private bool auto = false;
+
 
     private string transition;
     private string sceneName;
@@ -66,6 +71,11 @@ public class DialoguePanel : MonoBehaviour
 
     private void Start()
     {
+        saveManager = FindObjectOfType<SaveManager>();
+        if (saveManager == null) {
+            // no save manager throw some exception
+            Debug.Log("No Save Manager");
+        }
         waitTimeSeconds = defaultWaitTimeSeconds;
         characterDB = FindObjectOfType<CharacterDatabase>();
         CharacterName.text = "";
@@ -94,6 +104,8 @@ public class DialoguePanel : MonoBehaviour
         inkStory.BindExternalFunction("doStopBGM", (string bgmsoundName) => { StopBGM(bgmsoundName); });
         inkStory.BindExternalFunction("toggleSanity", () => { ToggleSanity(); });
         inkStory.BindExternalFunction("syncUnity",()=>{SyncUnity();});
+        inkStory.BindExternalFunction("setCalledFam", (bool val) => {SetCalledFam(val);});
+        inkStory.BindExternalFunction("getCalledFam", () => { return getCalledFam();});
 
         levelLoader = FindObjectOfType<LevelLoader>();
 
@@ -559,10 +571,24 @@ public class DialoguePanel : MonoBehaviour
 
     private void SetTransition(string transition, string sceneName)
     {
+
         this.transition = transition;
         this.sceneName = sceneName;
 
         Debug.Log("Transition set");
+    }
+
+    private void SetCalledFam(bool val) {
+        SaveManager.updateGlobalVariable("calledFam", true);
+        Debug.Log("setting call Fam: ");
+        Debug.Log(val);
+    }
+
+    private bool getCalledFam() {
+        bool calledFam = (bool) SaveManager.getGlobalVariable("calledFam");
+        Debug.Log("Getting call Fam: ");
+        Debug.Log(calledFam);
+        return calledFam;
     }
 
     public void Continue()
