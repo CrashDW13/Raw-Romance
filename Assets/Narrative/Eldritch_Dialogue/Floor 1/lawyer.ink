@@ -13,6 +13,17 @@ VAR suspicion = 0
 VAR val = 3
 VAR search = 0
 VAR found = 0
+VAR checking = 0 
+VAR chair = false
+VAR cab = false
+VAR books = false
+VAR started = false
+VAR right_drawer = false
+VAR right_cab = false
+VAR left_drawer = false
+VAR left_cab = false
+VAR d_start = false
+
 
 ->core_start
 
@@ -380,14 +391,9 @@ A few strides and one closed door later, you're alone in the room.#Speaker:BLANK
 
  
  === alone === 
-{found == 0:
-    {search == 0:
-        (Where should I search first?)#Speaker:kai 
-    - else:
-        (Where else should I search?)#speaker:kai 
-    }
-    {search < 3:
-    
+{started:
+    (Where else should I search?)#speaker:kai 
+    {search < 2:
         {books:
         - else:
             ~spawnChoice("Bookshelf", "book_search", 8, "bottom-right")
@@ -405,15 +411,30 @@ A few strides and one closed door later, you're alone in the room.#Speaker:BLANK
     ->law_return
     }
 - else:
-    "Wait... I think I hear footsteps."#Speaker:kai 
-    ->law_return
+    (Where should I search first?)#Speaker:kai 
+    ~started = true 
+    {books:
+    - else:
+        ~spawnChoice("Bookshelf", "book_search", 8, "bottom-right")
+    }
+    {cab:
+    - else:
+        ~spawnChoice("Desk", "desk_search", 8, "bottom-left")
+    }
+    {chair:
+    - else:
+        ~spawnChoice("Chair", "chair_search", 8, "middle")
+    }
 }
-->DONE
+~waitNextLine(9)
+(Hmm...)#Speaker:kai 
+(Wait... I think I hear footsteps.)
+->law_return
 
 
 
 === book_search ===
-VAR books = true 
+~books = true 
 ~search++
 You scan the spines, attempting to read the symbols they display to no avail.#Speaker:BLANK
 (I don't think this is a human language...)#Speaker:kai 
@@ -422,44 +443,64 @@ You scan the spines, attempting to read the symbols they display to no avail.#Sp
 
 
 === desk_search ===
-VAR cab = true
-~search++
 {d_start:
 - else:
-    You walk around the side of the desk, being met by a set of drawers on either side of the chair.#Speaker:BLANK
+    You walk around the side of the desk, pairs of drawers and cabinets on either side of the chair come into view.#Speaker:BLANK
     (I need to be quick... I can probably only check two of these compartments.)#Speaker:kai 
-    VAR d_start = true
+    ~d_start = true
+    ~cab = true
+    ~search++
 }
-(What should I check?)#Speaker:kai 
-{found == 0:
+{checking < 2:
+    (What should I check?)#Speaker:kai 
     {left_drawer:
     - else:
-        + Top left drawer
+        * [Top left drawer]
             You open the drawer, finding a handful of pens and paperclips.#Speaker:BLANK
-            VAR left_drawer = true 
-            ->DONE
+            (I'm glad I'm not the only person who has loose paperclips.)#Speaker:kai 
+            ~left_drawer = true 
+            ~checking++
+            ->desk_search
     }
     {right_drawer:
     - else:
-        + Top right drawer
+        * [Top right drawer]
             The drawer jiggles open halfway, revealing... candy wrappers?#Speaker:BLANK
             (Looks like someone's got a sweet tooth.)#Speaker:kai 
-            VAR right_drawer = true
+            ~right_drawer = true
+            ~checking++
+            ->desk_search
     }
+    
     {left_cab:
     - else:
-        + Bottom left cabinet
+        * [Bottom left cabinet]
             You open the cabinet and find a lone piece of tattered paper.#Speaker:BLANK
-            
-+ Bottom left cabinet
-+ Bottom right cabinet
-
+            (Bingo!)#Speaker:kai 
+            (Wait... I think I hear footsteps...)
+            ~left_cab = true 
+            ->law_return 
+    }
+    {right_cab:
+    - else:
+        * [Bottom right cabinet]
+            The hinges moan as the door opens, revealing shelves of jars filled with shimmering liquids.#BLANK
+            One of them starts to reveal a face, emitting a groan.
+            (Nope.)#Speaker:kai 
+            ~right_cab = true 
+            ~checking++
+            ->desk_search
+    }
+- else:
+    (Crap - I think I hear footsteps.)
+    ->law_return
 }
-->alone 
-
+~waitNextLine(15)
+Exited if statement 
+->DONE
 
 === chair_search ===
-VAR chair = true 
+~chair = true 
 ~search++
 The velvety cushion reveals nothing but dust underneath, mirroring your findings under the chair.#Speaker:BLANK
 (Hm... no sign of a will here.)#Speaker:kai 
@@ -470,8 +511,9 @@ The velvety cushion reveals nothing but dust underneath, mirroring your findings
 
 
 === law_return ===
-The door opens as the lawyer walks briskly behind the desk.
-"Thank you for your patience.
+The door opens as the lawyer walks briskly behind the desk.#Speaker:BLANK
+"Thank you for your patience. I left it in the lounge, though I don't know how it got there."#Speaker:lawyer 
+->END 
 
 === fire ===
 "People see him coming towards the gate - or, well, at least they think it's him. They can't really tell because it's just a giant flame rolling on the ground."
