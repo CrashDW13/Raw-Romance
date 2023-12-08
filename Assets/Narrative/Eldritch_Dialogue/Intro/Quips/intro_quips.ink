@@ -65,15 +65,27 @@ You dig your feet into the mud, slowly forcing the door open.
 
 
 === sidetable ===
+VAR journal = true
 It's a rotting sidetable with a leather journal resting on top.
-Read it?
-    * [Yes] ->snoop
-    * [No] ->no_snoop
+You pick it up; the leather is smooth.
+The aged and yellow pages are covered with passages written in hurried cursive.
+One of the passage reads as follows:
+"Once again a Richardson has died, except this time it is without a successor. Finally, an opening for me to escape this prison."
+"Hopefully the contract expires before someone can get their hands on it. They keep sending in these poor, unsuspecting individuals to find it in their place."
+"I wish I didn't have to kill them but alas, I cannot let this nightmare continue."
+"This family has been truly insufferable. I find myself reliving the moment where my eagerness overtook my routine of checking whether or not the human has a soul to begin with."
+"Fitting, that the one time I fail to check locks me in for centuries to come. It's depressing how meager their souls are, and I suspect their capitalist greed has something to do with it."
+"No matter, I've managed to fend off their pawns with ease - I suspect I will be able to continue to do so until I am free of this claustrophobic office."
+"Though I cannot put into words how infuriating it is to look at the piece of paper and see my hurried signature."
+"I've hidden it in the bottom left cabinet of my desk, yet despite it being out of sight the image of it looms in the back of my mind."
+A new note was added to your notebook.
+->END
+
 
 
 === portrait ===
 It's a dusty painting.
-The plaque underneath it reads "Rich Richardson, 1936"
+The plaque underneath it reads "Rich Richardson V, 1936"
 "Beloved father, businessman, and homeowner."
 (Now I can put a name to the face.)
 ~doPlaySFX("addnote")
@@ -81,7 +93,7 @@ A new note was added to your notebook.
 ->END
 
 === portrait_know ===
-A portrait of Rich Richardson, dated 1936.
+A portrait of Rich Richardson V, dated 1936.
 ->END
 
 
@@ -98,32 +110,18 @@ A glass display showcasing a miniature of Lady Justice.
 
 
 === door ===
-(I know I need to search the other rooms...)
-Enter the next room?
-    *[Yes]->go
-    *[No]->door_stop
+{journal:
+    (Nowhere else but forward...)
+    ~sceneTransition("TestTransition", "Lawyer_Test")
+- else:
+    (I feel like I'm missing something... Maybe I should stay and look around a bit more.)
+}
+->END
 
 === door_stop ===
 (Maybe I should keep investigating...)
 ->END
 
-=== snoop ===
-You pick it up; the leather is smooth.
-The aged and yellow pages are covered with passages written in hurried cursive.
-A few sentences stick out to you.
-"...weak are those who do not repent..."
-"...truth will guide..."
-"...consume the..."
-...
-(Creepy.)
-A new note was added to your notebook.
-->END
-
-
-=== no_snoop ===
-(Better to leave it alone.)
-(Creepy books don't usually lead to good things.)
-->END
 
 
 === armchair ===
@@ -140,7 +138,3 @@ The shades are covered in cobwebs and mold.
 The bricks are warm, but there's only charcoal inside.
 ->END
 
-
-=== go ===
-(Alright, time for another creepy room.)
-~sceneTransition("TestTransition", "Lawyer_Test")
