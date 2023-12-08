@@ -9,6 +9,8 @@ EXTERNAL sceneTransition(transition, sceneName)
 EXTERNAL doStopBGM(bgmsoundName)
 EXTERNAL doPlayBGM(bgmsoundName)
 EXTERNAL syncUnity()
+EXTERNAL setCalledFam(val)
+EXTERNAL getCalledFam()
 
 
 //concierge
@@ -18,6 +20,7 @@ EXTERNAL syncUnity()
 
 === meet_conc ===
 VAR called = false
+~ called = getCalledFam()
 ~syncUnity()
 {called:
     ->call_ready
@@ -83,6 +86,7 @@ VAR called = false
 "Do as you need."
 ~waitNextLine(2)
 ~called = true
+~setCalledFam(true)
 ~syncUnity()
 //{called}
 ~sceneTransition("TestTransition", "Call_Fam")
@@ -120,8 +124,7 @@ VAR called = false
 
 
 === ready ===
-"Before you go in, we have some rules. Listen carefully."
-~called = false
+
 {called:
     - else:
     ~spawnChoice("I need to make a call","call",5,"top-right")
