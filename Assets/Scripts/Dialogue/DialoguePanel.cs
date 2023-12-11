@@ -344,15 +344,19 @@ public class DialoguePanel : MonoBehaviour
 
     public void AdvanceImmediate()
     {
-        if (inkStory.canContinue && !scrawling && inkStory.currentChoices.Count == 0)
+        if (scrawling)
         {
+            StopCoroutine(textCoroutine);
+            DialogueBox.text = inkStory.currentText;
+            scrawling = false;
+        }
+
+        else if (inkStory.canContinue && !scrawling && inkStory.currentChoices.Count == 0)
+        {
+            Debug.Log("test");
             ShowLine(inkStory.Continue());
         }
         else if (!inkStory.canContinue && !scrawling && inkStory.currentChoices.Count > 0)
-        {
-            ShowChoices();
-        }
-        else if (!inkStory.canContinue && !scrawling && inkStory.currentChoices.Count == 0)
         {
             //GameManager.Instance.CloseDialogue(this);
             var interactables = FindObjectsOfType<MonoBehaviour>().OfType<IFreezable>();
