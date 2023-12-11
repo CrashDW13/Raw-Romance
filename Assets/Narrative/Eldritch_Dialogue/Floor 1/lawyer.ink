@@ -35,7 +35,6 @@ VAR d_start = false
 "..."
 //remove greet options here
 "Well? I don't have all day."
-
 "..."
 ~waitNextLine(2)
 "You know I do not like silence, Bernard."#Speaker:lawyer
@@ -56,13 +55,13 @@ You lock eyes.#Speaker:BLANK
 //CHANGE LAWYER SPRITE TO LOOK AT PLAYER
 "Clearly not you."
 "Who are you? State your business."
-"..."
+...#Speaker:BLANK
 ~spawnChoice("I'm here to talk to you", "interview", 7, "bottom-left")
 ~spawnChoice("I'm looking for a will?", "will", 7, "top-right")
 "..."
 ~waitNextLine(4)
 "Well? Out with it."
-"..."
+...#Speaker:BLANK
 ~waitNextLine(3)
 "I don't appreciate it when someone wastes my time."
 "..."
@@ -117,10 +116,10 @@ You lock eyes.#Speaker:BLANK
 "Um..."#Speaker:kai 
 ~spawnChoice("I found it on the internet", "internet", 3, "top-right")
 ~spawnChoice("I heard about it from a friend", "friend", 6, "bottom-left")
-"..."
+...#Speaker:BLANK
 ~waitNextLine(2)
 "Well? Clock's ticking."#Speaker:lawyer 
-"..."
+...#Speaker:BLANK
 "Hm. Just as I suspected. You're one of them."
 "Thank you for the entertainment, but I think it's time we end this conversation."
 ->law_death
@@ -155,7 +154,7 @@ You lock eyes.#Speaker:BLANK
 "That..."
 "Yes...?"#Speaker:lawyer
 ~waitNextLine(2)
-"..."
+...#Speaker:BLANK
 "Hm. Just as I suspected. You're one of them."
 ->law_death
 
@@ -167,9 +166,9 @@ You lock eyes.#Speaker:BLANK
 ~spawnChoice("Do housework...", "housework", 6, "bottom-right")
 ~spawnChoice("Take over the world", "takeover", 6, "bottom-left")
 "Um..."
-"..."
+...#Speaker:BLANK
 "To...?"#Speaker:lawyer
-"..."
+...#Speaker:BLANK
 "Hm. Just as I suspected. You're one of them."
 ->law_death
 
@@ -191,7 +190,7 @@ You lock eyes.#Speaker:BLANK
 ~spawnChoice("Lost control of the flames", "burnt", 5, "bottom-left")
 "Uh..."
 "Well?"#Speaker:lawyer
-"..."
+...#Speaker:BLANK
 "You were doing so well. How unfortunate that you're failing to maintain it."
 "Thank you, though, for making it obvious you're one of their pawns."
 "Unfortunately I do need to kill you - preserve my freedom and all that."
@@ -204,9 +203,9 @@ You lock eyes.#Speaker:BLANK
 "And there was this shadowy figure behind them, just staring into the void."
 "Then... poof. Everyone inside vanished before their eyes."
 "Nobody could figure out what happened, and people stayed away out of fear of disappearing themselves."
-"..."
+...#Speaker:BLANK
 "Wow..."#Speaker:lawyer
-"I knew humans liked their stories, but I never anticipated such a tall tale."
+"I knew humans liked their stories, but I never anticipated such a tall tale." 
 "It's impressive."
 "Pardon me, I need to find my journal and write this all down."
 The lawyer stands up and moves to a nearby bookshelf, completely engrossed in scanning the spines.#Speaker:BLANK
@@ -221,11 +220,11 @@ The lawyer stands up and moves to a nearby bookshelf, completely engrossed in sc
 
 
 === burnt ===
-"Nobody realized until it was too late that the fire was spreading from shirt to shirt."
+"Nobody realized until it was too late that the fire was spreading from shirt to shirt."#Speaker:kai
 "Everyone ended up burning to death, and people say they can still see the faces of the people that marched in in the windows."
 "And that sometimes they can see an inhuman figure lurking behind them."
-"..."
-"My, my. I knew humans liked their stories, but I never anticipated such a tall tale."
+...#Speaker:BLANK
+"My, my. I knew humans liked their stories, but I never anticipated such a tall tale."#Speaker:lawyer
 "It's impressive."
 "Pardon me, I need to find my journal and write this all down."
 The lawyer stands up and moves to a nearby bookshelf, completely engrossed in scanning the spines.#Speaker:BLANK
@@ -241,14 +240,14 @@ The lawyer stands up and moves to a nearby bookshelf, completely engrossed in sc
 
 === flames ===
 "And watched it burn to the ground, not realizing they ended up trapping the missing people inside."
-"..."
+...#Speaker:BLANK
 "How... interesting."#Speaker:lawyer
 "Yeah, it's crazy."#Speaker:kai 
 "So, they burned the place to the ground?"#Speaker:lawyer
 "Yeah. Charred and everything."#Speaker:kai 
 "They burned this house, the one that we're sitting in, to the ground?"#Speaker:lawyer
 (Oh no...)#Speaker:kai 
-"..."
+...#Speaker:BLANK
 "You're smart, but not smart enough it seems."#Speaker:lawyer
 "Truly, that was impressive."
 "Thank you, though, for making it obvious you're one of their pawns."
@@ -262,10 +261,10 @@ The lawyer stands up and moves to a nearby bookshelf, completely engrossed in sc
 "And so they summoned a bunch of them so they wouldn't have to pay for anything."#Speaker:kai 
 "..."
 "And yeah..."
-"..."
+...#Speaker:BLANK
 "That's it?"#Speaker:lawyer
 "That's it."#Speaker:kai 
-"..."
+...#Speaker:BLANK
 "Wow."#Speaker:lawyer
 "You're terrible at lying."
 "Truly, that was impressive."
@@ -298,7 +297,7 @@ The lawyer stands up and moves to a nearby bookshelf, completely engrossed in sc
 ~spawnChoice("He goes bankrupt", "bankrupt", 5, "bottom-right")
 ~spawnChoice("He goes missing", "missing", 5, "bottom-left")
 "Hm?"#Speaker:lawyer
-"..."
+...#Speaker:BLANK
 "Seems you've run out of thread to spin your story."
 "It was amusing while it lasted, but you've made it quite obvious why you're here."
 "Unfortunately, I can't let you live - preserve my freedom and all that."
@@ -333,7 +332,7 @@ The lawyer stands up and moves to a nearby bookshelf, completely engrossed in sc
 "He tries to run out the gates, but the forcefield stops him."
 "And then he gets sucked back into the house, screaming for help."
 "Never to be seen again."
-"..."
+...#Speaker:BLANK
 "Wow..."#Speaker:lawyer
 "I knew humans liked their stories, but I never anticipated such a tall tale."
 "It's impressive."
@@ -356,7 +355,7 @@ You walk over to the bookshelf, staring up at the back of the monster's head.#Sp
 "Um..."
 "I don't... I don't know..."
 You shrink as the monster's eyes burn through you.#Speaker:blank
-"Behave while I'm gone. It seems I've misplaced my journal."#Speaker:lawyer
+"It seems I've misplaced my journal. I'll be back momentarily - behave while I'm gone."#Speaker:lawyer
 ->alone
 
 === desk ===
@@ -373,15 +372,46 @@ The monster takes a step towards you.#Speaker:BLANK
 ~spawnChoice("I wanted to look for something", "looking", 6, "bottom-right")
 It takes another step, halfway across the desk.#Speaker:BLANK
 ~waitNextLine(3)
-"I-"
+"I-"#Speaker:kai 
 ~spawnChoice("figured I could help look", "help_look", 4, "middle")
 The monster takes another step, now looming in front of you.#Speaker:BLANK
 "You?"#Speaker:lawyer
 You find yourself at a loss for words.#Speaker:BLANK
 "Hm. Such a shame, I was starting to enjoy your company."#Speaker:lawyer
-"Nonetheless, I'll have to kill you now."
-"It was fun while it lasted."
+"Nonetheless, you've shown you can't be trusted. I'll have to kill you now."
+"But I must say, it was fun while it lasted."
 ->law_death
+
+
+=== legs ===
+The monsters eyes narrow.#Speaker:BLANK
+"Very well."#Speaker:lawyer
+"It seems I've misplaced my journal. Stay put while I'm gone."
+->alone_start
+
+
+=== cool_desk ===
+The monsters eyes narrow.#Speaker:BLANK
+"Hm... I suppose it does."#Speaker:lawyer
+It straightens out its suit before speaking again.#Speaker:BLANK
+"It appears I've misplaced my journal. I'll be back shortly - behave yourself while I'm gone."#Speaker:lawyer
+->alone_start
+
+
+=== help_look ===
+"I appreciate the gesture, but that won't be necessary."#Speaker:lawyer
+"Please, sit. And behave yourself. I'll be back shortly - it seems I've misplaced my journal."
+->alone_start
+
+
+=== looking ===
+The monsters eyes narrow as it takes a step towards you.#Speaker:BLANK
+"Something?"#Speaker:lawyer 
+(Oh no...)#Speaker:kai 
+"My, my. A slip of the tongue. And you were doing so well."#Speaker:lawyer 
+"Clearly you're one of their pawns, so unfortunately I'll have to kill you."
+"I will say, though, you were very refreshing company."
+->law_death 
 
 
 === alone_start ===
@@ -442,10 +472,10 @@ You scan the spines, attempting to read the symbols they display to no avail.#Sp
 ->alone
 
 
-=== desk_search ===
+=== desk_search === //UNFINISHED
 {d_start:
 - else:
-    You walk around the side of the desk, pairs of drawers and cabinets on either side of the chair come into view.#Speaker:BLANK
+    You walk around the side of the desk; pairs of drawers and cabinets come into view.#Speaker:BLANK
     (I need to be quick... I can probably only check two of these compartments.)#Speaker:kai 
     ~d_start = true
     ~cab = true
@@ -511,16 +541,22 @@ The velvety cushion reveals nothing but dust underneath, mirroring your findings
 
 
 === law_return ===
-The door opens as the lawyer walks briskly behind the desk.#Speaker:BLANK
-"Thank you for your patience. I left it in the lounge, though I don't know how it got there."#Speaker:lawyer 
-->END 
+The door opens and the lawyer walks briskly behind the desk.#Speaker:BLANK
+"Thank you for your patience. Seems I left it in the lounge, though I don't know how it got there."#Speaker:lawyer 
+"Good thing you found it."#Speaker:kai 
+"Very."#Speaker:lawyer
+...#Speaker:BLANK
+"Well, I suppose you won't want to sit while I write. Please, feel free to explore the rest of the estate. I'm sure we'll cross paths before your visit is over."#Speaker:lawyer
+"Right... yeah. I guess I'll see you around."#Speaker:kai
+As the monster begins to write you walk towards the exit, 
+->law_win
 
 === fire ===
 "People see him coming towards the gate - or, well, at least they think it's him. They can't really tell because it's just a giant flame rolling on the ground."
 "He doesn't make it halfway, stopping and just... burning."
 "Some watch, some stay. Once the flames die down they just see a pile of ash."
 "Afterwards, people start saying they see him in the windows, fire and all, and sometimes the light reveals another figure behind him."
-"..."
+...#Speaker:BLANK
 "Wow..."#Speaker:lawyer
 "I knew humans liked their stories, but I never anticipated such a tall tale."
 "It's impressive."
@@ -542,7 +578,7 @@ A few strides and one closed door later, you're alone in the room.#Speaker:BLANK
 "It gets to the point where one of them tries to see what's inside the house, only for the guy to chase them out with a crowbar."
 "And after a while, they stop trying."
 "He's seen a few times walking around the house, but nobody ever hears from him again."
-"..."
+...#Speaker:BLANK
 "How... depressing."#Speaker:lawyer
 "Except... there's no mention of monsters in your story."
 (Shit...)#Speaker:kai 
@@ -565,19 +601,36 @@ A few strides and one closed door later, you're alone in the room.#Speaker:BLANK
 
 
 ===  missing ===
-->END
+"And nobody sees him... until one summer day."#Speaker:kai
+"He's in a meadow, screaming into the air and covered in dirt."#Speaker:kai 
+"They try to get closer to him, but can't. He stays the same distance no matter how much they walk. Then he disappears in a cloud of smoke."
+"Some say that he can be seen in the windows of the house, flashing between a human and an indescribable monster."
+"Some say... if you try and enter the house, you'll face the same fate."
+...#Speaker:BLANK
+"Wow..."#Speaker:lawyer
+"I knew humans liked their stories, but I never anticipated such a tall tale."
+"It's impressive."
+"Pardon me, I need to find my journal and write this all down."
+The lawyer stands up and moves to a nearby bookshelf, completely engrossed in scanning the spines.#Speaker:BLANK
+~waitNextLine(3)
+~spawnChoice("The bookshelf", "bookshelf", 5, "bottom-left")
+~spawnChoice("The desk", "desk", 5, "bottom-right")
+(Now's my chance! Where should I start looking first?)#Speaker:kai 
+"Hm..."#Speaker:lawyer
+"Seems I've misplaced it. Please excuse me for a moment."
+->alone
 
 
 
 
 //PLEAD BACK TO INTERVIEW KNOT
-=== interview_ag ===
+=== interview_ag === //UNFINISHED
 "You have more to say about interviewing me?"#Speaker:lawyer
 "Well, I was hoping you could tell me more about yourself."#Speaker:kai 
-"Myself? What, as in my career?"
+"Myself? What, as in my career?"#Speaker:lawyer
 "I mean, sure."#Speaker:kai 
 ~spawnChoice("Or your life", "life_story", 5, "top-right")
-"Let's see... I first took an interest in souls and binding contracts about 1,000 years ago, when I started archiving 
+"Let's see... I first took an interest in souls and binding contracts about 1,000 years ago, when I started archiving #Speaker:lawyer
 ->END
 
 
@@ -592,7 +645,7 @@ A few strides and one closed door later, you're alone in the room.#Speaker:BLANK
 ~suspicion++
 "I've been looking for a soul contract, and I was told it was here."#Speaker:kai
 "Have you seen it?"
-"Hm... elaborate on this 'soul contract.' What purpose does it serve?"
+"Hm... elaborate on this 'soul contract.' What purpose does it serve?"#Speaker:lawyer
 ~spawnChoice("I don't know, but...", "know_truth", 10, "bottom-left")
 ~spawnChoice("It's just a rumor", "rumor", 10, "bottom-right")
 "There are many kinds, so you'll have to be more specific."
@@ -624,14 +677,14 @@ A few strides and one closed door later, you're alone in the room.#Speaker:BLANK
 
 === rumor ===
 "Just a rumor?"#Speaker:lawyer
-"Well, I love myself a good rumor."
+"Well, good thing I love rumors."
 ->legend
 
 
 
 
 === will ===
-"Oh?"
+"Oh?"#Speaker:lawyer
 "Well, you're in luck. I have it with me."
 "Come, I can give it to you."
 //CHANGE SCENE SO PLAYER GETS CLOSER
@@ -660,7 +713,7 @@ A few strides and one closed door later, you're alone in the room.#Speaker:BLANK
 
 === take ===
 ~doPlaySFX("addnote")
-"Of course."
+"Of course."#Speaker:lawyer
 "Though, I must ask."
 (...)
 "Did you really think it would be that easy?"
@@ -668,7 +721,7 @@ A few strides and one closed door later, you're alone in the room.#Speaker:BLANK
 
 
 === easy ===
-"Hmph..."
+"Hmph..."#Speaker:lawyer
 "Only if you want it to be."
 "Come, take it."
 ~waitNextLine(5)
@@ -682,7 +735,7 @@ A few strides and one closed door later, you're alone in the room.#Speaker:BLANK
 
 
 === pass ===
-"A smart decision."
+"A smart decision."#Speaker:lawyer 
 "Now, why are you here?"
 "I came here to talk to you, actually."#Speaker:kai
 ->interview 
@@ -707,22 +760,13 @@ A few strides and one closed door later, you're alone in the room.#Speaker:BLANK
 
 
 
-//START SEARCHING THE DRAWER
-=== drawer_search ===
-->END
-
-
-
-
-
-
 
 === take_death ===
 The paper in your hand starts to glow as the temperature rises.#Speaker:BLANK
 //FIRE HISSING SOUND
 Despite your efforts it sticks to you, smoke emitting from your hand.
 Cackling and the smell of burnt skin engulf the room; your vision darkens as you collapse to the floor.
-"Dinner is served."#Speaker: lawyer
+"It seems dinner is served."#Speaker: lawyer
 ~lose()
 
 
@@ -733,25 +777,32 @@ As your fingers meet the door handle you find it locked.
 ~lose()
 
 
-=== law_stare ===
+=== law_stare === //UNFINISHED
 "Are you going to speak, or just stand there and stare?"#Speaker:lawyer
 "I'm not a fan of this behaviour, so it would be wise for you to speak up."
 //FIND A WAY TO RESPOND AND THEN RETURN TO PREVIOUS SAVE KNOT
 Sorry I'm not done working on this part eeeee
 
-=== law_end ===
-~win()
 
 === law_win ===
+{left_cab:
+    -> law_success
+- else:
+    ->law_forgot
+}
+->DONE
+
+
+=== law_forgot ===
 (That was intense... but at least I'm alive.)#Speaker:kai
 (I don't know how I managed to go that entire time without asking what the hell it was.)
 (Then again, I don't know what any of the... 'people'... here are.)
 (Wait... Shit... I forgot to get the will.)
-->END
+~win()
 
 === law_success ===
 (That was intense... but at least I'm alive.)#Speaker:kai
 (I don't know how I managed to go that entire time without asking what the hell it was.)
 (Then again, I don't know what any of the... 'people'... here are.)
 (I can't let myself dwell on this - I have the will, now I just need to get out.)
-->END
+~win()
