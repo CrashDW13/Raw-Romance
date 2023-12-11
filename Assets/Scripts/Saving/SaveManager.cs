@@ -5,6 +5,8 @@ using System.IO;
 using Unity.VisualScripting;
 using UnityEngine;
 using Ink.Runtime;
+using UnityEngine.SceneManagement;
+using UnityEditor.SearchService;
 
 public class SaveManager : MonoBehaviour
 {
@@ -78,6 +80,11 @@ public class SaveManager : MonoBehaviour
 
     private void Start()
     {
-        currentSave.UpdateCheckpoint();
+        SceneManager.activeSceneChanged += OnSceneChanged;
+    }
+
+    private void OnSceneChanged(UnityEngine.SceneManagement.Scene current, UnityEngine.SceneManagement.Scene next)
+    {
+        currentSave.UpdateCheckpoint(next.name);
     }
 }
