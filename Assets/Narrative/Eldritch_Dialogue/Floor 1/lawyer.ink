@@ -55,6 +55,7 @@ You lock eyes.#Speaker:BLANK
 //CHANGE LAWYER SPRITE TO LOOK AT PLAYER
 "Clearly not you."
 "Who are you? State your business."
+~saveState("bernard_rpt")
 ...#Speaker:BLANK
 ~spawnChoice("I'm here to talk to you", "interview", 7, "bottom-left")
 ~spawnChoice("I'm looking for a will?", "will", 7, "top-right")
@@ -66,6 +67,24 @@ You lock eyes.#Speaker:BLANK
 "I don't appreciate it when someone wastes my time."
 "..."
 ->law_death
+
+
+=== bernard_rpt ===
+//CHANGE LAWYER SPRITE TO LOOK AT PLAYER
+"I can still tell you're not Bernard."
+"Who are you? State your business."
+...#Speaker:BLANK
+~spawnChoice("I'm here to talk to you", "interview", 7, "bottom-left")
+~spawnChoice("I'm looking for a will?", "will", 7, "top-right")
+"..."
+~waitNextLine(4)
+"Well? Out with it."
+...#Speaker:BLANK
+~waitNextLine(3)
+"I don't appreciate it when someone wastes my time twofold."
+"..."
+->law_death
+
 
 
 === interview ===
@@ -93,6 +112,9 @@ You lock eyes.#Speaker:BLANK
 "Nevermind that. It's not important."
 "Let's talk about you."
 ->learn_kai
+
+
+
 
 
 === learn_kai ===
@@ -632,6 +654,32 @@ The lawyer stands up and moves to a nearby bookshelf, completely engrossed in sc
 ~spawnChoice("Or your life", "life_story", 5, "top-right")
 "Let's see... I first took an interest in souls and binding contracts about 1,000 years ago, when I started archiving #Speaker:lawyer
 ->END
+
+
+//INTERVIEW KNOT MANAGE THIS
+{=== interview_ag ===
+"I'm still surprised how you ended up here, and that you want to learn more about us."#Speaker:lawyer
+"Goes to show how effective shoving us in a closet was."
+"Are we meeting expectations?"
+~saveState("interview_ag")
+"Well..."#Speaker:kai
+"I don't know what I expected, but so far it's been... interesting?"
+"I'm glad the estate amuses you."#Speaker:lawyer
+"I've come to find it mundane, though I have a half-century of existing here to blame for that."
+~spawnChoice("You've been here for 50 years?!", "century", 5, "top-left")
+"*Sigh* If I could go back in time, I would have stopped myself from signing that contract."
+~waitNextLine(2)
+~spawnChoice("About that...", "cont_look", 10, "bottom-left")
+"Such a waste, working a soul contract with a soulless family."
+~spawnChoice("Soul contract?", "contract", 10, "top-right")
+"But alas, I cannot change my mistake."
+"Thankfully, my days might be numbered."
+"But of course, I cannot dismiss the power of human determination."
+"An admirable yet aggravating trait you all posess."
+(Numbered days?)#Speaker:kai 
+"Nevermind that. It's not important."
+"Let's talk about you."
+->learn_kai}
 
 
 
