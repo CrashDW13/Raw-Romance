@@ -182,8 +182,8 @@ public class DialoguePanel : MonoBehaviour
         while (i < line.Length)
         {
 
-            yield return new WaitUntil(() => PauseManager.IsPaused() == false);
-
+            yield return new WaitUntil(() => !PauseManager.IsPaused());
+            
             DialogueBox.text += line[i];
             if (i % slowBlipSpeed == 0){
 
@@ -494,6 +494,7 @@ public class DialoguePanel : MonoBehaviour
 
     public void SetScrawlSpeed(float speed)
     {
+        defaultScrawlSpeed = speed;
         scrawlSpeed = speed;
     }
 
