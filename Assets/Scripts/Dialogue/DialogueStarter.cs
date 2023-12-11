@@ -8,6 +8,7 @@ public class DialogueStarter : MonoBehaviour
     [SerializeField] private TextAsset inkAsset;
     [SerializeField] private string knot;
     [SerializeField] private bool automaticScroll = false;
+    [SerializeField] private bool checkpoint = false;
 
     private void Start()
     {

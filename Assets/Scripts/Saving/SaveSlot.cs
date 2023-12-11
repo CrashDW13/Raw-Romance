@@ -131,9 +131,18 @@ public class Save
         dateTime = System.DateTime.Now.ToString();
     }
 
-    public void UpdateCheckpoint()
+    public void UpdateCheckpoint(string newCheckpoint = "")
     {
-        checkpoint = SceneManager.GetActiveScene().name;
+        if (newCheckpoint == "")
+        {
+            checkpoint = SceneManager.GetActiveScene().name;
+        }
+
+        else
+        {
+            checkpoint = newCheckpoint;
+        }
+        Debug.Log("Checkpoint saved!");
     }
 
     public void SaveToJson()
