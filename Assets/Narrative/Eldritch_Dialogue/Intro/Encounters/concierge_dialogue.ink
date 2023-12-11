@@ -238,7 +238,17 @@ VAR called = false
 "Keep your notepad close; I've come to find many an entrant's items scattered amongst the rooms."
 "Best of luck; hopefully you'll see the sun again."
 ~toggleSanity()
--> final
+{called:
+    -> final
+- else:
+    -> call_push
+}
+
+
+=== call_push ===
+(What the hell was that?)#Speaker:kai 
+(I need to get myself out of this mess.)
+->call
 
 === final ===
 (That was... something out of a movie.) #Speaker:BLANK,clear
