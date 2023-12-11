@@ -742,6 +742,13 @@ The lawyer stands up and moves to a nearby bookshelf, completely engrossed in sc
     ~waitNextLine(3)
     "The choice is yours."
     ~spawnChoice("Thanks", "take", 6, "bottom-left")
+    ~spawnChoice("Actually...", "get_out", 6, "top-right")
+    "Don't worry, it won't bite."
+    "..."
+    "..."
+    //DEATH SPRITE?
+    "But I will."
+    ->law_death
 - else:
     ~will_seen = true
     "Oh?"#Speaker:lawyer
@@ -774,17 +781,42 @@ The lawyer stands up and moves to a nearby bookshelf, completely engrossed in sc
 
 
 === will_rpt ===
-"Come, take it. It's not like I need it."#Speaker:lawyer
-~waitNextLine(6)
-"..."
-~spawnChoice("Thanks", "take", 6, "bottom-left")
-~spawnChoice("It's that easy?", "easy", 6, "top-right")
-"Don't worry, it won't bite."
-"..."
-"..."
-//DEATH SPRITE?
-"But I will."
-->law_death
+{will_seen:
+    "Come, take it. It's not like I need it."#Speaker:lawyer
+    ~waitNextLine(6)
+    "..."
+    ~spawnChoice("Thanks", "take", 6, "bottom-left")
+    ~spawnChoice("Actually...", "get_out", 6, "top-right")
+    "Don't worry, it won't bite."
+    "..."
+    "..."
+    //DEATH SPRITE?
+    "But I will."
+    ->law_death
+- else:
+    "Come, take it. It's not like I need it."#Speaker:lawyer
+    ~waitNextLine(6)
+    "..."
+    ~spawnChoice("Thanks", "take", 6, "bottom-left")
+    ~spawnChoice("It's that easy?", "easy", 6, "top-right")
+    "Don't worry, it won't bite."
+    "..."
+    "..."
+    //DEATH SPRITE?
+    "But I will."
+    ->law_death
+}
+
+=== get_out ===
+"It's fine, really..."#Speaker:kai 
+"Oh? Is it now? I thought this was why you came here?"#Speaker:lawyer
+"It wouldn't be in good taste to return empty handed now, would it?"
+"Well, I-"#Speaker:kai 
+"You?"#Speaker:lawyer
+...#Speaker:BLANK
+"I don't... really care. I just don't want to die."#Speaker:kai 
+"Hmph. Figures."#Speaker:lawyer 
+"You can go, but you'll need to find someone to come to the estate in your place.
 
 === take ===
 ~doPlaySFX("addnote")
