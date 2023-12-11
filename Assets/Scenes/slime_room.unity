@@ -1475,7 +1475,9 @@ MonoBehaviour:
   - Knot: sidetable
     Note:
       title: Leather Journal
-      contents: There was an aged leather journal with yellowed pages.
+      contents: A leather journal with yellowed pages. The writer mentions the death
+        of a Richardson, a contract, and killing people. There's also mention of
+        a contract being hidden in the bottom left cabinet of a desk.
 --- !u!65 &1907960031
 BoxCollider:
   m_ObjectHideFlags: 0

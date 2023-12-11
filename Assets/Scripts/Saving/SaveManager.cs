@@ -16,7 +16,15 @@ public class SaveManager : MonoBehaviour
     [SerializeField]
     private int saveSlotCount = 3; 
 
-    public Dictionary<string, object> unityVariables = new Dictionary<string, object>();
+    //public Dictionary<string, object> unityVariables = new Dictionary<string, object>();
+
+    public static void updateGlobalVariable(string varName, object value) {
+        currentSave.updateGlobalVariable(varName, value);
+    }
+
+    public static object getGlobalVariable(string varName) {
+        return currentSave.getGlobalVariable(varName);
+    }
 
   
     public static void UpdateNotebook()

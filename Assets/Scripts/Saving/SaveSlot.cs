@@ -99,15 +99,35 @@ public class Save
     public string checkpoint = "Gate";
     public List<Tab> notebook;
     public List<PointAndClickInteractableState> interactableStates = new List<PointAndClickInteractableState>();
-    public Dictionary<string, object> inkGlobalVariables = new Dictionary<string, object>();
+    public Dictionary<string, object> globalVariables = new Dictionary<string, object>();
+
+    public void setDefaultGlobalVariables() {
+        globalVariables["calledFam"] = false;
+    }
 
     public Save()
     {
         name = "Slot " + SaveManager.saves.Count;
+
+        setDefaultGlobalVariables();
+        
     }
     public Save(string name)
     {
         this.name = name;
+        setDefaultGlobalVariables();
+    }
+
+    public void updateGlobalVariable(string varName, object val) {
+        globalVariables[varName] = val;
+        
+    }
+
+    public object getGlobalVariable(string varName) {
+        Debug.Log("Getting the globale var");
+        Debug.Log(varName);
+        return globalVariables[varName];
+
     }
 
     public void UpdateClickCount(string name, int count)
