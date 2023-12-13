@@ -13,14 +13,11 @@ VAR richard = false
 (Welp...)
 (This is creepy.)
 (Let's hope the $10,000 is worth it.)
-->END
-
-=== gate_open ===
-~sceneTransition("TestTransition", "Courtyard")
 You tug at the slippery gate handles, only for them to stay firmly shut.
 (Come on...)
 You dig your feet into the mud, slowly forcing the door open.
 ~doPlaySFX("irongatetemp")
+~sceneTransition("TestTransition", "Courtyard")
 ->END
 
 === courtyard ===
@@ -52,7 +49,6 @@ You dig your feet into the mud, slowly forcing the door open.
 
 === move_to_concierge ===
 (Might as well get this over with.)
-
 ~sceneTransition("TestTransition", "concierge")
 ->END
 

@@ -259,7 +259,7 @@ VAR conc = false
 
 === final ===
 (That was... something out of a movie.) #Speaker:BLANK,clear
-(He made himself pretty clear, at least... I'll need to watch my mouth while I'm here.)
+(Things are pretty clear, at least... I'll need to watch my mouth while I'm here.)
 (Come on, this isn't the time to get scared. It's not like I can turn back.)
 (Plus, $10,000 would be great to have if I make it out alive.)
 ~doStopBGM("rainBGM")
