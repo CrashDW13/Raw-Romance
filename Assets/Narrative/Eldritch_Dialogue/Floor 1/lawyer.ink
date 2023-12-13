@@ -23,6 +23,7 @@ VAR right_cab = false
 VAR left_drawer = false
 VAR left_cab = false
 VAR d_start = false
+VAR will_seen = false
 
 
 ->core_start
@@ -38,10 +39,9 @@ VAR d_start = false
 "..."
 ~waitNextLine(2)
 "You know I do not like silence, Bernard."#Speaker:lawyer
-"..."
-~waitNextLine(1)
 ~spawnChoice("Who's Bernard?", "bernard", 10, "bottom-left")
 ~spawnChoice("Sorry", "speak", 10, "bottom-right")
+"..."
 ~waitNextLine(5)
 "..."
 "..."
@@ -114,13 +114,34 @@ You lock eyes.#Speaker:BLANK
 ->learn_kai
 
 
-
+//PLEAD BACK TO INTERVIEW KNOT
+=== interview_ag === //UNFINISHED
+"You have more to say about interviewing me?"#Speaker:lawyer
+"Well, I was hoping you could tell me more about yourself."#Speaker:kai 
+"Myself? What, as in my career?"#Speaker:lawyer
+"I mean, sure."#Speaker:kai 
+~spawnChoice("Or your life", "life_story", 5, "top-right")
+"Let's see... I first took an interest in souls and binding contracts about 1,000 years ago, when I started archiving #Speaker:lawyer
+->END
 
 
 === learn_kai ===
 "How long have you known of our existence?"#Speaker:lawyer
 ~spawnChoice("Not long", "recent", 5, "bottom-left")
-"I wonder how long this 'legend' has existed. I've been told humans love their stories."
+~saveState("learn_kai_rpt")
+"I wonder how long your 'legend' has existed. I've been told humans love their stories."
+~spawnChoice("I grew up with it", "life", 5, "bottom-right")
+"Understandable, given how limited your access to the greater world is."
+"I'd like to think the story goes beyond portraying us as caricatures."
+~waitNextLine(2)
+"Though I suppose you'll have to be the one to tell me more about that."
+->legend
+
+
+=== learn_kai_rpt ===
+"Sorry, you'll have to remind me - long have you known of our existence?"#Speaker:lawyer
+~spawnChoice("Not long", "recent", 5, "bottom-left")
+"I wonder how long your 'legend' has existed. I've been told humans love their stories."
 ~spawnChoice("I grew up with it", "life", 5, "bottom-right")
 "Understandable, given how limited your access to the greater world is."
 "I'd like to think the story goes beyond portraying us as caricatures."
@@ -162,6 +183,7 @@ You lock eyes.#Speaker:BLANK
 "They told me about it one time while we were camping. Pretty spooky stuff." #Speaker:kai 
 "And you decided to make the trip to investigate?"#Speaker:lawyer
 "I guess, yeah."#Speaker:kai 
+"How interesting."#Speaker:lawyer
 ->legend
 
 
@@ -180,8 +202,25 @@ You lock eyes.#Speaker:BLANK
 "Hm. Just as I suspected. You're one of them."
 ->law_death
 
+=== legend_rpt ===
+"Oh? Did something change about your story?"#Speaker:lawyer
+(Come on... think!)#Speaker:kai 
+"Yes! Um..."
+"Well, the story actually goes..."
+~waitNextLine(3)
+~spawnChoice("A family hired...", "family", 6, "bottom-left")
+~spawnChoice("There was this megalomaniac...", "megalomaniac", 6, "bottom-right")
+"That..."
+"Yes...?"#Speaker:lawyer
+~waitNextLine(2)
+...#Speaker:BLANK
+"Hm. As entertaining as your reattempt is, it's as I suspected: you're one of them."
+->law_death
+
+
 === family ===
 ~suspicion++
+~saveState("legend_rpt")
 "A bunch of monsters."#Speaker:kai 
 "To uh..."
 ~waitNextLine(3)
@@ -298,6 +337,7 @@ The lawyer stands up and moves to a nearby bookshelf, completely engrossed in sc
 
 //KNOT BREAKS THE SCENE
 === megalomaniac ===
+~saveState("legend_rpt")
 "And he was trying to take over the world."#Speaker:kai 
 "So he goes into this abandoned house and tries to summon something."
 ~spawnChoice("And one night, it works", "works", 3, "bottom-left")
@@ -645,51 +685,13 @@ The lawyer stands up and moves to a nearby bookshelf, completely engrossed in sc
 
 
 
-//PLEAD BACK TO INTERVIEW KNOT
-=== interview_ag === //UNFINISHED
-"You have more to say about interviewing me?"#Speaker:lawyer
-"Well, I was hoping you could tell me more about yourself."#Speaker:kai 
-"Myself? What, as in my career?"#Speaker:lawyer
-"I mean, sure."#Speaker:kai 
-~spawnChoice("Or your life", "life_story", 5, "top-right")
-"Let's see... I first took an interest in souls and binding contracts about 1,000 years ago, when I started archiving #Speaker:lawyer
-->END
-
-
-//INTERVIEW KNOT MANAGE THIS
-{=== interview_ag ===
-"I'm still surprised how you ended up here, and that you want to learn more about us."#Speaker:lawyer
-"Goes to show how effective shoving us in a closet was."
-"Are we meeting expectations?"
-~saveState("interview_ag")
-"Well..."#Speaker:kai
-"I don't know what I expected, but so far it's been... interesting?"
-"I'm glad the estate amuses you."#Speaker:lawyer
-"I've come to find it mundane, though I have a half-century of existing here to blame for that."
-~spawnChoice("You've been here for 50 years?!", "century", 5, "top-left")
-"*Sigh* If I could go back in time, I would have stopped myself from signing that contract."
-~waitNextLine(2)
-~spawnChoice("About that...", "cont_look", 10, "bottom-left")
-"Such a waste, working a soul contract with a soulless family."
-~spawnChoice("Soul contract?", "contract", 10, "top-right")
-"But alas, I cannot change my mistake."
-"Thankfully, my days might be numbered."
-"But of course, I cannot dismiss the power of human determination."
-"An admirable yet aggravating trait you all posess."
-(Numbered days?)#Speaker:kai 
-"Nevermind that. It's not important."
-"Let's talk about you."
-->learn_kai}
-
-
-
 === century ===
 "Oh, yes. Far too long, if you ask me."#Speaker:lawyer
 "I've been waiting for a way to get out of this house, and with the recent passing of Rich Rhcardson VII it has presented itself."
 "But enough about that, I want to know more about you."
 ->learn_kai
 
-=== cont_look ===
+=== cont_look === //UNFINISHED
 ~suspicion++
 "I've been looking for a soul contract, and I was told it was here."#Speaker:kai
 "Have you seen it?"
@@ -716,6 +718,7 @@ The lawyer stands up and moves to a nearby bookshelf, completely engrossed in sc
 (Wait...)#Speaker:kai 
 ->legend
 
+
 === know_truth ===
 "The person that I'm here for told me about one."#Speaker:kai 
 "Really? And what are you here for?"#Speaker:lawyer
@@ -732,32 +735,88 @@ The lawyer stands up and moves to a nearby bookshelf, completely engrossed in sc
 
 
 === will ===
-"Oh?"#Speaker:lawyer
-"Well, you're in luck. I have it with me."
-"Come, I can give it to you."
-//CHANGE SCENE SO PLAYER GETS CLOSER
-"Let me just..."
-//RUMMAGING SOUND
-//CHANGE TO RUMMAGING SPRITE
-"..."
-~waitNextLine(3)
-"Aha! Here it is."
-"I haven't needed this document in decades."
-//RETURN TO LOOKING AT PLAYER SPRITE
-"Come, take it. It's yours."
-//CONTRACT SPRITE ON DESK
-"..."
-~spawnChoice("Thanks", "take", 10, "bottom-left")
-~spawnChoice("It's that easy?", "easy", 10, "top-right")
-~waitNextLine(6)
-"Don't worry, it won't bite."
-"..."
-"..."
-~waitNextLine(2)
-//DEATH SPRITE?
-"But I will."
-->law_death
+{will_seen:
+    "Right. We've been down this road before."#Speaker:lawyer
+    ~saveState("will_rpt")
+    "It's right here on the desk, so take it or leave it."
+    ~waitNextLine(3)
+    "The choice is yours."
+    ~spawnChoice("Thanks", "take", 6, "bottom-left")
+    ~spawnChoice("Actually...", "get_out", 6, "top-right")
+    "Don't worry, it won't bite."
+    "..."
+    "..."
+    //DEATH SPRITE?
+    "But I will."
+    ->law_death
+- else:
+    ~will_seen = true
+    "Oh?"#Speaker:lawyer
+    "Well, you're in luck. I have it with me."
+    "Come, I can give it to you."
+    //CHANGE SCENE SO PLAYER GETS CLOSER
+    "Let me just..."
+    //RUMMAGING SOUND
+    //CHANGE TO RUMMAGING SPRITE
+    "..."
+    ~waitNextLine(3)
+    "Aha! Here it is."
+    ~saveState("will_rpt")
+    "I haven't needed this document in decades."
+    //RETURN TO LOOKING AT PLAYER SPRITE
+    "Come, take it. It's yours."
+    //CONTRACT SPRITE ON DESK
+    "..."
+    ~spawnChoice("Thanks", "take", 6, "bottom-left")
+    ~spawnChoice("It's that easy?", "easy", 6, "top-right")
+    ~waitNextLine(6)
+    "Don't worry, it won't bite."
+    "..."
+    "..."
+    ~waitNextLine(2)
+    //DEATH SPRITE?
+    "But I will."
+    ->law_death
+}
 
+
+=== will_rpt ===
+{will_seen:
+    "Come, take it. It's not like I need it."#Speaker:lawyer
+    ~waitNextLine(6)
+    "..."
+    ~spawnChoice("Thanks", "take", 6, "bottom-left")
+    ~spawnChoice("Actually...", "get_out", 6, "top-right")
+    "Don't worry, it won't bite."
+    "..."
+    "..."
+    //DEATH SPRITE?
+    "But I will."
+    ->law_death
+- else:
+    "Come, take it. It's not like I need it."#Speaker:lawyer
+    ~waitNextLine(6)
+    "..."
+    ~spawnChoice("Thanks", "take", 6, "bottom-left")
+    ~spawnChoice("It's that easy?", "easy", 6, "top-right")
+    "Don't worry, it won't bite."
+    "..."
+    "..."
+    //DEATH SPRITE?
+    "But I will."
+    ->law_death
+}
+
+=== get_out ===
+"It's fine, really..."#Speaker:kai 
+"Oh? Is it now? I thought this was why you came here?"#Speaker:lawyer
+"It wouldn't be in good taste to return empty handed now, would it?"
+"Well, I-"#Speaker:kai 
+"You?"#Speaker:lawyer
+...#Speaker:BLANK
+"I don't... really care. I just don't want to die."#Speaker:kai 
+"Hmph. Figures."#Speaker:lawyer 
+"You can go, but you'll need to find someone to come to the estate in your place.
 
 === take ===
 ~doPlaySFX("addnote")
@@ -793,6 +852,7 @@ The lawyer stands up and moves to a nearby bookshelf, completely engrossed in sc
 "And who might you be?"#Speaker:lawyer
 "I'm Kai."#Speaker:kai 
 "Well, Kai, I wasn't expecting visitors."#Speaker:lawyer
+~saveState("speak_rpt")
 "At least, not of the human variety."
 "...surprise?"#Speaker:kai 
 "Ha. What brings you into my office?"#Speaker:lawyer
@@ -800,13 +860,32 @@ The lawyer stands up and moves to a nearby bookshelf, completely engrossed in sc
 ~spawnChoice("I'm looking for a will?", "will", 10, "top-right")
 ~waitNextLine(3)
 "..."
-"Well?
 ~waitNextLine(2)
-"..."
+"Well?"
+"Hmph."
+~waitNextLine(3)
+"It would serve you best to speak up."
+~spawnChoice("I'm here to talk to you", "interview", 4, "bottom-left")
+~spawnChoice("I'm looking for a will?", "will", 4, "top-right")
 "I don't have time for this."
 ->law_death
 
 
+=== speak_rpt ===
+"Remind me, what brings you into my office?"#Speaker:lawyer
+~spawnChoice("I'm here to talk to you", "interview", 10, "bottom-left")
+~spawnChoice("I'm looking for a will?", "will", 10, "top-right")
+~waitNextLine(3)
+"..."
+~waitNextLine(2)
+"Well?"
+"Hmph."
+~waitNextLine(3)
+"It would serve you best to speak up."
+~spawnChoice("I'm here to talk to you", "interview", 4, "bottom-left")
+~spawnChoice("I'm looking for a will?", "will", 4, "top-right")
+"I don't have time for this."
+->law_death
 
 
 === take_death ===
