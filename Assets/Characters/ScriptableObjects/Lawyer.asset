@@ -15,6 +15,6 @@ MonoBehaviour:
   characterName: Lawyer
   characterTag: lawyer
   CharacterSprites:
-  - sprite: {fileID: 21300000, guid: d955aacf135368240bf1073c5ae01980, type: 3}
+  - sprite: {fileID: 21300000, guid: 72b8daf150e04e44bae8db17d788e6a9, type: 3}
     name: law
   fileName: Assets/Characters/ScriptableObjects/Lawyer.asset

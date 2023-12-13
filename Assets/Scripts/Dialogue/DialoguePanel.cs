@@ -63,6 +63,7 @@ public class DialoguePanel : MonoBehaviour
 
     private string transition;
     private string sceneName;
+    private bool canAdvance = true;
 
     public delegate IEnumerator DialoguePanelCompleteEventHandler();
     public event DialoguePanelCompleteEventHandler OnComplete;
@@ -300,8 +301,9 @@ public class DialoguePanel : MonoBehaviour
 
     void ShowChoices()
     {
+        canAdvance = false;
         ChoiceParent.SetActive(true);
-
+        
         int i = 0;
         foreach (Transform choice in ChoiceParent.transform)
         {
@@ -321,6 +323,7 @@ public class DialoguePanel : MonoBehaviour
 
     public void SelectChoice(float choice)
     {
+        canAdvance = true;
         inkStory.ChooseChoiceIndex((int)choice);
   
 
@@ -344,6 +347,11 @@ public class DialoguePanel : MonoBehaviour
 
     public void AdvanceImmediate()
     {
+        if (!canAdvance)
+        {
+            return; 
+        }
+
         if (scrawling)
         {
             StopCoroutine(textCoroutine);
@@ -351,13 +359,28 @@ public class DialoguePanel : MonoBehaviour
             scrawling = false;
         }
 
-        else if (inkStory.canContinue && !scrawling && inkStory.currentChoices.Count == 0)
+        else if (inkStory.canContinue && !scrawling)
         {
-            Debug.Log("test");
-            ShowLine(inkStory.Continue());
+            if (inkStory.currentChoices.Count > 0)
+            {
+                ShowChoices();
+            }
+
+            else
+            {
+                Debug.Log("test");
+                ShowLine(inkStory.Continue());
+            }
+   
         }
-        else if (!inkStory.canContinue && !scrawling && inkStory.currentChoices.Count > 0)
+        else if (!inkStory.canContinue && !scrawling)
         {
+            if (inkStory.currentChoices.Count > 0)
+            {
+                ShowChoices();
+            }
+
+            Debug.Log("test2");
             //GameManager.Instance.CloseDialogue(this);
             var interactables = FindObjectsOfType<MonoBehaviour>().OfType<IFreezable>();
             foreach (IFreezable interactable in interactables)
