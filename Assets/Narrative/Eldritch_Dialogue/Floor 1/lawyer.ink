@@ -13,7 +13,7 @@ VAR suspicion = 0
 VAR val = 3
 VAR search = 0
 VAR found = 0
-VAR checking = 0 
+VAR checking = 0
 VAR chair = false
 VAR cab = false
 VAR books = false
@@ -31,7 +31,7 @@ VAR will_seen = false
 === core_start ===
 ~toggleSanity()
 ~waitNextLine(2)
-"..."#Speaker:lawyer
+"..."#Speaker:lawyer,law
 "What is it now?"
 "..."
 //remove greet options here
@@ -108,7 +108,7 @@ You lock eyes.#Speaker:BLANK
 "Thankfully, my days might be numbered."
 "But of course, I cannot dismiss the power of human determination."
 "An admirable yet aggravating trait you all posess."
-(Numbered days?)#Speaker:kai 
+(Numbered days?)#Speaker:kai
 "Nevermind that. It's not important."
 "Let's talk about you."
 ->learn_kai
@@ -117,9 +117,9 @@ You lock eyes.#Speaker:BLANK
 //PLEAD BACK TO INTERVIEW KNOT
 === interview_ag === //UNFINISHED
 "You have more to say about interviewing me?"#Speaker:lawyer
-"Well, I was hoping you could tell me more about yourself."#Speaker:kai 
+"Well, I was hoping you could tell me more about yourself."#Speaker:kai
 "Myself? What, as in my career?"#Speaker:lawyer
-"I mean, sure."#Speaker:kai 
+"I mean, sure."#Speaker:kai
 ~spawnChoice("Or your life", "life_story", 5, "top-right")
 "Let's see... I first took an interest in souls and binding contracts about 1,000 years ago, when I started archiving #Speaker:lawyer
 ->END
@@ -156,40 +156,40 @@ You lock eyes.#Speaker:BLANK
 "And yet you called it a 'legend.'"
 "I suspect there's something you're not telling me."
 ~waitNextLine(2)
-"Um..."#Speaker:kai 
+"Um..."#Speaker:kai
 ~spawnChoice("I found it on the internet", "internet", 3, "top-right")
 ~spawnChoice("I heard about it from a friend", "friend", 6, "bottom-left")
 ...#Speaker:BLANK
 ~waitNextLine(2)
-"Well? Clock's ticking."#Speaker:lawyer 
+"Well? Clock's ticking."#Speaker:lawyer
 ...#Speaker:BLANK
 "Hm. Just as I suspected. You're one of them."
 "Thank you for the entertainment, but I think it's time we end this conversation."
 ->law_death
 
 === internet ===
-"It's pretty popular in the forums I'm on."#Speaker:kai 
-"How peculiar."#Speaker:lawyer 
+"It's pretty popular in the forums I'm on."#Speaker:kai
+"How peculiar."#Speaker:lawyer
 ->legend
 
 
-=== life === 
+=== life ===
 "Oh my. I suppose the story was a 'boogeyman' of sorts?"#Speaker:lawyer
-"You could say that."#Speaker:kai 
+"You could say that."#Speaker:kai
 ->legend
 
 
 === friend ===
-"They told me about it one time while we were camping. Pretty spooky stuff." #Speaker:kai 
+"They told me about it one time while we were camping. Pretty spooky stuff." #Speaker:kai
 "And you decided to make the trip to investigate?"#Speaker:lawyer
-"I guess, yeah."#Speaker:kai 
+"I guess, yeah."#Speaker:kai
 "How interesting."#Speaker:lawyer
 ->legend
 
 
 === legend ===
 "Well? Tell me about it."#Speaker:lawyer
-(Oh god...)#Speaker:kai 
+(Oh god...)#Speaker:kai
 "Um..."
 "Well, the story goes..."
 ~waitNextLine(3)
@@ -204,7 +204,7 @@ You lock eyes.#Speaker:BLANK
 
 === legend_rpt ===
 "Oh? Did something change about your story?"#Speaker:lawyer
-(Come on... think!)#Speaker:kai 
+(Come on... think!)#Speaker:kai
 "Yes! Um..."
 "Well, the story actually goes..."
 ~waitNextLine(3)
@@ -221,7 +221,7 @@ You lock eyes.#Speaker:BLANK
 === family ===
 ~suspicion++
 ~saveState("legend_rpt")
-"A bunch of monsters."#Speaker:kai 
+"A bunch of monsters."#Speaker:kai
 "To uh..."
 ~waitNextLine(3)
 ~spawnChoice("Do housework...", "housework", 6, "bottom-right")
@@ -237,7 +237,7 @@ You lock eyes.#Speaker:BLANK
 === takeover ===
 ~suspicion++
 "Uh huh."#Speaker:lawyer
-"And they chose this house to conduct their business."#Speaker:kai 
+"And they chose this house to conduct their business."#Speaker:kai
 "But people got suspicious and started monitoring the grounds."
 "Then, people went missing, and it was a whole scandal."
 "And so one day they ended up deciding to march in there and see what was going on."
@@ -260,20 +260,20 @@ You lock eyes.#Speaker:BLANK
 
 
 === missing_people ===
-"They were huddled in a circle inside the house, yelling for help."#Speaker:kai 
+"They were huddled in a circle inside the house, yelling for help."#Speaker:kai
 "And there was this shadowy figure behind them, just staring into the void."
 "Then... poof. Everyone inside vanished before their eyes."
 "Nobody could figure out what happened, and people stayed away out of fear of disappearing themselves."
 ...#Speaker:BLANK
 "Wow..."#Speaker:lawyer
-"I knew humans liked their stories, but I never anticipated such a tall tale." 
+"I knew humans liked their stories, but I never anticipated such a tall tale."
 "It's impressive."
 "Pardon me, I need to find my journal and write this all down."
 The lawyer stands up and moves to a nearby bookshelf, completely engrossed in scanning the spines.#Speaker:BLANK
 ~waitNextLine(3)
 ~spawnChoice("The bookshelf", "bookshelf", 5, "bottom-left")
 ~spawnChoice("The desk", "desk", 5, "bottom-right")
-(Now's my chance! Where should I start looking first?)#Speaker:kai 
+(Now's my chance! Where should I start looking first?)#Speaker:kai
 "Hm..."#Speaker:lawyer
 "Seems I've misplaced it. Please excuse me for a moment."
 ->alone
@@ -292,7 +292,7 @@ The lawyer stands up and moves to a nearby bookshelf, completely engrossed in sc
 ~waitNextLine(3)
 ~spawnChoice("The bookshelf", "bookshelf", 5, "bottom-left")
 ~spawnChoice("The desk", "desk", 5, "bottom-right")
-(Now's my chance! Where should I start looking first?)#Speaker:kai 
+(Now's my chance! Where should I start looking first?)#Speaker:kai
 "Hm..."#Speaker:lawyer
 "Seems I've misplaced it. Please excuse me for a moment."
 ->alone
@@ -303,28 +303,28 @@ The lawyer stands up and moves to a nearby bookshelf, completely engrossed in sc
 "And watched it burn to the ground, not realizing they ended up trapping the missing people inside."
 ...#Speaker:BLANK
 "How... interesting."#Speaker:lawyer
-"Yeah, it's crazy."#Speaker:kai 
+"Yeah, it's crazy."#Speaker:kai
 "So, they burned the place to the ground?"#Speaker:lawyer
-"Yeah. Charred and everything."#Speaker:kai 
+"Yeah. Charred and everything."#Speaker:kai
 "They burned this house, the one that we're sitting in, to the ground?"#Speaker:lawyer
-(Oh no...)#Speaker:kai 
+(Oh no...)#Speaker:kai
 ...#Speaker:BLANK
 "You're smart, but not smart enough it seems."#Speaker:lawyer
 "Truly, that was impressive."
 "Thank you, though, for making it obvious you're one of their pawns."
 "Unfortunately I do need to kill you - preserve my freedom and all that."
 "But it was nice chatting with you."
-->law_death 
+->law_death
 
 
 
 === housework ===
-"And so they summoned a bunch of them so they wouldn't have to pay for anything."#Speaker:kai 
+"And so they summoned a bunch of them so they wouldn't have to pay for anything."#Speaker:kai
 "..."
 "And yeah..."
 ...#Speaker:BLANK
 "That's it?"#Speaker:lawyer
-"That's it."#Speaker:kai 
+"That's it."#Speaker:kai
 ...#Speaker:BLANK
 "Wow."#Speaker:lawyer
 "You're terrible at lying."
@@ -338,7 +338,7 @@ The lawyer stands up and moves to a nearby bookshelf, completely engrossed in sc
 //KNOT BREAKS THE SCENE
 === megalomaniac ===
 ~saveState("legend_rpt")
-"And he was trying to take over the world."#Speaker:kai 
+"And he was trying to take over the world."#Speaker:kai
 "So he goes into this abandoned house and tries to summon something."
 ~spawnChoice("And one night, it works", "works", 3, "bottom-left")
 "He's buying a bunch of salt and candles, and everyone starts to worry about him."
@@ -351,9 +351,9 @@ The lawyer stands up and moves to a nearby bookshelf, completely engrossed in sc
 ~spawnChoice("His family staged an intervention", "intervention", 5, "top-right")
 ~spawnChoice("One day, it finally works", "works", 5, "bottom-left")
 "..."
-"Then...?"#Speaker:lawyer 
+"Then...?"#Speaker:lawyer
 ~suspicion++
-"Uh..."#Speaker:kai 
+"Uh..."#Speaker:kai
 ~waitNextLine(2)
 "Then..."
 ~spawnChoice("He goes bankrupt", "bankrupt", 5, "bottom-right")
@@ -368,7 +368,7 @@ The lawyer stands up and moves to a nearby bookshelf, completely engrossed in sc
 
 
 === works ===
-"And everyone sees this flash of light come from the house."#Speaker:kai 
+"And everyone sees this flash of light come from the house."#Speaker:kai
 "People rush towards the gates, but they can't get through. It's like there's a forcefield around the place."
 ~waitNextLine(2)
 "And the guy comes out and he's..."
@@ -390,7 +390,7 @@ The lawyer stands up and moves to a nearby bookshelf, completely engrossed in sc
 
 
 === soot ===
-"Head to toe, and nobody can figure out why."#Speaker:kai 
+"Head to toe, and nobody can figure out why."#Speaker:kai
 "He tries to run out the gates, but the forcefield stops him."
 "And then he gets sucked back into the house, screaming for help."
 "Never to be seen again."
@@ -403,7 +403,7 @@ The lawyer stands up and moves to a nearby bookshelf, completely engrossed in sc
 ~waitNextLine(3)
 ~spawnChoice("The bookshelf", "bookshelf", 5, "bottom-left")
 ~spawnChoice("The desk", "desk", 5, "bottom-right")
-(Now's my chance! Where should I start looking first?)#Speaker:kai 
+(Now's my chance! Where should I start looking first?)#Speaker:kai
 "Hm..."#Speaker:lawyer
 "Seems I've misplaced it. Please excuse me for a moment."
 ->alone
@@ -413,7 +413,7 @@ You walk over to the bookshelf, staring up at the back of the monster's head.#Sp
 "Hm..."#Speaker:lawyer
 "Seems I-"
 "What are you doing?"
-(Wait... what AM I doing?)#Speaker:kai 
+(Wait... what AM I doing?)#Speaker:kai
 "Um..."
 "I don't... I don't know..."
 You shrink as the monster's eyes burn through you.#Speaker:blank
@@ -424,7 +424,7 @@ You shrink as the monster's eyes burn through you.#Speaker:blank
 You stand and begin to make your way around the side of the desk, but the monster's head snaps in your direction.#Speaker:BLANK
 "What do you think you're doing?"#Speaker:lawyer
 ~waitNextLine(2)
-"Uh..."#Speaker:kai 
+"Uh..."#Speaker:kai
 ~spawnChoice("I wanted to stretch my legs", "legs", 4, "top-right")
 ~spawnChoice("Your desk looks cool", "cool_desk", 6, "bottom-left")
 The monster takes a step towards you.#Speaker:BLANK
@@ -434,7 +434,7 @@ The monster takes a step towards you.#Speaker:BLANK
 ~spawnChoice("I wanted to look for something", "looking", 6, "bottom-right")
 It takes another step, halfway across the desk.#Speaker:BLANK
 ~waitNextLine(3)
-"I-"#Speaker:kai 
+"I-"#Speaker:kai
 ~spawnChoice("figured I could help look", "help_look", 4, "middle")
 The monster takes another step, now looming in front of you.#Speaker:BLANK
 "You?"#Speaker:lawyer
@@ -468,12 +468,12 @@ It straightens out its suit before speaking again.#Speaker:BLANK
 
 === looking ===
 The monsters eyes narrow as it takes a step towards you.#Speaker:BLANK
-"Something?"#Speaker:lawyer 
-(Oh no...)#Speaker:kai 
-"My, my. A slip of the tongue. And you were doing so well."#Speaker:lawyer 
+"Something?"#Speaker:lawyer
+(Oh no...)#Speaker:kai
+"My, my. A slip of the tongue. And you were doing so well."#Speaker:lawyer
 "Clearly you're one of their pawns, so unfortunately I'll have to kill you."
 "I will say, though, you were very refreshing company."
-->law_death 
+->law_death
 
 
 === alone_start ===
@@ -481,10 +481,10 @@ A few strides and one closed door later, you're alone in the room.#Speaker:BLANK
 (It's go time)#Speaker:kai
 ->alone
 
- 
- === alone === 
+
+ === alone ===
 {started:
-    (Where else should I search?)#speaker:kai 
+    (Where else should I search?)#speaker:kai
     {search < 2:
         {books:
         - else:
@@ -499,12 +499,12 @@ A few strides and one closed door later, you're alone in the room.#Speaker:BLANK
             ~spawnChoice("Chair", "chair_search", 8, "middle")
         }
     - else:
-    "Wait... I think I hear footsteps."#Speaker:kai 
+    "Wait... I think I hear footsteps."#Speaker:kai
     ->law_return
     }
 - else:
-    (Where should I search first?)#Speaker:kai 
-    ~started = true 
+    (Where should I search first?)#Speaker:kai
+    ~started = true
     {books:
     - else:
         ~spawnChoice("Bookshelf", "book_search", 8, "bottom-right")
@@ -519,17 +519,17 @@ A few strides and one closed door later, you're alone in the room.#Speaker:BLANK
     }
 }
 ~waitNextLine(9)
-(Hmm...)#Speaker:kai 
+(Hmm...)#Speaker:kai
 (Wait... I think I hear footsteps.)
 ->law_return
 
 
 
 === book_search ===
-~books = true 
+~books = true
 ~search++
 You scan the spines, attempting to read the symbols they display to no avail.#Speaker:BLANK
-(I don't think this is a human language...)#Speaker:kai 
+(I don't think this is a human language...)#Speaker:kai
 (It doesn't seem like the will is here. I'll have to keep looking.)
 ->alone
 
@@ -538,19 +538,19 @@ You scan the spines, attempting to read the symbols they display to no avail.#Sp
 {d_start:
 - else:
     You walk around the side of the desk; pairs of drawers and cabinets come into view.#Speaker:BLANK
-    (I need to be quick... I can probably only check two of these compartments.)#Speaker:kai 
+    (I need to be quick... I can probably only check two of these compartments.)#Speaker:kai
     ~d_start = true
     ~cab = true
     ~search++
 }
 {checking < 2:
-    (What should I check?)#Speaker:kai 
+    (What should I check?)#Speaker:kai
     {left_drawer:
     - else:
         * [Top left drawer]
             You open the drawer, finding a handful of pens and paperclips.#Speaker:BLANK
-            (I'm glad I'm not the only person who has loose paperclips.)#Speaker:kai 
-            ~left_drawer = true 
+            (I'm glad I'm not the only person who has loose paperclips.)#Speaker:kai
+            ~left_drawer = true
             ~checking++
             ->desk_search
     }
@@ -558,28 +558,28 @@ You scan the spines, attempting to read the symbols they display to no avail.#Sp
     - else:
         * [Top right drawer]
             The drawer jiggles open halfway, revealing... candy wrappers?#Speaker:BLANK
-            (Looks like someone's got a sweet tooth.)#Speaker:kai 
+            (Looks like someone's got a sweet tooth.)#Speaker:kai
             ~right_drawer = true
             ~checking++
             ->desk_search
     }
-    
+
     {left_cab:
     - else:
         * [Bottom left cabinet]
             You open the cabinet and find a lone piece of tattered paper.#Speaker:BLANK
-            (Bingo!)#Speaker:kai 
+            (Bingo!)#Speaker:kai
             (Wait... I think I hear footsteps...)
-            ~left_cab = true 
-            ->law_return 
+            ~left_cab = true
+            ->law_return
     }
     {right_cab:
     - else:
         * [Bottom right cabinet]
             The hinges moan as the door opens, revealing shelves of jars filled with shimmering liquids.#BLANK
             One of them starts to reveal a face, emitting a groan.
-            (Nope.)#Speaker:kai 
-            ~right_cab = true 
+            (Nope.)#Speaker:kai
+            ~right_cab = true
             ~checking++
             ->desk_search
     }
@@ -588,29 +588,29 @@ You scan the spines, attempting to read the symbols they display to no avail.#Sp
     ->law_return
 }
 ~waitNextLine(15)
-Exited if statement 
+Exited if statement
 ->DONE
 
 === chair_search ===
-~chair = true 
+~chair = true
 ~search++
 The velvety cushion reveals nothing but dust underneath, mirroring your findings under the chair.#Speaker:BLANK
-(Hm... no sign of a will here.)#Speaker:kai 
+(Hm... no sign of a will here.)#Speaker:kai
 (I'll have to search somewhere else.)
-->alone 
+->alone
 
 
 
 
 === law_return ===
 The door opens and the lawyer walks briskly behind the desk.#Speaker:BLANK
-"Thank you for your patience. Seems I left it in the lounge, though I don't know how it got there."#Speaker:lawyer 
-"Good thing you found it."#Speaker:kai 
+"Thank you for your patience. Seems I left it in the lounge, though I don't know how it got there."#Speaker:lawyer
+"Good thing you found it."#Speaker:kai
 "Very."#Speaker:lawyer
 ...#Speaker:BLANK
 "Well, I suppose you won't want to sit while I write. Please, feel free to explore the rest of the estate. I'm sure we'll cross paths before your visit is over."#Speaker:lawyer
 "Right... yeah. I guess I'll see you around."#Speaker:kai
-As the monster begins to write you walk towards the exit, 
+As the monster begins to write you walk towards the exit,
 ->law_win
 
 === fire ===
@@ -627,7 +627,7 @@ The lawyer stands up and moves to a nearby bookshelf, completely engrossed in sc
 ~waitNextLine(3)
 ~spawnChoice("The bookshelf", "bookshelf", 5, "bottom-left")
 ~spawnChoice("The desk", "desk", 5, "bottom-right")
-(Now's my chance! Where should I start looking first?)#Speaker:kai 
+(Now's my chance! Where should I start looking first?)#Speaker:kai
 "Hm..."#Speaker:lawyer
 "Seems I've misplaced it. Please excuse me for a moment."
 A few strides and one closed door later, you're alone in the room.#Speaker:BLANK
@@ -636,14 +636,14 @@ A few strides and one closed door later, you're alone in the room.#Speaker:BLANK
 
 
 === intervention ===
-"But it does't work. They try everything to convince him but he refuses to listen."#Speaker:kai 
+"But it does't work. They try everything to convince him but he refuses to listen."#Speaker:kai
 "It gets to the point where one of them tries to see what's inside the house, only for the guy to chase them out with a crowbar."
 "And after a while, they stop trying."
 "He's seen a few times walking around the house, but nobody ever hears from him again."
 ...#Speaker:BLANK
 "How... depressing."#Speaker:lawyer
 "Except... there's no mention of monsters in your story."
-(Shit...)#Speaker:kai 
+(Shit...)#Speaker:kai
 "Thank you for trying, but it seems you've failed to conceal the reason why you're here."#Speaker:lawyer
 "Unfortunately, I can't let you live - preserve my freedom and all that."
 "But it was nice chatting with you."
@@ -651,11 +651,11 @@ A few strides and one closed door later, you're alone in the room.#Speaker:BLANK
 
 
 === bankrupt ===
-"And starts begging people to help, but nobody does."#Speaker:kai 
+"And starts begging people to help, but nobody does."#Speaker:kai
 "So he goes back into the house, and is never seen again."
 "My, what a story."#Speaker:lawyer
 "Except, you never said where the monsters part of it came from."
-(Oh no...)#Speaker:kai 
+(Oh no...)#Speaker:kai
 "Thank you for trying, but it seems you've failed to conceal the reason why you're here."#Speaker:lawyer
 "Unfortunately, I can't let you live - preserve my freedom and all that."
 "But it was nice chatting with you."
@@ -664,7 +664,7 @@ A few strides and one closed door later, you're alone in the room.#Speaker:BLANK
 
 ===  missing ===
 "And nobody sees him... until one summer day."#Speaker:kai
-"He's in a meadow, screaming into the air and covered in dirt."#Speaker:kai 
+"He's in a meadow, screaming into the air and covered in dirt."#Speaker:kai
 "They try to get closer to him, but can't. He stays the same distance no matter how much they walk. Then he disappears in a cloud of smoke."
 "Some say that he can be seen in the windows of the house, flashing between a human and an indescribable monster."
 "Some say... if you try and enter the house, you'll face the same fate."
@@ -677,7 +677,7 @@ The lawyer stands up and moves to a nearby bookshelf, completely engrossed in sc
 ~waitNextLine(3)
 ~spawnChoice("The bookshelf", "bookshelf", 5, "bottom-left")
 ~spawnChoice("The desk", "desk", 5, "bottom-right")
-(Now's my chance! Where should I start looking first?)#Speaker:kai 
+(Now's my chance! Where should I start looking first?)#Speaker:kai
 "Hm..."#Speaker:lawyer
 "Seems I've misplaced it. Please excuse me for a moment."
 ->alone
@@ -710,17 +710,17 @@ The lawyer stands up and moves to a nearby bookshelf, completely engrossed in sc
 
 === contract ===
 ~suspicion++
-"Yes, a soul contract. Does that interest you?"#Speaker:lawyer 
+"Yes, a soul contract. Does that interest you?"#Speaker:lawyer
 ~spawnChoice("Actually, yeah...", "cont_look", 5, "bottom-left")
 "I'm not surprised, given how they're not practiced in this world."
 "Though I've heard of how ludicrous human's stories about them get."
 "In fact, I'd like to hear this story."
-(Wait...)#Speaker:kai 
+(Wait...)#Speaker:kai
 ->legend
 
 
 === know_truth ===
-"The person that I'm here for told me about one."#Speaker:kai 
+"The person that I'm here for told me about one."#Speaker:kai
 "Really? And what are you here for?"#Speaker:lawyer
 "I'm supposed to find one? I'm not really sure."#Speaker:kai
 "She said it was a will, but given the circumstances I wouldn't be surprised if it was a soul contract."
@@ -808,14 +808,14 @@ The lawyer stands up and moves to a nearby bookshelf, completely engrossed in sc
 }
 
 === get_out ===
-"It's fine, really..."#Speaker:kai 
+"It's fine, really..."#Speaker:kai
 "Oh? Is it now? I thought this was why you came here?"#Speaker:lawyer
 "It wouldn't be in good taste to return empty handed now, would it?"
-"Well, I-"#Speaker:kai 
+"Well, I-"#Speaker:kai
 "You?"#Speaker:lawyer
 ...#Speaker:BLANK
-"I don't... really care. I just don't want to die."#Speaker:kai 
-"Hmph. Figures."#Speaker:lawyer 
+"I don't... really care. I just don't want to die."#Speaker:kai
+"Hmph. Figures."#Speaker:lawyer
 "You can go, but you'll need to find someone to come to the estate in your place.
 
 === take ===
@@ -842,19 +842,19 @@ The lawyer stands up and moves to a nearby bookshelf, completely engrossed in sc
 
 
 === pass ===
-"A smart decision."#Speaker:lawyer 
+"A smart decision."#Speaker:lawyer
 "Now, why are you here?"
 "I came here to talk to you, actually."#Speaker:kai
-->interview 
+->interview
 
 
 === speak ===
 "And who might you be?"#Speaker:lawyer
-"I'm Kai."#Speaker:kai 
+"I'm Kai."#Speaker:kai
 "Well, Kai, I wasn't expecting visitors."#Speaker:lawyer
 ~saveState("speak_rpt")
 "At least, not of the human variety."
-"...surprise?"#Speaker:kai 
+"...surprise?"#Speaker:kai
 "Ha. What brings you into my office?"#Speaker:lawyer
 ~spawnChoice("I'm here to talk to you", "interview", 10, "bottom-left")
 ~spawnChoice("I'm looking for a will?", "will", 10, "top-right")
