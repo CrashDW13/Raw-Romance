@@ -103,6 +103,8 @@ public class Save
 
     public void setDefaultGlobalVariables() {
         globalVariables["calledFam"] = false;
+        globalVariables["concFinish"] = false;
+
     }
 
     public Save()

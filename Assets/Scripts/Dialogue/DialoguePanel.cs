@@ -106,6 +106,8 @@ public class DialoguePanel : MonoBehaviour
         inkStory.BindExternalFunction("syncUnity",()=>{SyncUnity();});
         inkStory.BindExternalFunction("setCalledFam", (bool val) => {SetCalledFam(val);});
         inkStory.BindExternalFunction("getCalledFam", () => { return getCalledFam();});
+        inkStory.BindExternalFunction("setConcFinish", (bool val) => {SetConcFinish(val);});
+        inkStory.BindExternalFunction("getConcFinish", () => { return getConcFinish();});
 
         levelLoader = FindObjectOfType<LevelLoader>();
 
@@ -356,10 +358,6 @@ public class DialoguePanel : MonoBehaviour
         }
         else if (!inkStory.canContinue && !scrawling && inkStory.currentChoices.Count > 0)
         {
-            ShowChoices();
-        }
-        else if (!inkStory.canContinue && !scrawling && inkStory.currentChoices.Count == 0)
-        {
             //GameManager.Instance.CloseDialogue(this);
             var interactables = FindObjectsOfType<MonoBehaviour>().OfType<IFreezable>();
             foreach (IFreezable interactable in interactables)
@@ -592,12 +590,25 @@ public class DialoguePanel : MonoBehaviour
         Debug.Log("setting call Fam: ");
         Debug.Log(val);
     }
+    private void SetConcFinish(bool val){
+        SaveManager.updateGlobalVariable("concFinish", true);
+        Debug.Log("setting conc finish: ");
+        Debug.Log(val);
+
+    }
+    private bool getConcFinish(){
+        bool concFinish = (bool) SaveManager.getGlobalVariable("concFinish");
+        Debug.Log("Getting concFinish: ");
+        Debug.Log(concFinish);
+        return concFinish;
+    }
 
     private bool getCalledFam() {
         bool calledFam = (bool) SaveManager.getGlobalVariable("calledFam");
         Debug.Log("Getting call Fam: ");
         Debug.Log(calledFam);
         return calledFam;
+        
     }
 
     public void Continue()
