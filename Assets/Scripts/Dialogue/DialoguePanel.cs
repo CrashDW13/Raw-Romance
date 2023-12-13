@@ -432,6 +432,17 @@ public class DialoguePanel : MonoBehaviour
         if (inkStory.canContinue && !scrawling)
         {
             ShowLine(inkStory.Continue());
+            if (inkStory.currentText == "")
+            {
+                if (transition != null)
+                {
+                    Debug.Log("loading");
+                    levelLoader = FindObjectOfType<LevelLoader>();
+                    levelLoader.StartCoroutine(levelLoader.Load(transition, sceneName));
+                }
+
+                Destroy(gameObject);
+            }
         }
         else if (!inkStory.canContinue && !scrawling && inkStory.currentChoices.Count > 0)
         {

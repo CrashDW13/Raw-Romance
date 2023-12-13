@@ -210,9 +210,11 @@ VAR conc = false
 
 === plead_explain ===
 "If you feel like the conversation has gone awry, you can 'PLEAD' to go back to the previous topic of discussion."
+~saveState("plead")
 "Try doing so now."
 +["I still don't get it."] -> plead_explain
-
+"..."
+->END
 
 
 === plead ===
