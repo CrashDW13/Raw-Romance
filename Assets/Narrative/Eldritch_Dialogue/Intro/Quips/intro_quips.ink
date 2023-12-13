@@ -49,7 +49,6 @@ You dig your feet into the mud, slowly forcing the door open.
 
 === move_to_concierge ===
 (Might as well get this over with.)
-
 ~sceneTransition("TestTransition", "concierge")
 ->END
 
