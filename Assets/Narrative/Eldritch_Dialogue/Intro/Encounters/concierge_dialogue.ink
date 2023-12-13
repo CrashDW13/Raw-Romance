@@ -11,6 +11,8 @@ EXTERNAL doPlayBGM(bgmsoundName)
 EXTERNAL syncUnity()
 EXTERNAL setCalledFam(val)
 EXTERNAL getCalledFam()
+EXTERNAL setConcFinish(val)
+EXTERNAL getConcFinish()
 
 
 //concierge
@@ -20,7 +22,9 @@ EXTERNAL getCalledFam()
 
 === meet_conc ===
 VAR called = false
+VAR conc = false
 ~ called = getCalledFam()
+~ conc = getConcFinish()
 ~syncUnity()
 {called:
     ->call_ready
@@ -94,7 +98,8 @@ VAR called = false
 
 ->DONE
 === call_ready===
-"Welcome back."#Speaker:con,conc
+
+"Welcome back."
 ->ready
 
 
@@ -119,6 +124,7 @@ VAR called = false
 ->ready
 
 === return_call ===
+{conc:->final}
 "Welcome back."
 ->ready
 
@@ -248,6 +254,7 @@ VAR called = false
 === call_push ===
 (What the hell was that?)#Speaker:kai 
 (I need to get myself out of this mess.)
+~setConcFinish(true)
 ->call
 
 === final ===
