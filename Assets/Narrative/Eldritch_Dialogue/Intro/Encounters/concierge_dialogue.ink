@@ -11,8 +11,6 @@ EXTERNAL doPlayBGM(bgmsoundName)
 EXTERNAL syncUnity()
 EXTERNAL setCalledFam(val)
 EXTERNAL getCalledFam()
-EXTERNAL setConcFinish(val)
-EXTERNAL getConcFinish()
 
 
 //concierge
@@ -22,9 +20,7 @@ EXTERNAL getConcFinish()
 
 === meet_conc ===
 VAR called = false
-VAR conc = false
 ~ called = getCalledFam()
-~ conc = getConcFinish()
 ~syncUnity()
 {called:
     ->call_ready
@@ -98,8 +94,7 @@ VAR conc = false
 
 ->DONE
 === call_ready===
-
-"Welcome back."
+"Welcome back."#Speaker:con,conc
 ->ready
 
 
@@ -124,8 +119,7 @@ VAR conc = false
 ->ready
 
 === return_call ===
-{conc:->final}
-"Welcome back."
+"Welcome back."#Speaker:con,conc
 ->ready
 
 
@@ -144,7 +138,7 @@ VAR conc = false
 "Once you meet an inhabitant you cannot leave unless they allow you to leave."
 "They tend to monologue, and some enjoy the interjection while others want to be heard in full."
 "Pick your responses carefully; if you take too long, you'll lose the opportunity to make your remark."
-~saveState("plead_ag")
+~saveState("plead")
 "Sometimes not responding is beneficial. Other times, it can be to your detriment."
 "And most importantly, your life will be on the line with each inhabitant you meet."
 "If you feel your life is in danger, you can 'PLEAD' to go back to the last key point in the conversation."
@@ -164,7 +158,7 @@ VAR conc = false
 "And please, don't drop your pen on the floor."
 {called:
     - else:
-    ~spawnChoice("I need to make a call","call",20,"middle")
+    ~spawnChoice("I need to make a call","call",5,"middle")
     }
 "There will be no food or refreshments inside, so I hope you've come with a satiated appetite."
 "Once you meet an inhabitant you cannot leave unless they allow you to leave."
@@ -192,7 +186,7 @@ VAR conc = false
 "Once you meet an inhabitant you cannot leave unless they allow you to leave."
 {called:
     - else:
-    ~spawnChoice("I need to make a call","call",20,"middle")
+    ~spawnChoice("I need to make a call","call",5,"middle")
     }
 "They tend to monologue, and some enjoy the interjection while others want to be heard in full."
 "Pick your responses carefully; if you take too long, you'll lose the opportunity to make your remark."
@@ -232,10 +226,13 @@ VAR conc = false
 "As you get closer to insanity, your responses will reflect that."
 "Be wise when you plead - you don't want to find yourself saying things you don't understand."
 "Now, it is time for you to begin."
-"Good luck, and keep your notepad close."
-"Things are known to get lost in the fray."
+"Keep your notepad close; I've come to find many an entrant's items scattered amongst the rooms."
 "Best of luck; hopefully you'll see the sun again."
-->final
+{called:
+    -> enter
+- else:
+    -> call_push
+}
 
 
 
@@ -247,19 +244,23 @@ VAR conc = false
 {called:
     -> final
 - else:
-    -> call_push
+    ~waitNextLine(2)
+    (I need to get myself out of this...)
+    ~called = true
+    ~setCalledFam(true)
+    ~syncUnity()
+    ~sceneTransition("TestTransition", "call_fam")
 }
 
 
 === call_push ===
 (What the hell was that?)#Speaker:kai 
 (I need to get myself out of this mess.)
-~setConcFinish(true)
 ->call
 
 === final ===
 (That was... something out of a movie.) #Speaker:BLANK,clear
-(Things are pretty clear, at least... I'll need to watch my mouth while I'm here.)
+(He made himself pretty clear, at least... I'll need to watch my mouth while I'm here.)
 (Come on, this isn't the time to get scared. It's not like I can turn back.)
 (Plus, $10,000 would be great to have if I make it out alive.)
 ~doStopBGM("rainBGM")
