@@ -24,8 +24,10 @@ EXTERNAL getConcFinish()
 VAR called = false
 VAR conc = false
 ~ called = getCalledFam()
+
 ~ conc = getConcFinish()
 ~syncUnity()
+{conc: ->final}
 {called:
     ->call_ready
     -else:
@@ -98,7 +100,7 @@ VAR conc = false
 
 ->DONE
 === call_ready===
-
+#Speaker:con,conc
 "Welcome back."
 ->ready
 
