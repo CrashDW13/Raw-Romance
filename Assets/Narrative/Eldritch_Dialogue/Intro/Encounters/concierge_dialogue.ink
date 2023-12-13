@@ -261,7 +261,8 @@ VAR conc = false
 (What the hell was that?)#Speaker:kai 
 (I need to get myself out of this mess.)
 ~setConcFinish(true)
-->call
+~sceneTransition("TestTransition", "Call_Fam")
+->DONE
 
 === final ===
 (That was... something out of a movie.) #Speaker:BLANK,clear
