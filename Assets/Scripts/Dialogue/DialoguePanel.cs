@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEditor;
+using System.Runtime.CompilerServices;
 //using Unity.VisualScripting.Dependencies.Sqlite;
 
 public class DialoguePanel : MonoBehaviour
@@ -177,7 +178,7 @@ public class DialoguePanel : MonoBehaviour
         DialogueBox.text = "";
         scrawlSpeed = defaultScrawlSpeed;
 
-        if (!auto) scrawlSpeed *= 3; 
+        if (!auto) scrawlSpeed *= 2; 
  
         int i = 0;
         while (i < line.Length)
@@ -295,13 +296,22 @@ public class DialoguePanel : MonoBehaviour
 
             }
         }
+
+        if (inkStory.currentChoices.Count > 1)
+        {
+            canAdvance = false;
+        }
+        else
+        {
+            canAdvance = true;
+        }
+
         textCoroutine = StartCoroutine(ScrawlText(line));
     }
 
 
     void ShowChoices()
     {
-        canAdvance = false;
         ChoiceParent.SetActive(true);
         
         int i = 0;
@@ -323,12 +333,7 @@ public class DialoguePanel : MonoBehaviour
 
     public void SelectChoice(float choice)
     {
-        canAdvance = true;
         inkStory.ChooseChoiceIndex((int)choice);
-  
-
-        
-
 
         HideChoices();
 
@@ -369,7 +374,20 @@ public class DialoguePanel : MonoBehaviour
             else
             {
                 Debug.Log("test");
+                Debug.Log("Continuing via AdvanceImmediate");
                 ShowLine(inkStory.Continue());
+
+                if (inkStory.currentText == "")
+                {
+                    if (transition != null)
+                    {
+                        Debug.Log("loading");
+                        levelLoader = FindObjectOfType<LevelLoader>();
+                        levelLoader.StartCoroutine(levelLoader.Load(transition, sceneName));
+                    }
+
+                    Destroy(gameObject);
+                }
             }
    
         }
