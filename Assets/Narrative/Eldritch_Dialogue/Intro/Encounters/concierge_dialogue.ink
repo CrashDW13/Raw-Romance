@@ -144,7 +144,7 @@ VAR conc = false
 "Once you meet an inhabitant you cannot leave unless they allow you to leave."
 "They tend to monologue, and some enjoy the interjection while others want to be heard in full."
 "Pick your responses carefully; if you take too long, you'll lose the opportunity to make your remark."
-~saveState("plead_ag")
+~saveState("plead")
 "Sometimes not responding is beneficial. Other times, it can be to your detriment."
 "And most importantly, your life will be on the line with each inhabitant you meet."
 "If you feel your life is in danger, you can 'PLEAD' to go back to the last key point in the conversation."
@@ -235,7 +235,11 @@ VAR conc = false
 "Good luck, and keep your notepad close."
 "Things are known to get lost in the fray."
 "Best of luck; hopefully you'll see the sun again."
-->final
+{called:
+    -> final
+- else:
+    -> call_push
+}
 
 
 
