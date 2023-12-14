@@ -621,6 +621,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c8f8a534a8f41f84e87451af1be0f1dc, type: 2}
   - {fileID: 11400000, guid: 283ac110a87ab1046b2e38eaabd4588e, type: 2}
   - {fileID: 11400000, guid: dc9ccc3164eb6b94ab9079a5c6b9eed6, type: 2}
+  - {fileID: 11400000, guid: 38387cf475a674b4490c8feb4e04fa48, type: 2}
   scriptableObjectsPath: Assets/ScriptableObjects
 --- !u!1001 &2069051687
 PrefabInstance:

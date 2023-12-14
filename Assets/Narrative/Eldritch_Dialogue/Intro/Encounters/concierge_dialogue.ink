@@ -58,7 +58,8 @@ VAR conc = false
 (What threshold?)#Speaker:kai
 "*Ahem*"#Speaker:con,conc
 "Do you hear me? If you give everyone you meet the cold shoulder, you won't make it very far."
-"You'd ought to remember to give someone an answer when asked a question."
+(Maybe I should call the woman and back out...)#Speaker:kai 
+"You'd ought to remember to give someone an answer when asked a question."#Speaker:con
 "Now, I'll ask you again... Are you ready for what's behind these doors?"
 ~spawnChoice("I need to make a call","call",10,"middle")
 ~spawnChoice("Yes","red_str",10,"top-left")
@@ -223,8 +224,8 @@ VAR conc = false
 "As you get closer to insanity, your responses will reflect that."
 "Be wise when you plead - you don't want to find yourself saying things you don't understand."
 "Do you understand?"
-["Yes."] -> enter
-["I don't get it..."] -> rep_ready
+*["Yes."] -> enter
+*["I don't get it..."] -> rep_ready
 "..."
 
 
@@ -260,14 +261,16 @@ VAR conc = false
 
 
 === call_push ===
-(What the hell was that?)#Speaker:kai 
+(...)#Speaker:BLANK,clear
+(What the hell was that?)#Speaker:kai,clear
 (I need to get myself out of this mess.)
 ~setConcFinish(true)
 ~sceneTransition("TestTransition", "Call_Fam")
 ->DONE
 
 === final ===
-(That was... something out of a movie.) #Speaker:BLANK,clear
+(...)#Speaker:BLANK,clear
+(That was... something out of a movie.)#Speaker:kai
 (Things are pretty clear, at least... I'll need to watch my mouth while I'm here.)
 (Come on, this isn't the time to get scared. It's not like I can turn back.)
 (Plus, $10,000 would be great to have if I make it out alive.)

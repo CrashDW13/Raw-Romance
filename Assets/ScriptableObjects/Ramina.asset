@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b0bd38aa6afd4c2469ce083b40c029ed, type: 3}
-  m_Name: Aaron
+  m_Name: Ramina
   m_EditorClassIdentifier: 
-  characterName: Aaron
-  characterTag: friend
+  characterName: Ramina
+  characterTag: 
   CharacterSprites: []
-  fileName: Assets/ScriptableObjects/Aaron.asset
+  fileName: Assets/ScriptableObjects/Ramina.asset
