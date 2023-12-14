@@ -114,14 +114,18 @@ You lock eyes.#Speaker:BLANK
 
 
 //PLEAD BACK TO INTERVIEW KNOT
-=== interview_ag === //UNFINISHED
-"You have more to say about interviewing me?"#Speaker:lawyer
+=== interview_ag ===
+"You have more questions?"#Speaker:lawyer
 "Well, I was hoping you could tell me more about yourself."#Speaker:kai
 "Myself? What, as in my career?"#Speaker:lawyer
 "I mean, sure."#Speaker:kai
-~spawnChoice("Or your life", "life_story", 5, "top-right")
-"Let's see... I first took an interest in souls and binding contracts about 1,000 years ago, when I started archiving #Speaker:lawyer
-->END
+"Let's see... I first took an interest in souls and binding contracts about 1,000 years ago, when I started my archiving journey."#Speaker:lawyer
+"Something about quite literally holding someone's life force in your hands spoke to me."
+"And ever since then I've been writing about soul contracts, releasing literature amongst worlds so beings can make and sign their own."
+"It's how I ended up here, actually. A member of this family read my book and used it as a reference."
+"I was so flattered and blinded by its presentation that I signed it almost immediately after they summoned me."
+"But enough about me, I want to learn more about you."
+->learn_kai
 
 
 === learn_kai ===
@@ -574,7 +578,8 @@ You walk over to the door.#Speaker:BLANK
 
  === alone ===
 {started:
-    (Where else should I search?)#speaker:kai
+    
+    ~waitNextLine(9)
     {search < 2:
         {books:
         - else:
@@ -588,13 +593,13 @@ You walk over to the door.#Speaker:BLANK
         - else:
             ~spawnChoice("Chair", "chair_search", 8, "middle")
         }
-    - else:
-    "Wait... I think I hear footsteps."#Speaker:kai
+    (Where else should I search?)#speaker:kai
+    (Wait... I think I hear footsteps.)#Speaker:kai
     ->law_return
     }
 - else:
-    (Where should I search first?)#Speaker:kai
     ~started = true
+    ~waitNextLine(9)
     {books:
     - else:
         ~spawnChoice("Bookshelf", "book_search", 8, "bottom-right")
@@ -607,8 +612,10 @@ You walk over to the door.#Speaker:BLANK
     - else:
         ~spawnChoice("Chair", "chair_search", 8, "middle")
     }
+    (Where should I search first?)#Speaker:kai
+    (Wait... I think I hear footsteps.)#Speaker:kai
+    ->law_return
 }
-~waitNextLine(9)
 (Hmm...)#Speaker:kai
 (Wait... I think I hear footsteps.)
 ->law_return
@@ -624,7 +631,7 @@ You scan the spines, attempting to read the symbols they display to no avail.#Sp
 ->alone
 
 
-=== desk_search === //UNFINISHED
+=== desk_search ===
 {d_start:
 - else:
     You walk around the side of the desk; pairs of drawers and cabinets come into view.#Speaker:BLANK
@@ -634,52 +641,63 @@ You scan the spines, attempting to read the symbols they display to no avail.#Sp
     ~search++
 }
 {checking < 2:
-    (What should I check?)#Speaker:kai
+    ~waitNextLine(9)
     {left_drawer:
     - else:
-        * [Top left drawer]
-            You open the drawer, finding a handful of pens and paperclips.#Speaker:BLANK
-            (I'm glad I'm not the only person who has loose paperclips.)#Speaker:kai
-            ~left_drawer = true
-            ~checking++
-            ->desk_search
+        ~spawnChoice("Left drawer", "l_drawer", 8, "top-left")
     }
     {right_drawer:
     - else:
-        * [Top right drawer]
-            The drawer jiggles open halfway, revealing... candy wrappers?#Speaker:BLANK
-            (Looks like someone's got a sweet tooth.)#Speaker:kai
-            ~right_drawer = true
-            ~checking++
-            ->desk_search
+        ~spawnChoice("Right drawer", "r_drawer", 8, "top-right")
     }
 
     {left_cab:
     - else:
-        * [Bottom left cabinet]
-            You open the cabinet and find a lone piece of tattered paper.#Speaker:BLANK
-            (Bingo!)#Speaker:kai
-            (Wait... I think I hear footsteps...)
-            ~left_cab = true
-            ->law_return
+        ~spawnChoice("Left cabinet", "l_cab", 8, "bottom-left")
     }
     {right_cab:
     - else:
-        * [Bottom right cabinet]
-            The hinges moan as the door opens, revealing shelves of jars filled with shimmering liquids.#BLANK
-            One of them starts to reveal a face, emitting a groan.
-            (Nope.)#Speaker:kai
-            ~right_cab = true
-            ~checking++
-            ->desk_search
+        ~spawnChoice("Right cabinet", "r_cab", 8, "bottom-right")
     }
-- else:
+    (What should I check?)#Speaker:kai
     (Crap - I think I hear footsteps.)
     ->law_return
 }
 ~waitNextLine(15)
 ...
 ->DONE
+
+
+=== l_drawer ===
+You open the drawer, finding a handful of pens and paperclips.#Speaker:BLANK
+(I'm glad I'm not the only person who has loose paperclips.)#Speaker:kai
+~left_drawer = true
+~checking++
+->desk_search
+
+=== r_drawer ===
+The drawer jiggles open halfway, revealing... candy wrappers?#Speaker:BLANK
+(Looks like someone's got a sweet tooth.)#Speaker:kai
+~right_drawer = true
+~checking++
+->desk_search
+
+=== l_cab ===
+You open the cabinet and find a lone piece of tattered paper.#Speaker:BLANK
+(Bingo!)#Speaker:kai
+(Wait... I think I hear footsteps...)
+~left_cab = true
+->law_return
+
+
+=== r_cab ===
+The hinges moan as the door opens, revealing shelves of jars filled with shimmering liquids.#BLANK
+One of them starts to reveal a face, emitting a groan.
+(Nope.)#Speaker:kai
+~right_cab = true
+~checking++
+->desk_search
+
 
 === chair_search ===
 ~chair = true
@@ -793,11 +811,11 @@ The lawyer stands up and moves to a nearby bookshelf, completely engrossed in sc
 
 === century ===
 "Oh, yes. Far too long, if you ask me."#Speaker:lawyer
-"I've been waiting for a way to get out of this house, and with the recent passing of Rich Rhcardson VII it has presented itself."
+"I've been waiting for a way to get out of this house, and with the recent passing of Rich Richardson VII it has presented itself."
 "But enough about that, I want to know more about you."
 ->learn_kai
 
-=== cont_look === //UNFINISHED
+=== cont_look ===
 ~suspicion++
 "I've been looking for a soul contract, and I was told it was here."#Speaker:kai
 "Have you seen it?"
@@ -1006,7 +1024,7 @@ As your fingers meet the door handle you find it locked.
 ~lose()
 
 
-=== law_stare === //UNFINISHED
+=== law_stare ===
 {stare:
     "Need I remind you I'm not a fan of this behaviour?"#Speaker:lawyer
     "Speak."
@@ -1014,6 +1032,7 @@ As your fingers meet the door handle you find it locked.
     "I will make your stare as blank as possible if you continue on with this."
     "..."
     "So be it."
+    ->law_death
 - else:
     ~stare = true
     "Are you going to speak, or just stand there and stare?"#Speaker:lawyer
@@ -1061,4 +1080,63 @@ As your fingers meet the door handle you find it locked.
 ~sceneTransition("TestTransition", "friendWin")
 ->END
 
+
+
+/* PRESERVED DESK_SEARCH
+=== desk_search ===
+{d_start:
+- else:
+    You walk around the side of the desk; pairs of drawers and cabinets come into view.#Speaker:BLANK
+    (I need to be quick... I can probably only check two of these compartments.)#Speaker:kai
+    ~d_start = true
+    ~cab = true
+    ~search++
+}
+{checking < 2:
+    (What should I check?)#Speaker:kai
+    {left_drawer:
+    - else:
+        * [Top left drawer]
+            You open the drawer, finding a handful of pens and paperclips.#Speaker:BLANK
+            (I'm glad I'm not the only person who has loose paperclips.)#Speaker:kai
+            ~left_drawer = true
+            ~checking++
+            ->desk_search
+    }
+    {right_drawer:
+    - else:
+        * [Top right drawer]
+            The drawer jiggles open halfway, revealing... candy wrappers?#Speaker:BLANK
+            (Looks like someone's got a sweet tooth.)#Speaker:kai
+            ~right_drawer = true
+            ~checking++
+            ->desk_search
+    }
+
+    {left_cab:
+    - else:
+        * [Bottom left cabinet]
+            You open the cabinet and find a lone piece of tattered paper.#Speaker:BLANK
+            (Bingo!)#Speaker:kai
+            (Wait... I think I hear footsteps...)
+            ~left_cab = true
+            ->law_return
+    }
+    {right_cab:
+    - else:
+        * [Bottom right cabinet]
+            The hinges moan as the door opens, revealing shelves of jars filled with shimmering liquids.#BLANK
+            One of them starts to reveal a face, emitting a groan.
+            (Nope.)#Speaker:kai
+            ~right_cab = true
+            ~checking++
+            ->desk_search
+    }
+- else:
+    (Crap - I think I hear footsteps.)
+    ->law_return
+}
+~waitNextLine(15)
+...
+->DONE
 
