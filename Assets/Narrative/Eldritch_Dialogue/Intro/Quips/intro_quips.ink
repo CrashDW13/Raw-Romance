@@ -7,6 +7,7 @@ EXTERNAL spawnChoice(message, knot, time, positionPreset)
 EXTERNAL slimeScene()
 EXTERNAL sceneTransition(transitionPreset, sceneName)
 VAR richard = false
+VAR touch = 0
 
 === entrance ===
 ~doPlayBGM("rainBGM")
@@ -31,7 +32,7 @@ You dig your feet into the mud, slowly forcing the door open.
 
 === fountain ===
 (I wonder who's paying the water bill.)
-->END
+->advance_to_door
 
 === placard ===
 ~doPlaySFX("placard")

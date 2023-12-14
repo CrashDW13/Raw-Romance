@@ -32,10 +32,8 @@ VAR stare = false
 === core_start ===
 ~toggleSanity()
 ~waitNextLine(2)
-"..."#Speaker:lawyer,law
-"What is it now?"
+"This better be important - I'm busy sifting through these negligence lawsuits."#Speaker:lawyer
 "..."
-//remove greet options here
 "Well? I don't have all day."
 "..."
 ~waitNextLine(2)
@@ -680,7 +678,7 @@ You scan the spines, attempting to read the symbols they display to no avail.#Sp
     ->law_return
 }
 ~waitNextLine(15)
-Exited if statement
+...
 ->DONE
 
 === chair_search ===
@@ -695,14 +693,15 @@ The velvety cushion reveals nothing but dust underneath, mirroring your findings
 
 
 === law_return ===
-The door opens and the lawyer walks briskly behind the desk.#Speaker:BLANK
+You rush towards the chair and try to make yourself look as relaxed as possible.#Speaker:BLANK
+As you're smoothing your shirt the door opens and the monster walks briskly behind the desk.
 "Thank you for your patience. Seems I left it in the lounge, though I don't know how it got there."#Speaker:lawyer
 "Good thing you found it."#Speaker:kai
 "Very."#Speaker:lawyer
-...#Speaker:BLANK
+"..."
 "Well, I suppose you won't want to sit while I write. Please, feel free to explore the rest of the estate. I'm sure we'll cross paths before your visit is over."#Speaker:lawyer
 "Right... yeah. I guess I'll see you around."#Speaker:kai
-As the monster begins to write you walk towards the exit,
+As the monster begins to write you make your way towards the exit.
 ->law_win
 
 === fire ===
@@ -1040,7 +1039,7 @@ As your fingers meet the door handle you find it locked.
 (That was intense... but at least I'm alive.)#Speaker:kai
 (I don't know how I managed to go that entire time without asking what the hell it was.)
 (Then again, I don't know what any of the... 'people'... here are.)
-(Wait... Shit... I don't have the will.)
+(Wait... Shit... I didn't find the will.)
 ~win()
 
 === law_success ===
