@@ -24,6 +24,7 @@ VAR left_drawer = false
 VAR left_cab = false
 VAR d_start = false
 VAR will_seen = false
+VAR stare = false
 
 
 ->core_start
@@ -238,12 +239,59 @@ You lock eyes.#Speaker:BLANK
 ~suspicion++
 "Uh huh."#Speaker:lawyer
 "And they chose this house to conduct their business."#Speaker:kai
+~saveState("takeover1_rpt")
 "But people got suspicious and started monitoring the grounds."
 "Then, people went missing, and it was a whole scandal."
 "And so one day they ended up deciding to march in there and see what was going on."
 ~spawnChoice("They found the missing people...", "missing_people", 5, "top-right")
 "They got through the gates, and started banging on the doors."
 "The entire place was pitch black, and someone decided to try and light a small fire to make things easier to see."
+~saveState("takeover2_rpt")
+"But because people were so riled up,"
+~waitNextLine(3)
+"They..."
+~spawnChoice("Lit the place on fire", "flames", 5, "bottom-right")
+~spawnChoice("Lost control of the flames", "burnt", 5, "bottom-left")
+"Uh..."
+"Well?"#Speaker:lawyer
+...#Speaker:BLANK
+"You were doing so well. How unfortunate that you're failing to maintain it."
+"Thank you, though, for making it obvious you're one of their pawns."
+"Unfortunately I do need to kill you - preserve my freedom and all that."
+"But it was nice chatting with you."
+->law_death
+
+
+=== takeover1_rpt ===
+"Wait, sorry - I messed something up."#Speaker:kai 
+"So they chose this house to conduct their business,"#Speaker:kai
+"But people got suspicious and started monitoring the grounds."
+"Then, people went missing, and it was a whole scandal."
+"And so one day they ended up deciding to march in there and see what was going on."
+~spawnChoice("They found the missing people...", "missing_people", 5, "top-right")
+"They got through the gates, and started banging on the doors."
+"The entire place was pitch black, and someone decided to try and light a small fire to make things easier to see."
+~saveState("takeover2_rpt")
+"But because people were so riled up,"
+~waitNextLine(3)
+"They..."
+~spawnChoice("Lit the place on fire", "flames", 5, "bottom-right")
+~spawnChoice("Lost control of the flames", "burnt", 5, "bottom-left")
+"Uh..."
+"Well?"#Speaker:lawyer
+...#Speaker:BLANK
+"You were doing so well. How unfortunate that you're failing to maintain it."
+"Thank you, though, for making it obvious you're one of their pawns."
+"Unfortunately I do need to kill you - preserve my freedom and all that."
+"But it was nice chatting with you."
+->law_death
+
+
+=== takeover2_rpt ===
+"Wait, sorry - the story doesn't go like that."
+"Ok, so one day they decide to march in there and see what was going on."
+"They get through the gates, start banging on the doors."
+"And the entire place was pitch black, so someone decided to try and light a small fire to make things easier to see."
 "But because people were so riled up,"
 ~waitNextLine(3)
 "They..."
@@ -344,19 +392,50 @@ The lawyer stands up and moves to a nearby bookshelf, completely engrossed in sc
 "He's buying a bunch of salt and candles, and everyone starts to worry about him."
 "He starts spending all of his time in this place."
 "He spends all this time trying and trying, but nothing works."
+~saveState("meg_rpt")
 ~waitNextLine(2)
 "..."
 ~waitNextLine(3)
 "Then..."
-~spawnChoice("His family staged an intervention", "intervention", 5, "top-right")
-~spawnChoice("One day, it finally works", "works", 5, "bottom-left")
+~spawnChoice("His family staged an intervention", "intervention", 7, "top-right")
+~spawnChoice("One day, it finally works", "works", 4, "bottom-left")
 "..."
 "Then...?"#Speaker:lawyer
 ~suspicion++
+~spawnChoice("He goes bankrupt", "bankrupt", 7, "bottom-right")
 "Uh..."#Speaker:kai
 ~waitNextLine(2)
 "Then..."
-~spawnChoice("He goes bankrupt", "bankrupt", 5, "bottom-right")
+~spawnChoice("He goes missing", "missing", 5, "bottom-left")
+"Hm?"#Speaker:lawyer
+...#Speaker:BLANK
+"Seems you've run out of thread to spin your story."
+"It was amusing while it lasted, but you've made it quite obvious why you're here."
+"Unfortunately, I can't let you live - preserve my freedom and all that."
+"But it was nice chatting with you."
+->law_death
+
+
+=== meg_rpt ===
+"Sorry, wait - I got something wrong."#Speaker:kai
+"So he goes into this abandoned house and tries to summon something."
+~spawnChoice("And one night, it works", "works", 3, "bottom-left")
+"He's buying a bunch of salt and candles, and everyone starts to worry about him."
+"He starts spending all of his time in this place."
+"He spends all this time trying and trying, but nothing works."
+~waitNextLine(2)
+"..."
+~waitNextLine(3)
+"Then..."
+~spawnChoice("His family staged an intervention", "intervention", 7, "top-right")
+~spawnChoice("One day, it finally works", "works", 4, "bottom-left")
+"..."
+"Then...?"#Speaker:lawyer
+~suspicion++
+~spawnChoice("He goes bankrupt", "bankrupt", 7, "bottom-right")
+"Uh..."#Speaker:kai
+~waitNextLine(2)
+"Then..."
 ~spawnChoice("He goes missing", "missing", 5, "bottom-left")
 "Hm?"#Speaker:lawyer
 ...#Speaker:BLANK
@@ -396,6 +475,7 @@ The lawyer stands up and moves to a nearby bookshelf, completely engrossed in sc
 "Never to be seen again."
 ...#Speaker:BLANK
 "Wow..."#Speaker:lawyer
+~saveState("story_fin")
 "I knew humans liked their stories, but I never anticipated such a tall tale."
 "It's impressive."
 "Pardon me, I need to find my journal and write this all down."
@@ -478,7 +558,19 @@ The monsters eyes narrow as it takes a step towards you.#Speaker:BLANK
 
 === alone_start ===
 A few strides and one closed door later, you're alone in the room.#Speaker:BLANK
+~saveState("call_out")
 (It's go time)#Speaker:kai
+->alone
+
+=== call_out ===
+You walk over to the door.#Speaker:BLANK
+"Hey! Um... did you find it yet?"#Speaker:kai 
+"No, but it can't be far. I'll be back shortly."#Speaker:lawyer
+(Ok... I need to be quick...)#Speaker:kai
+~started = false
+~books = false
+~cab = false
+~chair = false
 ->alone
 
 
@@ -620,6 +712,7 @@ As the monster begins to write you walk towards the exit,
 "Afterwards, people start saying they see him in the windows, fire and all, and sometimes the light reveals another figure behind him."
 ...#Speaker:BLANK
 "Wow..."#Speaker:lawyer
+~saveState("story_fin")
 "I knew humans liked their stories, but I never anticipated such a tall tale."
 "It's impressive."
 "Pardon me, I need to find my journal and write this all down."
@@ -670,6 +763,7 @@ A few strides and one closed door later, you're alone in the room.#Speaker:BLANK
 "Some say... if you try and enter the house, you'll face the same fate."
 ...#Speaker:BLANK
 "Wow..."#Speaker:lawyer
+~saveState("story_fin")
 "I knew humans liked their stories, but I never anticipated such a tall tale."
 "It's impressive."
 "Pardon me, I need to find my journal and write this all down."
@@ -683,6 +777,19 @@ The lawyer stands up and moves to a nearby bookshelf, completely engrossed in sc
 ->alone
 
 
+=== story_fin ===
+"Sorry, what did you say?"#Speaker:lawyer
+"Just that uh... it's probably why we have a bunch of fables and legends and stuff..."#Speaker:kai 
+"Oh, absolutely."#Speaker:lawyer 
+"Pardon me, I need to find my journal and write this all down."
+The lawyer stands up and moves to a nearby bookshelf, completely engrossed in scanning the spines.#Speaker:BLANK
+~waitNextLine(3)
+~spawnChoice("The bookshelf", "bookshelf", 5, "bottom-left")
+~spawnChoice("The desk", "desk", 5, "bottom-right")
+(Now's my chance! Where should I start looking first?)#Speaker:kai
+"Hm..."#Speaker:lawyer
+"Seems I've misplaced it. Please excuse me for a moment."
+->alone
 
 
 === century ===
@@ -765,9 +872,9 @@ The lawyer stands up and moves to a nearby bookshelf, completely engrossed in sc
     "I haven't needed this document in decades."
     //RETURN TO LOOKING AT PLAYER SPRITE
     "Come, take it. It's yours."
+    ~spawnChoice("Thanks", "take", 6, "bottom-left")
     //CONTRACT SPRITE ON DESK
     "..."
-    ~spawnChoice("Thanks", "take", 6, "bottom-left")
     ~spawnChoice("It's that easy?", "easy", 6, "top-right")
     ~waitNextLine(6)
     "Don't worry, it won't bite."
@@ -786,8 +893,8 @@ The lawyer stands up and moves to a nearby bookshelf, completely engrossed in sc
     ~waitNextLine(6)
     "..."
     ~spawnChoice("Thanks", "take", 6, "bottom-left")
-    ~spawnChoice("Actually...", "get_out", 6, "top-right")
     "Don't worry, it won't bite."
+    ~spawnChoice("Actually...", "get_out", 6, "top-right")
     "..."
     "..."
     //DEATH SPRITE?
@@ -816,7 +923,13 @@ The lawyer stands up and moves to a nearby bookshelf, completely engrossed in sc
 ...#Speaker:BLANK
 "I don't... really care. I just don't want to die."#Speaker:kai
 "Hmph. Figures."#Speaker:lawyer
-"You can go, but you'll need to find someone to come to the estate in your place.
+"You can go, but you'll need to find someone to come to the estate in your place."
+"I can... I can do that..."#Speaker:kai 
+"Good. Then get out."#Speaker:lawyer
+"Way ahead of you."#Speaker:kai 
+~sceneTransition("TestTransition", "call_friend")
+->END
+
 
 === take ===
 ~doPlaySFX("addnote")
@@ -862,13 +975,7 @@ The lawyer stands up and moves to a nearby bookshelf, completely engrossed in sc
 "..."
 ~waitNextLine(2)
 "Well?"
-"Hmph."
-~waitNextLine(3)
-"It would serve you best to speak up."
-~spawnChoice("I'm here to talk to you", "interview", 4, "bottom-left")
-~spawnChoice("I'm looking for a will?", "will", 4, "top-right")
-"I don't have time for this."
-->law_death
+->law_stare
 
 
 === speak_rpt ===
@@ -881,11 +988,7 @@ The lawyer stands up and moves to a nearby bookshelf, completely engrossed in sc
 "Well?"
 "Hmph."
 ~waitNextLine(3)
-"It would serve you best to speak up."
-~spawnChoice("I'm here to talk to you", "interview", 4, "bottom-left")
-~spawnChoice("I'm looking for a will?", "will", 4, "top-right")
-"I don't have time for this."
-->law_death
+->law_stare
 
 
 === take_death ===
@@ -905,10 +1008,23 @@ As your fingers meet the door handle you find it locked.
 
 
 === law_stare === //UNFINISHED
-"Are you going to speak, or just stand there and stare?"#Speaker:lawyer
-"I'm not a fan of this behaviour, so it would be wise for you to speak up."
-//FIND A WAY TO RESPOND AND THEN RETURN TO PREVIOUS SAVE KNOT
-Sorry I'm not done working on this part eeeee
+{stare:
+    "Need I remind you I'm not a fan of this behaviour?"#Speaker:lawyer
+    "Speak."
+    "..."
+    "I will make your stare as blank as possible if you continue on with this."
+    "..."
+    "So be it."
+- else:
+    ~stare = true
+    "Are you going to speak, or just stand there and stare?"#Speaker:lawyer
+    "..."
+    "I'm not a fan of this behaviour, so it would be wise for you to speak up."
+    ~waitNextLine(2)
+    "..."
+    "So be it."
+    ->law_death
+}
 
 
 === law_win ===
@@ -924,7 +1040,7 @@ Sorry I'm not done working on this part eeeee
 (That was intense... but at least I'm alive.)#Speaker:kai
 (I don't know how I managed to go that entire time without asking what the hell it was.)
 (Then again, I don't know what any of the... 'people'... here are.)
-(Wait... Shit... I forgot to get the will.)
+(Wait... Shit... I don't have the will.)
 ~win()
 
 === law_success ===
@@ -933,3 +1049,17 @@ Sorry I'm not done working on this part eeeee
 (Then again, I don't know what any of the... 'people'... here are.)
 (I can't let myself dwell on this - I have the will, now I just need to get out.)
 ~win()
+
+
+
+=== calling_friend ===
+...#Speaker:BLANK
+...
+"Hello?"#Speaker:friend 
+"Aaron? It's Kai."#Speaker:kai 
+"Hey, Kai! How have you been?"#Speaker:friend
+"I've been ok. Listen, man, I have a job I think you'll love..."#Speaker:kai 
+~sceneTransition("TestTransition", "friendWin")
+->END
+
+

@@ -33,6 +33,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Lawyer_Test.unity
     guid: 576b606aeb93a6b408480583ef4c8a9e
   - enabled: 1
-    path: Assets/Scenes/call_fam.unity
+    path: Assets/Scenes/Call_Fam.unity
     guid: 18ae8272d635ee94482ea8e0c1790acc
+  - enabled: 1
+    path: Assets/Scenes/call_friend.unity
+    guid: c9706b7969a6da64881dc373d963bf0f
+  - enabled: 1
+    path: Assets/Scenes/friendWin.unity
+    guid: f3f20720807c82e42a99c5d16eee14b2
   m_configObjects: {}
