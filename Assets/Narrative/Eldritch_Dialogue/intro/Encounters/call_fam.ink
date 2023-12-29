@@ -58,8 +58,8 @@ VAR called = true
 
 
 === wtv_cont ===
-"Did you manage to find it?"
-"I haven't gone in yet. I think I'm seeing things - I was about to go in and I saw a ghost, and he basically told me I was going to die?"#Speaker:kai
+"Did you manage to find it?"#Speaker:ram
+"I haven't gone in yet. I think I'm seeing things - I was about to go in and I saw a ghost, and he  told me in so many words I was going to die?"#Speaker:kai
 "Oh! Yes, that. It was in the fine print of your contract."#Speaker:ram
 (Shit... I was too excited about the money to read it.)#Speaker:kai
 "But clearly you didn't read it, so let me give you a refresher."#Speaker:ram
@@ -96,14 +96,14 @@ VAR called = true
 "Due to the estate requiring at least one human soul be present when the document is not in the posession of a human."
 "This... this is insane."#Speaker:kai
 "No, this is reality. Better get moving if you want to get out."#Speaker:ram
-"Ok, ok. Can you at least tell me-#Speaker:null
+"Ok, ok. Can you at least tell me-#Speaker:kai
 ~spawnChoice("What I'm getting into?","against",5,"top-right")
 ~spawnChoice("How I can stay alive?","against",5,"top-left")
 ~waitNextLine(3)
 //SHORT PAUSE FOR PLAYER TO READ
-"..."
+...#Speaker:BLANK
 ~waitNextLine(3)
-"..."
+...
 "Tell you what? I don't have all day."#Speaker:ram
 "..."
 "Look, I don't have time for this."

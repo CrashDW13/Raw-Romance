@@ -40,7 +40,6 @@ VAR conc = false
 
 (Ew... There's... I don't even know what that is on the stairs.)#Speaker:kai
 (They look a little too shiny for my liking... I'll have to go up them carefully.)
-
 (I-...)
 (I have to be hallucinating.)
 //GHOST SPRITE ELNARGE, GET CLOSER; WAIT FOR SPRITE TO ENLARGE
@@ -59,7 +58,7 @@ VAR conc = false
 "*Ahem*"#Speaker:con,conc
 "Do you hear me? If you give everyone you meet the cold shoulder, you won't make it very far."
 (Maybe I should call the woman and back out...)#Speaker:kai 
-"You'd ought to remember to give someone an answer when asked a question."#Speaker:con
+"You'd ought to remember to give someone an answer when asked a question."#Speaker:con,conc
 "Now, I'll ask you again... Are you ready for what's behind these doors?"
 ~spawnChoice("I need to make a call","call",10,"middle")
 ~spawnChoice("Yes","red_str",10,"top-left")
@@ -90,7 +89,7 @@ VAR conc = false
 
 
 === call ===
-"Do as you need."
+"Do as you need."#Speaker:con,conc
 ~waitNextLine(2)
 ~called = true
 ~setCalledFam(true)
@@ -128,17 +127,16 @@ VAR conc = false
 
 === return_call ===
 {conc:->final}
-"Welcome back."
+"Welcome back." #Speaker:con,conc
 ->ready
 
 
 === ready ===
-
 {called:
     - else:
     ~spawnChoice("I need to make a call","call",5,"top-right")
     }
-"You can touch, inspect, and ignore the items and furniture in the property, but you cannot take anything with you."
+"You can touch, inspect, and ignore the items and furniture in the property, but you cannot take anything with you." #Speaker:con,conc
 "The estate must remain as it is."
 "I see you have a notebook with you - should you choose to inspect and make note of something make sure to press 'N' to see what you've written down."
 "And please, don't drop your pen on the floor."
@@ -159,7 +157,7 @@ VAR conc = false
 
 
 === rep_ready ===
-"Understood."
+"Understood."#Speaker:con,conc
 "Listen carefully, because I will not repeat myself again."
 "You can touch, inspect, and ignore the items and furniture in the property, but you cannot take anything with you."
 "The estate must remain as it was and as it is."
@@ -184,7 +182,7 @@ VAR conc = false
 ->END
 
 === why ===
-"I-"
+"I-"#Speaker:con,conc
 "Please, let me finish."
 "I want to make sure you understand the gravity of the situation you are about to enter."
 ->again
@@ -192,7 +190,7 @@ VAR conc = false
 
 
 === again ===
-"Once you meet an inhabitant you cannot leave unless they allow you to leave."
+"Once you meet an inhabitant you cannot leave unless they allow you to leave."#Speaker:con,conc
 {called:
     - else:
     ~spawnChoice("I need to make a call","call",5,"middle")
@@ -210,7 +208,7 @@ VAR conc = false
 ->END
 
 === plead_explain ===
-"If you feel like the conversation has gone awry, you can 'PLEAD' to go back to the previous topic of discussion."
+"If you feel like the conversation has gone awry, you can 'PLEAD' to go back to the previous topic of discussion."#Speaker:con,conc
 ~saveState("plead")
 "Try doing so now."
 +["I still don't get it."] -> plead_explain
@@ -219,7 +217,7 @@ VAR conc = false
 
 
 === plead ===
-"Good job; when you 'PLEAD' in practice, the inhabitant will repeat themselves."
+"Good job; when you 'PLEAD' in practice, the inhabitant will repeat themselves."#Speaker:con,conc
 "You can do this anytime during the conversation, but it comes with a cost: each time you 'PLEAD' you will lose sanity."
 "As you get closer to insanity, your responses will reflect that."
 "Be wise when you plead - you don't want to find yourself saying things you don't understand."
@@ -232,7 +230,7 @@ VAR conc = false
 
 
 === plead_ag ===
-"Good job; when you 'PLEAD' in practice, the inhabitant will repeat themselves."
+"Good job; when you 'PLEAD' in practice, the inhabitant will repeat themselves."#Speaker:con,conc
 "You can do this anytime during the conversation, but it comes with a cost: each time you 'PLEAD' you will lose sanity."
 "As you get closer to insanity, your responses will reflect that."
 "Be wise when you plead - you don't want to find yourself saying things you don't understand."
@@ -249,7 +247,7 @@ VAR conc = false
 
 
 === enter ===
-"Good."
+"Good."#Speaker:con,conc
 "Keep your notepad close; I've come to find many an entrant's items scattered amongst the rooms."
 "Best of luck; hopefully you'll see the sun again."
 ~toggleSanity()
@@ -262,7 +260,7 @@ VAR conc = false
 
 === call_push ===
 (...)#Speaker:BLANK,clear
-(What the hell was that?)#Speaker:kai,clear
+(What the hell was that?)#Speaker:kai
 (I need to get myself out of this mess.)
 ~setConcFinish(true)
 ~sceneTransition("TestTransition", "Call_Fam")

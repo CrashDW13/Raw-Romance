@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Ramina
   m_EditorClassIdentifier: 
   characterName: Ramina
-  characterTag: 
+  characterTag: ram
   CharacterSprites: []
   fileName: Assets/ScriptableObjects/Ramina.asset
