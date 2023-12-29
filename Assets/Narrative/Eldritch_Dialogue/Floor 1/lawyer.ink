@@ -32,12 +32,12 @@ VAR stare = false
 === core_start ===
 ~toggleSanity()
 ~waitNextLine(2)
-"This better be important - I'm busy sifting through these negligence lawsuits."#Speaker:lawyer
+"This better be important - I'm busy sifting through these negligence lawsuits."#Speaker:unk
 "..."
 "Well? I don't have all day."
 "..."
 ~waitNextLine(2)
-"You know I do not like silence, Bernard."#Speaker:lawyer
+"You know I do not like silence, Bernard."#Speaker:unk
 ~spawnChoice("Who's Bernard?", "bernard", 10, "bottom-left")
 ~spawnChoice("Sorry", "speak", 10, "bottom-right")
 "..."
@@ -46,13 +46,13 @@ VAR stare = false
 "..."
 "Bern-"
 You lock eyes.#Speaker:BLANK
-"Oh!"#Speaker:lawyer,law
+"Oh!"#Speaker:unk
 ->speak
 
 
 === bernard ===
 //CHANGE LAWYER SPRITE TO LOOK AT PLAYER
-"Wait-"#Speaker:lawyer
+"Wait-"#Speaker:unk
 The desk light switches on.
 "You're not Bernard."#Speaker:lawyer,law
 "Who are you? State your business."

@@ -107,11 +107,12 @@ A glass display showcasing a miniature of Lady Justice.
 
 
 === door ===
+{journal}
 {journal:
+    (I feel like I'm missing something... Maybe I should stay and look around a bit more.)
+- else:
     (Nowhere else but forward...)
     ~sceneTransition("TestTransition", "Lawyer_Test")
-- else:
-    (I feel like I'm missing something... Maybe I should stay and look around a bit more.)
 }
 ->END
 

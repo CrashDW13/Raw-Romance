@@ -174,8 +174,8 @@ VAR conc = false
 ~saveState("plead_ag")
 "Sometimes not responding is beneficial. Other times, it can be to your detriment."
 "And most importantly, your life will be on the line with each inhabitant you meet."
-"If you feel your life is in danger, you can 'PLEAD' to go back to the last key point in the conversation."
 ~toggleSanity()
+"If you feel your life is in danger, you can 'PLEAD' to go back to the last key point in the conversation."
 "Come, give it a try."
 +["I don't get it..."] -> plead_explain
 "..."
