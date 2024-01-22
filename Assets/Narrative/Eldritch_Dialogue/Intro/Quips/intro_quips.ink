@@ -9,6 +9,7 @@ EXTERNAL sceneTransition(transitionPreset, sceneName)
 VAR richard = false
 VAR touch = 0
 
+
 === entrance ===
 ~doPlayBGM("rainBGM")
 (Welp...)
@@ -114,10 +115,6 @@ A glass display showcasing a miniature of Lady Justice.
     (Nowhere else but forward...)
     ~sceneTransition("TestTransition", "Lawyer_Test")
 }
-->END
-
-=== door_stop ===
-(Maybe I should keep investigating...)
 ->END
 
 
